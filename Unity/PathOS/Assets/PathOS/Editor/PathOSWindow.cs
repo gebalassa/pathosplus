@@ -33,7 +33,7 @@ public class PathOSWindow : EditorWindow
     {
         //initializes the different windows
         profileWindow = new PathOSProfileWindow();
-        batchingWindow = new PathOSAgentBatchingWindow();
+        batchingWindow = (PathOSAgentBatchingWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentBatchingWindow));
         agentWindow = new PathOSAgentWindow();
         managerWindow = new PathOSManagerWindow();
     }
@@ -80,5 +80,11 @@ public class PathOSWindow : EditorWindow
         }
         GUILayout.EndScrollView();
 
+    }
+
+    private void Update()
+    {
+        //Temporary solution
+        batchingWindow.UpdateBatching();
     }
 }

@@ -161,6 +161,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private bool cleanupFrame = false;
     private bool wasPlaying = false;
     private int agentsLeft = 0;
+
     //
     //[MenuItem("Window/PathOS Agent Batching")]
     //public static void ShowWindow()
@@ -271,7 +272,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
         PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
 
-        if(simulationActive)
+        if (simulationActive)
         {
             NPDebug.LogError("Batching control window closed while simulation was active! " +
                 "Any instantiated agents will not be deleted automatically.");
@@ -285,6 +286,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
 
+    //This used to be private void OnGUI()
     public void OnWindowOpen()
     {
         EditorGUILayout.LabelField("General", headerStyle);
@@ -501,7 +503,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
         }        
     }
 
-    private void Update()
+    public void UpdateBatching()
     {
         if (simulationActive)
         {
