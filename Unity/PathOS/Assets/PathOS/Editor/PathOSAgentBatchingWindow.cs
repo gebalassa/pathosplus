@@ -264,7 +264,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);     
     }
-
+    
     private void OnDestroy()
     {
         //Reset the timescale.

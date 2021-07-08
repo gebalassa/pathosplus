@@ -60,6 +60,7 @@ public class PathOSWindow : EditorWindow
         tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);
         GUILayout.EndHorizontal();
 
+        //Switches between the tabs (temp solution, todo: clean this up when you get the time)
         switch (tabSelection)
         {
             case 0:

@@ -13,9 +13,12 @@ Nine Penguins (Samantha Stahlke) 2018 (Atiya Nova) 2021
 
 public class PathOSAgentWindow : EditorWindow
 {
+    //Used to identify preferences string by Unity.
+    private const string editorPrefsID = "PathOSAgent";
+
     //Component variables
     [SerializeField]
-    private PathOSAgent agentReference, previousAgent;
+    private PathOSAgent agentReference;
     private PathOSAgentMemory memoryReference;
     private PathOSAgentEyes eyeReference;
     private PathOSAgentRenderer rendererReference;
@@ -50,53 +53,103 @@ public class PathOSAgentWindow : EditorWindow
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
 
+    [SerializeField]
+    private bool hasAgent;
+
+    [SerializeField]
+    private int agentID;
+    private void OnEnable()
+    {
+        //Load saved settings.
+        string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
+        JsonUtility.FromJsonOverwrite(prefsData, this);
+
+        //Re-establish agent reference, if it has been nullified.
+        if (hasAgent)
+        {
+            if (agentReference != null)
+                agentID = agentReference.GetInstanceID();
+            else
+                agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
+        }
+
+        hasAgent = agentReference != null;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
+
+        //Save settings to the editor.
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
+    }
+    private void OnDisable()
+    {
+        //Save settings to the editor.
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
+    }
+
+
     public void OnWindowOpen()
     {
+
+        //Not sure if this will work or not
+        EditorGUI.BeginChangeCheck();
+
+        GrabAgentReference();
         agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
             as PathOSAgent;
 
-        if (agentReference != null)
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
         {
-            Selection.objects = new Object[] { agentReference.gameObject };
+            hasAgent = agentReference != null;
 
-            if (agentReference != previousAgent)
+            if (hasAgent)
             {
-                memoryReference = agentReference.GetComponent<PathOSAgentMemory>();
-                eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
-                rendererReference = agentReference.GetComponent<PathOSAgentRenderer>();
-                InitializeAgent();
-                previousAgent = agentReference;
+                agentID = agentReference.GetInstanceID();
             }
-
-
-            Editor editor = Editor.CreateEditor(agentReference.gameObject);
-            currentAgentEditor = Editor.CreateEditor(agentReference); ;
-            currentMemoryEditor = Editor.CreateEditor(memoryReference);
-            currentEyeEditor = Editor.CreateEditor(eyeReference);
-            currentRendererEditor = Editor.CreateEditor(rendererReference);
-            currentTransformEditor = Editor.CreateEditor(agentReference.gameObject.transform);
-
-            // Shows the created Editor beneath CustomEditor
-            editor.DrawHeader();
-            currentTransformEditor.DrawHeader();
-            currentTransformEditor.OnInspectorGUI();
-            currentAgentEditor.DrawHeader();
-            AgentEditorGUI();
-            currentMemoryEditor.DrawHeader();
-            currentMemoryEditor.OnInspectorGUI();
-            currentEyeEditor.DrawHeader();
-            currentEyeEditor.OnInspectorGUI();
-            currentRendererEditor.DrawHeader();
-            currentRendererEditor.OnInspectorGUI();
-
         }
+
+        if (agentReference == null) return;
+
+        //Todo: clean this up!
+        memoryReference = agentReference.GetComponent<PathOSAgentMemory>();
+        eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
+        rendererReference = agentReference.GetComponent<PathOSAgentRenderer>();
+        InitializeAgent();
+        Selection.objects = new Object[] { agentReference.gameObject };
+        
+        Editor editor = Editor.CreateEditor(agentReference.gameObject);
+        currentAgentEditor = Editor.CreateEditor(agentReference); 
+        currentMemoryEditor = Editor.CreateEditor(memoryReference);
+        currentEyeEditor = Editor.CreateEditor(eyeReference);
+        currentRendererEditor = Editor.CreateEditor(rendererReference);
+        currentTransformEditor = Editor.CreateEditor(agentReference.gameObject.transform);
+        
+        //// Shows the created Editor beneath CustomEditor
+        editor.DrawHeader();
+        currentTransformEditor.DrawHeader();
+        currentTransformEditor.OnInspectorGUI();
+        currentAgentEditor.DrawHeader();
+        AgentEditorGUI();
+        currentMemoryEditor.DrawHeader();
+        currentMemoryEditor.OnInspectorGUI();
+        currentEyeEditor.DrawHeader();
+        currentEyeEditor.OnInspectorGUI();
+        currentRendererEditor.DrawHeader();
+        currentRendererEditor.OnInspectorGUI();
+         
+         
+        
 
     }
 
     private void InitializeAgent()
     {
         serial = new SerializedObject(agentReference);
-
         experienceScale = serial.FindProperty("experienceScale");
         heuristicList = serial.FindProperty("heuristicScales");
 
@@ -221,6 +274,11 @@ public class PathOSAgentWindow : EditorWindow
             EditorUtility.SetDirty(agentReference);
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
+    }
+    private void GrabAgentReference()
+    {
+        if (hasAgent && null == agentReference)
+            agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
     }
 
 }

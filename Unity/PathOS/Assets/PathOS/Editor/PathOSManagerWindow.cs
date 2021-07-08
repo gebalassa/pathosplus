@@ -13,9 +13,13 @@ Nine Penguins (Samantha Stahlke) 2018 (Atiya Nova) 2021
  */
 public class PathOSManagerWindow : EditorWindow
 {
+
+    //Used to identify preferences string by Unity.
+    private const string editorPrefsID = "PathOSManager";
+
     //Window component settings
     [SerializeField]
-    private PathOSManager managerReference, previousManager = null;
+    private PathOSManager managerReference;
     private OGLogManager logManagerReference;
     private OGLogVisualizer logVisualizerReference;
     private Editor currentManagerEditor, currentLogEditor, currentVisEditor;
@@ -117,9 +121,27 @@ public class PathOSManagerWindow : EditorWindow
     private List<MarkupToggle> markupToggles = new List<MarkupToggle>();
     private MarkupToggle activeToggle = null;
 
+    [SerializeField]
+    private bool hasManager;
+
+    [SerializeField]
+    private int managerID;
+
     private void OnEnable()
     {
+        //Re-establish manager reference, if it has been nullified.
+        if (hasManager)
+        {
+            if (managerReference != null)
+                managerID = managerReference.GetInstanceID();
+            else
+                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+        }
+
+        hasManager = managerReference != null;
+
         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+
     }
 
     void OnDestroy()
@@ -129,58 +151,83 @@ public class PathOSManagerWindow : EditorWindow
 
     public void OnWindowOpen()
     {
+        EditorGUI.BeginChangeCheck();
+
+        GrabManagerReference();
         managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
             as PathOSManager;
 
-        if (managerReference != null)
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
         {
-            Selection.objects = new Object[] { managerReference.gameObject };
+            hasManager = managerReference != null;
 
-            if (managerReference != previousManager)
+            if (hasManager)
             {
-                InitializeManager();
-                previousManager = managerReference;
+                managerID = managerReference.GetInstanceID();
             }
-
-            Editor editor = Editor.CreateEditor(managerReference.gameObject);
-            editor.DrawHeader();
-
-            EditorGUILayout.Space();
-
-            Editor managerEditor = Editor.CreateEditor(managerReference);
-
-
-            currentManagerEditor = managerEditor;
-
-            // Shows the created Editor beneath CustomEditor
-            EditorGUIUtility.labelWidth = 150.0f;
-            currentManagerEditor.DrawHeader();
-            ManagerEditorGUI();
         }
+
+        if (managerReference == null) return;
+
+        Selection.objects = new Object[] { managerReference.gameObject };
+
+        InitializeManager();
+
+        Editor editor = Editor.CreateEditor(managerReference.gameObject);
+        editor.DrawHeader();
+
+        EditorGUILayout.Space();
+
+        Editor managerEditor = Editor.CreateEditor(managerReference);
+
+
+        currentManagerEditor = managerEditor;
+
+        // Shows the created Editor beneath CustomEditor
+        EditorGUIUtility.labelWidth = 150.0f;
+        currentManagerEditor.DrawHeader();
+        ManagerEditorGUI();
+        
     }
 
     public void OnVisualizationOpen()
     {
+
+        EditorGUI.BeginChangeCheck();
+
+        GrabManagerReference();
         managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
             as PathOSManager;
 
-        if (managerReference != null)
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
         {
-            Editor editor = Editor.CreateEditor(managerReference.gameObject);
-            editor.DrawHeader();
+            hasManager = managerReference != null;
 
-            logManagerReference = managerReference.GetComponent<OGLogManager>();
-            logVisualizerReference = managerReference.GetComponent<OGLogVisualizer>();
-            currentLogEditor = Editor.CreateEditor(logManagerReference);
-            currentVisEditor = Editor.CreateEditor(logVisualizerReference);
-
-            // Shows the created Editor beneath CustomEditor
-            EditorGUIUtility.labelWidth = 150.0f;
-            currentLogEditor.DrawHeader();
-            currentLogEditor.OnInspectorGUI();
-            currentLogEditor.DrawHeader();
-            currentVisEditor.OnInspectorGUI();
+            if (hasManager)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
         }
+
+        if (managerReference == null) return;
+
+        Editor editor = Editor.CreateEditor(managerReference.gameObject);
+        editor.DrawHeader();
+
+        logManagerReference = managerReference.GetComponent<OGLogManager>();
+        logVisualizerReference = managerReference.GetComponent<OGLogVisualizer>();
+        currentLogEditor = Editor.CreateEditor(logManagerReference);
+        currentVisEditor = Editor.CreateEditor(logVisualizerReference);
+
+        // Shows the created Editor beneath CustomEditor
+        EditorGUIUtility.labelWidth = 150.0f;
+        currentLogEditor.DrawHeader();
+        currentLogEditor.OnInspectorGUI();
+        currentLogEditor.DrawHeader();
+        currentVisEditor.OnInspectorGUI();
+        
     }
 
     private void InitializeManager()
@@ -538,5 +585,11 @@ public class PathOSManagerWindow : EditorWindow
 
     }
 
+
+    private void GrabManagerReference()
+    {
+        if (hasManager && null == managerReference)
+            managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+    }
 
 }
