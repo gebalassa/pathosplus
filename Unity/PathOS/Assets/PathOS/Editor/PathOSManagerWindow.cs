@@ -129,11 +129,19 @@ public class PathOSManagerWindow : EditorWindow
 
     private void OnEnable()
     {
+
+
+        //Load saved settings.
+        string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
+        JsonUtility.FromJsonOverwrite(prefsData, this);
+
         //Re-establish manager reference, if it has been nullified.
         if (hasManager)
         {
             if (managerReference != null)
+            {
                 managerID = managerReference.GetInstanceID();
+            }
             else
                 managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
         }
@@ -144,10 +152,28 @@ public class PathOSManagerWindow : EditorWindow
 
     }
 
+
     void OnDestroy()
     {
+
+        //Save settings to the editor.
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
+
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
     }
+
+    private void OnDisable()
+    {
+
+        //Save settings to the editor.
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
+
+        SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+
+    }
+
 
     public void OnWindowOpen()
     {
@@ -170,10 +196,8 @@ public class PathOSManagerWindow : EditorWindow
 
         if (managerReference == null) return;
 
-        Selection.objects = new Object[] { managerReference.gameObject };
-
         InitializeManager();
-
+        Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
         editor.DrawHeader();
 
@@ -200,6 +224,7 @@ public class PathOSManagerWindow : EditorWindow
         managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
             as PathOSManager;
 
+
         //Update agent ID if the user has selected a new object reference.
         if (EditorGUI.EndChangeCheck())
         {
@@ -213,6 +238,7 @@ public class PathOSManagerWindow : EditorWindow
 
         if (managerReference == null) return;
 
+        InitializeManager();
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
         editor.DrawHeader();
 
@@ -326,6 +352,8 @@ public class PathOSManagerWindow : EditorWindow
                 if (markupToggles[i].Layout())
                     ActivateToggle(markupToggles[i]);
             }
+
+
         }
 
         //Stop using the markup tool if escape is pressed.
@@ -451,6 +479,7 @@ public class PathOSManagerWindow : EditorWindow
             }
         }
 
+
         serial.ApplyModifiedProperties();
         SceneView.RepaintAll();
     }
@@ -505,6 +534,8 @@ public class PathOSManagerWindow : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
+
+
         Handles.BeginGUI();
 
         if (managerReference != null)

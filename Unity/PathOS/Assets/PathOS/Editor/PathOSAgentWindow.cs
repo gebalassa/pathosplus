@@ -13,7 +13,7 @@ Nine Penguins (Samantha Stahlke) 2018 (Atiya Nova) 2021
 
 public class PathOSAgentWindow : EditorWindow
 {
-    //Used to identify preferences string by Unity.
+    //Used to identify preferences string by Unity
     private const string editorPrefsID = "PathOSAgent";
 
     //Component variables
