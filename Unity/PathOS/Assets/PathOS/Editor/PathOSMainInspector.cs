@@ -217,7 +217,8 @@ public class PathOSMainInspector : Editor
         }
 
         //Stop using the markup tool if escape is pressed.
-        if (Event.current.type == EventType.KeyDown)
+        if (Event.current.type == EventType.KeyDown
+           && Event.current.keyCode == KeyCode.Escape)
         {
             ActivateToggle(null);
             Repaint();
@@ -399,15 +400,11 @@ public class PathOSMainInspector : Editor
                             manager.levelEntities.Add(new LevelEntity(selection, activeToggle.entityType));
                     }
                 }
-                else
-                {
-                    ActivateToggle(null);
-                    Repaint();
-                }
             }
 
-            //Stop using the markup tool if a key is pressed.
-            else if (Event.current.type == EventType.KeyDown)
+            //Stop using the markup tool if escape key is pressed.
+            else if (Event.current.type == EventType.KeyDown
+           && Event.current.keyCode == KeyCode.Escape)
             {
                 ActivateToggle(null);
                 Repaint();
