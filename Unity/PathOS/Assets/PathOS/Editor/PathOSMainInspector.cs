@@ -21,7 +21,9 @@ public class PathOSMainInspector : Editor
     private GUIStyle foldoutStyle = GUIStyle.none;
 
     /* Basic Properties */
+    [Tooltip("Bool to limit the amount of time that the agent simulation lasts.")]
     private SerializedProperty limitSimulationTime;
+    [Tooltip("The amount of time that a simulation will last in seconds.")]
     private SerializedProperty maxSimulationTime;
     private SerializedProperty endOnCompletionGoal;
     private SerializedProperty showLevelMarkup;
@@ -199,7 +201,7 @@ public class PathOSMainInspector : Editor
 
         //Show basic properties.
         EditorGUILayout.PropertyField(limitSimulationTime);
-        EditorGUILayout.PropertyField(maxSimulationTime);
+        if (limitSimulationTime.boolValue) EditorGUILayout.PropertyField(maxSimulationTime);
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 

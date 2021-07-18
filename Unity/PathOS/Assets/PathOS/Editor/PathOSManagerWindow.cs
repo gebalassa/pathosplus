@@ -29,7 +29,9 @@ public class PathOSManagerWindow : EditorWindow
     private GUIStyle foldoutStyle = GUIStyle.none;
 
     /* Basic Properties */
+    [Tooltip("Bool to limit the amount of time that the agent simulation lasts.")]
     private SerializedProperty limitSimulationTime;
+    [Tooltip("The amount of time that a simulation will last in seconds.")]
     private SerializedProperty maxSimulationTime;
     private SerializedProperty endOnCompletionGoal;
     private SerializedProperty showLevelMarkup;
@@ -60,6 +62,8 @@ public class PathOSManagerWindow : EditorWindow
     private Dictionary<(Heuristic, EntityType), float> weightLookup;
 
     private bool transposeWeightMatrix;
+
+    private bool managerInitialized = false;
     private class MarkupToggle
     {
         public static GUIStyle style;
@@ -183,6 +187,7 @@ public class PathOSManagerWindow : EditorWindow
         managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
             as PathOSManager;
 
+
         //Update agent ID if the user has selected a new object reference.
         if (EditorGUI.EndChangeCheck())
         {
@@ -196,7 +201,8 @@ public class PathOSManagerWindow : EditorWindow
 
         if (managerReference == null) return;
 
-        InitializeManager();
+        if (!managerInitialized) InitializeManager();
+
         Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
         editor.DrawHeader();
@@ -325,6 +331,7 @@ public class PathOSManagerWindow : EditorWindow
             true));
 
         warnedEntityNull = false;
+        managerInitialized = true;
     }
 
     private void ManagerEditorGUI()
@@ -338,7 +345,7 @@ public class PathOSManagerWindow : EditorWindow
 
         //Show basic properties.
         EditorGUILayout.PropertyField(limitSimulationTime);
-        EditorGUILayout.PropertyField(maxSimulationTime);
+        if (limitSimulationTime.boolValue) EditorGUILayout.PropertyField(maxSimulationTime);
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 
