@@ -29,11 +29,10 @@ public class PathOSManagerWindow : EditorWindow
     private GUIStyle foldoutStyle = GUIStyle.none;
 
     /* Basic Properties */
-    [Tooltip("Bool to limit the amount of time that the agent simulation lasts.")]
     private SerializedProperty limitSimulationTime;
-    [Tooltip("The amount of time that a simulation will last in seconds.")]
     private SerializedProperty maxSimulationTime;
     private SerializedProperty endOnCompletionGoal;
+
     private SerializedProperty showLevelMarkup;
     private GUIContent completionLabel;
 
@@ -134,7 +133,6 @@ public class PathOSManagerWindow : EditorWindow
     private void OnEnable()
     {
 
-
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
@@ -142,6 +140,7 @@ public class PathOSManagerWindow : EditorWindow
         //Re-establish manager reference, if it has been nullified.
         if (hasManager)
         {
+
             if (managerReference != null)
             {
                 managerID = managerReference.GetInstanceID();
@@ -150,6 +149,7 @@ public class PathOSManagerWindow : EditorWindow
                 managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
         }
 
+        managerInitialized = false;
         hasManager = managerReference != null;
 
         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
@@ -159,7 +159,7 @@ public class PathOSManagerWindow : EditorWindow
 
     void OnDestroy()
     {
-
+        managerInitialized = false;
         //Save settings to the editor.
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -169,7 +169,7 @@ public class PathOSManagerWindow : EditorWindow
 
     private void OnDisable()
     {
-
+        managerInitialized = false;
         //Save settings to the editor.
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -192,6 +192,7 @@ public class PathOSManagerWindow : EditorWindow
         if (EditorGUI.EndChangeCheck())
         {
             hasManager = managerReference != null;
+            managerInitialized = false;
 
             if (hasManager)
             {
@@ -244,7 +245,7 @@ public class PathOSManagerWindow : EditorWindow
 
         if (managerReference == null) return;
 
-        InitializeManager();
+        if (!managerInitialized) InitializeManager();
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
         editor.DrawHeader();
 
@@ -315,20 +316,23 @@ public class PathOSManagerWindow : EditorWindow
             heuristicLabelList[i] = UI.heuristicLabels.Values[i];
         }
 
-        //Set up toggles for level markup.
-        foreach (EntityType entype in System.Enum.GetValues(typeof(EntityType)))
-        {
-            markupToggles.Add(new MarkupToggle(entype,
-                managerReference.entityLabelLookup[entype],
-                Resources.Load<Texture2D>(managerReference.entityGizmoLookup[entype]),
-                Resources.Load<Texture2D>("cursor_" + managerReference.entityGizmoLookup[entype])));
-        }
+        //Todo: Just in case. Remove if this gets in the way
+        if (markupToggles.Count <= 0)
+        {//Set up toggles for level markup.
+            foreach (EntityType entype in System.Enum.GetValues(typeof(EntityType)))
+            {
+                markupToggles.Add(new MarkupToggle(entype,
+                    managerReference.entityLabelLookup[entype],
+                    Resources.Load<Texture2D>(managerReference.entityGizmoLookup[entype]),
+                    Resources.Load<Texture2D>("cursor_" + managerReference.entityGizmoLookup[entype])));
+            }
 
-        markupToggles.Add(new MarkupToggle(EntityType.ET_NONE,
-            "Clear Markup (remove from entity list)",
-            Resources.Load<Texture2D>("delete"),
-            Resources.Load<Texture2D>("cursor_delete"),
-            true));
+            markupToggles.Add(new MarkupToggle(EntityType.ET_NONE,
+                "Clear Markup (remove from entity list)",
+                Resources.Load<Texture2D>("delete"),
+                Resources.Load<Texture2D>("cursor_delete"),
+                true));
+        }
 
         warnedEntityNull = false;
         managerInitialized = true;

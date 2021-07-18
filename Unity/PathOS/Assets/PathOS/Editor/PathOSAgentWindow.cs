@@ -52,6 +52,7 @@ public class PathOSAgentWindow : EditorWindow
 
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
+    private bool agentInitialized = false;
 
     [SerializeField]
     private bool hasAgent;
@@ -67,17 +68,20 @@ public class PathOSAgentWindow : EditorWindow
         //Re-establish agent reference, if it has been nullified.
         if (hasAgent)
         {
+
             if (agentReference != null)
                 agentID = agentReference.GetInstanceID();
             else
                 agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
         }
 
+        agentInitialized = false;
         hasAgent = agentReference != null;
     }
 
     private void OnDestroy()
     {
+        agentInitialized = false;
         PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
 
         //Save settings to the editor.
@@ -86,6 +90,8 @@ public class PathOSAgentWindow : EditorWindow
     }
     private void OnDisable()
     {
+        agentInitialized = false;
+
         //Save settings to the editor.
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -106,6 +112,7 @@ public class PathOSAgentWindow : EditorWindow
         if (EditorGUI.EndChangeCheck())
         {
             hasAgent = agentReference != null;
+            agentInitialized = false;
 
             if (hasAgent)
             {
@@ -119,7 +126,9 @@ public class PathOSAgentWindow : EditorWindow
         memoryReference = agentReference.GetComponent<PathOSAgentMemory>();
         eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
         rendererReference = agentReference.GetComponent<PathOSAgentRenderer>();
-        InitializeAgent();
+
+        if (!agentInitialized) InitializeAgent();
+
         Selection.objects = new Object[] { agentReference.gameObject };
         
         Editor editor = Editor.CreateEditor(agentReference.gameObject);
@@ -176,6 +185,8 @@ public class PathOSAgentWindow : EditorWindow
 
         if (null == PathOSProfileWindow.profiles)
             PathOSProfileWindow.ReadPrefsData();
+
+        agentInitialized = true;
     }
 
     private void AgentEditorGUI()
