@@ -26,6 +26,10 @@ public class PathOSAgent : MonoBehaviour
     public static OGLogManager logger { get; set; }
 
     //Used for testing.
+
+
+    [Range(1.0f, 8.0f)]
+    public float timeScale = 1.0f;
     public bool freezeAgent;
     private bool verboseDebugging = false;
 
@@ -106,6 +110,7 @@ public class PathOSAgent : MonoBehaviour
     private Vector3 memWaypoint = Vector3.zero;
 
     private List<Vector3> unreachableReference;
+
 
     private void Awake()
     { 
@@ -689,6 +694,8 @@ public class PathOSAgent : MonoBehaviour
         //Inactive state toggle for debugging purposes (or if the agent is finished).
         if (freezeAgent || completed)
             return;
+
+        Time.timeScale = timeScale;
 
         //If we've reached our destination, reset the number of times
         //we've "changed our mind" without doing anything.

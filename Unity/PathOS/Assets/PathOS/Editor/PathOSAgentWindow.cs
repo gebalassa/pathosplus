@@ -33,6 +33,7 @@ public class PathOSAgentWindow : EditorWindow
     private GUIStyle boldStyle = GUIStyle.none;
 
     private SerializedProperty experienceScale;
+    private SerializedProperty timeScale;
     private SerializedProperty heuristicList;
 
     private bool showPlayerCharacteristics = true;
@@ -53,6 +54,7 @@ public class PathOSAgentWindow : EditorWindow
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
     private bool agentInitialized = false;
+
 
     [SerializeField]
     private bool hasAgent;
@@ -81,6 +83,7 @@ public class PathOSAgentWindow : EditorWindow
 
     private void OnDestroy()
     {
+
         agentInitialized = false;
         PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
 
@@ -132,7 +135,7 @@ public class PathOSAgentWindow : EditorWindow
         Selection.objects = new Object[] { agentReference.gameObject };
         
         Editor editor = Editor.CreateEditor(agentReference.gameObject);
-        currentAgentEditor = Editor.CreateEditor(agentReference); 
+        currentAgentEditor = Editor.CreateEditor(agentReference);
         currentMemoryEditor = Editor.CreateEditor(memoryReference);
         currentEyeEditor = Editor.CreateEditor(eyeReference);
         currentRendererEditor = Editor.CreateEditor(rendererReference);
@@ -160,6 +163,7 @@ public class PathOSAgentWindow : EditorWindow
     {
         serial = new SerializedObject(agentReference);
         experienceScale = serial.FindProperty("experienceScale");
+        timeScale = serial.FindProperty("timeScale");
         heuristicList = serial.FindProperty("heuristicScales");
 
         freezeAgent = serial.FindProperty("freezeAgent");
@@ -199,7 +203,7 @@ public class PathOSAgentWindow : EditorWindow
         foldoutStyle.fontStyle = FontStyle.Bold;
 
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
-
+        EditorGUILayout.PropertyField(timeScale);
         EditorGUILayout.PropertyField(freezeAgent);
 
         showPlayerCharacteristics = EditorGUILayout.Foldout(

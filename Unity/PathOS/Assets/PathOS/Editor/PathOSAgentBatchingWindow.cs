@@ -290,6 +290,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
     public void OnWindowOpen()
     {
         EditorGUILayout.LabelField("General", headerStyle);
+        timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
 
         numAgents = EditorGUILayout.IntField("Number of agents: ", numAgents);
 
@@ -355,7 +356,6 @@ public class PathOSAgentBatchingWindow : EditorWindow
             }
         }
 
-        timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
 
         EditorGUILayout.LabelField("Agent Motives", headerStyle);
 

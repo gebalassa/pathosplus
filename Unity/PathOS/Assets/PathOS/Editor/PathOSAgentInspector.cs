@@ -21,6 +21,7 @@ public class PathOSAgentInspector : Editor
     private GUIStyle boldStyle = GUIStyle.none;
 
     private SerializedProperty experienceScale;
+    private SerializedProperty timeScale;
     private SerializedProperty heuristicList;
 
     private bool showPlayerCharacteristics = true;
@@ -46,6 +47,7 @@ public class PathOSAgentInspector : Editor
         agent = (PathOSAgent)target;
         serial = new SerializedObject(agent);
 
+        timeScale = serial.FindProperty("timeScale");
         experienceScale = serial.FindProperty("experienceScale");
         heuristicList = serial.FindProperty("heuristicScales");
 
@@ -78,13 +80,15 @@ public class PathOSAgentInspector : Editor
     {
         serial.Update();
 
+
+
         //Placed here since Unity seems to have issues with having these 
         //styles initialized on enable sometimes.
         foldoutStyle = EditorStyles.foldout;
         foldoutStyle.fontStyle = FontStyle.Bold;
 
         EditorGUILayout.LabelField("General", EditorStyles.boldLabel);
-
+        EditorGUILayout.PropertyField(timeScale);
         EditorGUILayout.PropertyField(freezeAgent);
 
         showPlayerCharacteristics = EditorGUILayout.Foldout(
