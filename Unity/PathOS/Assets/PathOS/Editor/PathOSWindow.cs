@@ -19,7 +19,8 @@ public class PathOSWindow : EditorWindow
     private PathOSAgentWindow agentWindow;
     private PathOSManagerWindow managerWindow;
 
-    private GameObject proxyAgent, proxyManager;
+    private GameObject proxyScreenshot;
+    private ScreenshotManager screenshot;
     private Vector2 scrollPos = Vector2.zero;
 
     [MenuItem("Window/PathOS")]
@@ -42,19 +43,41 @@ public class PathOSWindow : EditorWindow
     void OnGUI()
     {
         scrollPos = GUILayout.BeginScrollView(scrollPos, true, true);
-        //warning incase gizmos aren't enabled
-        EditorGUILayout.HelpBox("Please make sure to have Gizmos enabled", MessageType.Warning);
 
-        //to instantiate the AI
-        if (GUILayout.Button("Instantiate PathOS Agent and Manager"))
+        EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
+        EditorGUI.indentLevel++;
+
+        //grab screenshot if it already exists
+        screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
+        as ScreenshotManager;
+
+        //or instantiate the screenshot camera if it does not exist
+        if (screenshot == null)
         {
-            proxyAgent = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Agent.prefab") as GameObject;
-            Instantiate(proxyAgent);
-
-            proxyManager = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Manager.prefab") as GameObject;
-            Instantiate(proxyManager);
+            if (GUILayout.Button("Instantiate Screenshot Camera"))
+            {
+                proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
+                Instantiate(proxyScreenshot);
+                screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
+            }
         }
 
+        //only draws the screenshot elements if the variable is not null
+        if (screenshot != null)
+        {
+            screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
+            screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
+
+            if (GUILayout.Button("Take Screenshot"))
+            {
+                screenshot.TakeScreenshot();
+            }
+        }
+
+        EditorGUI.indentLevel--;
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("PathOS Features", EditorStyles.boldLabel);
         // The tabs to alternate between specific menus
         GUILayout.BeginHorizontal();
         tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);

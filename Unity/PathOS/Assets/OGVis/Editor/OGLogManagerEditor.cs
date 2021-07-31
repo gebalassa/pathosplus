@@ -52,38 +52,41 @@ public class OGLogManagerEditor : Editor
         serial.Update();
 
         EditorGUILayout.PropertyField(enableLogging);
-        EditorGUILayout.LabelField("Log Directory: ", logDirectoryDisplay);
 
-        if(GUILayout.Button("Browse..."))
-        {
-            string defaultDirectory = (manager.LogDirectoryValid()) ?
-                manager.logDirectory : defaultDialogDirectory;
+        if (enableLogging.boolValue)
+        { 
+            EditorGUILayout.LabelField("Log Directory: ", logDirectoryDisplay);
 
-            string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
-                defaultDirectory, "");
-
-            if (selectedPath != "")
+            if (GUILayout.Button("Browse..."))
             {
-                manager.logDirectory = selectedPath;
+                string defaultDirectory = (manager.LogDirectoryValid()) ?
+                    manager.logDirectory : defaultDialogDirectory;
 
-                EditorUtility.SetDirty(manager);
-                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
+                    defaultDirectory, "");
+
+                if (selectedPath != "")
+                {
+                    manager.logDirectory = selectedPath;
+
+                    EditorUtility.SetDirty(manager);
+                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                }
+
+                PathOS.UI.TruncateStringHead(manager.logDirectory,
+                    ref logDirectoryDisplay, pathDisplayLength);
             }
 
-            PathOS.UI.TruncateStringHead(manager.logDirectory,
-                ref logDirectoryDisplay, pathDisplayLength);
+            if (!manager.LogDirectoryValid())
+            {
+                EditorGUILayout.LabelField("Error! You must choose a " +
+                    "valid directory on this computer outside the Assets folder.",
+                    errorStyle);
+            }
+
+            EditorGUILayout.PropertyField(logFilePrefix);
+            EditorGUILayout.PropertyField(sampleRate);
         }
-
-        if(!manager.LogDirectoryValid())
-        {
-            EditorGUILayout.LabelField("Error! You must choose a " +
-                "valid directory on this computer outside the Assets folder.", 
-                errorStyle);
-        }
-
-        EditorGUILayout.PropertyField(logFilePrefix);
-        EditorGUILayout.PropertyField(sampleRate);
-
         serial.ApplyModifiedProperties();
     }
 }

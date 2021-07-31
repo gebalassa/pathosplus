@@ -140,11 +140,15 @@ public class PathOSAgentWindow : EditorWindow
         currentEyeEditor = Editor.CreateEditor(eyeReference);
         currentRendererEditor = Editor.CreateEditor(rendererReference);
         currentTransformEditor = Editor.CreateEditor(agentReference.gameObject.transform);
-        
+
         //// Shows the created Editor beneath CustomEditor
+    
         editor.DrawHeader();
+        EditorGUI.indentLevel++;
+
         currentTransformEditor.DrawHeader();
         currentTransformEditor.OnInspectorGUI();
+
         currentAgentEditor.DrawHeader();
         AgentEditorGUI();
         currentMemoryEditor.DrawHeader();
@@ -153,9 +157,10 @@ public class PathOSAgentWindow : EditorWindow
         currentEyeEditor.OnInspectorGUI();
         currentRendererEditor.DrawHeader();
         currentRendererEditor.OnInspectorGUI();
-         
-         
-        
+
+        EditorGUI.indentLevel--;
+
+
 
     }
 

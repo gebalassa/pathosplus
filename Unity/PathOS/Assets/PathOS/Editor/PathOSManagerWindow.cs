@@ -206,20 +206,15 @@ public class PathOSManagerWindow : EditorWindow
 
         Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
-        editor.DrawHeader();
 
+        editor.DrawHeader();
         EditorGUILayout.Space();
 
-        Editor managerEditor = Editor.CreateEditor(managerReference);
-
-
-        currentManagerEditor = managerEditor;
-
-        // Shows the created Editor beneath CustomEditor
+        currentManagerEditor = Editor.CreateEditor(managerReference);
         EditorGUIUtility.labelWidth = 150.0f;
         currentManagerEditor.DrawHeader();
         ManagerEditorGUI();
-        
+        EditorGUILayout.Space();
     }
 
     public void OnVisualizationOpen()
@@ -260,7 +255,7 @@ public class PathOSManagerWindow : EditorWindow
         currentLogEditor.OnInspectorGUI();
         currentLogEditor.DrawHeader();
         currentVisEditor.OnInspectorGUI();
-        
+        EditorGUILayout.Space();
     }
 
     private void InitializeManager()
