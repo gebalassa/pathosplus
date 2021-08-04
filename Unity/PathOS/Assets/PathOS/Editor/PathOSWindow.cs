@@ -45,7 +45,6 @@ public class PathOSWindow : EditorWindow
         scrollPos = GUILayout.BeginScrollView(scrollPos, true, true);
 
         EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
-        EditorGUI.indentLevel++;
 
         //grab screenshot if it already exists
         screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
@@ -74,7 +73,6 @@ public class PathOSWindow : EditorWindow
             }
         }
 
-        EditorGUI.indentLevel--;
         EditorGUILayout.Space();
 
         EditorGUILayout.LabelField("PathOS Features", EditorStyles.boldLabel);

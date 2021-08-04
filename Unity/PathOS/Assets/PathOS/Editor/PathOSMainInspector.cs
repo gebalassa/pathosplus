@@ -356,14 +356,14 @@ public class PathOSMainInspector : Editor
             if (EditorWindow.mouseOverWindow != null &&
                 EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
             {
-                if (Event.current.type == EventType.MouseMove)
+                if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
                     selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
             }
             else
                 selection = null;
 
             //Mark up the current selection.
-            if (Event.current.type == EventType.MouseDown)
+            if (Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag)
             {
                 if (Event.current.button == 0)
                 {

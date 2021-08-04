@@ -21,7 +21,6 @@ public class ScreenshotManager : MonoBehaviour
     private RenderTexture rendTex, currRendTex;
     private Texture2D screenshot;
 
-
     public void TakeScreenshot()
     {
         if (camera == null)
