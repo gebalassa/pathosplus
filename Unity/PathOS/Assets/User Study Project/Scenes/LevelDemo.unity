@@ -380,11 +380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1060776679}
+      objectReference: {fileID: 1054596233}
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.471754
+      value: 2.0830312
       objectReference: {fileID: 0}
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -394,12 +394,12 @@ PrefabInstance:
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.653358
+      value: -10.89287
       objectReference: {fileID: 0}
     - target: {fileID: 3999886422330179394, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3999886422330179394, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -415,7 +415,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1392201177}
+      objectReference: {fileID: 315519020}
     - target: {fileID: 5005646905853620058, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_Name
@@ -509,8 +509,18 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.size
-      value: 55
+      value: 54
       objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: ignoredEntities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: ignoredEntities.Array.data[0]
+      value: 
+      objectReference: {fileID: 612861354}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[0].name
@@ -774,32 +784,32 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[52].name
-      value: Ground
-      objectReference: {fileID: 0}
-    - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
-        type: 3}
-      propertyPath: levelEntities.Array.data[53].name
       value: Tree - Ash (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
-      propertyPath: levelEntities.Array.data[54].name
+      propertyPath: levelEntities.Array.data[53].name
       value: Tree - Oak
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
+      propertyPath: levelEntities.Array.data[54].name
+      value: Tree - Oak (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
       propertyPath: levelEntities.Array.data[55].name
-      value: Tree - Oak (1)
+      value: Log (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[56].name
-      value: Tree - Oak (2)
+      value: Tree - Ash (8)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[57].name
-      value: Tree - Oak (3)
+      value: Tree - Birch (12)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1090,32 +1100,32 @@ PrefabInstance:
         type: 3}
       propertyPath: levelEntities.Array.data[52].objectRef
       value: 
-      objectReference: {fileID: 612861354}
+      objectReference: {fileID: 2115666881}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[53].objectRef
       value: 
-      objectReference: {fileID: 2115666881}
+      objectReference: {fileID: 1935025546}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[54].objectRef
       value: 
-      objectReference: {fileID: 1935025546}
+      objectReference: {fileID: 342986491}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[55].objectRef
       value: 
-      objectReference: {fileID: 1153869160}
+      objectReference: {fileID: 160134530}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[56].objectRef
       value: 
-      objectReference: {fileID: 244529411}
+      objectReference: {fileID: 953661625}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[57].objectRef
       value: 
-      objectReference: {fileID: 729296600}
+      objectReference: {fileID: 945457800}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[5].entityType
@@ -1374,7 +1384,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[52].entityType
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1384,22 +1394,22 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[54].entityType
-      value: 100
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[55].entityType
-      value: 150
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[56].entityType
-      value: 150
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[57].entityType
-      value: 150
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1694,7 +1704,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: logDirectory
-      value: C:/Users/Samantha/Documents/PathOS/Unity/PathOS/Assets/OGVis/OGLogs/FolderTest
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Logs
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1719,18 +1729,18 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: logDirectory
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Logs/2021-05-05
-        11-13-11
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Logs/2021-08-05
+        16-45-59
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: showEntities
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: fullTimeRange.max
-      value: 0
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1740,17 +1750,17 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: showIndividualPaths
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: currentTimeRange.max
-      value: 118
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: displayTimeRange.max
-      value: 0
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -1764,18 +1774,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
+      propertyPath: interactionGradient.key0.b
+      value: 0.47679302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionGradient.key0.g
+      value: 0.11774653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionGradient.key0.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionGradient.key1.b
+      value: 0.47679302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionGradient.key1.g
+      value: 0.11774653
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionGradient.key1.r
+      value: 0.9245283
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
       propertyPath: showIndividualInteractions
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: directoriesLoaded.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: interactionAggregateActiveOnly
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: directoriesLoaded.Array.data[0]
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Logs/
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Logs/2021-08-05
+        16-45-59/
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f1861d4df0ac1488cf45674399f745, type: 3}
@@ -2812,6 +2858,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 156228388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &160134530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1689248537144360674, guid: 689e6777f8594b241a1854be65992f05,
+    type: 3}
+  m_PrefabInstance: {fileID: 1808119244}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &160977163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3836,12 +3888,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 243601635}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &244529411 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1901245695132362285, guid: 00654f83ab55c544c93b07736235353f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1613320730}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &254858812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4581,6 +4627,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 312876319}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &315519020
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Transparent
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &321897616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4845,6 +4918,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7455404600218985753, guid: 0703903b39a57444196d524e9243a96e,
     type: 3}
   m_PrefabInstance: {fileID: 339245008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &342986491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1901245695132362285, guid: 00654f83ab55c544c93b07736235353f,
+    type: 3}
+  m_PrefabInstance: {fileID: 418694276}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &345061229
 PrefabInstance:
@@ -9505,12 +9584,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 718573631}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &729296600 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1901245695132362285, guid: 00654f83ab55c544c93b07736235353f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1351407620}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &766867085
 GameObject:
   m_ObjectHideFlags: 0
@@ -10965,6 +11038,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 943961411}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &945457800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7457343481204846079, guid: 0703903b39a57444196d524e9243a96e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1568037455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &953661625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4002749456829058709, guid: 74c2f79028e694643a6c2835da05d4e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 391892868}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &956139840
 GameObject:
   m_ObjectHideFlags: 0
@@ -11816,7 +11901,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1027547196}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1060776679
+--- !u!43 &1054596233
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11834,7 +11919,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 8, y: 0, z: 8}
+      m_Extent: {x: 32, y: 0, z: 20}
   m_Shapes:
     vertices: []
     shapes: []
@@ -11913,7 +11998,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 80
-    _typelessdata: 000000c100000000000000c10000000000000000000000c10000000000000041000000000000803f0000004100000000000000410000803f0000803f0000004100000000000000c10000803f00000000
+    _typelessdata: 000000c2000000000000a0c10000000000000000000000c2000000000000a041000000000000803f00000042000000000000a0410000803f0000803f00000042000000000000a0c10000803f00000000
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -11968,7 +12053,7 @@ Mesh:
     m_UVInfo: 0
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 8, y: 0, z: 8}
+    m_Extent: {x: 32, y: 0, z: 20}
   m_MeshUsageFlags: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
@@ -12696,12 +12781,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1449330341729450322, guid: f1f2cd9fcaa6a48468245ec5b2cd0f4f,
     type: 3}
   m_PrefabInstance: {fileID: 1135401765}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1153869160 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1901245695132362285, guid: 00654f83ab55c544c93b07736235353f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1126460454}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1154563952
 PrefabInstance:
@@ -15151,33 +15230,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1381840512}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1392201177
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Transparent
-  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1001 &1397954277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22649,7 +22701,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1924441211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25052,6 +25104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802606248819095170, guid: 7fc2dc49844862141b01cdd554ae2476,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4802606248819095171, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}

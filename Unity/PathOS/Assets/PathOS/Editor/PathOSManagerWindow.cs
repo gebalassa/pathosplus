@@ -41,9 +41,9 @@ public class PathOSManagerWindow : EditorWindow
     private GameObject selection = null;
 
     /* Level Entity List */
-    private static bool showList = false;
+    private static bool showList = false, showIgnored = false;
     private bool warnedEntityNull = false;
-    private ReorderableList entityListReorderable;
+    private ReorderableList entityListReorderable, ignoredListReorderable;
     private SerializedProperty heuristicWeights;
 
     /* Heuristic Weight Matrix */
@@ -272,8 +272,13 @@ public class PathOSManagerWindow : EditorWindow
 
         heuristicWeights = serial.FindProperty("heuristicWeights");
 
+
+        ignoredListReorderable = new ReorderableList(serial.FindProperty("ignoredEntities"));
+        ignoredListReorderable.elementNameProperty = "Ignored Entities";
+
         entityListReorderable = new ReorderableList(serial.FindProperty("levelEntities"));
         entityListReorderable.elementNameProperty = "Level Entities";
+
 
         //Build weight matrix.
         heuristicIndices = new Dictionary<Heuristic, int>();
@@ -370,14 +375,27 @@ public class PathOSManagerWindow : EditorWindow
             Repaint();
         }
 
+
+
+        showIgnored = EditorGUILayout.Foldout(
+            showIgnored, "Ignored Entity List", foldoutStyle);
+
+
+
+        if (showIgnored)
+            ignoredListReorderable.DoLayoutList();
+
         //Entity list.
         showList = EditorGUILayout.Foldout(
             showList, "Level Entity List", foldoutStyle);
 
+
         EditorGUI.BeginChangeCheck();
+
 
         if (showList)
             entityListReorderable.DoLayoutList();
+
 
         if (EditorGUI.EndChangeCheck())
             warnedEntityNull = false;
@@ -558,7 +576,7 @@ public class PathOSManagerWindow : EditorWindow
                     EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
                 {
                     if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
-                        selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
+                        selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, managerReference.ignoredEntities.ToArray());
                 }
                 else
                     selection = null;

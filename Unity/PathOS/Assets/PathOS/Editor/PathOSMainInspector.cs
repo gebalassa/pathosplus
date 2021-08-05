@@ -32,9 +32,9 @@ public class PathOSMainInspector : Editor
     private GameObject selection = null;
 
     /* Level Entity List */
-    private static bool showList = false;
+    private static bool showList = false, showIgnored = false;
     private bool warnedEntityNull = false;
-    private ReorderableList entityListReorderable;
+    private ReorderableList entityListReorderable, ignoredListReorderable;
     private SerializedProperty heuristicWeights;
 
     /* Heuristic Weight Matrix */
@@ -52,6 +52,8 @@ public class PathOSMainInspector : Editor
     private Dictionary<(Heuristic, EntityType), float> weightLookup;
 
     private bool transposeWeightMatrix;
+
+   
 
     //Utility class for level markup toggles.
     private class MarkupToggle
@@ -133,6 +135,10 @@ public class PathOSMainInspector : Editor
 
         entityListReorderable = new ReorderableList(serial.FindProperty("levelEntities"));
         entityListReorderable.elementNameProperty = "Level Entities";
+
+
+        ignoredListReorderable = new ReorderableList(serial.FindProperty("ignoredEntities"));
+        ignoredListReorderable.elementNameProperty = "Ignored Entities";
 
         //Build weight matrix.
         heuristicIndices = new Dictionary<Heuristic, int>();
@@ -224,16 +230,25 @@ public class PathOSMainInspector : Editor
             Repaint();
         }
 
+
+        //Ignored List
+        showIgnored = EditorGUILayout.Foldout(
+            showIgnored, "Ignored Entity List", foldoutStyle);
+
+        if (showIgnored)
+            ignoredListReorderable.DoLayoutList();
+
         //Entity list.
         showList = EditorGUILayout.Foldout(
             showList, "Level Entity List", foldoutStyle);
 
+
         EditorGUI.BeginChangeCheck();
 
-        if(showList)
+        if (showList)
             entityListReorderable.DoLayoutList();
-
-        if(EditorGUI.EndChangeCheck())
+        
+        if (EditorGUI.EndChangeCheck())
             warnedEntityNull = false;
 
         if (!warnedEntityNull)
@@ -357,7 +372,7 @@ public class PathOSMainInspector : Editor
                 EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
             {
                 if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
-                    selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
+                    selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, manager.ignoredEntities.ToArray());
             }
             else
                 selection = null;
