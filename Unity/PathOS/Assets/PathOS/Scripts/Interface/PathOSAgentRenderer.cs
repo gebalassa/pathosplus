@@ -237,12 +237,13 @@ public class PathOSAgentRenderer : MonoBehaviour
     private void Update()
     {
 
+
 #if UNITY_EDITOR
         if (Selection.activeGameObject != gameObject)
             return;
 #endif
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             showLegend = !showLegend;
         }
@@ -283,7 +284,7 @@ public class PathOSAgentRenderer : MonoBehaviour
             GUI.DrawTexture(playerViewTextureCoords,
                 playerViewTexture, ScaleMode.ScaleToFit, false);
 
-        if(showLegend)
+        if (showLegend)
         {
             for (int i = 0; i < mapLegendText.Length; ++i)
             {
@@ -300,6 +301,7 @@ public class PathOSAgentRenderer : MonoBehaviour
 
         oldMapSize = mapScreenSize;
         oldViewSize = viewScreenSize;
+
     }
 
     private void OnDrawGizmosSelected()
@@ -357,6 +359,7 @@ public class PathOSAgentRenderer : MonoBehaviour
         Gizmos.DrawIcon(GetGizmoIconPos(agent.GetTargetPosition()), targetTex + iconExtension);
 
         transformCam = Camera.main;
+
     }
 
     //World-space transformation for drawing overlay icons as gizmos.

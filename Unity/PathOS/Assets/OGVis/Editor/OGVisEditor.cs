@@ -81,6 +81,15 @@ public class OGVisEditor : Editor
     private SerializedProperty propEntityAggregate;
     private SerializedProperty propEntityTimeSlice;
 
+    //Tabs
+
+    //Interaction display settings.
+    private static bool visualizationFoldout = false;
+    private string lblVisualizationFoldout = "Visualization Options";
+    private static int tabSelection = 0;
+    string[] tabLabels = { "Heatmaps", "Individual Paths", "Entity Interactions" };
+
+
     //Called when the inspector pane is initialized.
     private void OnEnable()
     {
@@ -298,85 +307,96 @@ public class OGVisEditor : Editor
         }
 
         //Collapsible pane for path display settings.
-        heatmapFoldout = EditorGUILayout.Foldout(heatmapFoldout, lblHeatmapFoldout);
+        //  heatmapFoldout = EditorGUILayout.Foldout(heatmapFoldout, lblHeatmapFoldout);
 
-        if(heatmapFoldout)
+        EditorGUILayout.Space();
+
+        //Collapsible display options pane.
+        visualizationFoldout = EditorGUILayout.Foldout(visualizationFoldout, lblVisualizationFoldout);
+
+        if (visualizationFoldout)
         {
-            EditorGUI.BeginChangeCheck();
-            vis.showHeatmap = EditorGUILayout.Toggle("Show Heatmap", vis.showHeatmap);
+            // The tabs to alternate between specific menus
+            GUILayout.BeginHorizontal();
+            tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);
+            GUILayout.EndHorizontal();
 
-            if (EditorGUI.EndChangeCheck())
-                vis.UpdateHeatmapVisibility();
-
-            EditorGUILayout.BeginHorizontal();
-
-            EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
-
-            EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.shortLabelWidth));
-            vis.heatmapGradient = EditorGUILayout.GradientField(vis.heatmapGradient);
-            EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.PropertyField(propHeatmapAlpha);
-            EditorGUILayout.PropertyField(propHeatmapTileSize);
-            EditorGUILayout.PropertyField(propHeatmapAggregate, toggleAggregateLabel);
-            EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
-
-            if (GUILayout.Button("Apply Heatmap Settings"))
-                vis.ApplyHeatmapSettings();
-        }
-
-        //Collapsible pane for path display settings.
-        pathFoldout = EditorGUILayout.Foldout(pathFoldout, lblPathFoldout);
-
-        if (pathFoldout)
-        {
-            //Global path display settings.
-            EditorGUILayout.PropertyField(propShowIndividual);
-
-            EditorGUILayout.PropertyField(propShowIndividualInteractions, 
-                individualInteractionsLabel);
-
-            if (vis.pLogs.Count > 0)
-                GUILayout.Label("Agent Colors:");
-
-            //Filter options.
-            //Enable/disable players, set path colour by player ID.
-            foreach (PlayerLog pLog in vis.pLogs)
+            //Switches between the tabs (temp solution, todo: clean this up when you get the time)
+            switch (tabSelection)
             {
-                GUILayout.BeginHorizontal();
+                case 0:
 
-                EditorGUILayout.LabelField(pLog.playerID);
-                pLog.pathColor = EditorGUILayout.ColorField(pLog.pathColor);
+                    EditorGUI.BeginChangeCheck();
+                    vis.showHeatmap = EditorGUILayout.Toggle("Show Heatmap", vis.showHeatmap);
 
-                GUILayout.EndHorizontal();
+                    if (EditorGUI.EndChangeCheck())
+                        vis.UpdateHeatmapVisibility();
+
+                    EditorGUILayout.BeginHorizontal();
+
+                    EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
+
+                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.shortLabelWidth));
+                    vis.heatmapGradient = EditorGUILayout.GradientField(vis.heatmapGradient);
+                    EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
+
+                    EditorGUILayout.EndHorizontal();
+
+                    EditorGUILayout.PropertyField(propHeatmapAlpha);
+                    EditorGUILayout.PropertyField(propHeatmapTileSize);
+                    EditorGUILayout.PropertyField(propHeatmapAggregate, toggleAggregateLabel);
+                    EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
+
+                    if (GUILayout.Button("Apply Heatmap Settings"))
+                        vis.ApplyHeatmapSettings();
+                    break;
+                case 1:
+
+                    //Global path display settings.
+                    EditorGUILayout.PropertyField(propShowIndividual);
+
+                    EditorGUILayout.PropertyField(propShowIndividualInteractions,
+                        individualInteractionsLabel);
+
+                    if (vis.pLogs.Count > 0)
+                        GUILayout.Label("Agent Colors:");
+
+                    //Filter options.
+                    //Enable/disable players, set path colour by player ID.
+                    foreach (PlayerLog pLog in vis.pLogs)
+                    {
+                        GUILayout.BeginHorizontal();
+
+                        EditorGUILayout.LabelField(pLog.playerID);
+                        pLog.pathColor = EditorGUILayout.ColorField(pLog.pathColor);
+
+                        GUILayout.EndHorizontal();
+                    }
+                    break;
+
+                case 2:
+
+                    EditorGUILayout.PropertyField(propShowEntities);
+
+                    EditorGUILayout.BeginHorizontal();
+
+                    EditorGUILayout.LabelField("Interaction Gradient", GUILayout.Width(PathOS.UI.longLabelWidth));
+
+                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.shortLabelWidth));
+                    vis.interactionGradient = EditorGUILayout.GradientField(vis.interactionGradient);
+                    EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
+
+                    EditorGUILayout.EndHorizontal();
+
+                    EditorGUILayout.PropertyField(propEntityAggregate, toggleAggregateLabel);
+                    EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
+
+                    if (GUILayout.Button("Apply Interaction Display Settings"))
+                        vis.ReclusterEvents();
+                    break;
             }
         }
 
-        //Collapsible pane for managing display of entity interactions.
-        interactionFoldout = EditorGUILayout.Foldout(interactionFoldout, lblInteractionFoldout);
-
-        if (interactionFoldout)
-        {
-            EditorGUILayout.PropertyField(propShowEntities);
-
-            EditorGUILayout.BeginHorizontal();
-
-            EditorGUILayout.LabelField("Interaction Gradient", GUILayout.Width(PathOS.UI.longLabelWidth));
-
-            EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.shortLabelWidth));
-            vis.interactionGradient = EditorGUILayout.GradientField(vis.interactionGradient);
-            EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.PropertyField(propEntityAggregate, toggleAggregateLabel);
-            EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
-
-            if (GUILayout.Button("Apply Interaction Display Settings"))
-                vis.ReclusterEvents();
-        }
 
         serial.ApplyModifiedProperties();
         SceneView.RepaintAll();

@@ -130,6 +130,16 @@ public class PathOSManagerWindow : EditorWindow
     [SerializeField]
     private int managerID;
 
+
+    //Visualization
+    private int tabSelection = 0;
+    string[] tabLabels = { "Heatmaps", "Individual Paths", "Entity Interactions" };
+    private OGLogVisualizer vis;
+
+    //Logfile management.
+    private static bool fileFoldout = true;
+    private string lblFileFoldout = "Manage Log Files";
+
     private void OnEnable()
     {
 
@@ -241,6 +251,9 @@ public class PathOSManagerWindow : EditorWindow
         if (managerReference == null) return;
 
         if (!managerInitialized) InitializeManager();
+
+        //What does this do
+        Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
         editor.DrawHeader();
 
@@ -336,6 +349,8 @@ public class PathOSManagerWindow : EditorWindow
 
         warnedEntityNull = false;
         managerInitialized = true;
+       
+
     }
 
     private void ManagerEditorGUI()
@@ -632,12 +647,8 @@ public class PathOSManagerWindow : EditorWindow
 
             managerReference.curMouseover = selection;
         }
-            Handles.EndGUI();
-        
-
+        Handles.EndGUI();
     }
-
-
     private void GrabManagerReference()
     {
         if (hasManager && null == managerReference)

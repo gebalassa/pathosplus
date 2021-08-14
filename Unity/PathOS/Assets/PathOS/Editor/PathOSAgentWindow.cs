@@ -159,9 +159,6 @@ public class PathOSAgentWindow : EditorWindow
         currentRendererEditor.OnInspectorGUI();
 
         EditorGUI.indentLevel--;
-
-
-
     }
 
     private void InitializeAgent()
