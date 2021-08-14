@@ -76,6 +76,7 @@ public class OGVisEditor : Editor
     //Interaction display settings.
     private static bool interactionFoldout = false;
     private string lblInteractionFoldout = "Entity Interactions";
+    private static bool showLabels = false;
 
     private SerializedProperty propShowEntities;
     private SerializedProperty propEntityAggregate;
@@ -332,6 +333,8 @@ public class OGVisEditor : Editor
                     if (EditorGUI.EndChangeCheck())
                         vis.UpdateHeatmapVisibility();
 
+                    if (!vis.showHeatmap) break;
+
                     EditorGUILayout.BeginHorizontal();
 
                     EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
@@ -377,6 +380,7 @@ public class OGVisEditor : Editor
                 case 2:
 
                     EditorGUILayout.PropertyField(propShowEntities);
+                    showLabels = EditorGUILayout.Toggle("Display Interaction Labels", showLabels);
 
                     EditorGUILayout.BeginHorizontal();
 
@@ -461,11 +465,15 @@ public class OGVisEditor : Editor
                     interaction.Value.displaySize);
             }
 
-            foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
-                in vis.aggregateInteractions)
+            if (showLabels)
             {
-                Handles.Label(interaction.Value.pos,
-                    interaction.Value.displayName, GUI.skin.textArea);
+                //Shows the labels for the aggregate data
+                foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
+                    in vis.aggregateInteractions)
+                {
+                    Handles.Label(interaction.Value.pos,
+                        interaction.Value.displayName, GUI.skin.textArea);
+                }
             }
         }
     }
