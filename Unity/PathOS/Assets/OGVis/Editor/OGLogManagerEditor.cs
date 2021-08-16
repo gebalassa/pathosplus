@@ -79,14 +79,18 @@ public class OGLogManagerEditor : Editor
 
             if (!manager.LogDirectoryValid())
             {
-                EditorGUILayout.LabelField("Error! You must choose a " +
-                    "valid directory on this computer outside the Assets folder.",
-                    errorStyle);
+                EditorGUILayout.HelpBox("Error! You must choose a " +
+                    "valid directory on this computer outside the Assets folder.", MessageType.Error);
             }
 
             EditorGUILayout.PropertyField(logFilePrefix);
             EditorGUILayout.PropertyField(sampleRate);
         }
+        else
+        {
+            EditorGUILayout.HelpBox("WARNING: LOGGING NOT ENABLED", MessageType.Error);
+        }
+
         serial.ApplyModifiedProperties();
     }
 }

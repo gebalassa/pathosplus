@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEditor;
 
 /*
 OGLogManager.cs
@@ -43,8 +44,6 @@ public class OGLogManager : OGSingleton<OGLogManager>
 
     private void Awake()
 	{
-        if (!enableLogging)
-            return;
 
         if(!LogDirectoryValid())
         {

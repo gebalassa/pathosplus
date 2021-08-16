@@ -531,4 +531,10 @@ public class OGLogVisualizer : MonoBehaviour
     {
         return Mathf.Clamp(s1 + ((v - o1) / (o2 - o1)) * (s2 - s1), s1, s2);
     }
+
+    //Temporary variable in order to get status of loaded data
+    public bool IsDataInitialized()
+    {
+        return dataInit;
+    }
 }

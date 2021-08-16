@@ -137,6 +137,8 @@ public class OGVisEditor : Editor
         //Make sure our vis representation is up-to-date.
         serial.Update();
 
+        if (!vis.IsDataInitialized()) EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
+
         //Collapsible file management pane.
         fileFoldout = EditorGUILayout.Foldout(fileFoldout, lblFileFoldout);
 
@@ -183,6 +185,13 @@ public class OGVisEditor : Editor
                 vis.ClearData();
                 Debug.Log("Cleared all visualization data.");
             }
+        }
+
+        if (!vis.IsDataInitialized())
+        {
+            serial.ApplyModifiedProperties();
+            SceneView.RepaintAll();
+            return;
         }
 
         //Collapsible display options pane.
@@ -310,8 +319,6 @@ public class OGVisEditor : Editor
         //Collapsible pane for path display settings.
         //  heatmapFoldout = EditorGUILayout.Foldout(heatmapFoldout, lblHeatmapFoldout);
 
-        EditorGUILayout.Space();
-
         //Collapsible display options pane.
         visualizationFoldout = EditorGUILayout.Foldout(visualizationFoldout, lblVisualizationFoldout);
 
@@ -380,6 +387,9 @@ public class OGVisEditor : Editor
                 case 2:
 
                     EditorGUILayout.PropertyField(propShowEntities);
+
+                    if (!vis.showEntities) break;
+
                     showLabels = EditorGUILayout.Toggle("Display Interaction Labels", showLabels);
 
                     EditorGUILayout.BeginHorizontal();

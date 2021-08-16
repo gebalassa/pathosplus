@@ -266,7 +266,8 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUIUtility.labelWidth = 150.0f;
         currentLogEditor.DrawHeader();
         currentLogEditor.OnInspectorGUI();
-        currentLogEditor.DrawHeader();
+        EditorGUILayout.Space();
+        currentVisEditor.DrawHeader();
         currentVisEditor.OnInspectorGUI();
         EditorGUILayout.Space();
     }
