@@ -63,6 +63,7 @@ public class PathOSManagerWindow : EditorWindow
     private bool transposeWeightMatrix;
 
     private bool managerInitialized = false;
+    private string ignoredLabel = "Add the Mesh Renderers of GameObjects you'd like the Level Markup to ignore";
     private class MarkupToggle
     {
         public static GUIStyle style;
@@ -399,7 +400,10 @@ public class PathOSManagerWindow : EditorWindow
 
 
         if (showIgnored)
+        {
+            EditorGUILayout.LabelField(ignoredLabel);
             ignoredListReorderable.DoLayoutList();
+        }
 
         //Entity list.
         showList = EditorGUILayout.Foldout(

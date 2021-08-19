@@ -52,8 +52,8 @@ public class PathOSMainInspector : Editor
     private Dictionary<(Heuristic, EntityType), float> weightLookup;
 
     private bool transposeWeightMatrix;
+    private string ignoredLabel = "Add the Mesh Renderers of GameObjects you'd like the Level Markup to ignore";
 
-   
 
     //Utility class for level markup toggles.
     private class MarkupToggle
@@ -236,7 +236,10 @@ public class PathOSMainInspector : Editor
             showIgnored, "Ignored Entity List", foldoutStyle);
 
         if (showIgnored)
+        {
+            EditorGUILayout.LabelField(ignoredLabel);
             ignoredListReorderable.DoLayoutList();
+        }
 
         //Entity list.
         showList = EditorGUILayout.Foldout(

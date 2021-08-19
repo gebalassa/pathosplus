@@ -162,6 +162,9 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private bool wasPlaying = false;
     private int agentsLeft = 0;
 
+    //Colors
+    private Color bgColor, btnColor, btnColorLight, btnColorDark;
+
     //
     //[MenuItem("Window/PathOS Agent Batching")]
     //public static void ShowWindow()
@@ -174,6 +177,12 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
     private void OnEnable()
     {
+        //Background color
+        bgColor = GUI.backgroundColor;
+        btnColor = new Color32(200, 203, 224, 255);
+        btnColorLight = new Color32(229, 231, 241, 255);
+        btnColorDark = new Color32(158, 164, 211, 255);
+
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
@@ -303,7 +312,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
             startLocation = EditorGUILayout.Vector3Field("Starting location: ", startLocation);
 
             EditorGUILayout.LabelField("Prefab to use: ", shortPrefabFile);
-
+            GUI.backgroundColor = btnColorLight;
             if (GUILayout.Button("Select Prefab..."))
             {
                 loadPrefabFile = EditorUtility.OpenFilePanel("Select Prefab...",
@@ -314,6 +323,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
                 CheckPrefabFile();
             }
+            GUI.backgroundColor = bgColor;
 
             if (!validPrefabFile)
             {
@@ -321,21 +331,6 @@ public class PathOSAgentBatchingWindow : EditorWindow
                     " with the PathOSAgent component.", errorStyle);
             }
 
-            //For testing.
-            /*
-            if(GUILayout.Button("Test Instantiation"))
-            {
-                FindSceneAgents();
-                SetSceneAgentsActive(false);
-                InstantiateAgents(4);
-            }
-
-            if(GUILayout.Button("Test Removal"))
-            {
-                DeleteInstantiatedAgents(4);
-                SetSceneAgentsActive(true);
-            }
-            */
 
         }
         else
@@ -359,17 +354,21 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
         EditorGUILayout.LabelField("Agent Motives", headerStyle);
 
+        GUI.backgroundColor = btnColorLight;
         heuristicMode = (HeuristicMode)GUILayout.SelectionGrid(
             (int)heuristicMode, heuristicModeLabels, heuristicModeLabels.Length);
+        GUI.backgroundColor = bgColor;
 
         //Motive configration panel.
-        switch(heuristicMode)
+        switch (heuristicMode)
         {
             //Set fixed values for experience/motives for every agent.
             case HeuristicMode.FIXED:
 
+                GUI.backgroundColor = btnColor;
                 if (GUILayout.Button("Load from Agent"))
                     LoadHeuristicsFromAgent();
+                GUI.backgroundColor = bgColor;
 
                 fixedExp = EditorGUILayout.Slider("Experience Scale",
                     fixedExp, 0.0f, 1.0f);
@@ -425,6 +424,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
                 EditorGUILayout.LabelField("File to load: ", shortHeuristicsFile);
 
+                GUI.backgroundColor = btnColorLight;
                 if (GUILayout.Button("Select CSV..."))
                 {
                     loadHeuristicsFile = EditorUtility.OpenFilePanel("Select CSV...",
@@ -435,6 +435,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
                     CheckHeuristicsFile();
                 }
+                GUI.backgroundColor = bgColor;
 
                 if (!validHeuristicsFile)
                 {
@@ -457,8 +458,9 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
         GUILayout.Label("Simulation Controls", headerStyle);
 
+        GUI.backgroundColor = btnColorLight;
         //Trigger the start of the simulation.
-        if(GUILayout.Button("Start"))
+        if (GUILayout.Button("Start"))
         {
             if (PathOSManager.instance != null)
             {
@@ -495,12 +497,15 @@ public class PathOSAgentBatchingWindow : EditorWindow
                     "PathOS manager in the scene!");               
         }
 
-        if(GUILayout.Button("Stop"))
+        GUI.backgroundColor = btnColorLight;
+
+        if (GUILayout.Button("Stop"))
         {
             simulationActive = false;
             EditorApplication.isPlaying = false;
             cleanupWait = true;
-        }        
+        }
+        GUI.backgroundColor = bgColor;
     }
 
     public void UpdateBatching()

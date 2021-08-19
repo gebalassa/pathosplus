@@ -21,18 +21,25 @@ public class PathOSProfileWindow : EditorWindow
 
     private int profileIndex = 0;
     private AgentProfile curProfile = new AgentProfile();
+    private Color bgColor, btnColor, btnColorLight, btnColorDark;
 
-   // [MenuItem("Window/PathOS Profiles")]
-   // public static void ShowWindow()
-   // {
-   //     EditorWindow window = EditorWindow.GetWindow(typeof(PathOSProfileWindow), true,
-   //         "PathOS Agent Profiles");
-   //
-   //     window.minSize = new Vector2(420.0f, 345.0f);
-   // }
+    // [MenuItem("Window/PathOS Profiles")]
+    // public static void ShowWindow()
+    // {
+    //     EditorWindow window = EditorWindow.GetWindow(typeof(PathOSProfileWindow), true,
+    //         "PathOS Agent Profiles");
+    //
+    //     window.minSize = new Vector2(420.0f, 345.0f);
+    // }
 
     private void OnEnable()
     {
+        //Background color
+        bgColor = GUI.backgroundColor;
+        btnColor = new Color32(200, 203, 224, 255);
+        btnColorLight = new Color32(229, 231, 241, 255);
+        btnColorDark = new Color32(158, 164, 211, 255);
+
         profiles = new List<AgentProfile>();
         ReadPrefsData();
 
@@ -150,7 +157,8 @@ public class PathOSProfileWindow : EditorWindow
 
     public void OnWindowOpen()
     {
-        if(GUILayout.Button("Import Profiles..."))
+        GUI.backgroundColor = btnColorLight;
+        if (GUILayout.Button("Import Profiles..."))
         {
             string importPath = EditorUtility.OpenFilePanel("Import Agent Profiles...",
                 Application.dataPath, "profiles");
@@ -169,6 +177,7 @@ public class PathOSProfileWindow : EditorWindow
 
             WriteProfilesToFile(exportPath);
         }
+        GUI.backgroundColor = bgColor;
 
         profileNames.Clear();
 
@@ -195,12 +204,14 @@ public class PathOSProfileWindow : EditorWindow
             curProfile.Copy(profiles[profileIndex]);
         }
 
-        if(GUILayout.Button("Add New"))
+        GUI.backgroundColor = btnColorLight;
+        if (GUILayout.Button("Add New"))
         { 
             profiles.Add(new AgentProfile());
             profileIndex = profiles.Count - 1;
             curProfile.Clear();
         }
+        GUI.backgroundColor = bgColor;
 
         EditorGUILayout.EndHorizontal();
 
@@ -219,6 +230,7 @@ public class PathOSProfileWindow : EditorWindow
                     ref hr.range.min, ref hr.range.max);
             }
 
+            GUI.backgroundColor = btnColorLight;
             if (GUILayout.Button("Apply Changes"))
                 profiles[profileIndex].Copy(curProfile);
 
@@ -229,8 +241,9 @@ public class PathOSProfileWindow : EditorWindow
                 if (profileIndex < profiles.Count)
                     curProfile.Copy(profiles[profileIndex]);
             }
+            GUI.backgroundColor = bgColor;
         }
-        
+
 
     }
 }
