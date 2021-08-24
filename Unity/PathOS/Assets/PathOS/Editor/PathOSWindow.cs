@@ -31,10 +31,10 @@ public class PathOSWindow : EditorWindow
     [SerializeField]
     private int screenshotID;
 
-    [MenuItem("Window/PathOS")]
+    [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
     {
-        EditorWindow.GetWindow(typeof(PathOSWindow), false, "PathOS");
+        EditorWindow.GetWindow(typeof(PathOSWindow), false, "PathOS+");
     }
 
 

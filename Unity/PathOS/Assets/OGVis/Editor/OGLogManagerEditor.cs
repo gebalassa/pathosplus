@@ -28,8 +28,16 @@ public class OGLogManagerEditor : Editor
     private SerializedProperty logFilePrefix;
     private SerializedProperty sampleRate;
 
+    //Colors
+    private Color bgColor, btnColor, btnColorLight, btnColorDark;
     private void OnEnable()
     {
+        //Background color
+        bgColor = GUI.backgroundColor;
+        btnColor = new Color32(200, 203, 224, 255);
+        btnColorLight = new Color32(229, 231, 241, 255);
+        btnColorDark = new Color32(136, 143, 191, 255);
+
         manager = (OGLogManager)target;
         serial = new SerializedObject(manager);
 
@@ -57,6 +65,7 @@ public class OGLogManagerEditor : Editor
         { 
             EditorGUILayout.LabelField("Log Directory: ", logDirectoryDisplay);
 
+            GUI.backgroundColor = btnColorLight;
             if (GUILayout.Button("Browse..."))
             {
                 string defaultDirectory = (manager.LogDirectoryValid()) ?
@@ -76,11 +85,11 @@ public class OGLogManagerEditor : Editor
                 PathOS.UI.TruncateStringHead(manager.logDirectory,
                     ref logDirectoryDisplay, pathDisplayLength);
             }
+            GUI.backgroundColor = bgColor;
 
             if (!manager.LogDirectoryValid())
             {
-                EditorGUILayout.HelpBox("Error! You must choose a " +
-                    "valid directory on this computer outside the Assets folder.", MessageType.Error);
+                EditorGUILayout.HelpBox("WARNING: CHOOSE A VALID DIRECTORY OUTSIDE THE ASSETS FOLDER", MessageType.Error);
             }
 
             EditorGUILayout.PropertyField(logFilePrefix);

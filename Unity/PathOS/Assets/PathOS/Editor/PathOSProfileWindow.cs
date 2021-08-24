@@ -158,6 +158,7 @@ public class PathOSProfileWindow : EditorWindow
     public void OnWindowOpen()
     {
         GUI.backgroundColor = btnColorLight;
+        GUILayout.BeginHorizontal();
         if (GUILayout.Button("Import Profiles..."))
         {
             string importPath = EditorUtility.OpenFilePanel("Import Agent Profiles...",
@@ -177,6 +178,7 @@ public class PathOSProfileWindow : EditorWindow
 
             WriteProfilesToFile(exportPath);
         }
+        GUILayout.EndHorizontal();
         GUI.backgroundColor = bgColor;
 
         profileNames.Clear();

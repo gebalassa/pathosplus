@@ -157,6 +157,7 @@ public class OGVisEditor : Editor
             EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
 
             GUI.backgroundColor = btnColorLight;
+            GUILayout.BeginHorizontal();
             if (GUILayout.Button("Browse..."))
             {
                 string defaultDirectory = (Directory.Exists(vis.logDirectory)) ?
@@ -183,6 +184,7 @@ public class OGVisEditor : Editor
                     "valid folder on this computer.", errorStyle);
             }
 
+
             //Log file loading/management.
             if (GUILayout.Button("Add Files from " + logDirectoryDisplay + "/"))
             {
@@ -196,6 +198,7 @@ public class OGVisEditor : Editor
                 vis.ClearData();
                 Debug.Log("Cleared all visualization data.");
             }
+            GUILayout.EndHorizontal();
             GUI.backgroundColor = bgColor;
 
             EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
@@ -420,6 +423,7 @@ public class OGVisEditor : Editor
             }
 
             GUI.backgroundColor = btnColorLight;
+            GUILayout.BeginHorizontal();
             //Shortcut to enable all PIDs in the vis.
             if (GUILayout.Button("Select All"))
             {
@@ -441,6 +445,8 @@ public class OGVisEditor : Editor
 
                 refreshFilter = true;
             }
+
+            GUILayout.EndHorizontal();
             GUI.backgroundColor = bgColor;
 
             //If we've detected a change that requires re-aggregation, do so.
