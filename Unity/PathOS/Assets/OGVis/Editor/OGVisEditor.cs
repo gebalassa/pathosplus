@@ -92,6 +92,7 @@ public class OGVisEditor : Editor
     private string lblTimeFoldout = "Time Scrubbing Options";
     private static bool timeFoldout = false;
 
+
     //Colors
     private Color bgColor, btnColor, btnColorLight, btnColorDark;
 
@@ -152,7 +153,7 @@ public class OGVisEditor : Editor
         //Collapsible file management pane.
         fileFoldout = EditorGUILayout.Foldout(fileFoldout, lblFileFoldout);
 
-        if(fileFoldout)
+        if (fileFoldout)
         {
             EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
 
@@ -172,13 +173,13 @@ public class OGVisEditor : Editor
 
                     EditorUtility.SetDirty(vis);
                     EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-                }  
+                }
 
                 PathOS.UI.TruncateStringHead(vis.logDirectory,
                     ref logDirectoryDisplay, pathDisplayLength);
             }
 
-            if(!Directory.Exists(vis.logDirectory))
+            if (!Directory.Exists(vis.logDirectory))
             {
                 EditorGUILayout.LabelField("Error! You must choose a " +
                     "valid folder on this computer.", errorStyle);
@@ -192,7 +193,7 @@ public class OGVisEditor : Editor
                 vis.LoadLogs();
             }
 
-            if(GUILayout.Button("Clear All Data"))
+            if (GUILayout.Button("Clear All Data"))
             {
                 //Clear all logs and records from the current session.
                 vis.ClearData();
@@ -352,7 +353,7 @@ public class OGVisEditor : Editor
             {
                 vis.ApplyDisplayHeight();
                 vis.ReclusterEvents();
-            }            
+            }
             GUI.backgroundColor = bgColor;
 
             bool refreshFilter = false;
@@ -482,7 +483,7 @@ public class OGVisEditor : Editor
         {
             foreach (PlayerLog pLog in vis.pLogs)
             {
-                if(pLog.visInclude)
+                if (pLog.visInclude)
                 {
                     if (pLog.pathPoints.Count > 0)
                     {
@@ -494,49 +495,66 @@ public class OGVisEditor : Editor
 
                         Handles.color = pLog.pathColor;
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
-                    }
 
-                    //Individual interactions are only shown if aggregate interactions
-                    //are hidden (to prevent overlap).
-                    if (vis.showIndividualInteractions && !vis.showEntities)
-                    {
-                        for (int i = 0; i < pLog.interactionEvents.Count; ++i)
+
+                        //Individual interactions are only shown if aggregate interactions
+                        //are hidden (to prevent overlap).
+                        if (vis.showIndividualInteractions && !vis.showEntities)
                         {
-                            PlayerLog.InteractionEvent curEvent = pLog.interactionEvents[i];
+                            for (int i = 0; i < pLog.interactionEvents.Count; ++i)
+                            {
+                                PlayerLog.InteractionEvent curEvent = pLog.interactionEvents[i];
 
-                            if (curEvent.timestamp < vis.currentTimeRange.min)
-                                continue;
-                            else if (curEvent.timestamp > vis.currentTimeRange.max)
-                                break;
+                                if (curEvent.timestamp < vis.currentTimeRange.min)
+                                    continue;
+                                else if (curEvent.timestamp > vis.currentTimeRange.max)
+                                    break;
 
-                            Handles.color = Color.white;
-                            Handles.DrawSolidDisc(curEvent.pos, Vector3.up, OGLogVisualizer.MIN_ENTITY_RADIUS);
-                            Handles.Label(curEvent.pos, curEvent.objectName, GUI.skin.textArea);
+                                Handles.color = Color.white;
+                                Handles.DrawSolidDisc(curEvent.pos, Vector3.up, OGLogVisualizer.MIN_ENTITY_RADIUS);
+                                Handles.Label(curEvent.pos, curEvent.objectName, GUI.skin.textArea);
+                            }
                         }
                     }
                 }
-            }
-        } 
-        
-        //Draw aggregate entity interactions.
-        if(vis.showEntities)
-        {
-            foreach(KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction 
-                in vis.aggregateInteractions)
-            {
-                Handles.color = interaction.Value.displayColor;
-                Handles.DrawSolidDisc(interaction.Value.pos, Vector3.up, 
-                    interaction.Value.displaySize);
-            }
 
-            if (showLabels)
-            {
-                //Shows the labels for the aggregate data
-                foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
-                    in vis.aggregateInteractions)
+                //Drawing arrows
+                //for (int i = 0; i < vis.pLogs.Count; i++)
+                //{
+                //    //Draws the arrows for each
+                //    Handles.ArrowHandleCap(
+                //        0,
+                //        //new Vector3(0,0,0),
+                //        vis.pLogs[i].positions[0].pos,
+                //        new Quaternion(0, 0, 0, 1),
+                //        //pLog.orientations[0].rot,
+                //        3.0f,
+                //        EventType.Repaint
+                //    );
+                //    
+                //}
+
+                //Draw aggregate entity interactions.
+                if (vis.showEntities)
                 {
-                    Handles.Label(interaction.Value.pos,
-                        interaction.Value.displayName, GUI.skin.textArea);
+                    foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
+                        in vis.aggregateInteractions)
+                    {
+                        Handles.color = interaction.Value.displayColor;
+                        Handles.DrawSolidDisc(interaction.Value.pos, Vector3.up,
+                            interaction.Value.displaySize);
+                    }
+
+                    if (showLabels)
+                    {
+                        //Shows the labels for the aggregate data
+                        foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
+                            in vis.aggregateInteractions)
+                        {
+                            Handles.Label(interaction.Value.pos,
+                                interaction.Value.displayName, GUI.skin.textArea);
+                        }
+                    }
                 }
             }
         }

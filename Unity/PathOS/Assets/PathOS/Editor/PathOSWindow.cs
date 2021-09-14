@@ -31,6 +31,10 @@ public class PathOSWindow : EditorWindow
     [SerializeField]
     private int screenshotID;
 
+    //Screenshot display settings
+    private string lblScreenshotFoldout = "Screenshot Options";
+    private static bool screenshotFoldout = false;
+
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
     {
@@ -92,59 +96,64 @@ public class PathOSWindow : EditorWindow
             case 2:
                 managerWindow.OnVisualizationOpen();
 
-                EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
-                EditorGUI.BeginChangeCheck();
-                GrabScreenshotReference();
-                screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
-                    as ScreenshotManager;
+                screenshotFoldout = EditorGUILayout.Foldout(screenshotFoldout, lblScreenshotFoldout);
 
-                //Update agent ID if the user has selected a new object reference.
-                if (EditorGUI.EndChangeCheck())
+                if (screenshotFoldout)
                 {
-                    hasScreenshot = screenshot != null;
+                    EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
+                    EditorGUI.BeginChangeCheck();
+                    GrabScreenshotReference();
+                    screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
+                        as ScreenshotManager;
 
-                    if (hasScreenshot)
+                    //Update agent ID if the user has selected a new object reference.
+                    if (EditorGUI.EndChangeCheck())
                     {
-                        screenshotID = screenshot.GetInstanceID();
+                        hasScreenshot = screenshot != null;
+
+                        if (hasScreenshot)
+                        {
+                            screenshotID = screenshot.GetInstanceID();
+                        }
                     }
+
+                    //or instantiate the screenshot camera if it does not exist
+                    if (screenshot == null)
+                    {
+                        GUI.backgroundColor = btnColorLight;
+                        if (GUILayout.Button("Instantiate Screenshot Camera"))
+                        {
+                            proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
+                            Instantiate(proxyScreenshot);
+                            screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
+                        }
+                        GUI.backgroundColor = bgColor;
+                    }
+
+                    //only draws the screenshot elements if the variable is not null
+                    if (screenshot != null)
+                    {
+                        screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
+                        screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
+                        disableCamera = EditorGUILayout.Toggle("Disable During Runtime", disableCamera);
+
+                        if (GUILayout.Button("Take Screenshot"))
+                        {
+                            screenshot.TakeScreenshot();
+                        }
+
+                        if (EditorApplication.isPlaying && disableCamera)
+                        {
+                            screenshot.gameObject.SetActive(false);
+                        }
+                        else if (EditorApplication.isPlaying && !disableCamera)
+                        {
+                            screenshot.gameObject.SetActive(true);
+                        }
+                    }
+
+                    EditorGUILayout.Space();
                 }
-
-                //or instantiate the screenshot camera if it does not exist
-                if (screenshot == null)
-                {
-                    GUI.backgroundColor = btnColorLight;
-                    if (GUILayout.Button("Instantiate Screenshot Camera"))
-                    {
-                        proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
-                        Instantiate(proxyScreenshot);
-                        screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
-                    }
-                    GUI.backgroundColor = bgColor;
-                }
-
-                //only draws the screenshot elements if the variable is not null
-                if (screenshot != null)
-                {
-                    screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
-                    screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
-                    disableCamera = EditorGUILayout.Toggle("Disable During Runtime", disableCamera);
-
-                    if (GUILayout.Button("Take Screenshot"))
-                    {
-                        screenshot.TakeScreenshot();
-                    }
-
-                    if (EditorApplication.isPlaying && disableCamera)
-                    {
-                        screenshot.gameObject.SetActive(false);
-                    }
-                    else if (EditorApplication.isPlaying && !disableCamera)
-                    {
-                        screenshot.gameObject.SetActive(true);
-                    }
-                }
-
-                EditorGUILayout.Space();
                 break;
             case 3:
                 batchingWindow.OnWindowOpen();

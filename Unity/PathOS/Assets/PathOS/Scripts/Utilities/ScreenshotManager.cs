@@ -12,6 +12,7 @@ based off of: https://kpprt.de/code-snippet/in-editor-screenshot-script-for-unit
 [RequireComponent(typeof(Camera))]
 public class ScreenshotManager : MonoBehaviour
 {
+    //Screenshot capture variables
     private int width = 1024, height = 512;
     private string folder = "ScreenCapture", prefix = "capture",
         directory = "", filename = "", path = "",
@@ -20,7 +21,6 @@ public class ScreenshotManager : MonoBehaviour
     private Camera camera;
     private RenderTexture rendTex, currRendTex;
     private Texture2D screenshot;
-
     public void TakeScreenshot()
     {
         if (camera == null)
