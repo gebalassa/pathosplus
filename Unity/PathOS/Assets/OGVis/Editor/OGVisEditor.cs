@@ -7,6 +7,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using OGVis;
 
+
 /*
 OGVisEditor.cs
 OGVisEditor (c) Ominous Games 2018
@@ -197,8 +198,6 @@ public class OGVisEditor : Editor
         GUILayout.EndHorizontal();
         GUI.backgroundColor = bgColor;
 
-        EditorGUILayout.Space();
-
         if (!vis.IsDataInitialized())
         {
             serial.ApplyModifiedProperties();
@@ -221,8 +220,6 @@ public class OGVisEditor : Editor
             vis.ApplyDisplayRange();
 
         }
-
-    
 
 
         //Collapsible display options pane.
@@ -250,6 +247,7 @@ public class OGVisEditor : Editor
 
                     if (!vis.showHeatmap) break;
 
+                    EditorGUI.BeginChangeCheck();
                     EditorGUILayout.BeginHorizontal();
 
                     EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
@@ -265,10 +263,9 @@ public class OGVisEditor : Editor
                     EditorGUILayout.PropertyField(propHeatmapAggregate, toggleAggregateLabel);
                     EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
 
-                    GUI.backgroundColor = btnColorLight;
-                    if (GUILayout.Button("Apply Heatmap Settings"))
+                    if (EditorGUI.EndChangeCheck())
                         vis.ApplyHeatmapSettings();
-                    GUI.backgroundColor = bgColor;
+
                     break;
                 case 1:
 
@@ -312,19 +309,16 @@ public class OGVisEditor : Editor
 
                     EditorGUILayout.EndHorizontal();
 
+                    EditorGUI.BeginChangeCheck();
                     EditorGUILayout.PropertyField(propEntityAggregate, toggleAggregateLabel);
                     EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
 
-                    GUI.backgroundColor = btnColorLight;
-                    if (GUILayout.Button("Apply Interaction Display Settings"))
-                        vis.ReclusterEvents();
-                    GUI.backgroundColor = bgColor;
+                    if (EditorGUI.EndChangeCheck())
+                       vis.ReclusterEvents();
 
                     break;
             }
 
-
-            EditorGUILayout.Space();
         }
 
 
@@ -333,15 +327,14 @@ public class OGVisEditor : Editor
 
         if (filterFoldout)
         {
+            EditorGUI.BeginChangeCheck();
             EditorGUILayout.PropertyField(propDisplayHeight);
 
-            GUI.backgroundColor = btnColorLight;
-            if (GUILayout.Button("Apply Display Height"))
+            if (EditorGUI.EndChangeCheck())
             {
                 vis.ApplyDisplayHeight();
                 vis.ReclusterEvents();
             }
-            GUI.backgroundColor = bgColor;
 
             bool refreshFilter = false;
             bool oldFilter = false;
@@ -450,8 +443,6 @@ public class OGVisEditor : Editor
         }
 
 
-        EditorGUILayout.Space();
-
         serial.ApplyModifiedProperties();
         SceneView.RepaintAll();
     }
@@ -479,6 +470,24 @@ public class OGVisEditor : Editor
                             pLog.displayEndIndex - pLog.displayStartIndex + 1)
                             .ToArray();
 
+
+                        //Draws arrows at set intervals
+                        Handles.color = pLog.pathColor;
+
+                        for (int i = 0; i < points.Length; i++)
+                        {
+                            if (i % 5 == 0)
+                            {
+                                Handles.ArrowHandleCap(
+                                     0,
+                                     points[i],
+                                     pLog.orientations[i].rot,
+                                     3.0f,
+                                     EventType.Repaint
+                                 );
+                            }
+                        }
+
                         Handles.color = pLog.pathColor;
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
 
@@ -504,21 +513,6 @@ public class OGVisEditor : Editor
                     }
                 }
 
-                //Drawing arrows
-                //for (int i = 0; i < vis.pLogs.Count; i++)
-                //{
-                //    //Draws the arrows for each
-                //    Handles.ArrowHandleCap(
-                //        0,
-                //        //new Vector3(0,0,0),
-                //        vis.pLogs[i].positions[0].pos,
-                //        new Quaternion(0, 0, 0, 1),
-                //        //pLog.orientations[0].rot,
-                //        3.0f,
-                //        EventType.Repaint
-                //    );
-                //    
-                //}
 
                 //Draw aggregate entity interactions.
                 if (vis.showEntities)
