@@ -150,61 +150,54 @@ public class OGVisEditor : Editor
 
         if (!vis.IsDataInitialized()) EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
 
-        //Collapsible file management pane.
-        fileFoldout = EditorGUILayout.Foldout(fileFoldout, lblFileFoldout);
+        EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
 
-        if (fileFoldout)
+        GUI.backgroundColor = btnColorLight;
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Browse..."))
         {
-            EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
+            string defaultDirectory = (Directory.Exists(vis.logDirectory)) ?
+                vis.logDirectory : defaultDialogDirectory;
 
-            GUI.backgroundColor = btnColorLight;
-            GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Browse..."))
+            string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
+                defaultDirectory, "");
+
+            if (selectedPath != "")
             {
-                string defaultDirectory = (Directory.Exists(vis.logDirectory)) ?
-                    vis.logDirectory : defaultDialogDirectory;
+                vis.logDirectory = selectedPath;
 
-                string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
-                    defaultDirectory, "");
-
-                if (selectedPath != "")
-                {
-                    vis.logDirectory = selectedPath;
-
-                    EditorUtility.SetDirty(vis);
-                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-                }
-
-                PathOS.UI.TruncateStringHead(vis.logDirectory,
-                    ref logDirectoryDisplay, pathDisplayLength);
+                EditorUtility.SetDirty(vis);
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
             }
 
-            if (!Directory.Exists(vis.logDirectory))
-            {
-                EditorGUILayout.LabelField("Error! You must choose a " +
-                    "valid folder on this computer.", errorStyle);
-            }
-
-
-            //Log file loading/management.
-            if (GUILayout.Button("Add Files from " + logDirectoryDisplay + "/"))
-            {
-                //Add log files, if the provided directory is valid.
-                vis.LoadLogs();
-            }
-
-            if (GUILayout.Button("Clear All Data"))
-            {
-                //Clear all logs and records from the current session.
-                vis.ClearData();
-                Debug.Log("Cleared all visualization data.");
-            }
-            GUILayout.EndHorizontal();
-            GUI.backgroundColor = bgColor;
-
-            EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
-            EditorGUILayout.Space();
+            PathOS.UI.TruncateStringHead(vis.logDirectory,
+                ref logDirectoryDisplay, pathDisplayLength);
         }
+
+        if (!Directory.Exists(vis.logDirectory))
+        {
+            EditorGUILayout.LabelField("Error! You must choose a " +
+                "valid folder on this computer.", errorStyle);
+        }
+
+
+        //Log file loading/management.
+        if (GUILayout.Button("Add Files from " + logDirectoryDisplay + "/"))
+        {
+            //Add log files, if the provided directory is valid.
+            vis.LoadLogs();
+        }
+
+        if (GUILayout.Button("Clear All Data"))
+        {
+            //Clear all logs and records from the current session.
+            vis.ClearData();
+            Debug.Log("Cleared all visualization data.");
+        }
+        GUILayout.EndHorizontal();
+        GUI.backgroundColor = bgColor;
+
+        EditorGUILayout.Space();
 
         if (!vis.IsDataInitialized())
         {
@@ -213,28 +206,23 @@ public class OGVisEditor : Editor
             return;
         }
 
-        //Collapsible time management pane.
-        timeFoldout = EditorGUILayout.Foldout(timeFoldout, lblTimeFoldout);
+        EditorGUILayout.LabelField("Time Scrubbing", EditorStyles.boldLabel);
 
+        EditorGUI.BeginChangeCheck();
 
-        if (timeFoldout)
+        PathOS.EditorUI.FullMinMaxSlider("Time Range",
+            ref vis.displayTimeRange.min,
+            ref vis.displayTimeRange.max,
+            vis.fullTimeRange.min,
+            vis.fullTimeRange.max);
+
+        if (EditorGUI.EndChangeCheck())
         {
-            EditorGUILayout.LabelField("Time Scrubbing", EditorStyles.boldLabel);
+            vis.ApplyDisplayRange();
 
-            PathOS.EditorUI.FullMinMaxSlider("Time Range",
-                ref vis.displayTimeRange.min,
-                ref vis.displayTimeRange.max,
-                vis.fullTimeRange.min,
-                vis.fullTimeRange.max);
-
-            GUI.backgroundColor = btnColorLight;
-            if (GUILayout.Button("Apply Time Range"))
-                vis.ApplyDisplayRange();
-            GUI.backgroundColor = bgColor;
-
-            EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
-            EditorGUILayout.Space();
         }
+
+    
 
 
         //Collapsible display options pane.
@@ -336,7 +324,6 @@ public class OGVisEditor : Editor
             }
 
 
-            EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
             EditorGUILayout.Space();
         }
 
@@ -463,7 +450,6 @@ public class OGVisEditor : Editor
         }
 
 
-        EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
         EditorGUILayout.Space();
 
         serial.ApplyModifiedProperties();
