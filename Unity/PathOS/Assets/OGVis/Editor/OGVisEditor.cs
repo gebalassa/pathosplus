@@ -469,26 +469,24 @@ public class OGVisEditor : Editor
                             pLog.displayStartIndex,
                             pLog.displayEndIndex - pLog.displayStartIndex + 1)
                             .ToArray();
-
-
+                        
                         //Draws arrows at set intervals
                         Handles.color = pLog.pathColor;
 
                         for (int i = 0; i < points.Length; i++)
                         {
-                            if (i % 5 == 0)
+                            if (i % 10 == 0)
                             {
                                 Handles.ArrowHandleCap(
                                      0,
                                      points[i],
                                      pLog.orientations[i].rot,
-                                     3.0f,
+                                     2.5f,
                                      EventType.Repaint
                                  );
                             }
                         }
 
-                        Handles.color = pLog.pathColor;
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
 
 

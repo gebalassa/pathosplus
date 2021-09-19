@@ -95,9 +95,9 @@ public class OGLogger : MonoBehaviour
             transform.position.x + "," +
             transform.position.y + "," +
             transform.position.z + "," +
-            transform.rotation.x + "," +
-            transform.rotation.y + "," +
-            transform.rotation.z;
+            transform.rotation.eulerAngles.x + "," +
+            transform.rotation.eulerAngles.y + "," +
+            transform.rotation.eulerAngles.z;
 
         WriteLogLine(line);
     }

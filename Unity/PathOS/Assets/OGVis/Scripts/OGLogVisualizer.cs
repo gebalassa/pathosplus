@@ -306,10 +306,12 @@ public class OGLogVisualizer : MonoBehaviour
 
                         pLog.AddPosition(timestamp, p);
 
+
                         q = Quaternion.Euler(
                             float.Parse(lineContents[5]), 
                             float.Parse(lineContents[6]), 
-                            float.Parse(lineContents[7]));
+                            float.Parse(lineContents[7])
+                            );
 
                         pLog.AddOrientation(timestamp, q);
 
