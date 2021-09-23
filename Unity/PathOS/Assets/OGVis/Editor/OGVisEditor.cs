@@ -93,9 +93,10 @@ public class OGVisEditor : Editor
     private string lblTimeFoldout = "Time Scrubbing Options";
     private static bool timeFoldout = false;
 
-
     //Colors
     private Color bgColor, btnColor, btnColorLight, btnColorDark;
+
+    //Timestamp variables
 
     //Called when the inspector pane is initialized.
     private void OnEnable()
@@ -455,6 +456,7 @@ public class OGVisEditor : Editor
         if (!vis.enabled)
             return;
 
+
         //Draw individual player paths.
         if (vis.showIndividualPaths)
         {
@@ -470,8 +472,16 @@ public class OGVisEditor : Editor
                             pLog.displayEndIndex - pLog.displayStartIndex + 1)
                             .ToArray();
                         
-                        //Draws arrows at set intervals
+                        //Draw arrows at set intervals
                         Handles.color = pLog.pathColor;
+
+                        //For timestamps
+                        Vector3 mousePos = Event.current.mousePosition;
+                        mousePos.y = SceneView.lastActiveSceneView.camera.pixelHeight - mousePos.y;
+                        Ray ray = SceneView.lastActiveSceneView.camera.ScreenPointToRay(mousePos);
+
+                        RaycastHit hit;
+                        bool timestampFound = false;
 
                         for (int i = 0; i < points.Length; i++)
                         {
@@ -485,7 +495,20 @@ public class OGVisEditor : Editor
                                      EventType.Repaint
                                  );
                             }
+
+                            if (Physics.Raycast(ray, out hit) && !timestampFound)
+                            {
+                                if (Vector3.Distance(hit.point, points[i]) <= 2f)
+                                {
+                                    Handles.Label(points[i], pLog.positions[i].timestamp.ToString(), GUI.skin.textArea);
+                                    timestampFound = true;
+                                }
+                            }
+
+                            SceneView.RepaintAll();
+
                         }
+
 
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
 
