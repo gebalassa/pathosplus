@@ -90,8 +90,8 @@ public class OGVisEditor : Editor
     string[] tabLabels = { "Heatmaps", "Individual Paths", "Entity Interactions" };
 
     //Time scrubbing display settings
-    private string lblTimeFoldout = "Time Scrubbing Options";
-    private static bool timeFoldout = false;
+    private string lblLoadFoldout = "File Loading Options";
+    private static bool loadFoldout = false;
 
     //Colors
     private Color bgColor, btnColor, btnColorLight, btnColorDark;
@@ -152,52 +152,56 @@ public class OGVisEditor : Editor
 
         if (!vis.IsDataInitialized()) EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
 
-        EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
+        //Collapsible display options pane.
+        loadFoldout = EditorGUILayout.Foldout(loadFoldout, lblLoadFoldout);
 
-        GUI.backgroundColor = btnColorLight;
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Browse..."))
-        {
-            string defaultDirectory = (Directory.Exists(vis.logDirectory)) ?
-                vis.logDirectory : defaultDialogDirectory;
+        if (loadFoldout)
+        {   
+            EditorGUILayout.LabelField("Load Directory: ", logDirectoryDisplay);
 
-            string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
-                defaultDirectory, "");
-
-            if (selectedPath != "")
+            GUI.backgroundColor = btnColorLight;
+            if (GUILayout.Button("Browse..."))
             {
-                vis.logDirectory = selectedPath;
+                string defaultDirectory = (Directory.Exists(vis.logDirectory)) ?
+                    vis.logDirectory : defaultDialogDirectory;
 
-                EditorUtility.SetDirty(vis);
-                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
+                    defaultDirectory, "");
+
+                if (selectedPath != "")
+                {
+                    vis.logDirectory = selectedPath;
+
+                    EditorUtility.SetDirty(vis);
+                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+                }
+
+                PathOS.UI.TruncateStringHead(vis.logDirectory,
+                    ref logDirectoryDisplay, pathDisplayLength);
             }
 
-            PathOS.UI.TruncateStringHead(vis.logDirectory,
-                ref logDirectoryDisplay, pathDisplayLength);
-        }
-
-        if (!Directory.Exists(vis.logDirectory))
-        {
-            EditorGUILayout.LabelField("Error! You must choose a " +
-                "valid folder on this computer.", errorStyle);
-        }
+            if (!Directory.Exists(vis.logDirectory))
+            {
+                EditorGUILayout.LabelField("Error! You must choose a " +
+                    "valid folder on this computer.", errorStyle);
+            }
 
 
-        //Log file loading/management.
-        if (GUILayout.Button("Add Files from " + logDirectoryDisplay + "/"))
-        {
-            //Add log files, if the provided directory is valid.
-            vis.LoadLogs();
-        }
+            //Log file loading/management.
+            if (GUILayout.Button("Add Files from " + logDirectoryDisplay + "/"))
+            {
+                //Add log files, if the provided directory is valid.
+                vis.LoadLogs();
+            }
 
-        if (GUILayout.Button("Clear All Data"))
-        {
-            //Clear all logs and records from the current session.
-            vis.ClearData();
-            Debug.Log("Cleared all visualization data.");
+            if (GUILayout.Button("Clear All Data"))
+            {
+                //Clear all logs and records from the current session.
+                vis.ClearData();
+                Debug.Log("Cleared all visualization data.");
+            }
+            GUI.backgroundColor = bgColor;
         }
-        GUILayout.EndHorizontal();
-        GUI.backgroundColor = bgColor;
 
         if (!vis.IsDataInitialized())
         {
@@ -221,7 +225,6 @@ public class OGVisEditor : Editor
             vis.ApplyDisplayRange();
 
         }
-
 
         //Collapsible display options pane.
         visualizationFoldout = EditorGUILayout.Foldout(visualizationFoldout, lblVisualizationFoldout);
@@ -321,6 +324,8 @@ public class OGVisEditor : Editor
             }
 
         }
+
+        EditorGUILayout.Space();
 
 
         //Collapsible display options pane.
@@ -504,11 +509,9 @@ public class OGVisEditor : Editor
                                     timestampFound = true;
                                 }
                             }
-
-                            SceneView.RepaintAll();
-
                         }
 
+                        SceneView.RepaintAll();
 
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
 
