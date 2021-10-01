@@ -200,7 +200,7 @@ namespace OGVis
 
             foundIndex = false;
 
-            while (!foundIndex && endEstimate < positions.Count)
+            while (!foundIndex && endEstimate < positions.Count )
             {
                 if (endEstimate > 0
                    && positions[endEstimate].timestamp > range.max)
@@ -222,6 +222,7 @@ namespace OGVis
 
             displayStartIndex = startEstimate;
             displayEndIndex = endEstimate;
+
         }
     }
 }

@@ -75,11 +75,10 @@ public class OGVisEditor : Editor
     private Texture2D polylinetex;
 
     //Interaction display settings.
-    private static bool interactionFoldout = false;
-    private string lblInteractionFoldout = "Entity Interactions";
     private static bool showLabels = false;
 
     private SerializedProperty propShowEntities;
+    private SerializedProperty propShowArrows;
     private SerializedProperty propEntityAggregate;
     private SerializedProperty propEntityTimeSlice;
 
@@ -126,6 +125,7 @@ public class OGVisEditor : Editor
         propHeatmapTimeSlice = serial.FindProperty("heatmapUseTimeSlice");
 
         propShowIndividual = serial.FindProperty("showIndividualPaths");
+        propShowArrows = serial.FindProperty("showDirectionArrows");
         propShowIndividualInteractions = serial.FindProperty("showIndividualInteractions");
 
         propShowEntities = serial.FindProperty("showEntities");
@@ -223,7 +223,8 @@ public class OGVisEditor : Editor
         if (EditorGUI.EndChangeCheck())
         {
             vis.ApplyDisplayRange();
-
+            vis.ReclusterEvents();
+            vis.ApplyHeatmapSettings();
         }
 
         //Collapsible display options pane.
@@ -268,13 +269,19 @@ public class OGVisEditor : Editor
                     EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
 
                     if (EditorGUI.EndChangeCheck())
+                    {
                         vis.ApplyHeatmapSettings();
+                    }
 
                     break;
                 case 1:
 
                     //Global path display settings.
                     EditorGUILayout.PropertyField(propShowIndividual);
+
+                    if (!vis.showIndividualPaths) break;
+
+                    EditorGUILayout.PropertyField(propShowArrows);
 
                     EditorGUILayout.PropertyField(propShowIndividualInteractions,
                         individualInteractionsLabel);
@@ -318,7 +325,9 @@ public class OGVisEditor : Editor
                     EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
 
                     if (EditorGUI.EndChangeCheck())
-                       vis.ReclusterEvents();
+                    {
+                        vis.ReclusterEvents();
+                    }
 
                     break;
             }
@@ -490,7 +499,7 @@ public class OGVisEditor : Editor
 
                         for (int i = 0; i < points.Length; i++)
                         {
-                            if (i % 10 == 0)
+                            if (vis.showDirectionArrows && i % 10 == 0)
                             {
                                 Handles.ArrowHandleCap(
                                      0,
@@ -531,6 +540,8 @@ public class OGVisEditor : Editor
 
                                 Handles.color = Color.white;
                                 Handles.DrawSolidDisc(curEvent.pos, Vector3.up, OGLogVisualizer.MIN_ENTITY_RADIUS);
+
+                                if (showLabels)
                                 Handles.Label(curEvent.pos, curEvent.objectName, GUI.skin.textArea);
                             }
                         }
@@ -539,28 +550,33 @@ public class OGVisEditor : Editor
 
 
                 //Draw aggregate entity interactions.
-                if (vis.showEntities)
-                {
-                    foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
-                        in vis.aggregateInteractions)
-                    {
-                        Handles.color = interaction.Value.displayColor;
-                        Handles.DrawSolidDisc(interaction.Value.pos, Vector3.up,
-                            interaction.Value.displaySize);
-                    }
-
-                    if (showLabels)
-                    {
-                        //Shows the labels for the aggregate data
-                        foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
-                            in vis.aggregateInteractions)
-                        {
-                            Handles.Label(interaction.Value.pos,
-                                interaction.Value.displayName, GUI.skin.textArea);
-                        }
-                    }
-                }
+                DrawAggregateEntityInteractions();
             }
         }
     }
+
+    private void DrawAggregateEntityInteractions()
+    {
+        if (vis.showEntities)
+        {
+            foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
+                in vis.aggregateInteractions)
+            {
+                Handles.color = interaction.Value.displayColor;
+                Handles.DrawSolidDisc(interaction.Value.pos, Vector3.up,
+                    interaction.Value.displaySize);
+            }
+
+            if (showLabels)
+            {
+                //Shows the labels for the aggregate data
+                foreach (KeyValuePair<string, OGLogVisualizer.AggregateInteraction> interaction
+                    in vis.aggregateInteractions)
+                {
+                    Handles.Label(interaction.Value.pos,
+                        interaction.Value.displayName, GUI.skin.textArea);
+                }
+            }
+        }
+    }    
 }

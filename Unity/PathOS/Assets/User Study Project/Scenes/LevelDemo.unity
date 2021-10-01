@@ -11560,6 +11560,170 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1181001025}
   m_PrefabAsset: {fileID: 0}
+--- !u!43 &1186349191
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 6
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 4
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 25.3, y: 0, z: 25.3}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200000002000300
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 4
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 80
+    _typelessdata: 6666cac1000000006666cac100000000000000006666cac1000000006666ca41000000000000803f6666ca41000000006666ca410000803f0000803f6666ca41000000006666cac10000803f00000000
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 25.3, y: 0, z: 25.3}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1001 &1194555563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11891,33 +12055,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1204835233}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1205281197
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/Transparent
-  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors: []
-  m_BuildTextureStacks: []
 --- !u!1 &1215639429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3026297629329184716, guid: bf62318bfdec87148b50dd06623b2f6e,
@@ -16648,6 +16785,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1596759752}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1610374563
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/Transparent
+  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
 --- !u!1001 &1613320730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18536,11 +18700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1832680972}
+      objectReference: {fileID: 1186349191}
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.36205912
+      value: -5.6612134
       objectReference: {fileID: 0}
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -18550,7 +18714,7 @@ PrefabInstance:
     - target: {fileID: 2783143267940123911, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.0009475
+      value: 7.046142
       objectReference: {fileID: 0}
     - target: {fileID: 3999886422330179394, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -18561,7 +18725,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1205281197}
+      objectReference: {fileID: 1610374563}
     - target: {fileID: 5005646905853620058, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_Name
@@ -19405,7 +19569,8 @@ PrefabInstance:
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: logDirectory
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-19
+        11-32-25
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19430,8 +19595,8 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: logDirectory
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-19
-        11-32-25
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-30
+        22-18-14
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19446,7 +19611,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: fullTimeRange.max
-      value: 129
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19456,7 +19621,12 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: heatmapUseTimeSlice
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: showDirectionArrows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19466,7 +19636,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: currentTimeRange.max
-      value: 129
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19476,7 +19646,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: displayTimeRange.max
-      value: 129
+      value: 105
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19551,7 +19721,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: showIndividualInteractions
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19566,8 +19736,14 @@ PrefabInstance:
     - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: directoriesLoaded.Array.data[0]
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-19
-        11-32-25/
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-30
+        22-18-14/
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620063, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
+      propertyPath: directoriesLoaded.Array.data[1]
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs/2021-09-30
+        22-18-14/
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f1861d4df0ac1488cf45674399f745, type: 3}
@@ -19978,6 +20154,46 @@ PrefabInstance:
         type: 3}
       propertyPath: timeScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: experienceScale
+      value: 0.88984185
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[0].scale
+      value: 0.105482414
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[1].scale
+      value: 0.012482405
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[2].scale
+      value: 0.031925328
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[3].scale
+      value: 0.9998302
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[4].scale
+      value: 0.97033226
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[5].scale
+      value: 0.18961702
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: heuristicScales.Array.data[6].scale
+      value: 0.63691086
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607318e5beb058643a9226e07f881723, type: 3}
@@ -20776,170 +20992,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1829642413}
   m_PrefabAsset: {fileID: 0}
---- !u!43 &1832680972
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 10
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 6
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 4
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 29.9, y: 0, z: 32.2}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200000002000300
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 4
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 80
-    _typelessdata: 3333efc100000000cdcc00c200000000000000003333efc100000000cdcc0042000000000000803f3333ef4100000000cdcc00420000803f0000803f3333ef4100000000cdcc00c20000803f00000000
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 29.9, y: 0, z: 32.2}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1001 &1833466396
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -213,6 +213,8 @@ public class PathOSManagerWindow : EditorWindow
 
         if (managerReference == null) return;
 
+        EditorGUILayout.Space();
+
         if (!managerInitialized) InitializeManager();
 
         Selection.objects = new Object[] { managerReference.gameObject };
@@ -250,6 +252,8 @@ public class PathOSManagerWindow : EditorWindow
         }
 
         if (managerReference == null) return;
+
+        EditorGUILayout.Space();
 
         if (!managerInitialized) InitializeManager();
 

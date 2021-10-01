@@ -125,6 +125,8 @@ public class PathOSAgentWindow : EditorWindow
 
         if (agentReference == null) return;
 
+        EditorGUILayout.Space();
+
         //Todo: clean this up!
         memoryReference = agentReference.GetComponent<PathOSAgentMemory>();
         eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
@@ -144,21 +146,30 @@ public class PathOSAgentWindow : EditorWindow
         //// Shows the created Editor beneath CustomEditor
     
         editor.DrawHeader();
-        EditorGUI.indentLevel++;
 
         currentTransformEditor.DrawHeader();
         currentTransformEditor.OnInspectorGUI();
+        EditorGUILayout.Space();
 
         currentAgentEditor.DrawHeader();
         AgentEditorGUI();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
         currentMemoryEditor.DrawHeader();
         currentMemoryEditor.OnInspectorGUI();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
         currentEyeEditor.DrawHeader();
         currentEyeEditor.OnInspectorGUI();
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
+
         currentRendererEditor.DrawHeader();
         currentRendererEditor.OnInspectorGUI();
-
-        EditorGUI.indentLevel--;
+        EditorGUILayout.Space();
+        EditorGUILayout.Space();
     }
 
     private void InitializeAgent()

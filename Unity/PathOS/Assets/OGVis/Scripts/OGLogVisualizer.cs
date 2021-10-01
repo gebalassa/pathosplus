@@ -34,7 +34,8 @@ public class OGLogVisualizer : MonoBehaviour
 
     //Path settings.
     public bool showIndividualPaths;
-    
+    public bool showDirectionArrows = true;
+
     //Interaction event settings.
     [DisplayName("Show Aggregate Interactions")]
     public bool showEntities;
@@ -158,10 +159,13 @@ public class OGLogVisualizer : MonoBehaviour
 
         for(int i = 0; i < pLogs.Count; ++i)
         {
+            if (currentTimeRange.min >= currentTimeRange.max)
+                currentTimeRange.min = 0;
+
             pLogs[i].SliceDisplayPath(currentTimeRange);
         }
 
-        if(heatmapVisualizer != null && heatmapUseTimeSlice)
+        if (heatmapVisualizer != null && heatmapUseTimeSlice)
             heatmapVisualizer.UpdateData(pLogs,
                 heatmapAggregateActiveOnly, 
                 heatmapUseTimeSlice);
