@@ -514,7 +514,7 @@ public class OGVisEditor : Editor
                             {
                                 if (Vector3.Distance(hit.point, points[i]) <= 2f)
                                 {
-                                    Handles.Label(points[i], pLog.positions[i].timestamp.ToString(), GUI.skin.textArea);
+                                    Handles.Label(points[i], "Time: " + pLog.positions[i].timestamp.ToString("F0") + " Health: " + pLog.healths[i].health, GUI.skin.textArea);
                                     timestampFound = true;
                                 }
                             }

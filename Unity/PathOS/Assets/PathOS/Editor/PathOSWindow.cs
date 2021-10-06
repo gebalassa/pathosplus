@@ -16,10 +16,11 @@ public class PathOSWindow : EditorWindow
         Batching = 2, 
         Manager = 3,
         Visualization = 4,
-        Profiles = 5
+        Profiles = 5,
+        ExpertEvaluation = 6
     };
 
-    string[] tabLabels = { "Agent", "Resources", "Batching", "Manager", "Visualization",  "Profiles"};
+    string[] tabLabels = { "Agent", "Resources", "Batching", "Manager", "Visualization",  "Profiles", "Expert Evaluation"};
     int tabSelection = 0;
 
     private PathOSProfileWindow profileWindow;
@@ -113,6 +114,8 @@ public class PathOSWindow : EditorWindow
             case (int)Tabs.Profiles:
                 profileWindow.OnWindowOpen();
                 break;
+            case (int)Tabs.ExpertEvaluation:
+                break;
         }
         GUILayout.EndScrollView();
     }
@@ -190,5 +193,10 @@ public class PathOSWindow : EditorWindow
 
     private void OnResourcesOpen()
     {
+    }
+
+    private void OnEvaluationOpen()
+    {
+
     }
 }

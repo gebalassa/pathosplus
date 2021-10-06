@@ -6,7 +6,7 @@ using UnityEngine;
 
 /*
 OGLogger.cs
-OGLogger (c) Ominous Games 2018-19
+OGLogger (c) Ominous Games 2018-19 Atiya 2021
 */
 
 public class OGLogger : MonoBehaviour 
@@ -23,10 +23,15 @@ public class OGLogger : MonoBehaviour
 
     private static OGLogManager mgr;
 
+    //temporary solution
+    private PathOSAgent agent;
+
     private void Awake()
     {
         if (null == mgr)
             mgr = OGLogManager.instance;
+
+        agent = GetComponent<PathOSAgent>();
     }
 
     private void Start()
@@ -36,7 +41,7 @@ public class OGLogger : MonoBehaviour
 
     private void Update()
 	{
-        //Sample position/orientation.
+        //Sample position/orientation/health
         if (sampleTimer >= mgr.sampleTime)
         {
             sampleTimer -= mgr.sampleTime;
@@ -82,7 +87,8 @@ public class OGLogger : MonoBehaviour
             objectName + "," +
             location.position.x + "," +
             location.position.y + "," +
-            location.position.z;
+            location.position.z + "," +
+            agent.GetHealth();
 
         WriteLogLine(line);
     }
@@ -97,7 +103,8 @@ public class OGLogger : MonoBehaviour
             transform.position.z + "," +
             transform.rotation.eulerAngles.x + "," +
             transform.rotation.eulerAngles.y + "," +
-            transform.rotation.eulerAngles.z;
+            transform.rotation.eulerAngles.z + "," +
+            agent.GetHealth();
 
         WriteLogLine(line);
     }

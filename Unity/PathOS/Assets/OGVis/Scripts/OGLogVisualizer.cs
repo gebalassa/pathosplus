@@ -6,7 +6,7 @@ using OGVis;
 
 /*
 OGLogVisualizer.cs
-OGLogVisualizer (c) Ominous Games 2018
+OGLogVisualizer (c) Ominous Games 2018 Atiya Nova 2021
 
 Master class for handling the vis.
 */
@@ -265,6 +265,7 @@ public class OGLogVisualizer : MonoBehaviour
 
         Vector3 p = Vector3.zero;
         Quaternion q = Quaternion.identity;
+        float h = 0.0f;
 
         try
         {
@@ -319,6 +320,10 @@ public class OGLogVisualizer : MonoBehaviour
 
                         pLog.AddOrientation(timestamp, q);
 
+                        h = float.Parse(lineContents[8]);
+
+                        pLog.AddHealth(timestamp, h);
+
                         break;
 
                     case OGLogManager.LogItemType.INTERACTION:
@@ -335,6 +340,10 @@ public class OGLogVisualizer : MonoBehaviour
                             float.Parse(lineContents[5]));
 
                         pLog.AddInteractionEvent(timestamp, p, lineContents[2]);
+
+                        h = float.Parse(lineContents[6]);
+
+                        pLog.AddHealth(timestamp, h);
 
                         break;
 

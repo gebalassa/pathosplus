@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
 OGVis.cs
-OGVis (c) Ominous Games 2019
+OGVis (c) Ominous Games 2019 Atiya Nova 2021
 */
 
 namespace OGVis
@@ -36,6 +36,12 @@ namespace OGVis
         public struct QuaternionT
         {
             public Quaternion rot;
+            public float timestamp;
+        }
+
+        public struct HealthT
+        {
+            public float health;
             public float timestamp;
         }
 
@@ -89,6 +95,7 @@ namespace OGVis
         //Time-series position/orientation data.
         public List<VectorT> positions;
         public List<QuaternionT> orientations;
+        public List<HealthT> healths;
 
         //Timestamped visitation of level entities.
         public List<InteractionEvent> interactionEvents;
@@ -114,6 +121,7 @@ namespace OGVis
 
             positions = new List<VectorT>();
             orientations = new List<QuaternionT>();
+            healths = new List<HealthT>();
             interactionEvents = new List<InteractionEvent>();
 
             pathPoints = new List<Vector3>();
@@ -130,6 +138,11 @@ namespace OGVis
         public void AddOrientation(float timestamp, Quaternion rot)
         {
             orientations.Add(new QuaternionT { timestamp = timestamp, rot = rot });
+        }
+
+        public void AddHealth(float timestamp, float health)
+        {
+            healths.Add(new HealthT { timestamp = timestamp, health = health });
         }
 
         public void AddInteractionEvent(float timestamp, Vector3 pos, string objectName)

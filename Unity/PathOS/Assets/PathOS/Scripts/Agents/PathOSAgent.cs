@@ -845,7 +845,8 @@ public class PathOSAgent : MonoBehaviour
         {
             completed = true;
             gameObject.SetActive(false);
-        }                  
+        }
+
     }
 
     private void RouteDestination()
