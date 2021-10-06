@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 
 /*
 PathOSAgentRenderer.cs 
-PathOSAgentRenderer (c) Nine Penguins (Samantha Stahlke) 2018
+PathOSAgentRenderer (c) Nine Penguins (Samantha Stahlke) 2018 Atiya Nova 2021
 */
 
 //Used to draw the in-game overlay for debugging/visualization purposes.
@@ -98,9 +99,24 @@ public class PathOSAgentRenderer : MonoBehaviour
     private Camera transformCam;
     private bool sceneInit = false;
 
+    //Health UI
+    Texture2D healthTexture, healthBgTexture;
+    [Header("Health Interface")]
+    private float healthWidth, healthHeight, healthXPos, healthYPos; 
+
+
     private void Start()
     {
         agent = GetComponent<PathOSAgent>();
+
+        //Gets the health slider
+        healthTexture = new Texture2D(1, 1);
+        healthTexture.SetPixel(0, 0, Color.green);
+        healthTexture.Apply();
+
+        healthBgTexture = new Texture2D(1, 1);
+        healthBgTexture.SetPixel(0, 0, Color.black);
+        healthBgTexture.Apply();
 
         transformCam = Camera.main;
         sceneInit = true;
@@ -236,8 +252,6 @@ public class PathOSAgentRenderer : MonoBehaviour
 
     private void Update()
     {
-
-
 #if UNITY_EDITOR
         if (Selection.activeGameObject != gameObject)
             return;
@@ -302,6 +316,19 @@ public class PathOSAgentRenderer : MonoBehaviour
         oldMapSize = mapScreenSize;
         oldViewSize = viewScreenSize;
 
+        //Setting health values
+        healthWidth = (agent.GetHealth() / 100.0f) * (Screen.width / 6);
+        healthHeight = Screen.height / 20;
+        healthXPos = Screen.width - (Screen.width / 5.5f);
+        healthYPos = (healthHeight * 0.5f);
+
+        //Drawing the healthbox background
+        GUI.skin.box.normal.background = healthBgTexture;
+        GUI.Box(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), GUIContent.none);
+
+        //Drawing the healthbox
+        GUI.skin.box.normal.background = healthTexture;
+        GUI.Box(new Rect(healthXPos, healthYPos, healthWidth, healthHeight), GUIContent.none);
     }
 
     private void OnDrawGizmosSelected()

@@ -10,7 +10,7 @@ using OGVis;
 
 /*
 OGVisEditor.cs
-OGVisEditor (c) Ominous Games 2018
+OGVisEditor (c) Ominous Games 2018 Atiya Nova 2021
 
 This class manages the Unity Inspector pane for vis customization.
 */

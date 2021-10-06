@@ -111,7 +111,8 @@ public class PathOSAgent : MonoBehaviour
 
     private List<Vector3> unreachableReference;
 
-
+    //Health variables
+    private float health = 100.0f;
     private void Awake()
     { 
         eyes = GetComponent<PathOSAgentEyes>();
@@ -695,16 +696,23 @@ public class PathOSAgent : MonoBehaviour
         if (freezeAgent || completed)
             return;
 
+        if (timeScale <= 0.0f) timeScale = 1.0f;
+
         Time.timeScale = timeScale;
 
         //If we've reached our destination, reset the number of times
         //we've "changed our mind" without doing anything.
-        if (changeTargetCount > 0 
-            && (Vector3.SqrMagnitude(GetPosition() - currentDest.pos)
-                < PathOS.Constants.Navigation.GOAL_EPSILON_SQR
-                || (currentDest.entity != null 
-                    && memory.Visited(currentDest.entity))))
+        if (changeTargetCount > 0
+            && (Vector3.SqrMagnitude(GetPosition() - currentDest.pos) < PathOS.Constants.Navigation.GOAL_EPSILON_SQR
+                || (currentDest.entity != null && memory.Visited(currentDest.entity))))
+        {
             changeTargetCount = 0;
+
+            if (currentDest.entity != null)
+            {
+                CalculateHealth(currentDest.entity.entityType);
+            }
+        }
 
         //Update spatial memory.
         memory.memoryMap.Fill(navAgent.transform.position);
@@ -970,6 +978,23 @@ public class PathOSAgent : MonoBehaviour
         navAgent.updateRotation = true;
         navAgent.isStopped = false;
     }
+
+    //Computes the player health when interacting with enemies or resources
+    //Needs to be improved/edited
+    private void CalculateHealth(EntityType entityType)
+    {
+        if (entityType == EntityType.ET_HAZARD_ENEMY || entityType == EntityType.ET_HAZARD_ENVIRONMENT)
+        {
+            if (health > 0) health -= 10.0f;
+            return;
+        }
+
+        if (entityType == EntityType.ET_RESOURCE_PRESERVATION)
+        {
+            if (health < 100) health += 10.0f;
+            return;
+        }
+    }
     
     public Vector3 GetTargetPosition()
     {
@@ -979,5 +1004,10 @@ public class PathOSAgent : MonoBehaviour
     public bool IsTargeted(PerceivedEntity entity)
     {
         return currentDest.entity == entity;
+    }
+
+    public float GetHealth()
+    {
+        return health;
     }
 }

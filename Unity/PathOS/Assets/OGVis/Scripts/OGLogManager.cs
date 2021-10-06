@@ -6,7 +6,7 @@ using UnityEditor;
 
 /*
 OGLogManager.cs
-OGLogManager (c) Ominous Games 2018
+OGLogManager (c) Ominous Games 2018 Atiya Nova 2021
 */
 
 public class OGLogManager : OGSingleton<OGLogManager> 
@@ -17,7 +17,7 @@ public class OGLogManager : OGSingleton<OGLogManager>
     public const string fileIndexId = "OGLogFileIndex";
 
     //Whether logging should be enabled.
-    public bool enableLogging = true;
+    public bool enableLogging = false;
     
     //Specify directory/filename.
     public string logDirectory = "--";
@@ -53,6 +53,9 @@ public class OGLogManager : OGSingleton<OGLogManager>
 
             return;
         }
+
+        //This might cause bugs! Look into it!
+        if (!enableLogging) return;
 
         bool forceDirectoryOverride = PlayerPrefs.GetInt(overrideFlagId) != 0;
 
@@ -135,7 +138,7 @@ public class OGLogManager : OGSingleton<OGLogManager>
     {
         PlayerPrefs.SetInt(overrideFlagId, 0);
 
-        if(loggers.Count > 0)
+        if(loggers.Count > 0 && enableLogging)
             print("Wrote agent logs to " + logDirectory);
 
         //Clean up after ourselves.

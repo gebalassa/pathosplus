@@ -95,10 +95,13 @@ public class PathOSAgentMemory : MonoBehaviour
 
             //Flag an entity as visited if we pass by in close range.
             //Inelegant brute-force to prevent "accidental" completion.
-            if (Vector3.SqrMagnitude(entity.XZActualPos() - agentPos) 
+            if (Vector3.SqrMagnitude(entity.XZActualPos() - agentPos)
                 < visitThresholdSqr
-                && entity.entity.entityType != EntityType.ET_GOAL_COMPLETION)
+                && entity.entity.entityType != EntityType.ET_GOAL_COMPLETION
+                && entity.entity.entityType == targetEntity.entityType)
+            {
                 entity.Visit(this.gameObject, PathOSAgent.logger);
+            }
 
             //Only something which is no longer visible and forgettable
             //can be discarded from memory.
