@@ -24,8 +24,9 @@ public class PathOSMainInspector : Editor
     private SerializedProperty limitSimulationTime;
     private SerializedProperty maxSimulationTime;
     private SerializedProperty endOnCompletionGoal;
+    private SerializedProperty endSimulationOnDeath;
     private SerializedProperty showLevelMarkup;
-    private GUIContent completionLabel;
+    private GUIContent completionLabel, deathLabel;
 
     /* Level Markup */
     private static bool showMarkup = false;
@@ -127,9 +128,11 @@ public class PathOSMainInspector : Editor
         limitSimulationTime = serial.FindProperty("limitSimulationTime");
         maxSimulationTime = serial.FindProperty("maxSimulationTime");
         endOnCompletionGoal = serial.FindProperty("endOnCompletionGoal");
+        endSimulationOnDeath = serial.FindProperty("endSimulationOnDeath");
         showLevelMarkup = serial.FindProperty("showLevelMarkup");
 
         completionLabel = new GUIContent("Final Goal Triggers End");
+        deathLabel = new GUIContent("Death Triggers End");
 
         heuristicWeights = serial.FindProperty("heuristicWeights");
 
@@ -207,6 +210,7 @@ public class PathOSMainInspector : Editor
         EditorGUILayout.PropertyField(limitSimulationTime);
         if (limitSimulationTime.boolValue) EditorGUILayout.PropertyField(maxSimulationTime);
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
+        EditorGUILayout.PropertyField(endSimulationOnDeath, deathLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 
         //Level markup panel.

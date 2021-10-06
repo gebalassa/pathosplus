@@ -25,7 +25,7 @@ public class PathOSWindow : EditorWindow
     private PathOSProfileWindow profileWindow;
     private PathOSAgentBatchingWindow batchingWindow;
     private PathOSAgentWindow agentWindow;
-    private PathOSManagerWindow managerWindow;
+    private static PathOSManagerWindow managerWindow;
 
     private GameObject proxyScreenshot;
     private ScreenshotManager screenshot;
@@ -98,6 +98,7 @@ public class PathOSWindow : EditorWindow
                 agentWindow.OnWindowOpen();
                 break;
             case (int)Tabs.Resources:
+                OnResourcesOpen();
                 break;
             case (int)Tabs.Batching:
                 batchingWindow.OnWindowOpen();
@@ -187,5 +188,7 @@ public class PathOSWindow : EditorWindow
         }
     }
 
-
+    private void OnResourcesOpen()
+    {
+    }
 }

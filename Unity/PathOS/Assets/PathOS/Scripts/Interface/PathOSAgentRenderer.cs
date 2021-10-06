@@ -101,22 +101,29 @@ public class PathOSAgentRenderer : MonoBehaviour
 
     //Health UI
     Texture2D healthTexture, healthBgTexture;
-    [Header("Health Interface")]
-    private float healthWidth, healthHeight, healthXPos, healthYPos; 
+    private float healthWidth, healthHeight, healthXPos, healthYPos;
+    GUIStyle healthStyle;
 
+    [Header("Health Interface")]
+    [SerializeField] private bool showHealthBar = true;
 
     private void Start()
     {
         agent = GetComponent<PathOSAgent>();
 
-        //Gets the health slider
+        //Health variables
+
+        healthBgTexture = new Texture2D(1, 1);
+        healthBgTexture.SetPixel(0, 0, Color.red);
+        healthBgTexture.Apply();
+
         healthTexture = new Texture2D(1, 1);
         healthTexture.SetPixel(0, 0, Color.green);
         healthTexture.Apply();
 
-        healthBgTexture = new Texture2D(1, 1);
-        healthBgTexture.SetPixel(0, 0, Color.black);
-        healthBgTexture.Apply();
+        healthStyle = new GUIStyle();
+        healthStyle.alignment = TextAnchor.MiddleCenter;
+        healthStyle.fontSize = 40;
 
         transformCam = Camera.main;
         sceneInit = true;
@@ -316,19 +323,26 @@ public class PathOSAgentRenderer : MonoBehaviour
         oldMapSize = mapScreenSize;
         oldViewSize = viewScreenSize;
 
-        //Setting health values
-        healthWidth = (agent.GetHealth() / 100.0f) * (Screen.width / 6);
-        healthHeight = Screen.height / 20;
-        healthXPos = Screen.width - (Screen.width / 5.5f);
-        healthYPos = (healthHeight * 0.5f);
+        if (showHealthBar)
+        {
+            //Setting health values
+            healthWidth = (agent.GetHealth() / 100.0f) * (Screen.width / 6);
+            healthHeight = Screen.height / 20;
+            healthXPos = Screen.width - (Screen.width / 5.5f);
+            healthYPos = (healthHeight * 0.5f);
 
-        //Drawing the healthbox background
-        GUI.skin.box.normal.background = healthBgTexture;
-        GUI.Box(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), GUIContent.none);
 
-        //Drawing the healthbox
-        GUI.skin.box.normal.background = healthTexture;
-        GUI.Box(new Rect(healthXPos, healthYPos, healthWidth, healthHeight), GUIContent.none);
+            //Drawing the healthbox background
+            GUI.skin.box.normal.background = healthBgTexture;
+            GUI.Box(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), GUIContent.none);
+
+            //Drawing the healthbox
+            GUI.skin.box.normal.background = healthTexture;
+            GUI.Box(new Rect(healthXPos, healthYPos, healthWidth, healthHeight), GUIContent.none);
+
+            GUI.Label(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), ("HEALTH ") + agent.GetHealth().ToString(), healthStyle);
+
+        }
     }
 
     private void OnDrawGizmosSelected()

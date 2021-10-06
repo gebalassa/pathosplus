@@ -7,7 +7,7 @@ using PathOS;
 
 /*
 PathOSManager.cs 
-PathOSManager (c) Nine Penguins (Samantha Stahlke) 2018
+PathOSManager (c) Nine Penguins (Samantha Stahlke) 2018 Atiya Nova 2021
 */
 
 //Simple class for defining entities in the level.
@@ -61,6 +61,9 @@ public class PathOSManager : NPSingleton<PathOSManager>
 
     private List<PathOSAgent> agents = new List<PathOSAgent>();
 
+    //Combat/health variables
+    public bool endSimulationOnDeath = false;
+
     private void Awake()
 	{
         bool warned = false;
@@ -105,7 +108,7 @@ public class PathOSManager : NPSingleton<PathOSManager>
 
 #if UNITY_EDITOR
 
-        bool stopSimulation = limitSimulationTime && simulationTimer > maxSimulationTime;
+        bool stopSimulation = (limitSimulationTime && simulationTimer > maxSimulationTime) || (endSimulationOnDeath && AreAllAgentsDead());
 
         if (!stopSimulation)
         {
@@ -181,6 +184,19 @@ public class PathOSManager : NPSingleton<PathOSManager>
             }           
         }
 #endif
+    }
+
+    private bool AreAllAgentsDead()
+    {
+        for (int i = 0; i < agents.Count; ++i)
+        {
+            if (!agents[i].IsDead())
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void ClearEntities()

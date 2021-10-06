@@ -113,6 +113,8 @@ public class PathOSAgent : MonoBehaviour
 
     //Health variables
     private float health = 100.0f;
+    private bool dead = false;
+
     private void Awake()
     { 
         eyes = GetComponent<PathOSAgentEyes>();
@@ -700,6 +702,8 @@ public class PathOSAgent : MonoBehaviour
 
         Time.timeScale = timeScale;
 
+        if (health <= 0 && !dead) dead = true; 
+
         //If we've reached our destination, reset the number of times
         //we've "changed our mind" without doing anything.
         if (changeTargetCount > 0
@@ -1009,5 +1013,10 @@ public class PathOSAgent : MonoBehaviour
     public float GetHealth()
     {
         return health;
+    }
+
+    public bool IsDead()
+    {
+        return dead;
     }
 }
