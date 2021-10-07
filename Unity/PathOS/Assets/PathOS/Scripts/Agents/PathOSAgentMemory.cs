@@ -98,7 +98,7 @@ public class PathOSAgentMemory : MonoBehaviour
             if (Vector3.SqrMagnitude(entity.XZActualPos() - agentPos)
                 < visitThresholdSqr
                 && entity.entity.entityType != EntityType.ET_GOAL_COMPLETION
-                && entity.entity.entityType == targetEntity.entityType)
+                && (targetEntity != null && entity.entity.entityType == targetEntity.entityType))
             {
                 entity.Visit(this.gameObject, PathOSAgent.logger);
             }
