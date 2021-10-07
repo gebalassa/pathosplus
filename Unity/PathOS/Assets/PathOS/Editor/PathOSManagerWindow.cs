@@ -372,7 +372,6 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.PropertyField(limitSimulationTime);
         if (limitSimulationTime.boolValue) EditorGUILayout.PropertyField(maxSimulationTime);
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
-        EditorGUILayout.PropertyField(endSimulationOnDeath, deathLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 
         //Level markup panel.
@@ -661,6 +660,41 @@ public class PathOSManagerWindow : EditorWindow
     {
         if (hasManager && null == managerReference)
             managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+    }
+
+    public void OnResourceOpen()
+    {
+
+        EditorGUI.BeginChangeCheck();
+
+        GrabManagerReference();
+        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+            as PathOSManager;
+
+
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
+        {
+            hasManager = managerReference != null;
+            managerInitialized = false;
+
+            if (hasManager)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
+        }
+
+        if (managerReference == null) return;
+
+        EditorGUILayout.Space();
+
+        if (!managerInitialized) InitializeManager();
+
+        Selection.objects = new Object[] { managerReference.gameObject };
+
+        serial.Update();
+        EditorGUILayout.PropertyField(endSimulationOnDeath, deathLabel);
+        serial.ApplyModifiedProperties();
     }
 
 }

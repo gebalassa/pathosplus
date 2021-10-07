@@ -115,6 +115,7 @@ public class PathOSWindow : EditorWindow
                 profileWindow.OnWindowOpen();
                 break;
             case (int)Tabs.ExpertEvaluation:
+                OnEvaluationOpen();
                 break;
         }
         GUILayout.EndScrollView();
@@ -193,6 +194,14 @@ public class PathOSWindow : EditorWindow
 
     private void OnResourcesOpen()
     {
+        agentWindow.OnResourceOpen();
+
+        EditorGUILayout.Space(20);
+        EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
+        EditorGUILayout.Space(20);
+
+        managerWindow.OnResourceOpen();
+
     }
 
     private void OnEvaluationOpen()

@@ -23,7 +23,7 @@ public class PathOSAgentWindow : EditorWindow
     private PathOSAgentEyes eyeReference;
     private PathOSAgentRenderer rendererReference;
 
-    private Editor currentTransformEditor, currentAgentEditor, currentMemoryEditor, 
+    private Editor currentTransformEditor, currentAgentEditor, currentMemoryEditor,
         currentEyeEditor, currentRendererEditor;
 
     //Inspector variables
@@ -49,12 +49,17 @@ public class PathOSAgentWindow : EditorWindow
     private SerializedProperty exploreThreshold;
     private SerializedProperty exploreTargetMargin;
 
+    //Properties for health
+    private SerializedProperty enemyHealthLoss;
+    private SerializedProperty hazardHealthLoss;
+    private SerializedProperty resourceHealthGain;
+    private Texture2D enemy_hazard, enemy_regular, resource_health;
+
     private Dictionary<Heuristic, string> heuristicLabels;
 
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
     private bool agentInitialized = false;
-
 
     [SerializeField]
     private bool hasAgent;
@@ -79,6 +84,13 @@ public class PathOSAgentWindow : EditorWindow
 
         agentInitialized = false;
         hasAgent = agentReference != null;
+
+        //Health variables
+        enemy_regular = Resources.Load<Texture2D>("hazard_enemy");
+        enemy_hazard = Resources.Load<Texture2D>("hazard_environment");
+        resource_health = Resources.Load<Texture2D>("resource_preservation");
+
+
     }
 
     private void OnDestroy()
@@ -135,7 +147,7 @@ public class PathOSAgentWindow : EditorWindow
         if (!agentInitialized) InitializeAgent();
 
         Selection.objects = new Object[] { agentReference.gameObject };
-        
+
         Editor editor = Editor.CreateEditor(agentReference.gameObject);
         currentAgentEditor = Editor.CreateEditor(agentReference);
         currentMemoryEditor = Editor.CreateEditor(memoryReference);
@@ -144,7 +156,7 @@ public class PathOSAgentWindow : EditorWindow
         currentTransformEditor = Editor.CreateEditor(agentReference.gameObject.transform);
 
         //// Shows the created Editor beneath CustomEditor
-    
+
         editor.DrawHeader();
 
         currentTransformEditor.DrawHeader();
@@ -187,6 +199,10 @@ public class PathOSAgentWindow : EditorWindow
         visitThreshold = serial.FindProperty("visitThreshold");
         exploreThreshold = serial.FindProperty("exploreThreshold");
         exploreTargetMargin = serial.FindProperty("exploreTargetMargin");
+
+        enemyHealthLoss = serial.FindProperty("enemyHealthLoss");
+        hazardHealthLoss = serial.FindProperty("hazardHealthLoss");
+        resourceHealthGain = serial.FindProperty("resourceHealthGain");
 
         agentReference.RefreshHeuristicList();
 
@@ -308,5 +324,68 @@ public class PathOSAgentWindow : EditorWindow
         if (hasAgent && null == agentReference)
             agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
     }
+    public void OnResourceOpen()
+    {
+        EditorGUI.BeginChangeCheck();
 
+        GrabAgentReference();
+        agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
+            as PathOSAgent;
+
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
+        {
+            hasAgent = agentReference != null;
+            agentInitialized = false;
+
+            if (hasAgent)
+            {
+                agentID = agentReference.GetInstanceID();
+            }
+        }
+
+        if (agentReference == null) return;
+
+        EditorGUILayout.Space();
+
+        //Doing the initialization
+        if (!agentInitialized) InitializeAgent();
+
+        Selection.objects = new Object[] { agentReference.gameObject };
+
+        serial.Update();
+
+        EditorGUI.indentLevel += 4;
+        EditorGUIUtility.labelWidth = 200.0f;
+        EditorGUILayout.Space(25);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 130, 30, 30), enemy_regular);
+        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Regular Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 170, 30, 30), enemy_hazard);
+        hazardHealthLoss.floatValue = EditorGUILayout.FloatField("Hazard Enemy Damage: ", hazardHealthLoss.floatValue);
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 215, 30, 30), resource_health);
+        resourceHealthGain.floatValue = EditorGUILayout.FloatField("Resource Health Gain: ", resourceHealthGain.floatValue);
+        GUILayout.EndHorizontal();
+
+        EditorGUI.indentLevel -= 4;
+
+        serial.ApplyModifiedProperties();
+
+        if (GUI.changed && !EditorApplication.isPlaying)
+        {
+            EditorUtility.SetDirty(agentReference);
+            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+        }
+    }
 }

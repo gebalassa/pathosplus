@@ -114,6 +114,7 @@ public class PathOSAgent : MonoBehaviour
     //Health variables
     private float health = 100.0f;
     private bool dead = false;
+    public float enemyHealthLoss = 10.0f, hazardHealthLoss = 10.0f, resourceHealthGain = 10.0f;
 
     private void Awake()
     { 
@@ -988,17 +989,24 @@ public class PathOSAgent : MonoBehaviour
     //Needs to be improved/edited
     private void CalculateHealth(EntityType entityType)
     {
-        if (entityType == EntityType.ET_HAZARD_ENEMY || entityType == EntityType.ET_HAZARD_ENVIRONMENT)
+        switch (entityType)
         {
-            if (health > 0) health -= 10.0f;
-            return;
+            case EntityType.ET_HAZARD_ENEMY:
+                if (health > 0) health -= enemyHealthLoss;
+                break;
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                if (health > 0) health -= hazardHealthLoss;
+                break;
+            case EntityType.ET_RESOURCE_PRESERVATION:
+                if (health < 100) health += resourceHealthGain;
+                break;
+            default:
+                break;
         }
 
-        if (entityType == EntityType.ET_RESOURCE_PRESERVATION)
-        {
-            if (health < 100) health += 10.0f;
-            return;
-        }
+        //Making sure the health values don't get messed up
+        if (health < 0) health = 0;
+        else if (health > 100) health = 100;
     }
     
     public Vector3 GetTargetPosition()
