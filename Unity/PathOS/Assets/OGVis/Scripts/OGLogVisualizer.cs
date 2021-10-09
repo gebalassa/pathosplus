@@ -81,7 +81,6 @@ public class OGLogVisualizer : MonoBehaviour
         public Vector3 pos;
 
         public string displayName = "";
-
         public AggregateInteraction(string displayName, Vector3 pos)
         {
             this.displayName = displayName;

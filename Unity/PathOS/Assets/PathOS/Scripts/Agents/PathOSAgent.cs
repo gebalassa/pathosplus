@@ -114,8 +114,10 @@ public class PathOSAgent : MonoBehaviour
     //Health variables
     private float health = 100.0f;
     private bool dead = false;
-    public float enemyHealthLoss = 10.0f;
-    public float hazardHealthLoss = 10.0f, resourceHealthGain = 10.0f;
+    public TimeRange lowEnemyDamage = new TimeRange(10,30), medEnemyDamage = new TimeRange(30,50),
+        highEnemyDamage = new TimeRange(50,70), bossEnemyDamage = new TimeRange(70,100),
+        hazardDamage = new TimeRange(10,20), lowHealthGain = new TimeRange(10, 30),
+        medHealthGain = new TimeRange(30, 60), highHealthGain = new TimeRange(70,100);
 
     private void Awake()
     { 
@@ -849,15 +851,12 @@ public class PathOSAgent : MonoBehaviour
             completed = true;
             gameObject.SetActive(false);
         }
-
     }
-
     private void RouteDestination()
     {
         navAgent.SetDestination(currentDest.pos);
         pathResolved = false;
     }
-
     private void ResetDestinationSelf()
     {
         currentDest.pos = GetPosition();
@@ -994,22 +993,28 @@ public class PathOSAgent : MonoBehaviour
         switch (entityType)
         {
             case EntityType.ET_HAZARD_ENEMY_LOW:
-                if (health > 0) health -= enemyHealthLoss;
+                health -= lowEnemyDamage.min;
                 break;
             case EntityType.ET_HAZARD_ENEMY_MED:
-                if (health > 0) health -= enemyHealthLoss;
+                health -= medEnemyDamage.min;
                 break;
             case EntityType.ET_HAZARD_ENEMY_HIGH:
-                if (health > 0) health -= enemyHealthLoss;
+                health -= highEnemyDamage.min;
                 break;
             case EntityType.ET_HAZARD_ENEMY_BOSS:
-                if (health > 0) health -= enemyHealthLoss;
+                health -= bossEnemyDamage.min;
                 break;
             case EntityType.ET_HAZARD_ENVIRONMENT:
-                if (health > 0) health -= hazardHealthLoss;
+                health -= hazardDamage.min;
                 break;
-            case EntityType.ET_RESOURCE_PRESERVATION:
-                if (health < 100) health += resourceHealthGain;
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                health += lowHealthGain.min;
+                break;
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                health += medHealthGain.min;
+                break;
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                health += highHealthGain.min;
                 break;
             default:
                 break;

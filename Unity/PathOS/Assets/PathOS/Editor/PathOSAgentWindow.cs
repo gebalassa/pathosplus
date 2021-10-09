@@ -50,10 +50,7 @@ public class PathOSAgentWindow : EditorWindow
     private SerializedProperty exploreTargetMargin;
 
     //Properties for health
-    private SerializedProperty enemyHealthLoss;
-    private SerializedProperty hazardHealthLoss;
-    private SerializedProperty resourceHealthGain;
-    private Texture2D enemy_hazard, enemy_low, enemy_med, enemy_high, resource_health;
+    private Texture2D enemy_hazard, enemy_low, enemy_med, enemy_high, enemy_boss, health_low, health_med, health_high;
 
     private Dictionary<Heuristic, string> heuristicLabels;
 
@@ -89,8 +86,11 @@ public class PathOSAgentWindow : EditorWindow
         enemy_low = Resources.Load<Texture2D>("hazard_enemy_low");
         enemy_med = Resources.Load<Texture2D>("hazard_enemy_medium");
         enemy_high = Resources.Load<Texture2D>("hazard_enemy_high");
+        enemy_boss = Resources.Load<Texture2D>("hazard_enemy_boss");
         enemy_hazard = Resources.Load<Texture2D>("hazard_environment");
-        resource_health = Resources.Load<Texture2D>("resource_preservation");
+        health_low = Resources.Load<Texture2D>("resource_preservation_low");
+        health_med = Resources.Load<Texture2D>("resource_preservation_med");
+        health_high = Resources.Load<Texture2D>("resource_preservation_high");
     }
 
     private void OnDestroy()
@@ -195,10 +195,6 @@ public class PathOSAgentWindow : EditorWindow
         visitThreshold = serial.FindProperty("visitThreshold");
         exploreThreshold = serial.FindProperty("exploreThreshold");
         exploreTargetMargin = serial.FindProperty("exploreTargetMargin");
-
-        enemyHealthLoss = serial.FindProperty("enemyHealthLoss");
-        hazardHealthLoss = serial.FindProperty("hazardHealthLoss");
-        resourceHealthGain = serial.FindProperty("resourceHealthGain");
 
         agentReference.RefreshHeuristicList();
 
@@ -351,44 +347,98 @@ public class PathOSAgentWindow : EditorWindow
 
         serial.Update();
 
-        EditorGUI.indentLevel += 4;
         EditorGUIUtility.labelWidth = 200.0f;
-        EditorGUILayout.Space(25);
+
+        EditorGUILayout.Space(15);
+        EditorGUILayout.LabelField("Enemy Damage Values", EditorStyles.boldLabel);
+        EditorGUILayout.Space(15);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 130, 30, 30), enemy_low);
-        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Low Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUI.DrawTexture(new Rect(20, 155, 30, 30), enemy_low);
+
+        PathOS.EditorUI.FullMinMaxSlider("\t Low Enemy Damage",
+            ref agentReference.lowEnemyDamage.min,
+            ref agentReference.lowEnemyDamage.max,
+            0.0f,
+            100.0f);
         GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 173, 30, 30), enemy_med);
-        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Medium Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUI.DrawTexture(new Rect(20, 198, 30, 30), enemy_med);
+        PathOS.EditorUI.FullMinMaxSlider("\t Medium Enemy Damage",
+                  ref agentReference.medEnemyDamage.min,
+                  ref agentReference.medEnemyDamage.max,
+                  0.0f,
+                  100.0f);
+        
         GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 215, 30, 30), enemy_high);
-        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Large Enemy Damage: ", enemyHealthLoss.floatValue);
-        GUILayout.EndHorizontal();
+        GUI.DrawTexture(new Rect(20, 240, 30, 30), enemy_high);
+
+        PathOS.EditorUI.FullMinMaxSlider("\t High Enemy Damage",
+            ref agentReference.highEnemyDamage.min,
+            ref agentReference.highEnemyDamage.max,
+            0.0f,
+            100.0f); GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 255, 30, 30), enemy_hazard);
-        hazardHealthLoss.floatValue = EditorGUILayout.FloatField("Hazard Enemy Damage: ", hazardHealthLoss.floatValue);
-        GUILayout.EndHorizontal();
+        GUI.DrawTexture(new Rect(20, 280, 30, 30), enemy_boss);
+
+        PathOS.EditorUI.FullMinMaxSlider("\t Boss Enemy Damage",
+            ref agentReference.bossEnemyDamage.min,
+            ref agentReference.bossEnemyDamage.max,
+            0.0f,
+            100.0f); GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 297, 30, 30), resource_health);
-        resourceHealthGain.floatValue = EditorGUILayout.FloatField("Resource Health Gain: ", resourceHealthGain.floatValue);
+        GUI.DrawTexture(new Rect(20, 322, 30, 30), enemy_hazard);
+        PathOS.EditorUI.FullMinMaxSlider("\t Hazard Damage",
+         ref agentReference.hazardDamage.min,
+         ref agentReference.hazardDamage.max,
+         0.0f,
+         100.0f); 
         GUILayout.EndHorizontal();
 
-        EditorGUI.indentLevel -= 4;
+        EditorGUILayout.Space(15);
+        EditorGUILayout.LabelField("Resource Values", EditorStyles.boldLabel);
+        EditorGUILayout.Space(15);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 397, 30, 30), health_low);
+        PathOS.EditorUI.FullMinMaxSlider("\t Low Health Gain",
+               ref agentReference.lowHealthGain.min,
+               ref agentReference.lowHealthGain.max,
+               0.0f,
+               100.0f); GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 440, 30, 30), health_med);
+        PathOS.EditorUI.FullMinMaxSlider("\t Medium Health Gain",
+               ref agentReference.medHealthGain.min,
+               ref agentReference.medHealthGain.max,
+               0.0f,
+               100.0f); GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 482, 30, 30), health_high);
+        PathOS.EditorUI.FullMinMaxSlider("\t High Health Gain",
+               ref agentReference.highHealthGain.min,
+               ref agentReference.highHealthGain.max,
+               0.0f,
+               100.0f); GUILayout.EndHorizontal();
 
         serial.ApplyModifiedProperties();
 

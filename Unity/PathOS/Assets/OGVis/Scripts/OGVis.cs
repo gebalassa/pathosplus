@@ -13,6 +13,12 @@ public struct TimeRange
 {
     public float min;
     public float max;
+
+    public TimeRange(float newMin, float newMax)
+    {
+        min = newMin;
+        max = newMax;
+    }
 }
 
 namespace OGVis

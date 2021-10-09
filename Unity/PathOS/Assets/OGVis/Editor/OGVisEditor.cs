@@ -23,10 +23,6 @@ public class OGVisEditor : Editor
     private OGLogVisualizer vis;
     private SerializedObject serial;
 
-    //Logfile management.
-    private static bool fileFoldout = true;
-    private string lblFileFoldout = "Manage Log Files";
-
     private const int pathDisplayLength = 32;
     private GUIStyle errorStyle = new GUIStyle();
 
@@ -46,9 +42,6 @@ public class OGVisEditor : Editor
     private GUIContent noContent = new GUIContent("");
 
     //Heatmap.
-    private static bool heatmapFoldout = false;
-    private string lblHeatmapFoldout = "Heatmap";
-
     private SerializedProperty propHeatmapAlpha;
     private SerializedProperty propHeatmapTileSize;
 
@@ -59,10 +52,6 @@ public class OGVisEditor : Editor
     private SerializedProperty propHeatmapTimeSlice;
     private GUIContent toggleTimeSliceLabel = new GUIContent("Use Time Range",
                 "Only include data within the range\nspecified in the filtering tab");
-
-    //Path display settings.
-    private static bool pathFoldout = false;
-    private string lblPathFoldout = "Individual Paths";
 
     private PathOSAgent agentReference;
     private List<PathOS.Heuristic> heuristics = new List<PathOS.Heuristic>();

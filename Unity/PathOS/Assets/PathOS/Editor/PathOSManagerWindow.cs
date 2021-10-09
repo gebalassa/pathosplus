@@ -132,19 +132,8 @@ public class PathOSManagerWindow : EditorWindow
     [SerializeField]
     private int managerID;
 
-
-    //Visualization
-    private int tabSelection = 0;
-    string[] tabLabels = { "Heatmaps", "Individual Paths", "Entity Interactions" };
-    private OGLogVisualizer vis;
-
-    //Logfile management.
-    private static bool fileFoldout = true;
-    private string lblFileFoldout = "Manage Log Files";
-
     private void OnEnable()
     {
-
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);

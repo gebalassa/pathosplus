@@ -165,16 +165,6 @@ public class PathOSAgentBatchingWindow : EditorWindow
     //Colors
     private Color bgColor, btnColor, btnColorLight, btnColorDark;
 
-    //
-    //[MenuItem("Window/PathOS Agent Batching")]
-    //public static void ShowWindow()
-    //{
-    //    EditorWindow window = EditorWindow.GetWindow(typeof(PathOSAgentBatchingWindow), true, 
-    //        "PathOS Agent Batching");
-    //
-    //    window.minSize = new Vector2(420.0f, 420.0f);
-    //}
-
     private void OnEnable()
     {
         //Background color
