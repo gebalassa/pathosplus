@@ -2236,12 +2236,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a06aa3e2ed1f2cc4e84596b432289f06, type: 3}
---- !u!1 &236202830 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8118997186272028704, guid: a06aa3e2ed1f2cc4e84596b432289f06,
-    type: 3}
-  m_PrefabInstance: {fileID: 236202829}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &236202831 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8118997186272028708, guid: a06aa3e2ed1f2cc4e84596b432289f06,
@@ -5360,6 +5354,12 @@ PrefabInstance:
 --- !u!4 &483175952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3826267276264317640, guid: dc14a07bc50af7b44b6b9c1fddf02512,
+    type: 3}
+  m_PrefabInstance: {fileID: 483175951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &483175953 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3823033740616153328, guid: dc14a07bc50af7b44b6b9c1fddf02512,
     type: 3}
   m_PrefabInstance: {fileID: 483175951}
   m_PrefabAsset: {fileID: 0}
@@ -19807,7 +19807,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[42].name
-      value: House 1
+      value: Rock - Light 2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -20043,7 +20043,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levelEntities.Array.data[42].objectRef
       value: 
-      objectReference: {fileID: 236202830}
+      objectReference: {fileID: 483175953}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[4].entityType
