@@ -123,7 +123,6 @@ public class PathOSAgentRenderer : MonoBehaviour
 
         healthStyle = new GUIStyle();
         healthStyle.alignment = TextAnchor.MiddleCenter;
-        healthStyle.fontSize = 40;
 
         transformCam = Camera.main;
         sceneInit = true;
@@ -340,7 +339,8 @@ public class PathOSAgentRenderer : MonoBehaviour
             GUI.skin.box.normal.background = healthTexture;
             GUI.Box(new Rect(healthXPos, healthYPos, healthWidth, healthHeight), GUIContent.none);
 
-            GUI.Label(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), ("HEALTH ") + agent.GetHealth().ToString(), healthStyle);
+            healthStyle.fontSize = Screen.width/45;
+            GUI.Label(new Rect(healthXPos, healthYPos, Screen.width / 6, healthHeight), ("HEALTH ") + agent.GetHealth().ToString("F1"), healthStyle);
 
         }
     }

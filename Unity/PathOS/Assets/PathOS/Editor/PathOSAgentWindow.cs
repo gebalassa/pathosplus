@@ -53,7 +53,7 @@ public class PathOSAgentWindow : EditorWindow
     private SerializedProperty enemyHealthLoss;
     private SerializedProperty hazardHealthLoss;
     private SerializedProperty resourceHealthGain;
-    private Texture2D enemy_hazard, enemy_regular, resource_health;
+    private Texture2D enemy_hazard, enemy_low, enemy_med, enemy_high, resource_health;
 
     private Dictionary<Heuristic, string> heuristicLabels;
 
@@ -86,16 +86,15 @@ public class PathOSAgentWindow : EditorWindow
         hasAgent = agentReference != null;
 
         //Health variables
-        enemy_regular = Resources.Load<Texture2D>("hazard_enemy");
+        enemy_low = Resources.Load<Texture2D>("hazard_enemy_low");
+        enemy_med = Resources.Load<Texture2D>("hazard_enemy_medium");
+        enemy_high = Resources.Load<Texture2D>("hazard_enemy_high");
         enemy_hazard = Resources.Load<Texture2D>("hazard_environment");
         resource_health = Resources.Load<Texture2D>("resource_preservation");
-
-
     }
 
     private void OnDestroy()
     {
-
         agentInitialized = false;
         PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
 
@@ -111,11 +110,8 @@ public class PathOSAgentWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
-
-
     public void OnWindowOpen()
     {
-
         //Not sure if this will work or not
         EditorGUI.BeginChangeCheck();
 
@@ -360,21 +356,35 @@ public class PathOSAgentWindow : EditorWindow
         EditorGUILayout.Space(25);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 130, 30, 30), enemy_regular);
-        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Regular Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUI.DrawTexture(new Rect(20, 130, 30, 30), enemy_low);
+        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Low Enemy Damage: ", enemyHealthLoss.floatValue);
         GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 170, 30, 30), enemy_hazard);
+        GUI.DrawTexture(new Rect(20, 173, 30, 30), enemy_med);
+        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Medium Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 215, 30, 30), enemy_high);
+        enemyHealthLoss.floatValue = EditorGUILayout.FloatField("Large Enemy Damage: ", enemyHealthLoss.floatValue);
+        GUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(20);
+
+        GUILayout.BeginHorizontal();
+        GUI.DrawTexture(new Rect(20, 255, 30, 30), enemy_hazard);
         hazardHealthLoss.floatValue = EditorGUILayout.FloatField("Hazard Enemy Damage: ", hazardHealthLoss.floatValue);
         GUILayout.EndHorizontal();
 
         EditorGUILayout.Space(20);
 
         GUILayout.BeginHorizontal();
-        GUI.DrawTexture(new Rect(20, 215, 30, 30), resource_health);
+        GUI.DrawTexture(new Rect(20, 297, 30, 30), resource_health);
         resourceHealthGain.floatValue = EditorGUILayout.FloatField("Resource Health Gain: ", resourceHealthGain.floatValue);
         GUILayout.EndHorizontal();
 

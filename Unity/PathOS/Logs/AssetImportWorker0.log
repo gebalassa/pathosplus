@@ -1,0 +1,566 @@
+Using pre-set license
+Built from '2021.1/release' branch; Version is '2021.1.0f1 (61a549675243) revision 6399305'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1237; Version 2009; 64bit' Language: 'en' Physical Memory: 16233 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity Editors\2021.1.0f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+59940
+Successfully changed project path to: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 49.89 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.0f1 (61a549675243)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f10)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.14.7168
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56232
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.003081 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 42.67 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.291 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004044 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.917 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.49 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 82.6 MB.
+System memory in use after: 82.7 MB.
+
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2272.
+Total: 5.287000 ms (FindLiveObjects: 0.130200 ms CreateObjectMapping: 0.056600 ms MarkObjects: 5.020700 ms  DeleteObjects: 0.078800 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/PathOS/Resources/cursor_hazard_environment.png
+  artifactKey: Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_environment.png using Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75c6506006ed2e9511a76421b48dbbb9') in 0.062964 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000364 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2780bd8a6fcf25af6f8476c07dcf2a5') in 0.015594 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bb4ef6efcdcf724ad49a01d6dad495d') in 0.014180 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000504 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1e1a3b9c9c34bdccf7d3e14c8e51e45') in 0.014118 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_boss.png
+  artifactKey: Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_boss.png using Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9818d67ae7c6da835db0a3d59070754') in 0.011321 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000261 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_medium.png
+  artifactKey: Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_medium.png using Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac63df53f9b06f277702d850f550210a') in 0.013949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000355 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e0769b321d3c0412732b3951ec1f43c') in 0.015668 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000372 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_low.png
+  artifactKey: Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_low.png using Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c2363e1763fcc0b07803fbcdd9c916b') in 0.010907 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000346 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_high.png
+  artifactKey: Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_high.png using Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16b15180b558597624fe372b45a2ce26') in 0.015311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.844292 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_boss.png
+  artifactKey: Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_boss.png using Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '704aeaaa83d92f337d1e89b03ebffe24') in 0.014733 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.942510 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_environment.png
+  artifactKey: Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_environment.png using Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8498b3c3db96127670cb0ff1f85ef044') in 0.011894 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.002157 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_medium.png
+  artifactKey: Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_medium.png using Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '872a8020d4a0d674c39c0ea4931835b3') in 0.016458 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.164610 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_low.png
+  artifactKey: Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_low.png using Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dc4622cf6de27edfbe640e4712e39c9') in 0.012115 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.579464 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_high.png
+  artifactKey: Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_high.png using Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c38f6973082b1d1783c70b4159ad86ee') in 0.011482 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.404481 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '212bea33ea99bfe37616105eb8d40abb') in 0.010539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.041429 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5c8161625fe930f88058368a1b14d8c') in 0.010801 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.603390 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a303b984b455ddb54d25fda398f0cc01') in 0.011824 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.389129 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ea902905065d146b4dce97e850c918d') in 0.014699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 41.422181 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_boss.png
+  artifactKey: Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_boss.png using Guid(90538c608b3c58e4da547260d59cf456) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fe1759d4bb64100765f6824016c24e0') in 0.022260 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000398 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_medium.png
+  artifactKey: Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_medium.png using Guid(0135ff8d35bdcca448940094447d56d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '719d9576714f21f8508ee3cebf0f6034') in 0.010418 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_low.png
+  artifactKey: Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_low.png using Guid(77fbd08d215c30d40b9a53e73dc1acbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e21c08a931f6b29111f20890860b9133') in 0.008142 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000515 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_enemy_high.png
+  artifactKey: Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_enemy_high.png using Guid(e4f94d67e46adfd4393355c58674d904) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '711889efb43aa92805c27dc1998724df') in 0.010438 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.423840 seconds.
+  path: Assets/PathOS/Resources/cursor_hazard_environment.png
+  artifactKey: Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/cursor_hazard_environment.png using Guid(53aed3e882a733b43af68e3f6077e106) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f258a7a70f8f6d3961f6ba9babf04fe7') in 0.011931 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 9.841655 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bf370b7ccef8256f80be77fcce6103d') in 0.012454 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000272 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0185b19f55ab11ed1ece83f8bc9fa7d') in 0.009966 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0d4b15fa195b9215d0b0c84dfcaf1324') in 0.011067 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000315 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a7458a9615375a9b4a2fd875f679e45') in 0.011221 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 13.208465 seconds.
+  path: Assets/PathOS/Resources/hazard_environment.png
+  artifactKey: Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_environment.png using Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcd0cd552bced3b13e334eb288869342') in 0.015848 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.739754 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11584045216160df4c003f3ca32b3703') in 0.011884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000353 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '167a3af029fea2e7d38ac0725a8213d5') in 0.007723 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000310 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b6d5c8da5db3438ab5aa5c505dd55df2') in 0.009909 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000318 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f3a89bdc21b383ed90c04591e3cce5e') in 0.013725 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000532 seconds.
+  path: Assets/PathOS/Resources/hazard_environment.png
+  artifactKey: Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_environment.png using Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cab05c50990d8bc04c2baa8f14470500') in 0.013914 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.163558 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5281249f7d7715bb67c963b43deb4946') in 0.007985 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000328 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6de2aeaa8fb6a5428f322c6e08dc0a6e') in 0.009483 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000302 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41eb88ac728fb0e0d02d4ede70f7d8c9') in 0.009911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7730ee76a118063de9ed3329619be4e8') in 0.007632 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000351 seconds.
+  path: Assets/PathOS/Resources/hazard_environment.png
+  artifactKey: Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_environment.png using Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6fe5fbd203f96cb722f082ed8dfaefa') in 0.007073 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 12.080219 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_boss.png
+  artifactKey: Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_boss.png using Guid(c67251b4eae5c8941b533773e944b148) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d91a2ff66a03757140376ffed9a8214') in 0.011177 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000266 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_low.png
+  artifactKey: Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_low.png using Guid(a6c2d233a3f0343499899defffa15b3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dca5bcb1f7c5468b1b5cc3e326ca116') in 0.009014 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000396 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_high.png
+  artifactKey: Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_high.png using Guid(12b8c9cc05129214494d19ea1f0149f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cd218619fb7cad4f71ad787d96c3d3b') in 0.010959 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000387 seconds.
+  path: Assets/PathOS/Resources/hazard_enemy_medium.png
+  artifactKey: Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_enemy_medium.png using Guid(25b8b771f4c61f940803f2d3b0e65620) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '889ee3b3f1daeeac0214df9c14c10fc9') in 0.009534 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000341 seconds.
+  path: Assets/PathOS/Resources/hazard_environment.png
+  artifactKey: Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PathOS/Resources/hazard_environment.png using Guid(0897562c595adcc4ea0dec15d3478729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58dd839469f44998cd69c9ac5561c548') in 0.006596 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005048 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.949 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1831 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.4 MB.
+System memory in use after: 106.5 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2889.
+Total: 5.744000 ms (FindLiveObjects: 0.189100 ms CreateObjectMapping: 0.067600 ms MarkObjects: 5.465600 ms  DeleteObjects: 0.021000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003840 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.898 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.1 MB.
+System memory in use after: 106.3 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2892.
+Total: 6.737900 ms (FindLiveObjects: 0.208900 ms CreateObjectMapping: 0.077700 ms MarkObjects: 6.420400 ms  DeleteObjects: 0.029900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003889 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.880 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.2 MB.
+System memory in use after: 106.3 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2895.
+Total: 5.762500 ms (FindLiveObjects: 0.212600 ms CreateObjectMapping: 0.079600 ms MarkObjects: 5.448100 ms  DeleteObjects: 0.021100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003989 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.899 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.2 MB.
+System memory in use after: 106.4 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2898.
+Total: 5.346100 ms (FindLiveObjects: 0.196800 ms CreateObjectMapping: 0.065800 ms MarkObjects: 5.061600 ms  DeleteObjects: 0.020600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004461 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.883 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.2 MB.
+System memory in use after: 106.4 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2901.
+Total: 7.136200 ms (FindLiveObjects: 0.286100 ms CreateObjectMapping: 0.104900 ms MarkObjects: 6.723000 ms  DeleteObjects: 0.021200 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004431 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.861 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.3 MB.
+System memory in use after: 106.4 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2904.
+Total: 5.356300 ms (FindLiveObjects: 0.179900 ms CreateObjectMapping: 0.063000 ms MarkObjects: 5.096800 ms  DeleteObjects: 0.015800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004020 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.872 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.3 MB.
+System memory in use after: 106.4 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2907.
+Total: 6.572200 ms (FindLiveObjects: 0.200200 ms CreateObjectMapping: 0.072400 ms MarkObjects: 6.278400 ms  DeleteObjects: 0.020100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003972 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.874 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.53 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.4 MB.
+System memory in use after: 106.5 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2910.
+Total: 6.046000 ms (FindLiveObjects: 0.225800 ms CreateObjectMapping: 0.070700 ms MarkObjects: 5.723400 ms  DeleteObjects: 0.025300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003910 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.853 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.52 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.4 MB.
+System memory in use after: 106.5 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2913.
+Total: 5.853000 ms (FindLiveObjects: 0.215100 ms CreateObjectMapping: 0.076900 ms MarkObjects: 5.539300 ms  DeleteObjects: 0.021100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004307 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.51 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.888 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1821 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 106.4 MB.
+System memory in use after: 106.5 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2916.
+Total: 7.541200 ms (FindLiveObjects: 0.318100 ms CreateObjectMapping: 0.113600 ms MarkObjects: 7.088500 ms  DeleteObjects: 0.019700 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

@@ -114,7 +114,8 @@ public class PathOSAgent : MonoBehaviour
     //Health variables
     private float health = 100.0f;
     private bool dead = false;
-    public float enemyHealthLoss = 10.0f, hazardHealthLoss = 10.0f, resourceHealthGain = 10.0f;
+    public float enemyHealthLoss = 10.0f;
+    public float hazardHealthLoss = 10.0f, resourceHealthGain = 10.0f;
 
     private void Awake()
     { 
@@ -152,16 +153,17 @@ public class PathOSAgent : MonoBehaviour
             }
         }
 
+        //FOR RESOURCES EDIT THIS
         float avgAggressionScore = 0.5f
-            * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY)]
+            * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)]
             + entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float avgAdrenalineScore = 0.5f
-            * (entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENEMY)]
+            * (entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENEMY_LOW)]
             + entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float avgCautionScore = 0.5f
-            * (entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENEMY)]
+            * (entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENEMY_LOW)]
             + entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float hazardScore = heuristicScaleLookup[Heuristic.AGGRESSION] * avgAggressionScore
@@ -991,7 +993,16 @@ public class PathOSAgent : MonoBehaviour
     {
         switch (entityType)
         {
-            case EntityType.ET_HAZARD_ENEMY:
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                if (health > 0) health -= enemyHealthLoss;
+                break;
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                if (health > 0) health -= enemyHealthLoss;
+                break;
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                if (health > 0) health -= enemyHealthLoss;
+                break;
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
                 if (health > 0) health -= enemyHealthLoss;
                 break;
             case EntityType.ET_HAZARD_ENVIRONMENT:

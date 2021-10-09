@@ -337,6 +337,7 @@ public class PathOSManagerWindow : EditorWindow
             heuristicLabelList[i] = UI.heuristicLabels.Values[i];
         }
 
+
         //Todo: Just in case. Remove if this gets in the way
         if (markupToggles.Count <= 0)
         {//Set up toggles for level markup.
@@ -347,6 +348,7 @@ public class PathOSManagerWindow : EditorWindow
                     Resources.Load<Texture2D>(managerReference.entityGizmoLookup[entype]),
                     Resources.Load<Texture2D>("cursor_" + managerReference.entityGizmoLookup[entype])));
             }
+
 
             markupToggles.Add(new MarkupToggle(EntityType.ET_NONE,
                 "Clear Markup (remove from entity list)",

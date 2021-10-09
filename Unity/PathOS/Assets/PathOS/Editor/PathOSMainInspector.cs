@@ -179,6 +179,7 @@ public class PathOSMainInspector : Editor
             heuristicLabelList[i] = UI.heuristicLabels.Values[i];
         }
 
+
         //Set up toggles for level markup.
         foreach (EntityType entype in System.Enum.GetValues(typeof(EntityType)))
         {

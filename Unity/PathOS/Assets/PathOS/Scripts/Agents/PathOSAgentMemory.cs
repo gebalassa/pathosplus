@@ -371,7 +371,7 @@ public class PathOSAgentMemory : MonoBehaviour
         for (int i = 0; i < entities.Count; ++i)
         {
             if(!entities[i].visited
-                && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY
+                && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_LOW
                 || entities[i].entity.entityType == EntityType.ET_HAZARD_ENVIRONMENT))
             {
                 if (Vector3.SqrMagnitude(entities[i].entity.perceivedPos - pos) 
@@ -396,7 +396,7 @@ public class PathOSAgentMemory : MonoBehaviour
         for (int i = 0; i < entities.Count; ++i)
         {
             if(!entities[i].visited 
-                && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY
+                && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_LOW
                 || entities[i].entity.entityType == EntityType.ET_HAZARD_ENVIRONMENT))
             {
                 penalty += agent.hazardPenalty / Vector3.SqrMagnitude(

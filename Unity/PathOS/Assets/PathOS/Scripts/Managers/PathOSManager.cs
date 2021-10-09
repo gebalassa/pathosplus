@@ -37,11 +37,15 @@ public class PathOSManager : NPSingleton<PathOSManager>
         {EntityType.ET_GOAL_COMPLETION, "goal_completion" },
         {EntityType.ET_RESOURCE_ACHIEVEMENT, "resource_achievement" },
         {EntityType.ET_RESOURCE_PRESERVATION, "resource_preservation" },
-        {EntityType.ET_HAZARD_ENEMY, "hazard_enemy" },
+        {EntityType.ET_HAZARD_ENEMY_LOW, "hazard_enemy_low" },
+        {EntityType.ET_HAZARD_ENEMY_MED, "hazard_enemy_medium" },
+        {EntityType.ET_HAZARD_ENEMY_HIGH, "hazard_enemy_high" },
+        {EntityType.ET_HAZARD_ENEMY_BOSS, "hazard_enemy_boss" },
         {EntityType.ET_HAZARD_ENVIRONMENT, "hazard_environment" },
         {EntityType.ET_POI, "poi_environment" },
         {EntityType.ET_POI_NPC, "poi_npc" }
     };
+
 
     public Dictionary<EntityType, string> entityLabelLookup = new Dictionary<EntityType, string>
     {
@@ -51,7 +55,10 @@ public class PathOSManager : NPSingleton<PathOSManager>
         {EntityType.ET_GOAL_COMPLETION, "Final Goal" },
         {EntityType.ET_RESOURCE_ACHIEVEMENT, "Collectible" },
         {EntityType.ET_RESOURCE_PRESERVATION, "Self-Preservation Item (e.g., health)" },
-        {EntityType.ET_HAZARD_ENEMY, "Enemy Hazard" },
+        {EntityType.ET_HAZARD_ENEMY_LOW, "Enemy Hazard Low" },
+        {EntityType.ET_HAZARD_ENEMY_MED, "Enemy Hazard Medium" },
+        {EntityType.ET_HAZARD_ENEMY_HIGH, "Enemy Hazard High" },
+        {EntityType.ET_HAZARD_ENEMY_BOSS, "Enemy Hazard Boss" },
         {EntityType.ET_HAZARD_ENVIRONMENT, "Environmental Hazard" },
         {EntityType.ET_POI, "Point-of-Interest (e.g., setpiece)" },
         {EntityType.ET_POI_NPC, "NPC (non-hostile)" }
@@ -136,6 +143,7 @@ public class PathOSManager : NPSingleton<PathOSManager>
 
     private void OnDrawGizmosSelected()
     {
+
 #if UNITY_EDITOR
         if(!UnityEditor.EditorApplication.isPlaying)
         {

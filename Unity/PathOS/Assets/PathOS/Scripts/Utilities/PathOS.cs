@@ -4,7 +4,7 @@ using UnityEngine;
 
 /*
 PathOS.cs 
-PathOS (c) Nine Penguins (Samantha Stahlke) 2018
+PathOS (c) Nine Penguins (Samantha Stahlke) 2018 Atiya Nova 2021
 */
 
 namespace PathOS
@@ -19,7 +19,10 @@ namespace PathOS
         ET_GOAL_COMPLETION = 120,
         ET_RESOURCE_ACHIEVEMENT = 150,
         ET_RESOURCE_PRESERVATION = 160,
-        ET_HAZARD_ENEMY = 200,
+        ET_HAZARD_ENEMY_LOW = 200,
+        ET_HAZARD_ENEMY_MED = 210,
+        ET_HAZARD_ENEMY_HIGH = 220,
+        ET_HAZARD_ENEMY_BOSS = 230,
         ET_HAZARD_ENVIRONMENT = 250,
         ET_POI = 300,
         ET_POI_NPC = 350

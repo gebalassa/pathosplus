@@ -7,16 +7,16 @@ OGVis.cs
 OGVis (c) Ominous Games 2019 Atiya Nova 2021
 */
 
+//Utility class for defining custom scales.
+[System.Serializable]
+public struct TimeRange
+{
+    public float min;
+    public float max;
+}
+
 namespace OGVis
 {
-    //Utility class for defining custom scales.
-    [System.Serializable]
-    public struct TimeRange
-    {
-        public float min;
-        public float max;
-    }
-
     [System.Serializable]
     public struct Extents
     {
