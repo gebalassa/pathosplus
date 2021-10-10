@@ -165,6 +165,7 @@ public class PathOSMainInspector : Editor
 
         weightLookup = new Dictionary<(Heuristic, EntityType), float>();
 
+        manager.ResizeWeightMatrix();
         BuildWeightDictionary();
 
         entityLabelList = new string[UI.entityLabels.Count];

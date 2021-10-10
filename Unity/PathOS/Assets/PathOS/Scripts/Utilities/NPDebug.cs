@@ -16,6 +16,7 @@ public class NPDebug
         else
             Debug.LogWarning(string.Format("Warning: {0}", msg));
 
+
     }
 
     public static void LogError(string msg, System.Type caller = null)

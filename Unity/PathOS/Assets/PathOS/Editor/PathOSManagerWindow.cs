@@ -312,6 +312,7 @@ public class PathOSManagerWindow : EditorWindow
 
         weightLookup = new Dictionary<(Heuristic, EntityType), float>();
 
+        managerReference.ResizeWeightMatrix();
         BuildWeightDictionary();
 
         entityLabelList = new string[UI.entityLabels.Count];

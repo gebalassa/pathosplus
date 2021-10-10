@@ -993,28 +993,28 @@ public class PathOSAgent : MonoBehaviour
         switch (entityType)
         {
             case EntityType.ET_HAZARD_ENEMY_LOW:
-                health -= lowEnemyDamage.min;
+                health -= GetEnemyDamage(lowEnemyDamage.min, lowEnemyDamage.max);
                 break;
             case EntityType.ET_HAZARD_ENEMY_MED:
-                health -= medEnemyDamage.min;
+                health -= GetEnemyDamage(medEnemyDamage.min, medEnemyDamage.max);
                 break;
             case EntityType.ET_HAZARD_ENEMY_HIGH:
-                health -= highEnemyDamage.min;
+                health -= GetEnemyDamage(highEnemyDamage.min, highEnemyDamage.max);
                 break;
             case EntityType.ET_HAZARD_ENEMY_BOSS:
-                health -= bossEnemyDamage.min;
+                health -= GetEnemyDamage(bossEnemyDamage.min, bossEnemyDamage.max);  
                 break;
             case EntityType.ET_HAZARD_ENVIRONMENT:
-                health -= hazardDamage.min;
+                health -= GetEnemyDamage(hazardDamage.min, hazardDamage.max);
                 break;
             case EntityType.ET_RESOURCE_PRESERVATION_LOW:
-                health += lowHealthGain.min;
+                health += GetHealthGain(lowHealthGain.min, lowHealthGain.max);
                 break;
             case EntityType.ET_RESOURCE_PRESERVATION_MED:
-                health += medHealthGain.min;
+                health += GetHealthGain(medHealthGain.min, medHealthGain.max);
                 break;
             case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
-                health += highHealthGain.min;
+                health += GetHealthGain(highHealthGain.min, highHealthGain.max);
                 break;
             default:
                 break;
@@ -1024,7 +1024,18 @@ public class PathOSAgent : MonoBehaviour
         if (health < 0) health = 0;
         else if (health > 100) health = 100;
     }
+
+    private float GetHealthGain(float min, float max)
+    {
+        return Random.Range(min, max);
+    }
     
+    //Get damage values
+    private float GetEnemyDamage(float min, float max)
+    {
+        //This should take into account the experience level of the player
+        return Random.Range(min, max);
+    }
     public Vector3 GetTargetPosition()
     {
         return currentDest.pos;

@@ -102,6 +102,7 @@ public class PathOSManager : NPSingleton<PathOSManager>
         }
 
         simulationEnded = false;
+        ResizeWeightMatrix();
 
 #if UNITY_EDITOR
         EditorPrefs.SetBool(simulationEndedEditorPrefsID, false);

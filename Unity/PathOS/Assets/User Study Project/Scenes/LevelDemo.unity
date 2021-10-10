@@ -3558,6 +3558,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 339245008}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &339245010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7457343481204846079, guid: 0703903b39a57444196d524e9243a96e,
+    type: 3}
+  m_PrefabInstance: {fileID: 339245008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &345061229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5354,12 +5360,6 @@ PrefabInstance:
 --- !u!4 &483175952 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3826267276264317640, guid: dc14a07bc50af7b44b6b9c1fddf02512,
-    type: 3}
-  m_PrefabInstance: {fileID: 483175951}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &483175953 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3823033740616153328, guid: dc14a07bc50af7b44b6b9c1fddf02512,
     type: 3}
   m_PrefabInstance: {fileID: 483175951}
   m_PrefabAsset: {fileID: 0}
@@ -19447,7 +19447,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620058, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: m_Name
-      value: PathOS Agent
+      value: PathOS Manager
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620058, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -19807,7 +19807,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[42].name
-      value: Rock - Light 2 (1)
+      value: Tree - Birch (7)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -20043,7 +20043,7 @@ PrefabInstance:
         type: 3}
       propertyPath: levelEntities.Array.data[42].objectRef
       value: 
-      objectReference: {fileID: 483175953}
+      objectReference: {fileID: 339245010}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[4].entityType
@@ -20192,7 +20192,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[33].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -20202,42 +20202,42 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[35].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[36].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[37].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[38].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[39].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[40].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[41].entityType
-      value: 200
+      value: 220
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[42].entityType
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -21073,13 +21073,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
+      propertyPath: medHealthGain.max
+      value: 67.379
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: medHealthGain.min
+      value: 37.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
       propertyPath: lowEnemyDamage.max
-      value: 31.749
+      value: 37.187
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: lowEnemyDamage.min
-      value: 2.033
+      value: 7.471
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: highEnemyDamage.max
+      value: 67.379
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: highEnemyDamage.min
+      value: 47.379
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
