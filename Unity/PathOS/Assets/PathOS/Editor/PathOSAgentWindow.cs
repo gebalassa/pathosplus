@@ -151,7 +151,6 @@ public class PathOSAgentWindow : EditorWindow
         currentTransformEditor = Editor.CreateEditor(agentReference.gameObject.transform);
 
         //// Shows the created Editor beneath CustomEditor
-
         editor.DrawHeader();
 
         currentTransformEditor.DrawHeader();
@@ -160,23 +159,19 @@ public class PathOSAgentWindow : EditorWindow
 
         currentAgentEditor.DrawHeader();
         AgentEditorGUI();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(20.0f);
 
         currentMemoryEditor.DrawHeader();
         currentMemoryEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(20.0f);
 
         currentEyeEditor.DrawHeader();
         currentEyeEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(20.0f);
 
         currentRendererEditor.DrawHeader();
         currentRendererEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(20.0f);
     }
 
     private void InitializeAgent()
@@ -386,7 +381,6 @@ public class PathOSAgentWindow : EditorWindow
 
     private void DrawUIRow(Rect dimensions, Texture2D icon, string label, ref TimeRange range)
     {
-
         GUI.DrawTexture(dimensions, icon);
         PathOS.EditorUI.FullMinMaxSlider(label,
                ref range.min,

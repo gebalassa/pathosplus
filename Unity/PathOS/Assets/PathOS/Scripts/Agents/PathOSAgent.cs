@@ -157,16 +157,25 @@ public class PathOSAgent : MonoBehaviour
 
         //FOR RESOURCES EDIT THIS
         float avgAggressionScore = 0.5f
-            * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)]
-            + entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
+            * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)] +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+            entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float avgAdrenalineScore = 0.5f
-            * (entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENEMY_LOW)]
-            + entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENVIRONMENT)]);
+            * (entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENEMY_LOW)] + 
+              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+              entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float avgCautionScore = 0.5f
-            * (entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENEMY_LOW)]
-            + entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENVIRONMENT)]);
+            * (entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENEMY_LOW)] +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+            entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float hazardScore = heuristicScaleLookup[Heuristic.AGGRESSION] * avgAggressionScore
             + heuristicScaleLookup[Heuristic.ADRENALINE] * avgAdrenalineScore
@@ -1029,12 +1038,16 @@ public class PathOSAgent : MonoBehaviour
     {
         return Random.Range(min, max);
     }
-    
+
     //Get damage values
     private float GetEnemyDamage(float min, float max)
     {
-        //This should take into account the experience level of the player
-        return Random.Range(min, max);
+        float experienceAdjustment = 1.0f - experienceScale;
+        experienceAdjustment = experienceAdjustment <= 0 ? 0.1f : experienceAdjustment;
+
+        return Random.Range(
+            min * experienceAdjustment,
+            max * experienceAdjustment);
     }
     public Vector3 GetTargetPosition()
     {
