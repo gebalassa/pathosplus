@@ -26,6 +26,7 @@ public class PathOSWindow : EditorWindow
     private PathOSProfileWindow profileWindow;
     private PathOSAgentBatchingWindow batchingWindow;
     private PathOSAgentWindow agentWindow;
+    private PathOSEvaluationWindow evaluationWindow;
     private static PathOSManagerWindow managerWindow;
 
     private GameObject proxyScreenshot;
@@ -58,10 +59,12 @@ public class PathOSWindow : EditorWindow
         btnColorDark = new Color32(158, 164, 211, 255);
 
         //initializes the different windows
-        profileWindow = new PathOSProfileWindow();
+        profileWindow = (PathOSProfileWindow)ScriptableObject.CreateInstance(typeof(PathOSProfileWindow)); //new PathOSProfileWindow();
         batchingWindow = (PathOSAgentBatchingWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentBatchingWindow));
-        agentWindow = new PathOSAgentWindow();
-        managerWindow = new PathOSManagerWindow();
+        agentWindow = (PathOSAgentWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentWindow)); //new PathOSAgentWindow();
+        managerWindow = (PathOSManagerWindow)ScriptableObject.CreateInstance(typeof(PathOSManagerWindow)); //new PathOSManagerWindow();
+        evaluationWindow = (PathOSEvaluationWindow)ScriptableObject.CreateInstance(typeof(PathOSEvaluationWindow)); //new PathOSEvaluationWindow();
+
 
         //Re-establish agent reference, if it has been nullified.
         if (hasScreenshot)
@@ -115,7 +118,7 @@ public class PathOSWindow : EditorWindow
                 profileWindow.OnWindowOpen();
                 break;
             case (int)Tabs.ExpertEvaluation:
-                OnEvaluationOpen();
+                evaluationWindow.OnWindowOpen();
                 break;
         }
         GUILayout.EndScrollView();
@@ -201,11 +204,6 @@ public class PathOSWindow : EditorWindow
         EditorGUILayout.Space(20);
 
         managerWindow.OnResourceOpen();
-
-    }
-
-    private void OnEvaluationOpen()
-    {
 
     }
 }

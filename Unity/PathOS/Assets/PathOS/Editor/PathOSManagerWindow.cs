@@ -94,9 +94,6 @@ public class PathOSManagerWindow : EditorWindow
 
         public bool Layout()
         {
-            //Toggle style - should be the same as small Editor buttons.
-            //Check is placed here to avoid Unity not having initialized/
-            //properly referenced the EditorStyles on load.
             if (null == style)
             {
                 style = EditorStyles.miniButton;

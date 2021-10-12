@@ -372,6 +372,9 @@ public class PathOSAgentMemory : MonoBehaviour
         {
             if(!entities[i].visited
                 && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_LOW
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_MED
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_HIGH
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_BOSS
                 || entities[i].entity.entityType == EntityType.ET_HAZARD_ENVIRONMENT))
             {
                 if (Vector3.SqrMagnitude(entities[i].entity.perceivedPos - pos) 
@@ -397,6 +400,9 @@ public class PathOSAgentMemory : MonoBehaviour
         {
             if(!entities[i].visited 
                 && (entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_LOW
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_MED
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_HIGH
+                || entities[i].entity.entityType == EntityType.ET_HAZARD_ENEMY_BOSS
                 || entities[i].entity.entityType == EntityType.ET_HAZARD_ENVIRONMENT))
             {
                 penalty += agent.hazardPenalty / Vector3.SqrMagnitude(
