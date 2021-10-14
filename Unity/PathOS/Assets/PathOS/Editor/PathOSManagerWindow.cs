@@ -672,7 +672,7 @@ public class PathOSManagerWindow : EditorWindow
                 managerID = managerReference.GetInstanceID();
             }
         }
-
+        
         if (managerReference == null) return;
 
         EditorGUILayout.Space();

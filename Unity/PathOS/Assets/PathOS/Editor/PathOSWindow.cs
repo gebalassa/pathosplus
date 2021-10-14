@@ -45,8 +45,6 @@ public class PathOSWindow : EditorWindow
     private string lblScreenshotFoldout = "Screenshot Options";
     private static bool screenshotFoldout = false;
 
-    private bool testing = false;
-
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
     {
@@ -92,7 +90,6 @@ public class PathOSWindow : EditorWindow
         tabSelection = GUILayout.SelectionGrid(tabSelection, tabLabels, 3);
         GUILayout.EndHorizontal();
         GUI.backgroundColor = bgColor;
-        GUIStyle style = new GUIStyle();
 
         EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
         EditorGUILayout.Space();
