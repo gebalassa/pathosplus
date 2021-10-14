@@ -45,6 +45,8 @@ public class PathOSWindow : EditorWindow
     private string lblScreenshotFoldout = "Screenshot Options";
     private static bool screenshotFoldout = false;
 
+    private bool testing = false;
+
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
     {
@@ -118,7 +120,7 @@ public class PathOSWindow : EditorWindow
                 profileWindow.OnWindowOpen();
                 break;
             case (int)Tabs.ExpertEvaluation:
-                evaluationWindow.OnWindowOpen();
+                    evaluationWindow.OnWindowOpen();
                 break;
         }
         GUILayout.EndScrollView();
