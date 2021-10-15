@@ -10,13 +10,22 @@ PathOSEvaluationWindow.cs
 (Atiya Nova) 2021
  */
 
+public enum HeuristicPriority
+{
+    NONE = 0,
+    LOW = 1,
+    MED = 2,
+    HIGH = 3,
+}
+
 //for the love of god please clean this up
-class HeuristicSubcategories
+class HeuristicSubcategories : MonoBehaviour
 {
     public string subcategoryName;
     public bool subcategoryFoldout = false;
     public List<string> heuristics = new List<string>();
     public List<string> heuristicInputs = new List<string>();
+    public List<HeuristicPriority> priorities = new List<HeuristicPriority>();
 }
 
 class HeuristicCategory
@@ -26,6 +35,7 @@ class HeuristicCategory
     public List<HeuristicSubcategories> subcategories = new List<HeuristicSubcategories>();
 }
 
+[System.Serializable]
 public class PathOSEvaluationWindow : EditorWindow
 {
     List<HeuristicCategory> loadedCategories = new List<HeuristicCategory>();
@@ -40,16 +50,35 @@ public class PathOSEvaluationWindow : EditorWindow
     }
 
     public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS" };
-    DropdownOptions dropdowns = DropdownOptions.NONE;
-    int selected = 0;
+    public string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
+    public Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
+    static DropdownOptions dropdowns = DropdownOptions.NONE;
+    static int selected = 0;
 
     private void OnEnable()
     {
+
         //Background color
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
+
+        //Loading saved data
+
+        if (PlayerPrefs.HasKey("selected"))
+        {
+            selected = PlayerPrefs.GetInt("selected");
+        }
     }
 
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("selected", selected);
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("selected", selected);
+    }
     public void OnWindowOpen()
     {
         GUILayout.BeginHorizontal();
@@ -62,10 +91,6 @@ public class PathOSEvaluationWindow : EditorWindow
         if (selected != 0)
         {
             GUI.backgroundColor = btnColor;
-            if (GUILayout.Button("SAVE"))
-            {
-
-            }
 
             if (GUILayout.Button("CLEAR"))
             {
@@ -134,15 +159,20 @@ public class PathOSEvaluationWindow : EditorWindow
 
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
-                    EditorGUI.indentLevel+=2;
-                    EditorGUILayout.LabelField(loadedCategories[t].subcategories[j].heuristics[i]);
-                    loadedCategories[t].subcategories[j].heuristicInputs[i] = EditorGUILayout.TextArea(loadedCategories[t].subcategories[j].heuristicInputs[i]);
-                    EditorGUI.indentLevel-=2;
+                    EditorStyles.label.wordWrap = true;
+                    EditorGUILayout.LabelField(loadedCategories[t].subcategories[j].heuristics[i], GUILayout.MaxWidth(Screen.width * 0.7f));
+                    EditorGUILayout.BeginHorizontal();
+                    loadedCategories[t].subcategories[j].heuristicInputs[i] = EditorGUILayout.TextArea(loadedCategories[t].subcategories[j].heuristicInputs[i], GUILayout.Width(Screen.width*0.7f));
+                    GUI.backgroundColor = priorityColors[((int)loadedCategories[t].subcategories[j].priorities[i])];
+                    loadedCategories[t].subcategories[j].priorities[i] = (HeuristicPriority) EditorGUILayout.Popup((int)loadedCategories[t].subcategories[j].priorities[i], priorityStrings);
+                    GUI.backgroundColor = priorityColors[0];
+                    EditorGUILayout.EndHorizontal();
                 }
 
             }
             EditorGUI.indentLevel--;
         }
+
     }
 
     public void LoadHeuristics(string filename)
@@ -177,6 +207,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
             loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristics.Add(line);
             loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs.Add(" ");
+            loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.NONE);
         }
 
         reader.Close();
@@ -194,5 +225,10 @@ public class PathOSEvaluationWindow : EditorWindow
                 }
             }
         }
+    }
+
+    private void ExportImports()
+    {
+
     }
 }

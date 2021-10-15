@@ -26,8 +26,6 @@ public class PathOSAgent : MonoBehaviour
     public static OGLogManager logger { get; set; }
 
     //Used for testing.
-
-
     [Range(1.0f, 8.0f)]
     public float timeScale = 1.0f;
     public bool freezeAgent;

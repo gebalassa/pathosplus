@@ -10,7 +10,7 @@ PathOSWindow.cs
 
 public class PathOSWindow : EditorWindow
 {
-    enum Tabs { 
+   enum Tabs { 
         Agent = 0, 
         Resources = 1, 
         Batching = 2, 
@@ -26,7 +26,7 @@ public class PathOSWindow : EditorWindow
     private PathOSProfileWindow profileWindow;
     private PathOSAgentBatchingWindow batchingWindow;
     private PathOSAgentWindow agentWindow;
-    private PathOSEvaluationWindow evaluationWindow;
+    private static PathOSEvaluationWindow evaluationWindow;
     private static PathOSManagerWindow managerWindow;
 
     private GameObject proxyScreenshot;
@@ -64,7 +64,6 @@ public class PathOSWindow : EditorWindow
         agentWindow = (PathOSAgentWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentWindow)); //new PathOSAgentWindow();
         managerWindow = (PathOSManagerWindow)ScriptableObject.CreateInstance(typeof(PathOSManagerWindow)); //new PathOSManagerWindow();
         evaluationWindow = (PathOSEvaluationWindow)ScriptableObject.CreateInstance(typeof(PathOSEvaluationWindow)); //new PathOSEvaluationWindow();
-
 
         //Re-establish agent reference, if it has been nullified.
         if (hasScreenshot)

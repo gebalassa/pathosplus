@@ -71,7 +71,6 @@ public class PathOSAgentWindow : EditorWindow
         //Re-establish agent reference, if it has been nullified.
         if (hasAgent)
         {
-
             if (agentReference != null)
                 agentID = agentReference.GetInstanceID();
             else
