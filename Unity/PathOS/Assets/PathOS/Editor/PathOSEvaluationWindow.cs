@@ -138,8 +138,9 @@ public class PathOSEvaluationWindow : EditorWindow
 
             if (GUILayout.Button("EXPORT"))
             {
-
+                ExportHeuristics();
             }
+
             GUI.backgroundColor = bgColor;
         }
 
@@ -156,7 +157,7 @@ public class PathOSEvaluationWindow : EditorWindow
                     loadedCategories.Clear();
                     break;
                 case DropdownOptions.PLAY_HEURISTICS:
-                        LoadHeuristics("ASSETS\\playheuristics.txt");
+                        LoadHeuristics("ASSETS\\EvaluationFiles\\playheuristics.txt");
                     break;
             }
         }
@@ -293,10 +294,38 @@ public class PathOSEvaluationWindow : EditorWindow
         SaveInputs();
     }
 
-    private void ExportImports()
+    private void ExportHeuristics()
     {
+        StreamWriter writer = new StreamWriter("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
 
+        writer.WriteLine("Type, Description, Input, Priority");
+        string type, description, input, priority;
+
+        for (int t = 0; t < loadedCategories.Count; t++)
+        {
+            type = "*";
+            description = loadedCategories[t].categoryName;
+            writer.WriteLine(type + "," + description) ;
+
+            for (int j = 0; j < loadedCategories[t].subcategories.Count; j++)
+            {
+                type = "%";
+                description = loadedCategories[t].subcategories[j].subcategoryName;
+                writer.WriteLine(type + "," + description);
+
+                for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
+                {
+                    type = "#";
+                    description = loadedCategories[t].subcategories[j].heuristics[i];
+                    input = loadedCategories[t].subcategories[j].heuristicInputs[i];
+                    priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
+                    writer.WriteLine(type + "," + description + "," + input + "," + priority); 
+                }
+            }
+        }
+
+        writer.Close();
     }
 
-  
+
 }
