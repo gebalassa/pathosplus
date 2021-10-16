@@ -37,66 +37,19 @@ class HeuristicCategory
     public List<HeuristicSubcategories> subcategories = new List<HeuristicSubcategories>();
 }
 
-class HeuristicGuideline
+class HeuristicGuideline 
 {
     //TODO: Spread things out in here to clean it up
-}
-
-[Serializable]
-public class PathOSEvaluationWindow : EditorWindow
-{
-    static List<HeuristicCategory> loadedCategories = new List<HeuristicCategory>();
+    public List<HeuristicCategory> loadedCategories = new List<HeuristicCategory>();
     private GUIStyle foldoutStyle = GUIStyle.none;
-    private Color bgColor, btnColor;
 
-    //Dropdown enums
-    enum DropdownOptions
-    {
-        NONE = 0,
-        PLAY_HEURISTICS = 1
-    }
-
-    public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS" };
-    public string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private string asterisk = "*", percentage = "%", hashtag = "#", headerRow = "Type";
     private static char[] commaSep = { ',' };
-    public Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
-    static DropdownOptions dropdowns = DropdownOptions.NONE;
-    static int selected = 0;
-    bool initialized = false;
-
-    private void OnEnable()
-    {
-        //Background color
-        bgColor = GUI.backgroundColor;
-        btnColor = new Color32(200, 203, 224, 255);
-
-        //Loading saved data
-
-        if (PlayerPrefs.HasKey("selected"))
-        {
-            selected = PlayerPrefs.GetInt("selected");
-        }
-
-        if (PlayerPrefs.HasKey("initialized"))
-        {
-            initialized = PlayerPrefs.GetInt("initialized") == 1 ? true : false;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        PlayerPrefs.SetInt("selected", selected);
-        SaveInputs();
-
-    }
-
-    private void OnDisable()
-    {
-        PlayerPrefs.SetInt("selected", selected);
-        SaveInputs();
-    }
-
-    private void SaveInputs()
+    public string heuristicName;
+    private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
+    
+    public void SaveData()
     {
         string filename;
         for (int t = 0; t < loadedCategories.Count; t++)
@@ -105,77 +58,19 @@ public class PathOSEvaluationWindow : EditorWindow
             {
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
-                    filename = "heuristicsInputs " + t + " " + j + " " + i;
+                    filename = heuristicName + " heuristicsInputs " + t + " " + j + " " + i;
                     PlayerPrefs.SetString(filename, loadedCategories[t].subcategories[j].heuristicInputs[i]);
 
-                    filename = "heuristicsPriorities " + t + " " + j + " " + i;
+                    filename = heuristicName + " heuristicsPriorities " + t + " " + j + " " + i;
                     PlayerPrefs.SetInt(filename, (int)loadedCategories[t].subcategories[j].priorities[i]);
                 }
             }
         }
     }
-    public void OnWindowOpen()
+
+
+    public void DrawHeuristics()
     {
-        GUILayout.BeginHorizontal();
-        EditorGUIUtility.labelWidth = 70.0f;
-        GUILayout.BeginHorizontal();
-
-        selected = EditorGUILayout.Popup("Heuristics:", selected, dropdownStrings);
-        GUILayout.EndHorizontal();
-
-        if (selected != 0)
-        {
-            GUI.backgroundColor = btnColor;
-
-            if (GUILayout.Button("CLEAR"))
-            {
-                ClearCurrentInputs();
-            }
-
-            if (GUILayout.Button("IMPORT"))
-            {
-                loadedCategories.Clear();
-                ImportHeuristics();
-            }
-
-            if (GUILayout.Button("EXPORT"))
-            {
-                ExportHeuristics();
-            }
-
-            GUI.backgroundColor = bgColor;
-        }
-
-        GUILayout.EndHorizontal();
-
-        if (dropdowns != (DropdownOptions)selected)
-        {
-            dropdowns = (DropdownOptions)selected;
-            SaveInputs(); //Save when the player switches categories
-
-            switch (dropdowns)
-            {
-                case DropdownOptions.NONE:
-                    loadedCategories.Clear();
-                    break;
-                case DropdownOptions.PLAY_HEURISTICS:
-                        LoadHeuristics("ASSETS\\EvaluationFiles\\playheuristics.txt");
-                    break;
-            }
-        }
-
-        switch (dropdowns)
-        {
-            case DropdownOptions.PLAY_HEURISTICS:
-                DrawPlayHeuristics();
-                break;
-        }
-
-    }
-
-    private void DrawPlayHeuristics()
-    {
-
         if (loadedCategories.Count <= 0) return;
 
         EditorGUILayout.Space();
@@ -190,7 +85,7 @@ public class PathOSEvaluationWindow : EditorWindow
             EditorGUILayout.BeginVertical("Toolbar");
             foldoutStyle.fontStyle = FontStyle.Bold;
             loadedCategories[t].categoryFoldout = EditorGUILayout.Foldout(loadedCategories[t].categoryFoldout, loadedCategories[t].categoryName, foldoutStyle);
-            GUI.backgroundColor = bgColor;
+            GUI.backgroundColor = Color.white;
             EditorGUILayout.EndVertical();
 
             if (!loadedCategories[t].categoryFoldout) continue;
@@ -208,9 +103,9 @@ public class PathOSEvaluationWindow : EditorWindow
 
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
-                    EditorStyles.label.wordWrap = true;
                     EditorGUILayout.LabelField(loadedCategories[t].subcategories[j].heuristics[i], GUILayout.MaxWidth(Screen.width * 0.7f));
                     EditorGUILayout.BeginHorizontal();
+                    EditorStyles.label.wordWrap = true;
                     loadedCategories[t].subcategories[j].heuristicInputs[i] = EditorGUILayout.TextArea(loadedCategories[t].subcategories[j].heuristicInputs[i], GUILayout.Width(Screen.width * 0.7f));
                     GUI.backgroundColor = priorityColors[((int)loadedCategories[t].subcategories[j].priorities[i])];
                     loadedCategories[t].subcategories[j].priorities[i] = (HeuristicPriority)EditorGUILayout.Popup((int)loadedCategories[t].subcategories[j].priorities[i], priorityStrings);
@@ -225,41 +120,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     public void LoadHeuristics(string filename)
     {
-        string line;
-        StreamReader reader = new StreamReader(filename);
-
-        int categoryCounter = -1;
-        int subcategoryCounter = -1;
-
-        //Clears list so that we can populate it with file info
-        loadedCategories.Clear();
-
-        //Print the text from the file
-        while ((line = reader.ReadLine()) != null)
-        {
-            if (line[0] == '*')
-            {
-                subcategoryCounter = -1;
-                categoryCounter++;
-                loadedCategories.Add(new HeuristicCategory());
-                loadedCategories[categoryCounter].categoryName = line.TrimStart('*');
-                continue;
-            }
-            else if (line[0] == '%')
-            {
-                subcategoryCounter++;
-                loadedCategories[categoryCounter].subcategories.Add(new HeuristicSubcategories());
-                loadedCategories[categoryCounter].subcategories[subcategoryCounter].subcategoryName = line.TrimStart('%');
-                continue;
-            }
-
-            loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristics.Add(line);
-            loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs.Add(" ");
-            loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.NONE);
-
-        }
-
-        reader.Close();
+        ImportHeuristics(filename);
 
         for (int t = 0; t < loadedCategories.Count; t++)
         {
@@ -267,19 +128,19 @@ public class PathOSEvaluationWindow : EditorWindow
             {
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
-                    filename = "heuristicsInputs " + t + " " + j + " " + i;
+                    filename = heuristicName + " heuristicsInputs " + t + " " + j + " " + i;
                     if (PlayerPrefs.HasKey(filename))
                         loadedCategories[t].subcategories[j].heuristicInputs[i] = PlayerPrefs.GetString(filename);
 
-                    filename = "heuristicsPriorities " + t + " " + j + " " + i;
+                    filename = heuristicName + " heuristicsPriorities " + t + " " + j + " " + i;
                     if (PlayerPrefs.HasKey(filename))
-                        loadedCategories[t].subcategories[j].priorities[i] = (HeuristicPriority) PlayerPrefs.GetInt(filename);
+                        loadedCategories[t].subcategories[j].priorities[i] = (HeuristicPriority)PlayerPrefs.GetInt(filename);
                 }
             }
         }
     }
 
-    private void ClearCurrentInputs()
+    public void ClearCurrentInputs()
     {
         for (int t = 0; t < loadedCategories.Count; t++)
         {
@@ -293,12 +154,11 @@ public class PathOSEvaluationWindow : EditorWindow
             }
         }
 
-        SaveInputs();
+        SaveData();
     }
-
-    private void ImportHeuristics()
+    public void ImportHeuristics(string filename)
     {
-        StreamReader reader = new StreamReader("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+        StreamReader reader = new StreamReader(filename);
 
         string line = "";
         string[] lineContents;
@@ -316,11 +176,11 @@ public class PathOSEvaluationWindow : EditorWindow
                 continue;
             }
 
-            if (lineContents[0] == "Type")
+            if (lineContents[0] == headerRow)
             {
                 continue;
             }
-            if (lineContents[0] == "*")
+            if (lineContents[0] == asterisk)
             {
                 subcategoryCounter = -1;
                 categoryCounter++;
@@ -328,51 +188,51 @@ public class PathOSEvaluationWindow : EditorWindow
                 loadedCategories[categoryCounter].categoryName = lineContents[1];
                 continue;
             }
-            else if (lineContents[0] == "%")
+            else if (lineContents[0] == percentage)
             {
                 subcategoryCounter++;
                 loadedCategories[categoryCounter].subcategories.Add(new HeuristicSubcategories());
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].subcategoryName = lineContents[1];
                 continue;
             }
-            else if (lineContents[0] == "#")
+
+            else if (lineContents[0] == hashtag)
             {
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristics.Add(lineContents[1]);
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs.Add(lineContents[2]);
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add((HeuristicPriority)int.Parse(lineContents[3]));
-
             }
         }
 
         reader.Close();
 
     }
-    private void ExportHeuristics()
+    public void ExportHeuristics(string filename)
     {
-        StreamWriter writer = new StreamWriter("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+        StreamWriter writer = new StreamWriter(filename);
 
         writer.WriteLine("Type, Description, Input, Priority");
         string type, description, input, priority;
 
         for (int t = 0; t < loadedCategories.Count; t++)
         {
-            type = "*";
+            type = asterisk;
             description = loadedCategories[t].categoryName;
-            writer.WriteLine(type + "," + description);
+            writer.WriteLine(type + commaSep + description);
 
             for (int j = 0; j < loadedCategories[t].subcategories.Count; j++)
             {
-                type = "%";
+                type = percentage;
                 description = loadedCategories[t].subcategories[j].subcategoryName;
-                writer.WriteLine(type + "," + description);
+                writer.WriteLine(type + commaSep + description);
 
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
-                    type = "#";
+                    type = hashtag;
                     description = loadedCategories[t].subcategories[j].heuristics[i];
                     input = loadedCategories[t].subcategories[j].heuristicInputs[i];
                     priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
-                    writer.WriteLine(type + "," + description + "," + input + "," + priority);
+                    writer.WriteLine(type + commaSep + description + commaSep + input + commaSep + priority);
                 }
             }
         }
@@ -380,5 +240,122 @@ public class PathOSEvaluationWindow : EditorWindow
         writer.Close();
     }
 
+    
+}
 
+[Serializable]
+public class PathOSEvaluationWindow : EditorWindow
+{
+    private Color bgColor, btnColor;
+
+    //Dropdown enums
+    enum DropdownOptions
+    {
+        NONE = 0,
+        PLAY_HEURISTICS = 1,
+        NIELSEN = 2,
+    }
+
+    public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS", "NIELSEN" };
+    public string[] templateLocations = new string[] { "ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv", "ASSETS\\EvaluationFiles\\NIELSEN_TEMPLATE.csv" };
+    public string[] heuristicNames = new string[] { "PLAY", "NIELSEN" };
+
+    static DropdownOptions dropdowns = DropdownOptions.NONE;
+    HeuristicGuideline[] heuristics = new HeuristicGuideline[2];
+    static int selected = 0;
+
+
+    private void OnEnable()
+    {
+        //Background color
+        bgColor = GUI.backgroundColor;
+        btnColor = new Color32(200, 203, 224, 255);
+
+        //Setting heuristic names
+        for (int i = 0; i < heuristics.Length; i++)
+        {
+            heuristics[i] = new HeuristicGuideline();
+            heuristics[i].heuristicName = heuristicNames[i];
+        }
+
+        //Loading saved data
+
+        if (PlayerPrefs.HasKey("selected"))
+        {
+            selected = PlayerPrefs.GetInt("selected");
+        }
+
+        
+    }
+
+    private void OnDestroy()
+    {
+        PlayerPrefs.SetInt("selected", selected);
+        for (int i = 0; i < heuristics.Length; i++)
+            heuristics[i].SaveData();
+
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.SetInt("selected", selected);
+        for (int i = 0; i < heuristics.Length; i++)
+            heuristics[i].SaveData();
+    }
+
+    public void OnWindowOpen()
+    {
+        GUILayout.BeginHorizontal();
+        EditorGUIUtility.labelWidth = 70.0f;
+        GUILayout.BeginHorizontal();
+
+        selected = EditorGUILayout.Popup("Heuristics:", selected, dropdownStrings);
+        GUILayout.EndHorizontal();
+
+        if (selected != 0)
+        {
+            GUI.backgroundColor = btnColor;
+
+            if (GUILayout.Button("CLEAR"))
+            {
+                heuristics[selected-1].ClearCurrentInputs();
+            }
+
+            if (GUILayout.Button("IMPORT"))
+            {
+                heuristics[selected - 1].loadedCategories.Clear();
+                //heuristics[selected - 1].ImportHeuristics("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+            }
+
+            if (GUILayout.Button("EXPORT"))
+            {
+                //heuristics[selected - 1].ExportHeuristics("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+            }
+
+            GUI.backgroundColor = bgColor;
+        }
+
+        GUILayout.EndHorizontal();
+
+        if (dropdowns != (DropdownOptions)selected)
+        {
+            dropdowns = (DropdownOptions)selected;
+
+            if (dropdowns == DropdownOptions.NONE)
+            {
+                return;
+            }
+
+            heuristics[selected - 1].loadedCategories.Clear();
+            heuristics[selected - 1].LoadHeuristics(templateLocations[selected - 1]);
+        }
+
+        if (selected <= 0)
+        {
+            return;
+        }
+
+        heuristics[selected - 1].DrawHeuristics();
+        heuristics[selected - 1].SaveData();
+    }
 }
