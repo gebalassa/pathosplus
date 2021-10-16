@@ -20,7 +20,7 @@ public enum HeuristicPriority
 }
 
 //for the love of god please clean this up
-class HeuristicSubcategories : MonoBehaviour
+class HeuristicSubcategories 
 {
     public string subcategoryName;
     public bool subcategoryFoldout = false;
@@ -58,6 +58,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS" };
     public string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private static char[] commaSep = { ',' };
     public Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
     static DropdownOptions dropdowns = DropdownOptions.NONE;
     static int selected = 0;
@@ -133,7 +134,8 @@ public class PathOSEvaluationWindow : EditorWindow
 
             if (GUILayout.Button("IMPORT"))
             {
-
+                loadedCategories.Clear();
+                ImportHeuristics();
             }
 
             if (GUILayout.Button("EXPORT"))
@@ -294,6 +296,57 @@ public class PathOSEvaluationWindow : EditorWindow
         SaveInputs();
     }
 
+    private void ImportHeuristics()
+    {
+        StreamReader reader = new StreamReader("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+
+        string line = "";
+        string[] lineContents;
+
+        int categoryCounter = -1;
+        int subcategoryCounter = -1;
+
+        while ((line = reader.ReadLine()) != null)
+        {
+            lineContents = line.Split(commaSep);
+
+            if (lineContents.Length < 1)
+            {
+                Debug.Log("Error! Unable to read line");
+                continue;
+            }
+
+            if (lineContents[0] == "Type")
+            {
+                continue;
+            }
+            if (lineContents[0] == "*")
+            {
+                subcategoryCounter = -1;
+                categoryCounter++;
+                loadedCategories.Add(new HeuristicCategory());
+                loadedCategories[categoryCounter].categoryName = lineContents[1];
+                continue;
+            }
+            else if (lineContents[0] == "%")
+            {
+                subcategoryCounter++;
+                loadedCategories[categoryCounter].subcategories.Add(new HeuristicSubcategories());
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].subcategoryName = lineContents[1];
+                continue;
+            }
+            else if (lineContents[0] == "#")
+            {
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristics.Add(lineContents[1]);
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs.Add(lineContents[2]);
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add((HeuristicPriority)int.Parse(lineContents[3]));
+
+            }
+        }
+
+        reader.Close();
+
+    }
     private void ExportHeuristics()
     {
         StreamWriter writer = new StreamWriter("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
@@ -305,7 +358,7 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             type = "*";
             description = loadedCategories[t].categoryName;
-            writer.WriteLine(type + "," + description) ;
+            writer.WriteLine(type + "," + description);
 
             for (int j = 0; j < loadedCategories[t].subcategories.Count; j++)
             {
@@ -319,7 +372,7 @@ public class PathOSEvaluationWindow : EditorWindow
                     description = loadedCategories[t].subcategories[j].heuristics[i];
                     input = loadedCategories[t].subcategories[j].heuristicInputs[i];
                     priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
-                    writer.WriteLine(type + "," + description + "," + input + "," + priority); 
+                    writer.WriteLine(type + "," + description + "," + input + "," + priority);
                 }
             }
         }
