@@ -45,7 +45,6 @@ class HeuristicGuideline
 
     private string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
     private string asterisk = "*", percentage = "%", hashtag = "#", headerRow = "Type";
-    private static char[] commaSep = { ',' };
     public string heuristicName;
     private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
     
@@ -156,6 +155,63 @@ class HeuristicGuideline
 
         SaveData();
     }
+
+    public void ImportInputs(string filename)
+    {
+        StreamReader reader = new StreamReader(filename);
+
+        string line = "";
+        string[] lineContents;
+
+        int categoryCounter = -1;
+        int subcategoryCounter = -1;
+        int inputCounter = 0;
+
+        while ((line = reader.ReadLine()) != null)
+        {
+            lineContents = line.Split(',');
+
+            if (lineContents.Length < 1)
+            {
+                Debug.Log("Error! Unable to read line");
+                continue;
+            }
+
+            if (lineContents[0] == headerRow)
+            {
+                continue;
+            }
+            if (lineContents[0] == asterisk)
+            {
+                subcategoryCounter = -1;
+                categoryCounter++;
+                inputCounter = 0;
+                continue;
+            }
+            else if (lineContents[0] == percentage)
+            {
+                subcategoryCounter++;
+                inputCounter = 0;
+                continue;
+            }
+
+            else if (lineContents[0] == hashtag)
+            {
+                if (categoryCounter > loadedCategories.Count || subcategoryCounter > loadedCategories[categoryCounter].subcategories.Count)
+                {
+                    Debug.Log("Incorrect file type inported");
+                    return; 
+                }
+
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs[inputCounter] = lineContents[2];
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = (HeuristicPriority)int.Parse(lineContents[3]);
+                inputCounter++;
+
+            }
+        }
+
+    }
+
     public void ImportHeuristics(string filename)
     {
         StreamReader reader = new StreamReader(filename);
@@ -168,7 +224,7 @@ class HeuristicGuideline
 
         while ((line = reader.ReadLine()) != null)
         {
-            lineContents = line.Split(commaSep);
+            lineContents = line.Split(',');
 
             if (lineContents.Length < 1)
             {
@@ -218,13 +274,13 @@ class HeuristicGuideline
         {
             type = asterisk;
             description = loadedCategories[t].categoryName;
-            writer.WriteLine(type + commaSep + description);
+            writer.WriteLine(type + ',' + description);
 
             for (int j = 0; j < loadedCategories[t].subcategories.Count; j++)
             {
                 type = percentage;
                 description = loadedCategories[t].subcategories[j].subcategoryName;
-                writer.WriteLine(type + commaSep + description);
+                writer.WriteLine(type + ',' + description);
 
                 for (int i = 0; i < loadedCategories[t].subcategories[j].heuristics.Count; i++)
                 {
@@ -232,7 +288,7 @@ class HeuristicGuideline
                     description = loadedCategories[t].subcategories[j].heuristics[i];
                     input = loadedCategories[t].subcategories[j].heuristicInputs[i];
                     priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
-                    writer.WriteLine(type + commaSep + description + commaSep + input + commaSep + priority);
+                    writer.WriteLine(type + ',' + description + ',' + input + ',' + priority);
                 }
             }
         }
@@ -257,7 +313,7 @@ public class PathOSEvaluationWindow : EditorWindow
     }
 
     public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS", "NIELSEN" };
-    public string[] templateLocations = new string[] { "ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv", "ASSETS\\EvaluationFiles\\NIELSEN_TEMPLATE.csv" };
+    public string[] templateLocations = new string[] { "ASSETS\\EvaluationFiles\\PLAY_HEURISTICS_TEMPLATE.csv", "ASSETS\\EvaluationFiles\\NIELSEN_TEMPLATE.csv" };
     public string[] heuristicNames = new string[] { "PLAY", "NIELSEN" };
 
     static DropdownOptions dropdowns = DropdownOptions.NONE;
@@ -312,7 +368,7 @@ public class PathOSEvaluationWindow : EditorWindow
         selected = EditorGUILayout.Popup("Heuristics:", selected, dropdownStrings);
         GUILayout.EndHorizontal();
 
-        if (selected != 0)
+        if (selected > 0)
         {
             GUI.backgroundColor = btnColor;
 
@@ -323,13 +379,22 @@ public class PathOSEvaluationWindow : EditorWindow
 
             if (GUILayout.Button("IMPORT"))
             {
-                heuristics[selected - 1].loadedCategories.Clear();
-                //heuristics[selected - 1].ImportHeuristics("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+                string importPath = EditorUtility.OpenFilePanel("Import Evaluation", "ASSETS\\EvaluationFiles", "csv");
+
+                if (importPath.Length != 0)
+                {
+                    heuristics[selected - 1].ImportInputs(importPath);
+                }
             }
 
             if (GUILayout.Button("EXPORT"))
             {
-                //heuristics[selected - 1].ExportHeuristics("ASSETS\\EvaluationFiles\\PLAY_HEURISTICS.csv");
+                string importPath = EditorUtility.OpenFilePanel("Import Evaluation", "ASSETS\\EvaluationFiles", "csv");
+
+                if (importPath.Length != 0)
+                {
+                    heuristics[selected - 1].ExportHeuristics(importPath);
+                }
             }
 
             GUI.backgroundColor = bgColor;

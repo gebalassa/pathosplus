@@ -1,11 +1,11 @@
 Type, Description, Input, Priority
 *,Category 1: Game Play
 %,A. Heuristic: Enduring Play
-#,A1 The players find the game fun with no repetitive or boring tasks.,fdj,3
-#,A2 The players should not experience being penalized repetitively for the same failure. ,aerjogj,1
-#,A3 The players should not lose any hard won possessions.,apfkapfkoqor,2
-#,A4 Gameplay is long and enduring and keeps the players' interest.,gsdf,3
-#,A5 Any fatigue or boredom was minimized by varying activities and pacing during the game play.,dhfghreth,1
+#,A1 The players find the game fun with no repetitive or boring tasks.,Beepity Boopity boop,1
+#,A2 The players should not experience being penalized repetitively for the same failure. , ,0
+#,A3 The players should not lose any hard won possessions., ,0
+#,A4 Gameplay is long and enduring and keeps the players' interest., ,0
+#,A5 Any fatigue or boredom was minimized by varying activities and pacing during the game play., ,0
 %,B. Heuristic: Challenge Strategy and Pace
 #,B1 Challenge strategy and pace are in balance, ,0
 #,B2 The game is paced to apply pressure without frustrating the players. The difficulty level varies so the players experience greater challenges as they develop master., ,0
@@ -26,11 +26,11 @@ Type, Description, Input, Priority
 #,E3 The first ten minutes of play and player actions are painfully obvious and should result in immediate and positive feedback for all types of players., ,0
 #,E4 The game had diffferent AI settings so that it was challenging to all levels of players whether novice or expert players. , ,0
 %,F. Heuristic: Players Perception of Control
-#,F1 Players feel in control., ,0
+#,F1 Players feel in control.,Players don't feel in control,3
 #,F2 The player's have a sense of control and influence on the game world., ,0
 *,Category 2: Coolness/Entertainment/Humor/Emotional Immersion
 %,A. Heuristic: Emotional Connection
-#,A1 There is an emotional connection between the player and the game world as wellas with their "avatar". , ,0
+#,"A1 There is an emotional connection between the player and the game world as wellas with their ""avatar"". ", ,0
 %,B. Heuristic: Coolness/Entertainment
 #,B1 The game offers something different in terms of attracting and retaining the players' interest., ,0
 %,C. Heuristic: Humor
@@ -70,4 +70,4 @@ Type, Description, Input, Priority
 #,H4 Players should be given context sensitive help while playing so that they are not stuck and need to rely on a manual for help., ,0
 #,H5 All levels of players are able to play and get involved quickly and easily with tutorials and/or progressive or adjustable difficulty levels., ,0
 %,I. Heuristic: Game Story 
-#,I1 Game story encourages immersion (if game has story component). , ,0
+#,I1 Game story encourages immersion (if game has story component). ,sdgetyurerw,2
