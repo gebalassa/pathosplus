@@ -141,9 +141,10 @@ public class PathOSAgentEyes : MonoBehaviour
                     entity.perceivedPos = entityPos;
                     agent.memory.Memorize(entity);
 
-                    //Mandatory/completion goals are committed to LTM automatically.
+                    //Mandatory/completion/boss goals are committed to LTM automatically.
                     if (entity.entityType == EntityType.ET_GOAL_MANDATORY
-                        || entity.entityType == EntityType.ET_GOAL_COMPLETION)
+                        || entity.entityType == EntityType.ET_GOAL_COMPLETION
+                         || entity.entityType == EntityType.ET_HAZARD_ENEMY_BOSS)
                         agent.memory.CommitUnforgettable(entity);
 
                     agent.memory.TryCommitLTM(entity);

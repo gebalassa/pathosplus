@@ -154,25 +154,28 @@ public class PathOSAgent : MonoBehaviour
         }
 
         //FOR RESOURCES EDIT THIS
-        float avgAggressionScore = 0.5f
-            * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)] +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
-            entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
+        //float avgAggressionScore =
+        //0.5f * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)]
+        //+entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
+          float avgAggressionScore =  0.2f *
+          (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)] +
+          (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+          (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+          (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+          entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
-        float avgAdrenalineScore = 0.5f
+        float avgAdrenalineScore = 0.2f
             * (entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENEMY_LOW)] + 
-              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
-              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
-              (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+              (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+              (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+              (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
               entityScoringLookup[(Heuristic.ADRENALINE, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
-        float avgCautionScore = 0.5f
+        float avgCautionScore = 0.2f
             * (entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENEMY_LOW)] +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
-            (0.5f * entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
+            (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
+            (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_HIGH)]) +
+            (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_BOSS)]) +
             entityScoringLookup[(Heuristic.CAUTION, EntityType.ET_HAZARD_ENVIRONMENT)]);
 
         float hazardScore = heuristicScaleLookup[Heuristic.AGGRESSION] * avgAggressionScore

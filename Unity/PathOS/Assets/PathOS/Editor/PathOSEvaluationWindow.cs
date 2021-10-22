@@ -43,8 +43,8 @@ class HeuristicGuideline
     public List<HeuristicCategory> loadedCategories = new List<HeuristicCategory>();
     private GUIStyle foldoutStyle = GUIStyle.none;
 
-    private string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
-    private string asterisk = "*", percentage = "%", hashtag = "#", headerRow = "Type";
+    private readonly string[] priorityStrings = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private readonly string asterisk = "*", percentage = "%", hashtag = "#", headerRow = "Type";
     public string heuristicName;
     private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
     
@@ -204,7 +204,24 @@ class HeuristicGuideline
                 }
 
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs[inputCounter] = lineContents[2];
-                loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = (HeuristicPriority)int.Parse(lineContents[3]);
+                
+                //loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = (HeuristicPriority)int.Parse(lineContents[3]);
+                switch(lineContents[3])
+                {
+                    case "NA":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = HeuristicPriority.NONE;
+                        break;
+                    case "LOW":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = HeuristicPriority.LOW;
+                        break;
+                    case "MED":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = HeuristicPriority.MED;
+                        break;
+                    case "HIGH":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = HeuristicPriority.HIGH;
+                        break;
+                }
+                
                 inputCounter++;
 
             }
@@ -256,7 +273,23 @@ class HeuristicGuideline
             {
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristics.Add(lineContents[1]);
                 loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs.Add(lineContents[2]);
-                loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add((HeuristicPriority)int.Parse(lineContents[3]));
+                // loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add((HeuristicPriority)int.Parse(lineContents[3]));
+
+                switch (lineContents[3])
+                {
+                    case "NA":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.NONE);
+                        break;
+                    case "LOW":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.LOW);
+                        break;
+                    case "MED":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.MED);
+                        break;
+                    case "HIGH":
+                        loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities.Add(HeuristicPriority.HIGH);
+                        break;
+                }
             }
         }
 
@@ -287,7 +320,27 @@ class HeuristicGuideline
                     type = hashtag;
                     description = loadedCategories[t].subcategories[j].heuristics[i];
                     input = loadedCategories[t].subcategories[j].heuristicInputs[i];
-                    priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
+
+                    switch (loadedCategories[t].subcategories[j].priorities[i])
+                    {
+                        case HeuristicPriority.NONE:
+                            priority = "NA";
+                            break;
+                        case HeuristicPriority.LOW:
+                            priority = "LOW";
+                            break;
+                        case HeuristicPriority.MED:
+                            priority = "MED";
+                            break;
+                        case HeuristicPriority.HIGH:
+                            priority = "HIGH";
+                            break;
+                        default:
+                            priority = "NA";
+                            break;
+                    }
+
+                    //priority = ((int)loadedCategories[t].subcategories[j].priorities[i]).ToString();
                     writer.WriteLine(type + ',' + description + ',' + input + ',' + priority);
                 }
             }
