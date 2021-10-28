@@ -36,7 +36,7 @@ public class PathOSAgent : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float experienceScale;
 
-    public List<HeuristicScale> heuristicScales;
+    public List<HeuristicScale> heuristicScales, modifiableHeuristicScales;
     private Dictionary<Heuristic, float> heuristicScaleLookup;
     private Dictionary<(Heuristic, EntityType), float> entityScoringLookup;
 
@@ -110,7 +110,7 @@ public class PathOSAgent : MonoBehaviour
     private List<Vector3> unreachableReference;
 
     //Health variables
-    private float health = 100.0f;
+    private float health = 100.0f, previousHealth = 100.0f;
     private bool dead = false;
     public TimeRange lowEnemyDamage = new TimeRange(10,30), medEnemyDamage = new TimeRange(30,50),
         highEnemyDamage = new TimeRange(50,70), bossEnemyDamage = new TimeRange(70,100),
@@ -140,8 +140,10 @@ public class PathOSAgent : MonoBehaviour
         if (null == logger)
             logger = OGLogManager.instance;
 
+        modifiableHeuristicScales.Clear();
         foreach (HeuristicScale curScale in heuristicScales)
         {
+            modifiableHeuristicScales.Add(curScale);
             heuristicScaleLookup.Add(curScale.heuristic, curScale.scale);
         }
 
@@ -153,10 +155,6 @@ public class PathOSAgent : MonoBehaviour
             }
         }
 
-        //FOR RESOURCES EDIT THIS
-        //float avgAggressionScore =
-        //0.5f * (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)]
-        //+entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENVIRONMENT)]);
           float avgAggressionScore =  0.2f *
           (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_LOW)] +
           (entityScoringLookup[(Heuristic.AGGRESSION, EntityType.ET_HAZARD_ENEMY_MED)]) +
@@ -230,7 +228,7 @@ public class PathOSAgent : MonoBehaviour
             header += "HEURISTICS,";
             header += "EXPERIENCE," + experienceScale + ",";
 
-            foreach(HeuristicScale scale in heuristicScales)
+            foreach(HeuristicScale scale in modifiableHeuristicScales)
             {
                 header += scale.heuristic + "," + scale.scale + ",";
             }
@@ -271,12 +269,12 @@ public class PathOSAgent : MonoBehaviour
     {
         Dictionary<Heuristic, float> weights = new Dictionary<Heuristic, float>();
 
-        for(int i = 0; i < heuristicScales.Count; ++i)
+        for(int i = 0; i < modifiableHeuristicScales.Count; ++i)
         {
-            weights.Add(heuristicScales[i].heuristic, heuristicScales[i].scale);
+            weights.Add(modifiableHeuristicScales[i].heuristic, modifiableHeuristicScales[i].scale);
         }
 
-        heuristicScales.Clear();
+        modifiableHeuristicScales.Clear();
 
         foreach(Heuristic heuristic in System.Enum.GetValues(typeof(Heuristic)))
         {
@@ -285,7 +283,37 @@ public class PathOSAgent : MonoBehaviour
             if (weights.ContainsKey(heuristic))
                 weight = weights[heuristic];
 
-            heuristicScales.Add(new HeuristicScale(heuristic, weight));
+            modifiableHeuristicScales.Add(new HeuristicScale(heuristic, weight));
+        }
+    }
+
+    //The way this would work is... 
+    //The agent has their base caution at the start of the playthrough
+    //However, if they start losing health, their caution gets bumped up depending on the kind of player they are
+    //This is to prioritize getting potions when they're running low on health
+    //The lower their health, the higher the caution increases by 
+    public void UpdateWeightsBasedOnHealth()
+    {
+        //A flag so that we only occaisonally update this, instead of every frame
+        if (previousHealth != health)
+        {
+            string printScales = "";
+            float newCaution = 0;
+
+            //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
+            for (int i = 0; i < modifiableHeuristicScales.Count; i++)
+            {
+                if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
+                {
+                    newCaution = modifiableHeuristicScales[i].scale + 0.1f;
+                    if (newCaution > 1.0f) newCaution = 1.0f;
+                    modifiableHeuristicScales[i].scale = newCaution;
+                    printScales += modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
+                }
+            }
+
+            //print(printScales);
+            previousHealth = health;
         }
     }
 
@@ -474,7 +502,7 @@ public class PathOSAgent : MonoBehaviour
         //Bias added to account for entity's type.
         float entityBias = 0.0f;
 
-        foreach (HeuristicScale heuristicScale in heuristicScales)
+        foreach (HeuristicScale heuristicScale in modifiableHeuristicScales)
         {
             (Heuristic, EntityType) key = (heuristicScale.heuristic, memory.entity.entityType);
 
@@ -689,7 +717,7 @@ public class PathOSAgent : MonoBehaviour
             dot = Mathf.Clamp(dot, 0.0f, 1.0f);
 
             //Weighted scoring function.
-            foreach(HeuristicScale heuristicScale in heuristicScales)
+            foreach(HeuristicScale heuristicScale in modifiableHeuristicScales)
             {
                 (Heuristic, EntityType) key = (heuristicScale.heuristic, 
                     memory.entities[i].entity.entityType);
@@ -717,7 +745,10 @@ public class PathOSAgent : MonoBehaviour
 
         Time.timeScale = timeScale;
 
-        if (health <= 0 && !dead) dead = true; 
+        if (health <= 0 && !dead) dead = true;
+
+        //Updates weights based on the player's health
+        UpdateWeightsBasedOnHealth();
 
         //If we've reached our destination, reset the number of times
         //we've "changed our mind" without doing anything.

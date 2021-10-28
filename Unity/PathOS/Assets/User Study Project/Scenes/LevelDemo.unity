@@ -107,7 +107,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.2
+    agentRadius: 0.18
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.2
@@ -115,7 +115,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.06666667
+    cellSize: 0.060000002
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -20378,7 +20378,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[29].entityType
-      value: 200
+      value: 230
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -21945,7 +21945,7 @@ PrefabInstance:
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: experienceScale
-      value: 0.554
+      value: 0.235
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
@@ -22015,12 +22015,12 @@ PrefabInstance:
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: bossEnemyDamage.max
-      value: 63.801
+      value: 55.263
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: bossEnemyDamage.min
-      value: 26.185
+      value: 17.647
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
@@ -22035,37 +22035,72 @@ PrefabInstance:
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[0].scale
-      value: 0
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[1].scale
-      value: 0
+      value: 0.055
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[2].scale
-      value: 0
+      value: 0.06
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[3].scale
-      value: 1
+      value: 0.78
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[4].scale
-      value: 1
+      value: 0.785
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[5].scale
-      value: 0
+      value: 0.035
       objectReference: {fileID: 0}
     - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
       propertyPath: heuristicScales.Array.data[6].scale
-      value: 0
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[1].heuristic
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[2].heuristic
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[3].heuristic
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[4].heuristic
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[5].heuristic
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114084877281343334, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: modifiableHeuristicScales.Array.data[6].heuristic
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 114232718271966738, guid: 607318e5beb058643a9226e07f881723,
         type: 3}

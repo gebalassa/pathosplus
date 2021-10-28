@@ -30,7 +30,7 @@ Type, Description, Input, Priority
 #,F2 The player's have a sense of control and influence on the game world., ,NA
 *,Category 2: Coolness/Entertainment/Humor/Emotional Immersion,,
 %,A. Heuristic: Emotional Connection,,
-#,"A1 There is an emotional connection between the player and the game world as wellas with their ""avatar"". ", ,NA
+#,A1 There is an emotional connection between the player and the game world as wellas with their avatar. , ,NA
 %,B. Heuristic: Coolness/Entertainment,,
 #,B1 The game offers something different in terms of attracting and retaining the players' interest., ,NA
 %,C. Heuristic: Humor,,
