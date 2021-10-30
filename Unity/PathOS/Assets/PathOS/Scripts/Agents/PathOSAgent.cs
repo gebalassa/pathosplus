@@ -110,7 +110,7 @@ public class PathOSAgent : MonoBehaviour
     private List<Vector3> unreachableReference;
 
     //Health variables
-    private float health = 100.0f, previousHealth = 100.0f;
+    private float health = 100.0f;
     private bool dead = false;
     public TimeRange lowEnemyDamage = new TimeRange(10,30), medEnemyDamage = new TimeRange(30,50),
         highEnemyDamage = new TimeRange(50,70), bossEnemyDamage = new TimeRange(70,100),
@@ -141,6 +141,7 @@ public class PathOSAgent : MonoBehaviour
             logger = OGLogManager.instance;
 
         modifiableHeuristicScales.Clear();
+
         foreach (HeuristicScale curScale in heuristicScales)
         {
             modifiableHeuristicScales.Add(curScale);
@@ -288,33 +289,43 @@ public class PathOSAgent : MonoBehaviour
     }
 
     //The way this would work is... 
-    //The agent has their base caution at the start of the playthrough
-    //However, if they start losing health, their caution gets bumped up depending on the kind of player they are
-    //This is to prioritize getting potions when they're running low on health
-    //The lower their health, the higher the caution increases by 
+    // if the health is below a threshold (halfway) it does this:
+    // divide the player's health by 50
+    // lerp between the current caution and the max caution
     public void UpdateWeightsBasedOnHealth()
     {
-        //A flag so that we only occaisonally update this, instead of every frame
-        if (previousHealth != health)
-        {
-            string printScales = "";
-            float newCaution = 0;
+        string printScales = "";
+        float newCaution = 0;
 
+        if (true)//(health <= 50.0f)
+        { 
             //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
             for (int i = 0; i < modifiableHeuristicScales.Count; i++)
             {
                 if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
                 {
-                    newCaution = modifiableHeuristicScales[i].scale + 0.1f;
+                    float h = 1.0f - (health / 50.0f);
+                    newCaution = Mathf.Lerp(modifiableHeuristicScales[i].scale, 1.0f, h);
                     if (newCaution > 1.0f) newCaution = 1.0f;
                     modifiableHeuristicScales[i].scale = newCaution;
-                    printScales += modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
+                    printScales = modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
                 }
             }
-
-            //print(printScales);
-            previousHealth = health;
         }
+        else
+        {
+            //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
+            for (int i = 0; i < modifiableHeuristicScales.Count; i++)
+            {
+                if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
+                {
+                    modifiableHeuristicScales[i].scale = heuristicScaleLookup[Heuristic.CAUTION];
+                    printScales = modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
+                }
+            }
+        }
+
+        print(printScales);
     }
 
     //Update the agent's target position.
@@ -747,9 +758,6 @@ public class PathOSAgent : MonoBehaviour
 
         if (health <= 0 && !dead) dead = true;
 
-        //Updates weights based on the player's health
-        UpdateWeightsBasedOnHealth();
-
         //If we've reached our destination, reset the number of times
         //we've "changed our mind" without doing anything.
         if (changeTargetCount > 0
@@ -1064,6 +1072,9 @@ public class PathOSAgent : MonoBehaviour
         //Making sure the health values don't get messed up
         if (health < 0) health = 0;
         else if (health > 100) health = 100;
+
+        //Updates weights based on the player's health
+        UpdateWeightsBasedOnHealth();
     }
 
     private float GetHealthGain(float min, float max)

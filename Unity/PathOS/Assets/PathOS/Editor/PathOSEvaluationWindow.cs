@@ -366,7 +366,7 @@ public class PathOSEvaluationWindow : EditorWindow
     }
 
     public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS", "NIELSEN" };
-    public string[] templateLocations = new string[] { "ASSETS\\EvaluationFiles\\PLAY_HEURISTICS_TEMPLATE.csv", "ASSETS\\EvaluationFiles\\NIELSEN_TEMPLATE.csv" };
+    public string[] templateLocations = new string[] { "Assets\\PathOS\\Settings\\PLAY_HEURISTICS_TEMPLATE.csv", "Assets\\PathOS\\Settings\\NIELSEN_TEMPLATE.csv" };
     public string[] heuristicNames = new string[] { "PLAY", "NIELSEN" };
 
     static DropdownOptions dropdowns = DropdownOptions.NONE;
