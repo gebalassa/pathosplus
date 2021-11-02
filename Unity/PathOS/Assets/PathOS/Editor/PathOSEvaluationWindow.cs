@@ -203,7 +203,8 @@ class HeuristicGuideline
                     return; 
                 }
 
-                loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs[inputCounter] = lineContents[2];
+                string newInput = lineContents[2].Replace("  ", "\n").Replace("/", ",");
+                loadedCategories[categoryCounter].subcategories[subcategoryCounter].heuristicInputs[inputCounter] = newInput;
                 
                 //loadedCategories[categoryCounter].subcategories[subcategoryCounter].priorities[inputCounter] = (HeuristicPriority)int.Parse(lineContents[3]);
                 switch(lineContents[3])
@@ -319,7 +320,8 @@ class HeuristicGuideline
                 {
                     type = hashtag;
                     description = loadedCategories[t].subcategories[j].heuristics[i];
-                    input = loadedCategories[t].subcategories[j].heuristicInputs[i];
+                    //input = loadedCategories[t].subcategories[j].heuristicInputs[i];
+                    input = loadedCategories[t].subcategories[j].heuristicInputs[i].Replace("\r", "").Replace("\n", "  ").Replace(",", "/");
 
                     switch (loadedCategories[t].subcategories[j].priorities[i])
                     {
