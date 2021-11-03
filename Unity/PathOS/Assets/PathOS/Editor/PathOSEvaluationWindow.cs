@@ -81,15 +81,17 @@ class ExpertEvaluation
         for (int i = 0; i < userComments.Count; i++)
         {
             EditorGUILayout.Space();
-            EditorGUILayout.BeginVertical("Toolbar");
-            foldoutStyle.fontStyle = FontStyle.Bold;
+            EditorGUILayout.BeginVertical("Box");
+            foldoutStyle.fontStyle = FontStyle.Italic;
             userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + i, foldoutStyle);
-            GUI.backgroundColor = Color.white;
-            EditorGUILayout.EndVertical();
 
-            if (!userComments[i].categoryFoldout) continue;
+            if (!userComments[i].categoryFoldout)
+            {
+                EditorGUILayout.EndVertical();
+                continue;
+            }
 
-            EditorGUILayout.LabelField("Description", GUILayout.MaxWidth(Screen.width * 0.7f));
+            EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
             EditorStyles.label.wordWrap = true;
             userComments[i].description = EditorGUILayout.TextArea(userComments[i].description, GUILayout.Width(Screen.width * 0.7f));
@@ -99,6 +101,9 @@ class ExpertEvaluation
             userComments[i].category = (HeuristicCategory)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
             GUI.backgroundColor = priorityColors[0];
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndVertical();
+
+            EditorGUI.indentLevel--;
         }
     }
 
@@ -107,11 +112,11 @@ class ExpertEvaluation
         string saveName;
         int counter = 0;
 
+        userComments.Clear();
+
         saveName = "heuristicAmount";
         if (PlayerPrefs.HasKey(saveName))
             counter = PlayerPrefs.GetInt(saveName);
-
-        Debug.Log("this gets called");
 
         for (int i = 0; i < counter; i++)
         {
@@ -121,13 +126,9 @@ class ExpertEvaluation
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].description = PlayerPrefs.GetString(saveName);
 
-            Debug.Log(saveName);
-
             saveName = "heuristicsPriorities " + i;
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].priority = (HeuristicPriority)PlayerPrefs.GetInt(saveName);
-
-            Debug.Log(saveName);
 
             saveName = "heuristicsCategories " + i;
             if (PlayerPrefs.HasKey(saveName))
@@ -156,22 +157,6 @@ class ExpertEvaluation
                 userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
         }
 
-        //for (int t = 0; t < userComments.Count; t++)
-        //{
-        //    for (int j = 0; j < userComments[t].subcategories.Count; j++)
-        //    {
-        //        for (int i = 0; i < userComments[t].subcategories[j].heuristics.Count; i++)
-        //        {
-        //            filename = heuristicName + " heuristicsInputs " + t + " " + j + " " + i;
-        //            if (PlayerPrefs.HasKey(filename))
-        //                userComments[t].subcategories[j].heuristicInputs[i] = PlayerPrefs.GetString(filename);
-        //
-        //            filename = heuristicName + " heuristicsPriorities " + t + " " + j + " " + i;
-        //            if (PlayerPrefs.HasKey(filename))
-        //                userComments[t].subcategories[j].priorities[i] = (HeuristicPriority)PlayerPrefs.GetInt(filename);
-        //        }
-        //    }
-        //}
     }
 
     public void ClearCurrentInputs()
@@ -182,14 +167,6 @@ class ExpertEvaluation
             userComments[i].priority = HeuristicPriority.NONE;
             userComments[i].category = HeuristicCategory.NONE;
 
-            //for (int j = 0; j < userComments[t].subcategories.Count; j++)
-            //{
-            //    for (int i = 0; i < userComments[t].subcategories[j].heuristics.Count; i++)
-            //    {
-            //        userComments[t].subcategories[j].heuristicInputs[i] = " ";
-            //        userComments[t].subcategories[j].priorities[i] = HeuristicPriority.NONE;
-            //    }
-            //}
         }
 
         SaveData();
@@ -379,70 +356,31 @@ class ExpertEvaluation
 public class PathOSEvaluationWindow : EditorWindow
 {
     private Color bgColor, btnColor;
-
-    //Dropdown enums
-    //enum DropdownOptions
-    //{
-    //    NONE = 0,
-    //    PLAY_HEURISTICS = 1,
-    //    NIELSEN = 2,
-    //}
-
-    // public string[] dropdownStrings = new string[] { "NONE", "PLAY HEURISTICS", "NIELSEN" };
-    // public string[] templateLocations = new string[] { "Assets\\PathOS\\Settings\\PLAY_HEURISTICS_TEMPLATE.csv", "Assets\\PathOS\\Settings\\NIELSEN_TEMPLATE.csv" };
-    // public string[] heuristicNames = new string[] { "PLAY", "NIELSEN" };
-
-    // static DropdownOptions dropdowns = DropdownOptions.NONE;
-    // ExpertEvaluation[] heuristics = new ExpertEvaluation[2];
     ExpertEvaluation heuristics = new ExpertEvaluation();
-    //static int selected = 0;
+
     private void OnEnable()
     {
         //Background color
+        heuristics.LoadData();
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
-       // heuristics.LoadData();
-        ////Setting heuristic names
-        //for (int i = 0; i < heuristics.Length; i++)
-        //{
-        //    heuristics[i] = new HeuristicGuideline();
-        //    heuristics[i].heuristicName = heuristicNames[i];
-        //}
-        //
-        ////Loading saved data
-        //
-        //if (PlayerPrefs.HasKey("selected"))
-        //{
-        //    selected = PlayerPrefs.GetInt("selected");
-        //}
-        //
-
     }
 
     private void OnDestroy()
     {
-        //PlayerPrefs.SetInt("selected", selected);
         heuristics.SaveData();
 
     }
 
     private void OnDisable()
     {
-        //PlayerPrefs.SetInt("selected", selected);
         heuristics.SaveData();
     }
 
     public void OnWindowOpen()
     {
         GUILayout.BeginHorizontal();
-        //EditorGUIUtility.labelWidth = 70.0f;
-        //GUILayout.BeginHorizontal();
-        //
-        //selected = EditorGUILayout.Popup("Heuristics:", selected, dropdownStrings);
-        //GUILayout.EndHorizontal();
-        //
-        //if (selected > 0)
-        //{
+
         GUI.backgroundColor = btnColor;
 
 
@@ -477,28 +415,7 @@ public class PathOSEvaluationWindow : EditorWindow
         }
 
         GUI.backgroundColor = bgColor;
-        //}
-        //
         GUILayout.EndHorizontal();
-        //
-        //if (dropdowns != (DropdownOptions)selected)
-        //{
-        //    dropdowns = (DropdownOptions)selected;
-        //
-        //    if (dropdowns == DropdownOptions.NONE)
-        //    {
-        //        return;
-        //    }
-        //
-        //    heuristics[selected - 1].loadedCategories.Clear();
-        //    heuristics[selected - 1].LoadHeuristics(templateLocations[selected - 1]);
-        //}
-        //
-        //if (selected <= 0)
-        //{
-        //    return;
-        //}
-        //
         heuristics.DrawHeuristics();
         heuristics.SaveData();
     }
