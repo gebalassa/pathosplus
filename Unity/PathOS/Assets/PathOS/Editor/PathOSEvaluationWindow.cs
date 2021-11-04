@@ -69,21 +69,32 @@ class ExpertEvaluation
 
     public void DrawHeuristics()
     {
-
-        if (userComments.Count <= 0) return;
-
         EditorGUILayout.Space();
 
         foldoutStyle = EditorStyles.foldout;
         foldoutStyle.fontSize = 13;
 
+        EditorGUILayout.BeginVertical("Box");
+
         //girl what is this
         for (int i = 0; i < userComments.Count; i++)
         {
             EditorGUILayout.Space();
-            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.BeginVertical("Button");
             foldoutStyle.fontStyle = FontStyle.Italic;
+
+            EditorGUILayout.BeginHorizontal();
             userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + i, foldoutStyle);
+            GUILayout.FlexibleSpace();
+
+            GUI.backgroundColor = categoryColors[2];
+            if (GUILayout.Button("X", GUILayout.Width(15), GUILayout.Height(15)))
+            {
+                userComments.RemoveAt(i);
+            }
+            GUI.backgroundColor = categoryColors[0];
+
+            EditorGUILayout.EndHorizontal();
 
             if (!userComments[i].categoryFoldout)
             {
@@ -94,17 +105,41 @@ class ExpertEvaluation
             EditorGUI.indentLevel++;
             EditorGUILayout.BeginHorizontal();
             EditorStyles.label.wordWrap = true;
-            userComments[i].description = EditorGUILayout.TextArea(userComments[i].description, GUILayout.Width(Screen.width * 0.7f));
+            userComments[i].description = EditorGUILayout.TextArea(userComments[i].description, GUILayout.Width(Screen.width * 0.6f));
             GUI.backgroundColor = priorityColors[((int)userComments[i].priority)];
             userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
             GUI.backgroundColor = categoryColors[((int)userComments[i].category)];
             userComments[i].category = (HeuristicCategory)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
             GUI.backgroundColor = priorityColors[0];
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space(5);
             EditorGUILayout.EndVertical();
 
             EditorGUI.indentLevel--;
         }
+
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.BeginHorizontal();
+
+        GUILayout.FlexibleSpace();
+
+        if (GUILayout.Button("+"))
+        {
+            userComments.Add(new UserComment());
+        }
+        if (GUILayout.Button("-"))
+        {
+            if (userComments.Count > 0) 
+            {
+                userComments.RemoveAt(userComments.Count - 1);
+            }
+        }
+
+        EditorGUILayout.EndHorizontal();
+        EditorGUILayout.EndVertical();
+
     }
 
     public void LoadData()
@@ -345,11 +380,6 @@ class ExpertEvaluation
         writer.Close();
     }
 
-    public void AddComment()
-    {
-        userComments.Add(new UserComment());
-    }
-
 }
 
 [Serializable]
@@ -357,7 +387,7 @@ public class PathOSEvaluationWindow : EditorWindow
 {
     private Color bgColor, btnColor;
     ExpertEvaluation heuristics = new ExpertEvaluation();
-
+    private GUIStyle headerStyle = new GUIStyle();
     private void OnEnable()
     {
         //Background color
@@ -382,12 +412,9 @@ public class PathOSEvaluationWindow : EditorWindow
         GUILayout.BeginHorizontal();
 
         GUI.backgroundColor = btnColor;
+        headerStyle.fontSize = 20;
 
-
-        if (GUILayout.Button("ADD"))
-        {
-            heuristics.AddComment();
-        }
+        EditorGUILayout.LabelField("Expert Evaluation", headerStyle);
 
         if (GUILayout.Button("CLEAR"))
         {
