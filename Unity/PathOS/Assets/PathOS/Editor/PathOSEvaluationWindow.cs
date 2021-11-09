@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine.SceneManagement;
+using UnityEditor.SceneManagement;
+using PathOS;
+using Malee.Editor;
 
 /*
 PathOSEvaluationWindow.cs 
@@ -39,42 +42,86 @@ class ExpertEvaluation
 {
     //TODO: Spread things out in here to clean it up
     public List<UserComment> userComments = new List<UserComment>();
-    private GUIStyle foldoutStyle = GUIStyle.none;
+    private GUIStyle foldoutStyle = GUIStyle.none, buttonStyle = GUIStyle.none, labelStyle = GUIStyle.none;
 
     private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
-    private readonly string headerRow = "Number";
+    private readonly string headerRow = "#";
     private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
     public void SaveData()
     {
         string saveName;
+        Scene scene = SceneManager.GetActiveScene();
 
-        saveName = "heuristicAmount";
+        saveName = scene.name + " heuristicAmount";
         PlayerPrefs.SetInt(saveName, userComments.Count);
 
         for (int i = 0; i < userComments.Count; i++)
         {
-            saveName = "heuristicsInputs " + i;
+            saveName = scene.name + " heuristicsInputs " + i;
             PlayerPrefs.SetString(saveName, userComments[i].description);
 
-            saveName = "heuristicsPriorities " + i;
+            saveName = scene.name + " heuristicsPriorities " + i;
             PlayerPrefs.SetInt(saveName, (int)userComments[i].priority);
 
-            saveName = "heuristicsCategories " + i;
+            saveName = scene.name + " heuristicsCategories " + i;
             PlayerPrefs.SetInt(saveName, (int)userComments[i].category);
         }
     }
 
+    public void LoadData()
+    {
+        string saveName;
+        Scene scene = SceneManager.GetActiveScene();
+        int counter = 0;
+
+        userComments.Clear();
+
+        saveName = scene.name + " heuristicAmount";
+        if (PlayerPrefs.HasKey(saveName))
+            counter = PlayerPrefs.GetInt(saveName);
+
+        for (int i = 0; i < counter; i++)
+        {
+            userComments.Add(new UserComment());
+
+            saveName = scene.name + " heuristicsInputs " + i;
+            if (PlayerPrefs.HasKey(saveName))
+                userComments[i].description = PlayerPrefs.GetString(saveName);
+
+            saveName = scene.name + " heuristicsPriorities " + i;
+            if (PlayerPrefs.HasKey(saveName))
+                userComments[i].priority = (HeuristicPriority)PlayerPrefs.GetInt(saveName);
+
+            saveName = scene.name + " heuristicsCategories " + i;
+            if (PlayerPrefs.HasKey(saveName))
+                userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
+        }
+    }
 
     public void DrawHeuristics()
     {
         EditorGUILayout.Space();
 
         foldoutStyle = EditorStyles.foldout;
-        foldoutStyle.fontSize = 13;
+        foldoutStyle.fontSize = 14;
+
+        buttonStyle = new GUIStyle(GUI.skin.button);
+        buttonStyle.fontSize = 15;
+
+        labelStyle.fontSize = 15;
+        labelStyle.fontStyle = FontStyle.Italic;
 
         EditorGUILayout.BeginVertical("Box");
+
+        if (userComments.Count <= 0)
+        {
+            EditorGUILayout.Space(10);
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.Label("   There are currently no comments.", labelStyle);
+            EditorGUILayout.EndHorizontal();
+        }
 
         //girl what is this
         for (int i = 0; i < userComments.Count; i++)
@@ -84,17 +131,19 @@ class ExpertEvaluation
             foldoutStyle.fontStyle = FontStyle.Italic;
 
             EditorGUILayout.BeginHorizontal();
-            userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + i, foldoutStyle);
+            userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + (i+1), foldoutStyle);
             GUILayout.FlexibleSpace();
 
-            GUI.backgroundColor = categoryColors[2];
-            if (GUILayout.Button("X", GUILayout.Width(15), GUILayout.Height(15)))
+            if (GUILayout.Button("X", GUILayout.Width(17), GUILayout.Height(15)))
             {
                 userComments.RemoveAt(i);
+                i--;
+                continue;
             }
-            GUI.backgroundColor = categoryColors[0];
 
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.Space(5);
 
             if (!userComments[i].categoryFoldout)
             {
@@ -106,30 +155,31 @@ class ExpertEvaluation
             EditorGUILayout.BeginHorizontal();
             EditorStyles.label.wordWrap = true;
             userComments[i].description = EditorGUILayout.TextArea(userComments[i].description, GUILayout.Width(Screen.width * 0.6f));
-            GUI.backgroundColor = priorityColors[((int)userComments[i].priority)];
-            userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
+
             GUI.backgroundColor = categoryColors[((int)userComments[i].category)];
             userComments[i].category = (HeuristicCategory)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
+            GUI.backgroundColor = priorityColors[((int)userComments[i].priority)];
+            userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
             GUI.backgroundColor = priorityColors[0];
             EditorGUILayout.EndHorizontal();
-
             EditorGUILayout.Space(5);
+
             EditorGUILayout.EndVertical();
 
             EditorGUI.indentLevel--;
         }
 
-        EditorGUILayout.Space(10);
+        EditorGUILayout.Space(5);
 
         EditorGUILayout.BeginHorizontal();
 
         GUILayout.FlexibleSpace();
 
-        if (GUILayout.Button("+"))
+        if (GUILayout.Button("+", buttonStyle, GUILayout.Width(100)))
         {
             userComments.Add(new UserComment());
         }
-        if (GUILayout.Button("-"))
+        if (GUILayout.Button("-", buttonStyle, GUILayout.Width(100)))
         {
             if (userComments.Count > 0) 
             {
@@ -138,42 +188,18 @@ class ExpertEvaluation
         }
 
         EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(5);
+
         EditorGUILayout.EndVertical();
 
-    }
+        foldoutStyle.fontSize = 12;
 
-    public void LoadData()
-    {
-        string saveName;
-        int counter = 0;
-
-        userComments.Clear();
-
-        saveName = "heuristicAmount";
-        if (PlayerPrefs.HasKey(saveName))
-            counter = PlayerPrefs.GetInt(saveName);
-
-        for (int i = 0; i < counter; i++)
-        {
-            userComments.Add(new UserComment());
-
-            saveName = "heuristicsInputs " + i;
-            if (PlayerPrefs.HasKey(saveName))
-                userComments[i].description = PlayerPrefs.GetString(saveName);
-
-            saveName = "heuristicsPriorities " + i;
-            if (PlayerPrefs.HasKey(saveName))
-                userComments[i].priority = (HeuristicPriority)PlayerPrefs.GetInt(saveName);
-
-            saveName = "heuristicsCategories " + i;
-            if (PlayerPrefs.HasKey(saveName))
-                userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
-        }
     }
 
     public void LoadHeuristics(string filename)
     {
-        ImportHeuristics(filename);
+        //ImportHeuristics(filename);
 
         string saveName;
 
@@ -194,15 +220,9 @@ class ExpertEvaluation
 
     }
 
-    public void ClearCurrentInputs()
+    public void DeleteAll()
     {
-        for (int i = 0; i < userComments.Count; i++)
-        {
-            userComments[i].description = " ";
-            userComments[i].priority = HeuristicPriority.NONE;
-            userComments[i].category = HeuristicCategory.NONE;
-
-        }
+        userComments.Clear();
 
         SaveData();
     }
@@ -216,64 +236,7 @@ class ExpertEvaluation
 
         int inputCounter = 0;
 
-        while ((line = reader.ReadLine()) != null)
-        {
-            lineContents = line.Split(',');
-
-            if (lineContents.Length < 1)
-            {
-                Debug.Log("Error! Unable to read line");
-                continue;
-            }
-
-            if (lineContents[0] == headerRow)
-            {
-                continue;
-            }
-
-            string newDescription = lineContents[1].Replace("  ", "\n").Replace("/", ",");
-            userComments[inputCounter].description = newDescription;
-
-            switch (lineContents[2])
-            {
-                case "NA":
-                    userComments[inputCounter].priority = HeuristicPriority.NONE;
-                    break;
-                case "LOW":
-                    userComments[inputCounter].priority = HeuristicPriority.LOW;
-                    break;
-                case "MED":
-                    userComments[inputCounter].priority = HeuristicPriority.MED;
-                    break;
-                case "HIGH":
-                    userComments[inputCounter].priority = HeuristicPriority.HIGH;
-                    break;
-            }
-
-            switch (lineContents[4])
-            {
-                case "NA":
-                    userComments[inputCounter].category = HeuristicCategory.NONE;
-                    break;
-                case "LOW":
-                    userComments[inputCounter].category = HeuristicCategory.POS;
-                    break;
-                case "MED":
-                    userComments[inputCounter].category = HeuristicCategory.NEG;
-                    break;
-            }
-
-            inputCounter++;
-        }
-    }
-
-    public void ImportHeuristics(string filename)
-    {
-        StreamReader reader = new StreamReader(filename);
-
-        string line = "";
-        string[] lineContents;
-        int counter = 0;
+        userComments.Clear();
 
         while ((line = reader.ReadLine()) != null)
         {
@@ -292,118 +255,133 @@ class ExpertEvaluation
 
             userComments.Add(new UserComment());
 
-            userComments[counter].description = lineContents[1];
+            string newDescription = lineContents[1].Replace("  ", "\n").Replace("/", ",");
+            userComments[inputCounter].description = newDescription;
 
-            switch (lineContents[2])
-            {
-                case "NA":
-                    userComments[counter].priority = HeuristicPriority.NONE;
-                    break;
-                case "LOW":
-                    userComments[counter].priority = HeuristicPriority.LOW;
-                    break;
-                case "MED":
-                    userComments[counter].priority = HeuristicPriority.MED;
-                    break;
-                case "HIGH":
-                    userComments[counter].priority = HeuristicPriority.HIGH;
-                    break;
-            }
+            userComments[inputCounter].priority = StringToHeuristicPriority(lineContents[2]);
 
-            switch (lineContents[3])
-            {
-                case "NA":
-                    userComments[counter].category = HeuristicCategory.NONE;
-                    break;
-                case "POS":
-                    userComments[counter].category = HeuristicCategory.POS;
-                    break;
-                case "NEG":
-                    userComments[counter].category = HeuristicCategory.NEG;
-                    break;
-            }
+            userComments[inputCounter].category = StringToHeuristicCategory(lineContents[3]);
 
+            inputCounter++;
         }
-
-        reader.Close();
-
     }
+
     public void ExportHeuristics(string filename)
     {
         StreamWriter writer = new StreamWriter(filename);
 
         writer.WriteLine("#, Description, Input, Priority, Category");
-        string description, priority, category;
+        string description, priority, category, number;
 
         for (int i = 0; i < userComments.Count; i++)
         {
+            number = (i + 1).ToString();
             description = userComments[i].description.Replace("\r", "").Replace("\n", "  ").Replace(",", "/");
 
-            switch (userComments[i].priority)
-            {
-                case HeuristicPriority.NONE:
-                    priority = "NA";
-                    break;
-                case HeuristicPriority.LOW:
-                    priority = "LOW";
-                    break;
-                case HeuristicPriority.MED:
-                    priority = "MED";
-                    break;
-                case HeuristicPriority.HIGH:
-                    priority = "HIGH";
-                    break;
-                default:
-                    priority = "NA";
-                    break;
-            }
+            priority = HeuristicPriorityToString(userComments[i].priority);
 
-            switch (userComments[i].category)
-            {
-                case HeuristicCategory.NONE:
-                    category = "NA";
-                    break;
-                case HeuristicCategory.POS:
-                    category = "POS";
-                    break;
-                case HeuristicCategory.NEG:
-                    category = "NEG";
-                    break;
-                default:
-                    category = "NA";
-                    break;
-            }
+            category = HeuristicCategoryToString(userComments[i].category);
 
-            writer.WriteLine(i + ',' + description + ',' + priority + ',' + category);
+            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category);
         }
 
         writer.Close();
     }
 
+
+    private string HeuristicPriorityToString(HeuristicPriority name)
+    {
+        switch (name)
+        {
+            case HeuristicPriority.NONE:
+                return "NA";
+            case HeuristicPriority.LOW:
+                return "LOW";
+            case HeuristicPriority.MED:
+                return "MED";
+            case HeuristicPriority.HIGH:
+                return "HIGH";
+            default:
+                return "NA";
+        }
+    }
+
+    private HeuristicPriority StringToHeuristicPriority(string name)
+    {
+        switch (name)
+        {
+            case "NA":
+                return HeuristicPriority.NONE;
+            case "LOW":
+                return HeuristicPriority.LOW;
+            case "MED":
+                return HeuristicPriority.MED;
+            case "HIGH":
+                return HeuristicPriority.HIGH;
+            default:
+                return HeuristicPriority.NONE;
+        }
+    }
+    private string HeuristicCategoryToString(HeuristicCategory name)
+    {
+        switch (name)
+        {
+            case HeuristicCategory.NONE:
+                return "NA";
+            case HeuristicCategory.POS:
+                return "POS";
+            case HeuristicCategory.NEG:
+                return "NEG";
+            default:
+                return "NA";
+        }
+    }
+    private HeuristicCategory StringToHeuristicCategory(string name)
+    {
+        switch (name)
+        {
+            case "NA":
+                return HeuristicCategory.NONE;
+            case "POS":
+                return HeuristicCategory.POS;
+            case "NEG":
+                return HeuristicCategory.POS;
+            default:
+                return HeuristicCategory.NONE;
+        }
+    }
+
+    public void AddNewComment()
+    {
+        userComments.Add(new UserComment());
+    }
 }
 
-[Serializable]
 public class PathOSEvaluationWindow : EditorWindow
 {
     private Color bgColor, btnColor;
     ExpertEvaluation heuristics = new ExpertEvaluation();
     private GUIStyle headerStyle = new GUIStyle();
+    private GameObject selection = null;
     private void OnEnable()
     {
         //Background color
         heuristics.LoadData();
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
+
+        SceneView.onSceneGUIDelegate += this.OnSceneGUI;
     }
 
     private void OnDestroy()
     {
+        SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
         heuristics.SaveData();
-
     }
 
     private void OnDisable()
     {
+        SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
         heuristics.SaveData();
     }
 
@@ -416,9 +394,9 @@ public class PathOSEvaluationWindow : EditorWindow
 
         EditorGUILayout.LabelField("Expert Evaluation", headerStyle);
 
-        if (GUILayout.Button("CLEAR"))
+        if (GUILayout.Button("DELETE ALL"))
         {
-            heuristics.ClearCurrentInputs();
+            heuristics.DeleteAll();
         }
 
         if (GUILayout.Button("IMPORT"))
@@ -433,17 +411,37 @@ public class PathOSEvaluationWindow : EditorWindow
 
         if (GUILayout.Button("EXPORT"))
         {
-            string importPath = EditorUtility.OpenFilePanel("Import Evaluation", "ASSETS\\EvaluationFiles", "csv");
+            string exportPath = EditorUtility.OpenFilePanel("Export Evaluation", "ASSETS\\EvaluationFiles", "csv");
 
-            if (importPath.Length != 0)
+            if (exportPath.Length != 0)
             {
-                heuristics.ExportHeuristics(importPath);
+                heuristics.ExportHeuristics(exportPath);
             }
         }
 
         GUI.backgroundColor = bgColor;
         GUILayout.EndHorizontal();
         heuristics.DrawHeuristics();
-        heuristics.SaveData();
     }
+
+    void OnSceneGUI(SceneView sceneView)
+    {
+        Event e = Event.current;
+
+        //Selection update.
+        if (EditorWindow.mouseOverWindow != null &&
+            EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
+        {
+            if (e.type == EventType.MouseDown && e.button == 1)
+            {
+                selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
+                heuristics.AddNewComment();
+            }
+        }
+        else
+        {
+            selection = null;
+        }
+    }
+
 }

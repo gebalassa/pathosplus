@@ -486,6 +486,8 @@ public class OGVisEditor : Editor
                         RaycastHit hit;
                         bool timestampFound = false;
 
+                        Event e = Event.current;
+
                         for (int i = 0; i < points.Length; i++)
                         {
                             if (vis.showDirectionArrows && i % 10 == 0)

@@ -77,6 +77,7 @@ public class PathOSWindow : EditorWindow
         hasScreenshot = screenshot != null;
     }
 
+
     //gizmo stuff from here https://stackoverflow.com/questions/37267021/unity-editor-script-visible-hidden-gizmos
     void OnGUI()
     {
@@ -94,6 +95,7 @@ public class PathOSWindow : EditorWindow
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
+        ///
         switch (tabSelection)
         {
             case (int)Tabs.Agent:
@@ -126,6 +128,7 @@ public class PathOSWindow : EditorWindow
     {
         //Temporary solution
         batchingWindow.UpdateBatching();
+
     }
     private void GrabScreenshotReference()
     {

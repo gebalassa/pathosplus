@@ -324,8 +324,6 @@ public class PathOSAgent : MonoBehaviour
                 }
             }
         }
-
-        print(printScales);
     }
 
     //Update the agent's target position.

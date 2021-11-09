@@ -587,7 +587,7 @@ public class PathOSManagerWindow : EditorWindow
                     EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
                 {
                     if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
-                        selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, managerReference.ignoredEntities.ToArray());
+                             selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, managerReference.ignoredEntities.ToArray());
                 }
                 else
                     selection = null;
@@ -634,7 +634,7 @@ public class PathOSManagerWindow : EditorWindow
 
                 //Stop using the markup tool if escape key is pressed.
                 else if (Event.current.type == EventType.KeyDown
-               && Event.current.keyCode == KeyCode.Escape)
+                && Event.current.keyCode == KeyCode.Escape)
                 {
                     ActivateToggle(null);
                     Repaint();
