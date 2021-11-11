@@ -29,13 +29,46 @@ public enum HeuristicCategory
     NEG = 2,
 }
 
+//When you finally get time, please clean this up
 [Serializable]
-class UserComment
+public class UserComment
 {
-    public string description = "";
-    public bool categoryFoldout = false;
-    public HeuristicPriority priority = HeuristicPriority.NONE;
-    public HeuristicCategory category = HeuristicCategory.NONE;
+    public string description;
+    public bool categoryFoldout;
+    public HeuristicPriority priority;
+    public HeuristicCategory category;
+    public GameObject selection;
+
+    [SerializeField]
+    public bool hasSelection;
+
+    [SerializeField]
+    public int selectionID;
+
+    public UserComment()
+    {
+        description = "";
+        categoryFoldout = false;
+        priority = HeuristicPriority.NONE;
+        category = HeuristicCategory.NONE;
+        selection = null;
+    }
+
+    public UserComment(string description, bool categoryFoldout, HeuristicPriority priority, HeuristicCategory category, GameObject selection)
+    {
+        this.description = description;
+        this.categoryFoldout = categoryFoldout;
+        this.priority = priority;
+        this.category = category;
+        this.selection = selection;
+    }
+
+    public void GrabSelection()
+    {
+        if (hasSelection && null == selection)
+            selection = EditorUtility.InstanceIDToObject(selectionID) as GameObject;
+    }
+
 }
 
 [Serializable]
@@ -112,6 +145,20 @@ class ExpertEvaluation
 
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
+
+
+            //Not sure if this will work
+            if (userComments[i].hasSelection)
+            {
+                if (userComments[i].selection != null)
+                {
+                    userComments[i].selectionID = userComments[i].selection.GetInstanceID();
+                }
+                else
+                    userComments[i].selection = EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
+            }
+
+            userComments[i].hasSelection = userComments[i].selection != null;
         }
     }
 
@@ -184,8 +231,22 @@ class ExpertEvaluation
             {
                 SaveData();
             }
-                
-            
+
+            EditorGUI.BeginChangeCheck();
+            userComments[i].GrabSelection();
+            userComments[i].selection = EditorGUILayout.ObjectField("Chosen GameObject: ", userComments[i].selection, typeof(GameObject), true)
+                as GameObject;
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                userComments[i].hasSelection = userComments[i].selection != null;
+
+                if (userComments[i].hasSelection)
+                {
+                    userComments[i].selectionID = userComments[i].selection.GetInstanceID();
+                }
+            }
+
             EditorGUILayout.Space(5);
 
             EditorGUILayout.EndVertical();
@@ -360,9 +421,9 @@ class ExpertEvaluation
         }
     }
 
-    public void AddNewComment()
+    public void AddNewComment(UserComment comment)
     {
-        userComments.Add(new UserComment());
+        userComments.Add(comment);
         SaveData();
     }
 }
@@ -373,10 +434,21 @@ public class PathOSEvaluationWindow : EditorWindow
     ExpertEvaluation comments = new ExpertEvaluation();
     private GUIStyle headerStyle = new GUIStyle();
     private GameObject selection = null;
-    public bool popupAlreadyOpen = false;
+    static bool popupAlreadyOpen = false;
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
-    private bool initialized = false; 
-   
+    CommentPopup window;
+
+    public static PathOSEvaluationWindow instance;
+    private void Awake()
+    {
+        if (instance == null) { instance = this; }
+        else { this.Close(); }
+    }
+
+    // public static PathOSEvaluationWindow Instance
+    // {
+    //     get { return GetWindow<PathOSEvaluationWindow>(); }
+    // }
     private void OnEnable()
     {
         //Background color
@@ -384,19 +456,17 @@ public class PathOSEvaluationWindow : EditorWindow
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
 
-      //  SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
     }
 
     private void OnDestroy()
     {
-      //  SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
-       // comments.SaveData();
+        SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
     }
 
     private void OnDisable()
     {
-     //   SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
-     //   comments.SaveData();
+        SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
     }
 
     public void OnWindowOpen()
@@ -427,6 +497,7 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             string exportPath = EditorUtility.OpenFilePanel("Export Evaluation", "ASSETS\\EvaluationFiles", "csv");
 
+
             if (exportPath.Length != 0)
             {
                 comments.ExportHeuristics(exportPath);
@@ -442,55 +513,132 @@ public class PathOSEvaluationWindow : EditorWindow
     {
         if (popupAlreadyOpen) return;
 
-       // Event e = Event.current;
-       //
-       // //Selection update.
-       // if (EditorWindow.mouseOverWindow != null &&
-       //     EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
-       // {
-       //     if (e.type == EventType.MouseUp && e.button == 1)
-       //     {
-       //         selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
-       //         //popupAlreadyOpen = true;
-       //         // OpenPopup();
-       //     }
-       // }
-       // else
-       // {
-       //     selection = null;
-       // }
+        //Selection update.
+        if (EditorWindow.mouseOverWindow != null && EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
+        {
+            Event e = Event.current;
+
+            if (e.type == EventType.MouseUp && e.button == 1 && !popupAlreadyOpen)
+            {
+                selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
+                popupAlreadyOpen = true;
+                OpenPopup(selection);
+            }
+        }
+        else
+        {
+            selection = null;
+        }
     }
 
-    public void AddComment()
+    //Please clean this up
+    public void AddComment(UserComment comment)
     {
         popupAlreadyOpen = false;
-        comments.AddNewComment();
+        comments.AddNewComment(comment);
     }
 
-   // private void OpenPopup()
-   // {
-   //     CommentPopup window = ScriptableObject.CreateInstance<CommentPopup>();
-   //     window.evaluationWindow = this;
-   //     window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 250, 150);
-   //     window.ShowUtility();
-   //
-   // }
+    public void ClosePopup()
+    {
+        popupAlreadyOpen = false;
+    }
 
+    private void OpenPopup(GameObject selection)
+    {
+        window = new CommentPopup();//ScriptableObject.CreateInstance<CommentPopup>();
+        window.selection = selection;
+        window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);
+        window.ShowPopup();
+    }
 }
 
-//public class CommentPopup : EditorWindow
-//{
-//    public PathOSEvaluationWindow evaluationWindow;
-//
-//    void OnGUI()
-//    {
-//        EditorGUILayout.LabelField("This is an example of EditorWindow.ShowPopup", EditorStyles.wordWrappedLabel);
-//        GUILayout.Space(70);
-//
-//        if (GUILayout.Button("Add Comment"))
-//        {
-//            evaluationWindow.AddComment();
-//            this.Close();
-//        }
-//    }
-//}
+//Really messy, rushed implementation. Please clean this up
+public class CommentPopup : EditorWindow
+{
+    // public PathOSEvaluationWindow evaluationWindow;
+    //
+    // public void SetEvaluationWindow(ref PathOSEvaluationWindow window)
+    // {
+    //     evaluationWindow = window;
+    // }
+
+    private string description = "";
+    HeuristicPriority priority = HeuristicPriority.NONE;
+    HeuristicCategory category = HeuristicCategory.NONE;
+
+    private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
+
+    private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
+    private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
+
+    private GUIStyle labelStyle = GUIStyle.none;
+    public GameObject selection;
+
+    private void OnDestroy()
+    {
+        PathOSEvaluationWindow.instance.ClosePopup();
+        //evaluationWindow.ClosePopup();
+    }
+
+    private void OnDisable()
+    {
+        PathOSEvaluationWindow.instance.ClosePopup();
+        //evaluationWindow.ClosePopup();
+    }
+
+    void OnGUI()
+    {
+        labelStyle.fontSize = 15;
+        labelStyle.fontStyle = FontStyle.Italic;
+
+        EditorGUI.indentLevel++;
+
+        EditorGUILayout.BeginVertical("Box");
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label("New Comment", labelStyle);
+
+        if (GUILayout.Button("X", GUILayout.Width(17), GUILayout.Height(15)))
+        {
+            PathOSEvaluationWindow.instance.ClosePopup();
+            this.Close();
+        }
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.Space(5);
+
+
+        EditorGUILayout.BeginHorizontal();
+        EditorStyles.label.wordWrap = true;
+        description = EditorGUILayout.TextArea(description, GUILayout.Width(Screen.width * 0.6f));
+
+        GUI.backgroundColor = categoryColors[((int)category)];
+        category = (HeuristicCategory)EditorGUILayout.Popup((int)category, categoryNames);
+        GUI.backgroundColor = priorityColors[((int)priority)];
+        priority = (HeuristicPriority)EditorGUILayout.Popup((int)priority, priorityNames);
+        GUI.backgroundColor = priorityColors[0];
+        EditorGUILayout.EndHorizontal();
+
+
+        selection = EditorGUILayout.ObjectField("Chosen GameObject: ", selection, typeof(GameObject), true)
+            as GameObject;
+
+        EditorGUILayout.Space(5);
+
+        EditorGUILayout.EndVertical();
+
+        if (GUILayout.Button("Add Comment"))
+        {
+            //evaluationWindow.AddComment();
+            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, priority, category, selection));
+            this.Close();
+        }
+    }
+}
