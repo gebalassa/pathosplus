@@ -40,9 +40,6 @@ public class UserComment
     public GameObject selection;
 
     [SerializeField]
-    public bool hasSelection;
-
-    [SerializeField]
     public int selectionID;
 
     public UserComment()
@@ -52,6 +49,7 @@ public class UserComment
         priority = HeuristicPriority.NONE;
         category = HeuristicCategory.NONE;
         selection = null;
+        selectionID = 0;
     }
 
     public UserComment(string description, bool categoryFoldout, HeuristicPriority priority, HeuristicCategory category, GameObject selection)
@@ -61,14 +59,8 @@ public class UserComment
         this.priority = priority;
         this.category = category;
         this.selection = selection;
+        selectionID = selection.GetInstanceID();
     }
-
-    public void GrabSelection()
-    {
-        if (hasSelection && null == selection)
-            selection = EditorUtility.InstanceIDToObject(selectionID) as GameObject;
-    }
-
 }
 
 [Serializable]
@@ -81,7 +73,8 @@ class ExpertEvaluation
     private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
     private readonly string headerRow = "#";
-    private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
+    private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
+    private Color[] priorityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
 
     public void SaveData()
@@ -96,20 +89,21 @@ class ExpertEvaluation
 
         for (int i = 0; i < userComments.Count; i++)
         {
-            //saveName = scene.name + " heuristicsInputs " + i;
             saveName = scene.name + " heuristicsInputs " + i;
 
             PlayerPrefs.SetString(saveName, userComments[i].description);
 
-            //saveName = "heuristicsPriorities " + i;
             saveName = scene.name + " heuristicsPriorities " + i;
 
             PlayerPrefs.SetInt(saveName, (int)userComments[i].priority);
 
-            //saveName = "heuristicsCategories " + i;
             saveName = scene.name + " heuristicsCategories " + i;
 
             PlayerPrefs.SetInt(saveName, (int)userComments[i].category);
+
+            saveName = scene.name + " selectionID " + i;
+
+            PlayerPrefs.SetInt(saveName, (int)userComments[i].selectionID);
         }
     }
 
@@ -134,31 +128,21 @@ class ExpertEvaluation
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].description = PlayerPrefs.GetString(saveName);
 
-            //saveName = "heuristicsPriorities " + i;
             saveName = scene.name + " heuristicsPriorities " + i;
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].priority = (HeuristicPriority)PlayerPrefs.GetInt(saveName);
 
-
-           // saveName = "heuristicsCategories " + i;
             saveName = scene.name + " heuristicsCategories " + i;
 
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
 
+            saveName = scene.name + " selectionID " + i;
 
-            //Not sure if this will work
-            if (userComments[i].hasSelection)
-            {
-                if (userComments[i].selection != null)
-                {
-                    userComments[i].selectionID = userComments[i].selection.GetInstanceID();
-                }
-                else
-                    userComments[i].selection = EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
-            }
+            userComments[i].selectionID = PlayerPrefs.GetInt(saveName);
 
-            userComments[i].hasSelection = userComments[i].selection != null;
+            if (userComments[i].selectionID != 0)
+                userComments[i].selection = EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
         }
     }
 
@@ -222,30 +206,25 @@ class ExpertEvaluation
 
             GUI.backgroundColor = categoryColors[((int)userComments[i].category)];
             userComments[i].category = (HeuristicCategory)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
-            GUI.backgroundColor = priorityColors[((int)userComments[i].priority)];
+
+            if (userComments[i].category != HeuristicCategory.POS) GUI.backgroundColor = priorityColorsNeg[((int)userComments[i].priority)];
+            else GUI.backgroundColor = priorityColorsPos[((int)userComments[i].priority)];
+
             userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
-            GUI.backgroundColor = priorityColors[0];
+            GUI.backgroundColor = priorityColorsPos[0];
             EditorGUILayout.EndHorizontal();
 
-            if (EditorGUI.EndChangeCheck())
-            {
-                SaveData();
-            }
 
-            EditorGUI.BeginChangeCheck();
-            userComments[i].GrabSelection();
             userComments[i].selection = EditorGUILayout.ObjectField("Chosen GameObject: ", userComments[i].selection, typeof(GameObject), true)
                 as GameObject;
 
+
             if (EditorGUI.EndChangeCheck())
             {
-                userComments[i].hasSelection = userComments[i].selection != null;
-
-                if (userComments[i].hasSelection)
-                {
-                    userComments[i].selectionID = userComments[i].selection.GetInstanceID();
-                }
+                if (userComments[i].selection != null) userComments[i].selectionID = userComments[i].selection.GetInstanceID(); 
+                SaveData();
             }
+
 
             EditorGUILayout.Space(5);
 
@@ -326,6 +305,17 @@ class ExpertEvaluation
 
             userComments[inputCounter].category = StringToHeuristicCategory(lineContents[3]);
 
+            if (lineContents[4] == "No GameObject")
+            {
+                userComments[inputCounter].selection = null;
+                userComments[inputCounter].selectionID = 0;
+            }
+            else
+            {
+                userComments[inputCounter].selectionID = int.Parse(lineContents[5]);
+                userComments[inputCounter].selection = EditorUtility.InstanceIDToObject(userComments[inputCounter].selectionID) as GameObject; 
+            }
+
             inputCounter++;
         }
 
@@ -338,8 +328,8 @@ class ExpertEvaluation
     {
         StreamWriter writer = new StreamWriter(filename);
 
-        writer.WriteLine("#, Description, Input, Priority, Category");
-        string description, priority, category, number;
+        writer.WriteLine("#, Description, Priority, Category, GameObject, Object ID");
+        string description, priority, category, number, gameObjectName, ID;
 
         for (int i = 0; i < userComments.Count; i++)
         {
@@ -350,7 +340,18 @@ class ExpertEvaluation
 
             category = HeuristicCategoryToString(userComments[i].category);
 
-            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category);
+            if (userComments[i].selection != null)
+            {
+                gameObjectName = userComments[i].selection.name;
+                ID = userComments[i].selectionID.ToString();
+            }
+            else
+            {
+                gameObjectName = "No GameObject";
+                ID = "NA";
+            }
+
+            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category + ',' + gameObjectName + ',' + ID);
         }
 
         writer.Close();
@@ -436,7 +437,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private GameObject selection = null;
     static bool popupAlreadyOpen = false;
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
-    CommentPopup window;
+    Popup window;
 
     public static PathOSEvaluationWindow instance;
     private void Awake()
@@ -497,7 +498,6 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             string exportPath = EditorUtility.OpenFilePanel("Export Evaluation", "ASSETS\\EvaluationFiles", "csv");
 
-
             if (exportPath.Length != 0)
             {
                 comments.ExportHeuristics(exportPath);
@@ -521,8 +521,13 @@ public class PathOSEvaluationWindow : EditorWindow
             if (e.type == EventType.MouseUp && e.button == 1 && !popupAlreadyOpen)
             {
                 selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
-                popupAlreadyOpen = true;
-                OpenPopup(selection);
+
+                if (selection != null)
+                {
+                   // Debug.Log(selection.GetInstanceID());
+                    popupAlreadyOpen = true;
+                    OpenPopup(selection);
+                }
             }
         }
         else
@@ -545,23 +550,16 @@ public class PathOSEvaluationWindow : EditorWindow
 
     private void OpenPopup(GameObject selection)
     {
-        window = new CommentPopup();//ScriptableObject.CreateInstance<CommentPopup>();
+        window = new Popup();//ScriptableObject.CreateInstance<CommentPopup>();
         window.selection = selection;
         window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);
-        window.ShowPopup();
+        window.ShowUtility();
     }
 }
 
 //Really messy, rushed implementation. Please clean this up
-public class CommentPopup : EditorWindow
+public class Popup : EditorWindow
 {
-    // public PathOSEvaluationWindow evaluationWindow;
-    //
-    // public void SetEvaluationWindow(ref PathOSEvaluationWindow window)
-    // {
-    //     evaluationWindow = window;
-    // }
-
     private string description = "";
     HeuristicPriority priority = HeuristicPriority.NONE;
     HeuristicCategory category = HeuristicCategory.NONE;
@@ -569,7 +567,8 @@ public class CommentPopup : EditorWindow
     private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
 
-    private Color[] priorityColors = new Color[] { Color.white, Color.green, Color.yellow, new Color32(248, 114, 126, 255) };
+    private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74, 255), new Color32(43, 172, 32, 255) };
+    private Color[] priorityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100, 255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
 
     private GUIStyle labelStyle = GUIStyle.none;
@@ -578,13 +577,11 @@ public class CommentPopup : EditorWindow
     private void OnDestroy()
     {
         PathOSEvaluationWindow.instance.ClosePopup();
-        //evaluationWindow.ClosePopup();
     }
 
     private void OnDisable()
     {
         PathOSEvaluationWindow.instance.ClosePopup();
-        //evaluationWindow.ClosePopup();
     }
 
     void OnGUI()
@@ -621,9 +618,12 @@ public class CommentPopup : EditorWindow
 
         GUI.backgroundColor = categoryColors[((int)category)];
         category = (HeuristicCategory)EditorGUILayout.Popup((int)category, categoryNames);
-        GUI.backgroundColor = priorityColors[((int)priority)];
+
+        if (category != HeuristicCategory.POS) GUI.backgroundColor = priorityColorsNeg[((int)priority)];
+        else GUI.backgroundColor = priorityColorsPos[((int)priority)];
+        
         priority = (HeuristicPriority)EditorGUILayout.Popup((int)priority, priorityNames);
-        GUI.backgroundColor = priorityColors[0];
+        GUI.backgroundColor = priorityColorsPos[0];
         EditorGUILayout.EndHorizontal();
 
 
