@@ -1,8 +1,10 @@
-#, Description, Priority, Category, GameObject, Object ID
-1,,NA,NA,No GameObject,NA
-2,This is a comment skkrt skrrrtt,LOW,POS,No GameObject,NA
-3,This is pain skrrt skrrt,NA,NA,basic_rig L Calf,-7122
-4,Ratatatata,NA,NA,basic_rig Footsteps,-6026
-5,,NA,NA,BaseGeometry,19154
-6,ratatata,NA,NA,No GameObject,NA
-7,,NA,NA,Rock - Light 2 (1),-2978
+#, Description, Priority, Category, GameObject, Object ID, Entity Type
+1,,LOW,NA,No GameObject,NA,BOSS
+2,This is a comment skkrt skrrrtt,LOW,POS,No GameObject,NA,OPTIONAL GOAL
+3,This is pain skrrt skrrt,NA,NA,basic_rig L Calf,-7122,NONE
+4,Ratatatata,NA,NA,basic_rig Footsteps,-6026,NONE
+5,,NA,NA,BaseGeometry,19154,NONE
+6,ratatata,NA,NA,No GameObject,NA,NONE
+7,,NA,NA,Rock - Light 2 (1),-2978,NONE
+8,This is an impling,NA,NA,Impling (1),19494,NONE
+9,Its an impling,LOW,POS,Impling (1),19494,NONE

@@ -38,6 +38,7 @@ public class UserComment
     public HeuristicPriority priority;
     public HeuristicCategory category;
     public GameObject selection;
+    public EntityType entityType;
 
     [SerializeField]
     public int selectionID;
@@ -50,9 +51,10 @@ public class UserComment
         category = HeuristicCategory.NONE;
         selection = null;
         selectionID = 0;
+        entityType = EntityType.ET_NONE;
     }
 
-    public UserComment(string description, bool categoryFoldout, HeuristicPriority priority, HeuristicCategory category, GameObject selection)
+    public UserComment(string description, bool categoryFoldout, HeuristicPriority priority, HeuristicCategory category, GameObject selection, EntityType entityType)
     {
         this.description = description;
         this.categoryFoldout = categoryFoldout;
@@ -60,17 +62,20 @@ public class UserComment
         this.category = category;
         this.selection = selection;
         selectionID = selection.GetInstanceID();
+        this.entityType = entityType;
     }
 }
 
 [Serializable]
-class ExpertEvaluation
+class ExpertEvaluation 
 { 
     //TODO: Spread things out in here to clean it up
     public List<UserComment> userComments = new List<UserComment>();
     private GUIStyle foldoutStyle = GUIStyle.none, buttonStyle = GUIStyle.none, labelStyle = GUIStyle.none;
 
     private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
+    "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
     private readonly string headerRow = "#";
     private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
@@ -103,7 +108,11 @@ class ExpertEvaluation
 
             saveName = scene.name + " selectionID " + i;
 
-            PlayerPrefs.SetInt(saveName, (int)userComments[i].selectionID);
+            PlayerPrefs.SetInt(saveName, userComments[i].selectionID);
+
+            saveName = scene.name + " entityType " + i;
+
+            PlayerPrefs.SetInt(saveName, (int)userComments[i].entityType);
         }
     }
 
@@ -143,7 +152,12 @@ class ExpertEvaluation
 
             if (userComments[i].selectionID != 0)
                 userComments[i].selection = EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
+
+            saveName = scene.name + " entityType " + i;
+
+            userComments[i].entityType = (EntityType)PlayerPrefs.GetInt(saveName);
         }
+
     }
 
     public void DrawComments()
@@ -158,6 +172,10 @@ class ExpertEvaluation
 
         labelStyle.fontSize = 15;
         labelStyle.fontStyle = FontStyle.Italic;
+
+     //   test_icon = Resources.Load<Texture2D>("hazard_enemy_low");
+     //   markupStyle = GUIStyle.none;
+     //   markupStyle.normal.background = test_icon;
 
         EditorGUILayout.BeginVertical("Box");
 
@@ -177,6 +195,11 @@ class ExpertEvaluation
             foldoutStyle.fontStyle = FontStyle.Italic;
 
             EditorGUILayout.BeginHorizontal();
+
+          //  if (GUILayout.Button("", markupStyle, GUILayout.Width(17), GUILayout.Height(15)))
+          //  {
+          //  }
+
             userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + (i+1), foldoutStyle);
             GUILayout.FlexibleSpace();
 
@@ -212,19 +235,23 @@ class ExpertEvaluation
 
             userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
             GUI.backgroundColor = priorityColorsPos[0];
+
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space(2);
+            EditorGUILayout.BeginHorizontal();
 
-
-            userComments[i].selection = EditorGUILayout.ObjectField("Chosen GameObject: ", userComments[i].selection, typeof(GameObject), true)
+            userComments[i].selection = EditorGUILayout.ObjectField("", userComments[i].selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
                 as GameObject;
 
+            userComments[i].entityType = (EntityType)EditorGUILayout.Popup((int)userComments[i].entityType, entityNames);
+
+            EditorGUILayout.EndHorizontal();
 
             if (EditorGUI.EndChangeCheck())
             {
                 if (userComments[i].selection != null) userComments[i].selectionID = userComments[i].selection.GetInstanceID(); 
                 SaveData();
             }
-
 
             EditorGUILayout.Space(5);
 
@@ -316,6 +343,8 @@ class ExpertEvaluation
                 userComments[inputCounter].selection = EditorUtility.InstanceIDToObject(userComments[inputCounter].selectionID) as GameObject; 
             }
 
+            userComments[inputCounter].entityType = StringToEntityType(lineContents[6]);
+
             inputCounter++;
         }
 
@@ -328,8 +357,8 @@ class ExpertEvaluation
     {
         StreamWriter writer = new StreamWriter(filename);
 
-        writer.WriteLine("#, Description, Priority, Category, GameObject, Object ID");
-        string description, priority, category, number, gameObjectName, ID;
+        writer.WriteLine("#, Description, Priority, Category, GameObject, Object ID, Entity Type");
+        string description, priority, category, number, gameObjectName, ID, entity;
 
         for (int i = 0; i < userComments.Count; i++)
         {
@@ -351,7 +380,9 @@ class ExpertEvaluation
                 ID = "NA";
             }
 
-            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category + ',' + gameObjectName + ',' + ID);
+            entity = entityNames[(int)userComments[i].entityType];
+
+            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category + ',' + gameObjectName + ',' + ID + ',' + entity);
         }
 
         writer.Close();
@@ -374,6 +405,45 @@ class ExpertEvaluation
                 return "HIGH";
             default:
                 return "NA";
+        }
+    }
+
+    private EntityType StringToEntityType(string name)
+    {
+        switch (name)
+        {
+            case "NONE":
+                return EntityType.ET_NONE;
+            case "OPTIONAL GOAL":
+                return EntityType.ET_GOAL_OPTIONAL;
+            case "MANDATORY GOAL":
+                return EntityType.ET_GOAL_MANDATORY;
+            case "COMPLETION GOAL":
+                return EntityType.ET_GOAL_COMPLETION;
+            case "ACHIEVEMENT":
+                return EntityType.ET_RESOURCE_ACHIEVEMENT;
+            case "PRESERVATION LOW":
+                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
+            case "PRESERVATION MED":
+                return EntityType.ET_RESOURCE_PRESERVATION_MED;
+            case "PRESERVATION HIGH":
+                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
+            case "LOW ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_LOW;
+            case "MED ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_MED;
+            case "HIGH ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_HIGH;
+            case "BOSS":
+                return EntityType.ET_HAZARD_ENEMY_BOSS;
+            case "ENVIRONMENT HAZARD":
+                return EntityType.ET_HAZARD_ENVIRONMENT;
+            case "POI":
+                return EntityType.ET_POI;
+            case "NPC POI":
+                return EntityType.ET_POI_NPC;
+            default:
+                return EntityType.ET_NONE;
         }
     }
 
@@ -566,6 +636,9 @@ public class Popup : EditorWindow
 
     private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
+    private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
+    "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
+
 
     private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74, 255), new Color32(43, 172, 32, 255) };
     private Color[] priorityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100, 255), new Color32(248, 114, 126, 255) };
@@ -573,6 +646,7 @@ public class Popup : EditorWindow
 
     private GUIStyle labelStyle = GUIStyle.none;
     public GameObject selection;
+    public EntityType entityType; 
 
     private void OnDestroy()
     {
@@ -627,8 +701,15 @@ public class Popup : EditorWindow
         EditorGUILayout.EndHorizontal();
 
 
-        selection = EditorGUILayout.ObjectField("Chosen GameObject: ", selection, typeof(GameObject), true)
+        EditorGUILayout.Space(2);
+        EditorGUILayout.BeginHorizontal();
+
+        selection = EditorGUILayout.ObjectField("", selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
             as GameObject;
+
+        entityType = (EntityType)EditorGUILayout.Popup((int)entityType, entityNames);
+
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.Space(5);
 
@@ -637,7 +718,7 @@ public class Popup : EditorWindow
         if (GUILayout.Button("Add Comment"))
         {
             //evaluationWindow.AddComment();
-            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, priority, category, selection));
+            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, priority, category, selection, entityType));
             this.Close();
         }
     }
