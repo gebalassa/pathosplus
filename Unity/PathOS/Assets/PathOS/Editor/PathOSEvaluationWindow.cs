@@ -243,7 +243,7 @@ class ExpertEvaluation
             userComments[i].selection = EditorGUILayout.ObjectField("", userComments[i].selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
                 as GameObject;
 
-            userComments[i].entityType = (EntityType)EditorGUILayout.Popup((int)userComments[i].entityType, entityNames);
+            userComments[i].entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(userComments[i].entityType), entityNames));
 
             EditorGUILayout.EndHorizontal();
 
@@ -497,23 +497,117 @@ class ExpertEvaluation
         userComments.Add(comment);
         SaveData();
     }
+
+    private int EntityToIndex(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.ET_NONE:
+                return 0;
+            case EntityType.ET_GOAL_OPTIONAL:
+                return 1;
+            case EntityType.ET_GOAL_MANDATORY:
+                return 2;
+            case EntityType.ET_GOAL_COMPLETION:
+                return 3;
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return 4;
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return 5;
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return 6;
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return 7;
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return 8;
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return 9;
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return 10;
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return 11;
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return 12;
+            case EntityType.ET_POI:
+                return 13;
+            case EntityType.ET_POI_NPC:
+                return 14;
+            default:
+                return 0;
+        }
+    }
+
+    private EntityType IndexToEntity(int index)
+    {
+
+        switch (index)
+        {
+            case 0:
+                return EntityType.ET_NONE;
+            case 1:
+                return EntityType.ET_GOAL_OPTIONAL;
+            case 2:
+                return EntityType.ET_GOAL_MANDATORY;
+            case 3:
+                return EntityType.ET_GOAL_COMPLETION;
+            case 4:
+                return EntityType.ET_RESOURCE_ACHIEVEMENT;
+            case 5:
+                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
+            case 6:
+                return EntityType.ET_RESOURCE_PRESERVATION_MED;
+            case 7:
+                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
+            case 8:
+                return EntityType.ET_HAZARD_ENEMY_LOW;
+            case 9:
+                return EntityType.ET_HAZARD_ENEMY_MED;
+            case 10:
+                return EntityType.ET_HAZARD_ENEMY_HIGH;
+            case 11:
+                return EntityType.ET_HAZARD_ENEMY_BOSS;
+            case 12:
+                return EntityType.ET_HAZARD_ENVIRONMENT;
+            case 13:
+                return EntityType.ET_POI;
+            case 14:
+                return EntityType.ET_POI_NPC;
+            default:
+                return EntityType.ET_NONE;
+        }
+    }
 }
 
 public class PathOSEvaluationWindow : EditorWindow
 {
     private Color bgColor, btnColor;
+    private PathOSManager managerReference;
     ExpertEvaluation comments = new ExpertEvaluation();
     private GUIStyle headerStyle = new GUIStyle();
     private GameObject selection = null;
     static bool popupAlreadyOpen = false;
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
     Popup window;
+    private const string editorPrefsID = "PathOSEvaluationWindow";
+
+    [SerializeField]
+    private bool hasManager;
+
+    [SerializeField]
+    private int managerID;
 
     public static PathOSEvaluationWindow instance;
     private void Awake()
     {
-        if (instance == null) { instance = this; }
-        else { this.Close(); }
+        if (instance == null) {
+            instance = this;
+            //Debug.Log("Instance is set");
+        }
+        else {
+            //Debug.Log("This gets closed");
+            this.Close();
+            //DestroyImmediate(this);
+        }
     }
 
     // public static PathOSEvaluationWindow Instance
@@ -527,21 +621,65 @@ public class PathOSEvaluationWindow : EditorWindow
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
 
-         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+        SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+
+        //Load saved settings.
+        string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
+        JsonUtility.FromJsonOverwrite(prefsData, this);
+
+        //Re-establish manager reference, if it has been nullified.
+        if (hasManager)
+        {
+
+            if (managerReference != null)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
+            else
+                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+        }
+
+        hasManager = managerReference != null;
     }
 
     private void OnDestroy()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
     }
 
     private void OnDisable()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+
+        string prefsData = JsonUtility.ToJson(this, false);
+        EditorPrefs.SetString(editorPrefsID, prefsData);
     }
 
     public void OnWindowOpen()
     {
+        EditorGUI.BeginChangeCheck();
+
+        GrabManagerReference();
+        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+            as PathOSManager;
+
+
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
+        {
+            hasManager = managerReference != null;
+
+            if (hasManager)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
+        }
+
+        EditorGUILayout.Space(15);
+
         GUILayout.BeginHorizontal();
 
         GUI.backgroundColor = btnColor;
@@ -596,7 +734,7 @@ public class PathOSEvaluationWindow : EditorWindow
                 {
                    // Debug.Log(selection.GetInstanceID());
                     popupAlreadyOpen = true;
-                    OpenPopup(selection);
+                    OpenPopup(selection, GetMarkup(selection));
                 }
             }
         }
@@ -610,6 +748,8 @@ public class PathOSEvaluationWindow : EditorWindow
     public void AddComment(UserComment comment)
     {
         popupAlreadyOpen = false;
+
+        
         comments.AddNewComment(comment);
     }
 
@@ -618,12 +758,33 @@ public class PathOSEvaluationWindow : EditorWindow
         popupAlreadyOpen = false;
     }
 
-    private void OpenPopup(GameObject selection)
+    private void OpenPopup(GameObject selection, EntityType entityType)
     {
         window = new Popup();//ScriptableObject.CreateInstance<CommentPopup>();
         window.selection = selection;
+        window.entityType = entityType;
         window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);
         window.ShowUtility();
+    }
+
+    private EntityType GetMarkup(GameObject selection)
+    {
+        for (int i = 0; i < managerReference.levelEntities.Count; i++)
+        {
+            //Looks into the pathos manager to figure out if that object has a tag
+            if (managerReference.levelEntities[i].objectRef == selection)
+            {
+                return managerReference.levelEntities[i].entityType;
+            }
+        }
+
+        return EntityType.ET_NONE;
+    }
+
+    private void GrabManagerReference()
+    {
+        if (hasManager && null == managerReference)
+            managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
     }
 }
 
@@ -707,7 +868,8 @@ public class Popup : EditorWindow
         selection = EditorGUILayout.ObjectField("", selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
             as GameObject;
 
-        entityType = (EntityType)EditorGUILayout.Popup((int)entityType, entityNames);
+        //entityType = (EntityType)EditorGUILayout.Popup(EntityToIndex(entityType), entityNames);
+        entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(entityType), entityNames));
 
         EditorGUILayout.EndHorizontal();
 
@@ -720,6 +882,85 @@ public class Popup : EditorWindow
             //evaluationWindow.AddComment();
             PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, priority, category, selection, entityType));
             this.Close();
+        }
+    }
+
+    private int EntityToIndex(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.ET_NONE:
+                return 0;
+            case EntityType.ET_GOAL_OPTIONAL:
+                return 1;
+            case EntityType.ET_GOAL_MANDATORY:
+                return 2;
+            case EntityType.ET_GOAL_COMPLETION:
+                return 3;
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return 4;
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return 5;
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return 6;
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return 7;
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return 8;
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return 9;
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return 10;
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return 11;
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return 12;
+            case EntityType.ET_POI:
+                return 13;
+            case EntityType.ET_POI_NPC:
+                return 14;
+            default:
+                return 0;
+        }
+    }
+
+    private EntityType IndexToEntity(int index)
+    {
+
+        switch (index)
+        {
+            case 0:
+                return EntityType.ET_NONE;
+            case 1:
+                return EntityType.ET_GOAL_OPTIONAL;
+            case 2:
+                return EntityType.ET_GOAL_MANDATORY;
+            case 3:
+                return EntityType.ET_GOAL_COMPLETION;
+            case 4:
+                return EntityType.ET_RESOURCE_ACHIEVEMENT;
+            case 5:
+                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
+            case 6:
+                return EntityType.ET_RESOURCE_PRESERVATION_MED;
+            case 7:
+                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
+            case 8:
+                return EntityType.ET_HAZARD_ENEMY_LOW;
+            case 9:
+                return EntityType.ET_HAZARD_ENEMY_MED;
+            case 10:
+                return EntityType.ET_HAZARD_ENEMY_HIGH;
+            case 11:
+                return EntityType.ET_HAZARD_ENEMY_BOSS;
+            case 12:
+                return EntityType.ET_HAZARD_ENVIRONMENT;
+            case 13:
+                return EntityType.ET_POI;
+            case 14:
+                return EntityType.ET_POI_NPC;
+            default:
+                return EntityType.ET_NONE;
         }
     }
 }
