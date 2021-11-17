@@ -305,6 +305,7 @@ class ExpertEvaluation
         string[] lineContents;
 
         int inputCounter = 0;
+        int lineNumber = 0;
 
         userComments.Clear();
 
@@ -318,7 +319,9 @@ class ExpertEvaluation
                 continue;
             }
 
-            if (lineContents[0] == headerRow)
+            lineNumber++;
+
+            if (lineNumber <= 7)
             {
                 continue;
             }
@@ -353,9 +356,99 @@ class ExpertEvaluation
         SaveData();
     }
 
+    //Exports the heuristics
     public void ExportHeuristics(string filename)
     {
         StreamWriter writer = new StreamWriter(filename);
+
+        List<string> headerComponents = new List<string>();
+        List<string> noneComponents = new List<string>();
+        List<string> lowComponents = new List<string>();
+        List<string> medComponents = new List<string>();
+        List<string> highComponents = new List<string>();
+
+        headerComponents.Add("Priority,");
+        noneComponents.Add("None,");
+        lowComponents.Add("Low,");
+        medComponents.Add("Med,");
+        highComponents.Add("High,");
+
+        for (int i = 0; i < userComments.Count; i++)
+        {
+            string entityString = EntityTypeToString(userComments[i].entityType) + ",";
+
+            if (headerComponents.Contains(entityString))
+            {
+                int index = headerComponents.IndexOf(EntityTypeToString(userComments[i].entityType) + ",");
+                
+                if (userComments[i].priority == HeuristicPriority.LOW)
+                {
+                    lowComponents[index-1] += " #" + (i + 1);
+                }
+                else if (userComments[i].priority == HeuristicPriority.MED)
+                {
+                    medComponents[index-1] += " #" + (i + 1);
+                }
+                else if (userComments[i].priority == HeuristicPriority.HIGH)
+                {
+                    highComponents[index-1] += " #" + (i + 1);
+                }
+                else
+                {
+                    noneComponents[index] += " #" + (i + 1);
+                }
+
+                Debug.Log(i + " " + index + " " + entityString);
+            }    
+            else
+            {
+                headerComponents.Add(entityString);
+
+                lowComponents.Add(",");
+                medComponents.Add(",");
+                highComponents.Add(",");
+                noneComponents.Add(",");
+
+                if (userComments[i].priority == HeuristicPriority.LOW)
+                {
+                    lowComponents[lowComponents.Count-2] += "#" + (i + 1);
+                }
+                else if (userComments[i].priority == HeuristicPriority.MED)
+                {
+                    medComponents[medComponents.Count - 2] += "#" + (i + 1);
+                }
+                else if (userComments[i].priority == HeuristicPriority.HIGH)
+                {
+                    highComponents[highComponents.Count - 2] += "#" + (i + 1);
+                }
+                else
+                {
+                    noneComponents[noneComponents.Count - 2] += "#" + (i + 1);
+                }
+            }
+        }
+
+        string header = "";
+        string none = "";
+        string low = "";
+        string med = "";
+        string high = "";
+
+        for (int i = 0; i < headerComponents.Count; i++)
+        {
+            header += headerComponents[i];
+            none += noneComponents[i];
+            low += lowComponents[i];
+            med += medComponents[i];
+            high += highComponents[i];
+        }
+
+        writer.WriteLine(header);
+        writer.WriteLine(none);
+        writer.WriteLine(low);
+        writer.WriteLine(med);
+        writer.WriteLine(high);
+        writer.WriteLine("");
 
         writer.WriteLine("#, Description, Priority, Category, GameObject, Object ID, Entity Type");
         string description, priority, category, number, gameObjectName, ID, entity;
@@ -380,7 +473,7 @@ class ExpertEvaluation
                 ID = "NA";
             }
 
-            entity = entityNames[(int)userComments[i].entityType];
+            entity = entityNames[EntityToIndex(userComments[i].entityType)];
 
             writer.WriteLine(number + ',' + description + ',' + priority + ',' + category + ',' + gameObjectName + ',' + ID + ',' + entity);
         }
@@ -444,6 +537,46 @@ class ExpertEvaluation
                 return EntityType.ET_POI_NPC;
             default:
                 return EntityType.ET_NONE;
+        }
+    }
+
+
+    private String EntityTypeToString(EntityType name)
+    {
+        switch (name)
+        {
+            case EntityType.ET_NONE:
+                return "NONE";
+            case EntityType.ET_GOAL_OPTIONAL:
+                return "OPTIONAL GOAL";
+            case EntityType.ET_GOAL_MANDATORY:
+                return "MANDATORY GOAL";
+            case EntityType.ET_GOAL_COMPLETION:
+                return "COMPLETION GOAL";
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return "ACHIEVEMENT";
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return "PRESERVATION LOW";
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return "PRESERVATION MED";
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return "PRESERVATION HIGH";
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return "LOW ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return "MED ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return "HIGH ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return "BOSS";
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return "ENVIRONMENT HAZARD";
+            case EntityType.ET_POI:
+                return "POI";
+            case EntityType.ET_POI_NPC:
+                return "NPC POI";
+            default:
+                return "NONE";
         }
     }
 
