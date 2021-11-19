@@ -136,19 +136,19 @@ public class PathOSManagerWindow : EditorWindow
         JsonUtility.FromJsonOverwrite(prefsData, this);
 
         //Re-establish manager reference, if it has been nullified.
-        if (hasManager)
-        {
-
-            if (managerReference != null)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
-            else
-                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-        }
-
-        managerInitialized = false;
-        hasManager = managerReference != null;
+//        if (hasManager)
+//        {
+//
+//            if (managerReference != null)
+//            {
+//                managerID = managerReference.GetInstanceID();
+//            }
+//            else
+//                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+//        }
+//
+//        managerInitialized = false;
+//        hasManager = managerReference != null;
 
         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
 
@@ -175,33 +175,38 @@ public class PathOSManagerWindow : EditorWindow
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
 
     }
-
-    public void OnWindowOpen()
+    public void OnWindowOpen(PathOSManager reference)
     {
-        EditorGUI.BeginChangeCheck();
+        // EditorGUI.BeginChangeCheck();
+        //
+        // GrabManagerReference();
+        // managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+        //     as PathOSManager;
+        //
+        //
+        // //Update agent ID if the user has selected a new object reference.
+        // if (EditorGUI.EndChangeCheck())
+        // {
+        //     hasManager = managerReference != null;
+        //     managerInitialized = false;
+        //
+        //     if (hasManager)
+        //     {
+        //         managerID = managerReference.GetInstanceID();
+        //     }
+        // }
 
-        GrabManagerReference();
-        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-            as PathOSManager;
+        managerReference = reference;
 
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
+        if (managerReference == null)
         {
-            hasManager = managerReference != null;
             managerInitialized = false;
-
-            if (hasManager)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
+            return;
         }
-
-        if (managerReference == null) return;
 
         EditorGUILayout.Space();
 
-        if (!managerInitialized) InitializeManager();
+        if (!managerInitialized) InitializeManager(managerReference);
 
         Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
@@ -216,32 +221,37 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.Space();
     }
 
-    public void OnVisualizationOpen()
+    public void OnVisualizationOpen(PathOSManager reference)
     {
 
-        EditorGUI.BeginChangeCheck();
+        // EditorGUI.BeginChangeCheck();
+        //
+        // GrabManagerReference();
+        // managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+        //     as PathOSManager;
+        //
+        //
+        // //Update agent ID if the user has selected a new object reference.
+        // if (EditorGUI.EndChangeCheck())
+        // {
+        //     hasManager = managerReference != null;
+        //
+        //     if (hasManager)
+        //     {
+        //         managerID = managerReference.GetInstanceID();
+        //     }
+        // }
 
-        GrabManagerReference();
-        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-            as PathOSManager;
+        managerReference = reference;
 
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
+        if (managerReference == null)
         {
-            hasManager = managerReference != null;
-
-            if (hasManager)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
+            return;
         }
-
-        if (managerReference == null) return;
 
         EditorGUILayout.Space();
 
-        if (!managerInitialized) InitializeManager();
+        if (!managerInitialized) InitializeManager(managerReference);
 
         //What does this do
         Selection.objects = new Object[] { managerReference.gameObject };
@@ -263,8 +273,10 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.Space();
     }
 
-    private void InitializeManager()
+    private void InitializeManager(PathOSManager reference)
     {
+        managerReference = reference;
+
         serial = new SerializedObject(managerReference);
 
         //Grab properties.
@@ -572,77 +584,77 @@ public class PathOSManagerWindow : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
+        if (!managerReference) return;
+
         Handles.BeginGUI();
 
-        if (managerReference != null)
+        if (activeToggle != null)
         {
-            if (activeToggle != null)
+            //Use the current markup icon as the cursor.
+            Cursor.SetCursor(activeToggle.cursor, Vector2.zero, CursorMode.Auto);
+            EditorGUIUtility.AddCursorRect(new Rect(0.0f, 0.0f, 10000.0f, 10000.0f), MouseCursor.CustomCursor);
+
+            //Selection update.
+            if (EditorWindow.mouseOverWindow != null &&
+                EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
             {
-                //Use the current markup icon as the cursor.
-                Cursor.SetCursor(activeToggle.cursor, Vector2.zero, CursorMode.Auto);
-                EditorGUIUtility.AddCursorRect(new Rect(0.0f, 0.0f, 10000.0f, 10000.0f), MouseCursor.CustomCursor);
+                if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
+                         selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, managerReference.ignoredEntities.ToArray());
+            }
+            else
+                selection = null;
 
-                //Selection update.
-                if (EditorWindow.mouseOverWindow != null &&
-                    EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
+            //Mark up the current selection.
+            if (Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag)
+            {
+                if (Event.current.button == 0)
                 {
-                    if (Event.current.type == EventType.MouseMove || Event.current.type == EventType.MouseDrag)
-                             selection = HandleUtility.PickGameObject(Event.current.mousePosition, true, managerReference.ignoredEntities.ToArray());
-                }
-                else
-                    selection = null;
+                    Event.current.Use();
 
-                //Mark up the current selection.
-                if (Event.current.type == EventType.MouseDown || Event.current.type == EventType.MouseDrag)
-                {
-                    if (Event.current.button == 0)
+                    int passiveControlId = GUIUtility.GetControlID(FocusType.Passive);
+                    GUIUtility.hotControl = passiveControlId;
+
+                    if (selection != null)
                     {
-                        Event.current.Use();
+                        Undo.RecordObject(managerReference, "Edit Level Markup");
+                        EditorUtility.SetDirty(managerReference);
+                        EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
 
-                        int passiveControlId = GUIUtility.GetControlID(FocusType.Passive);
-                        GUIUtility.hotControl = passiveControlId;
+                        int selectedID = selection.GetInstanceID();
 
-                        if (selection != null)
+                        bool addNewEntry = !activeToggle.isClear;
+
+                        for (int i = 0; i < managerReference.levelEntities.Count; ++i)
                         {
-                            Undo.RecordObject(managerReference, "Edit Level Markup");
-                            EditorUtility.SetDirty(managerReference);
-                            EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-
-                            int selectedID = selection.GetInstanceID();
-
-                            bool addNewEntry = !activeToggle.isClear;
-
-                            for (int i = 0; i < managerReference.levelEntities.Count; ++i)
+                            if (managerReference.levelEntities[i].objectRef.GetInstanceID() == selectedID)
                             {
-                                if (managerReference.levelEntities[i].objectRef.GetInstanceID() == selectedID)
-                                {
-                                    if (activeToggle.isClear)
-                                        managerReference.levelEntities.RemoveAt(i);
-                                    else
-                                        managerReference.levelEntities[i].entityType = activeToggle.entityType;
+                                if (activeToggle.isClear)
+                                    managerReference.levelEntities.RemoveAt(i);
+                                else
+                                    managerReference.levelEntities[i].entityType = activeToggle.entityType;
 
-                                    addNewEntry = false;
-                                    break;
-                                }
+                                addNewEntry = false;
+                                break;
                             }
-
-                            if (addNewEntry)
-                                managerReference.levelEntities.Add(new LevelEntity(selection, activeToggle.entityType));
                         }
-                    }
-                }
 
-                //Stop using the markup tool if escape key is pressed.
-                else if (Event.current.type == EventType.KeyDown
-                && Event.current.keyCode == KeyCode.Escape)
-                {
-                    ActivateToggle(null);
-                    Repaint();
+                        if (addNewEntry)
+                            managerReference.levelEntities.Add(new LevelEntity(selection, activeToggle.entityType));
+                    }
                 }
             }
 
-            managerReference.curMouseover = selection;
+            //Stop using the markup tool if escape key is pressed.
+            else if (Event.current.type == EventType.KeyDown
+            && Event.current.keyCode == KeyCode.Escape)
+            {
+                ActivateToggle(null);
+                Repaint();
+            }
         }
+
+        managerReference.curMouseover = selection;
+        
         Handles.EndGUI();
     }
     private void GrabManagerReference()
@@ -651,33 +663,37 @@ public class PathOSManagerWindow : EditorWindow
             managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
     }
 
-    public void OnResourceOpen()
+    public void OnResourceOpen(PathOSManager managerReference)
     {
 
-        EditorGUI.BeginChangeCheck();
+        //EditorGUI.BeginChangeCheck();
+        //
+        //GrabManagerReference();
+        //managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+        //    as PathOSManager;
+        //
+        //
+        ////Update agent ID if the user has selected a new object reference.
+        //if (EditorGUI.EndChangeCheck())
+        //{
+        //    hasManager = managerReference != null;
+        //    managerInitialized = false;
+        //
+        //    if (hasManager)
+        //    {
+        //        managerID = managerReference.GetInstanceID();
+        //    }
+        //}
 
-        GrabManagerReference();
-        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-            as PathOSManager;
-
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
+        if (managerReference == null)
         {
-            hasManager = managerReference != null;
             managerInitialized = false;
-
-            if (hasManager)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
+            return;
         }
-        
-        if (managerReference == null) return;
 
         EditorGUILayout.Space();
 
-        if (!managerInitialized) InitializeManager();
+        if (!managerInitialized) InitializeManager(managerReference);
 
         Selection.objects = new Object[] { managerReference.gameObject };
 

@@ -18,7 +18,7 @@ public class PathOSAgentWindow : EditorWindow
 
     //Component variables
     [SerializeField]
-    private PathOSAgent agentReference;
+    //private PathOSAgent agentReference;
     private PathOSAgentMemory memoryReference;
     private PathOSAgentEyes eyeReference;
     private PathOSAgentRenderer rendererReference;
@@ -57,11 +57,11 @@ public class PathOSAgentWindow : EditorWindow
     private int profileIndex = 0;
     private bool agentInitialized = false;
 
-    [SerializeField]
-    private bool hasAgent;
-
-    [SerializeField]
-    private int agentID;
+   // [SerializeField]
+   // private bool hasAgent;
+   //
+   // [SerializeField]
+   // private int agentID;
     private void OnEnable()
     {
         //Load saved settings.
@@ -69,16 +69,16 @@ public class PathOSAgentWindow : EditorWindow
         JsonUtility.FromJsonOverwrite(prefsData, this);
 
         //Re-establish agent reference, if it has been nullified.
-        if (hasAgent)
-        {
-            if (agentReference != null)
-                agentID = agentReference.GetInstanceID();
-            else
-                agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
-        }
-
-        agentInitialized = false;
-        hasAgent = agentReference != null;
+      //  if (hasAgent)
+      //  {
+      //      if (agentReference != null)
+      //          agentID = agentReference.GetInstanceID();
+      //      else
+      //          agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
+      //  }
+      //
+      //  agentInitialized = false;
+      //  hasAgent = agentReference != null;
 
         //Health variables
         enemy_low = Resources.Load<Texture2D>("hazard_enemy_low");
@@ -108,28 +108,32 @@ public class PathOSAgentWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
-    public void OnWindowOpen()
+    public void OnWindowOpen(PathOSAgent agentReference)
     {
         //Not sure if this will work or not
-        EditorGUI.BeginChangeCheck();
+        //EditorGUI.BeginChangeCheck();
+        //
+        //GrabAgentReference();
+        //agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
+        //    as PathOSAgent;
+        //
+        ////Update agent ID if the user has selected a new object reference.
+        //if (EditorGUI.EndChangeCheck())
+        //{
+        //    hasAgent = agentReference != null;
+        //    agentInitialized = false;
+        //
+        //    if (hasAgent)
+        //    {
+        //        agentID = agentReference.GetInstanceID();
+        //    }
+        //}
 
-        GrabAgentReference();
-        agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-            as PathOSAgent;
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
+        if (agentReference == null)
         {
-            hasAgent = agentReference != null;
             agentInitialized = false;
-
-            if (hasAgent)
-            {
-                agentID = agentReference.GetInstanceID();
-            }
+            return;
         }
-
-        if (agentReference == null) return;
 
         EditorGUILayout.Space();
 
@@ -138,7 +142,7 @@ public class PathOSAgentWindow : EditorWindow
         eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
         rendererReference = agentReference.GetComponent<PathOSAgentRenderer>();
 
-        if (!agentInitialized) InitializeAgent();
+        if (!agentInitialized) InitializeAgent(agentReference);
 
         Selection.objects = new Object[] { agentReference.gameObject };
 
@@ -157,7 +161,7 @@ public class PathOSAgentWindow : EditorWindow
         EditorGUILayout.Space();
 
         currentAgentEditor.DrawHeader();
-        AgentEditorGUI();
+        AgentEditorGUI(agentReference);
         EditorGUILayout.Space(20.0f);
 
         currentMemoryEditor.DrawHeader();
@@ -173,7 +177,7 @@ public class PathOSAgentWindow : EditorWindow
         EditorGUILayout.Space(20.0f);
     }
 
-    private void InitializeAgent()
+    private void InitializeAgent(PathOSAgent agentReference)
     {
         serial = new SerializedObject(agentReference);
         experienceScale = serial.FindProperty("experienceScale");
@@ -204,7 +208,7 @@ public class PathOSAgentWindow : EditorWindow
         agentInitialized = true;
     }
 
-    private void AgentEditorGUI()
+    private void AgentEditorGUI(PathOSAgent agentReference)
     {
         serial.Update();
 
@@ -301,37 +305,41 @@ public class PathOSAgentWindow : EditorWindow
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
     }
-    private void GrabAgentReference()
+   // private void GrabAgentReference()
+   // {
+   //     if (hasAgent && null == agentReference)
+   //         agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
+   // }
+    public void OnResourceOpen(PathOSAgent agentReference)
     {
-        if (hasAgent && null == agentReference)
-            agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
-    }
-    public void OnResourceOpen()
-    {
-        EditorGUI.BeginChangeCheck();
-
-        GrabAgentReference();
-        agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-            as PathOSAgent;
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
+        //EditorGUI.BeginChangeCheck();
+        //
+        //GrabAgentReference();
+        //agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
+        //    as PathOSAgent;
+        //
+        ////Update agent ID if the user has selected a new object reference.
+        //if (EditorGUI.EndChangeCheck())
+        //{
+        //    hasAgent = agentReference != null;
+        //    agentInitialized = false;
+        //
+        //    if (hasAgent)
+        //    {
+        //        agentID = agentReference.GetInstanceID();
+        //    }
+        //}
+        //
+        if (agentReference == null)
         {
-            hasAgent = agentReference != null;
             agentInitialized = false;
-
-            if (hasAgent)
-            {
-                agentID = agentReference.GetInstanceID();
-            }
+            return;
         }
-
-        if (agentReference == null) return;
 
         EditorGUILayout.Space();
 
         //Doing the initialization
-        if (!agentInitialized) InitializeAgent();
+        if (!agentInitialized) InitializeAgent(agentReference);
 
         Selection.objects = new Object[] { agentReference.gameObject };
 

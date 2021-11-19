@@ -723,32 +723,20 @@ public class PathOSEvaluationWindow : EditorWindow
     Popup window;
     private const string editorPrefsID = "PathOSEvaluationWindow";
 
-    [SerializeField]
-    private bool hasManager;
+    //[SerializeField]
+    //private bool hasManager;
+    //
+    //[SerializeField]
+    //private int managerID;
 
-    [SerializeField]
-    private int managerID;
+    //public static PathOSEvaluationWindow instance;
+    public static PathOSEvaluationWindow instance { get; private set; }
 
-    public static PathOSEvaluationWindow instance;
-    private void Awake()
-    {
-        if (instance == null) {
-            instance = this;
-            //Debug.Log("Instance is set");
-        }
-        else {
-            //Debug.Log("This gets closed");
-            this.Close();
-            //DestroyImmediate(this);
-        }
-    }
-
-    // public static PathOSEvaluationWindow Instance
-    // {
-    //     get { return GetWindow<PathOSEvaluationWindow>(); }
-    // }
     private void OnEnable()
     {
+        //Sets instance
+        instance = this;
+
         //Background color
         comments.LoadData();
         bgColor = GUI.backgroundColor;
@@ -761,18 +749,19 @@ public class PathOSEvaluationWindow : EditorWindow
         JsonUtility.FromJsonOverwrite(prefsData, this);
 
         //Re-establish manager reference, if it has been nullified.
-        if (hasManager)
-        {
+      //  if (hasManager)
+      //  {
+      //
+      //      if (managerReference != null)
+      //      {
+      //          managerID = managerReference.GetInstanceID();
+      //      }
+      //      else
+      //          managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+      //  }
+      //
+      //  hasManager = managerReference != null;
 
-            if (managerReference != null)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
-            else
-                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-        }
-
-        hasManager = managerReference != null;
     }
 
     private void OnDestroy()
@@ -791,25 +780,27 @@ public class PathOSEvaluationWindow : EditorWindow
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
 
-    public void OnWindowOpen()
+    public void OnWindowOpen(PathOSManager reference)
     {
-        EditorGUI.BeginChangeCheck();
+        //EditorGUI.BeginChangeCheck();
+        //
+        //GrabManagerReference();
+        //managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+        //    as PathOSManager;
+        //
+        //
+        ////Update agent ID if the user has selected a new object reference.
+        //if (EditorGUI.EndChangeCheck())
+        //{
+        //    hasManager = managerReference != null;
+        //
+        //    if (hasManager)
+        //    {
+        //        managerID = managerReference.GetInstanceID();
+        //    }
+        //}
 
-        GrabManagerReference();
-        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-            as PathOSManager;
-
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
-        {
-            hasManager = managerReference != null;
-
-            if (hasManager)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
-        }
+        managerReference = reference;
 
         EditorGUILayout.Space(15);
 
@@ -859,7 +850,7 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             Event e = Event.current;
 
-            if (e.type == EventType.MouseUp && e.button == 1 && !popupAlreadyOpen)
+            if (e != null && e.type == EventType.MouseUp && e.button == 1 && !popupAlreadyOpen)
             {
                 selection = HandleUtility.PickGameObject(Event.current.mousePosition, true);
 
@@ -882,7 +873,6 @@ public class PathOSEvaluationWindow : EditorWindow
     {
         popupAlreadyOpen = false;
 
-        
         comments.AddNewComment(comment);
     }
 
@@ -902,6 +892,8 @@ public class PathOSEvaluationWindow : EditorWindow
 
     private EntityType GetMarkup(GameObject selection)
     {
+        if (managerReference == null) return EntityType.ET_NONE;
+
         for (int i = 0; i < managerReference.levelEntities.Count; i++)
         {
             //Looks into the pathos manager to figure out if that object has a tag
@@ -914,11 +906,11 @@ public class PathOSEvaluationWindow : EditorWindow
         return EntityType.ET_NONE;
     }
 
-    private void GrabManagerReference()
-    {
-        if (hasManager && null == managerReference)
-            managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-    }
+    //private void GrabManagerReference()
+    //{
+    //    if (hasManager && null == managerReference)
+    //        managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+    //}
 }
 
 //Really messy, rushed implementation. Please clean this up

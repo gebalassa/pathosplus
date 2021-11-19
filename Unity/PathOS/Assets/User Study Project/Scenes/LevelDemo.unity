@@ -22200,6 +22200,11 @@ PrefabInstance:
       propertyPath: showHealthBar
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114482611139781848, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: gridSampleSize
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 607318e5beb058643a9226e07f881723, type: 3}
 --- !u!1001 &1754558376

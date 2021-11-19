@@ -2,7 +2,7 @@ Priority,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,
 None,,,#5,#6,
 Low,,,,,
 Med,#1 #4,,,,
-High, #2,#3,,,
+High, #2 #7,#3,,,
 
 #, Description, Priority, Category, GameObject, Object ID, Entity Type
 1,,MED,NA,Impling (10),19942,LOW ENEMY
@@ -11,3 +11,4 @@ High, #2,#3,,,
 4,,MED,NA,Impling (10),19942,LOW ENEMY
 5,,NA,NA,Tree - Birch (7),-2168,NONE
 6,,NA,NA,Potion - Mana (1),19364,PRESERVATION LOW
+7,Hahahahaha,HIGH,POS,Impling (10),19942,LOW ENEMY
