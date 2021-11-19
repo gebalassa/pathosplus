@@ -46,8 +46,9 @@ public class PathOSWindow : EditorWindow
     private int screenshotID, managerID, agentID;
 
     //Screenshot display settings
-    private string lblScreenshotFoldout = "Screenshot Options", lblReferenceFoldout = "REFERENCES", lblNavigationFoldout = "NAVIGATION";
-    private static bool screenshotFoldout = false, showReferences = true, showNavigation = true;
+    private string lblScreenshotFoldout = "Screenshot Options", lblReferenceFoldout = "REFERENCES", lblNavigationFoldout = "NAVIGATION",
+         lblBatchingFoldout = "Batching", lblProfilesFoldout = "Profiles";
+    private static bool screenshotFoldout = false, showReferences = true, showNavigation = true, showBatching = true, showProfiles = true;
 
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
@@ -127,8 +128,6 @@ public class PathOSWindow : EditorWindow
 
         showReferences = EditorGUILayout.Foldout(showReferences, lblReferenceFoldout, foldoutStyle);
 
-        //EditorGUILayout.LabelField("REFERENCES", EditorStyles.boldLabel);
-
         EditorGUI.BeginChangeCheck();
 
         if (showReferences) { 
@@ -192,8 +191,15 @@ public class PathOSWindow : EditorWindow
                 OnResourcesOpen();
                 break;
             case (int)Tabs.Batching:
-                batchingWindow.OnWindowOpen();
-                profileWindow.OnWindowOpen();
+                EditorGUILayout.BeginVertical("Box");
+                showBatching = EditorGUILayout.Foldout(showBatching, lblBatchingFoldout, foldoutStyle);
+                if (showBatching) batchingWindow.OnWindowOpen();
+                EditorGUILayout.EndVertical();
+
+                EditorGUILayout.BeginVertical("Box");
+                showProfiles = EditorGUILayout.Foldout(showProfiles, lblProfilesFoldout, foldoutStyle);
+                if (showProfiles) profileWindow.OnWindowOpen();
+                EditorGUILayout.EndVertical();
                 break;
             case (int)Tabs.Manager:
                 managerWindow.OnWindowOpen(managerReference);
@@ -277,7 +283,7 @@ public class PathOSWindow : EditorWindow
 
     private void OnResourcesOpen()
     {
-        agentWindow.OnResourceOpen(agentReference);
+        agentWindow.OnResourceOpen(agentReference, showReferences, showNavigation);
 
         EditorGUILayout.Space(20);
         EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);

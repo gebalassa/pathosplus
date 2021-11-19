@@ -122,39 +122,14 @@ public class PathOSManagerWindow : EditorWindow
 
     private List<MarkupToggle> markupToggles = new List<MarkupToggle>();
     private MarkupToggle activeToggle = null;
-
-    [SerializeField]
-    private bool hasManager;
-
-    [SerializeField]
-    private int managerID;
-
     private void OnEnable()
     {
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
 
-        //Re-establish manager reference, if it has been nullified.
-//        if (hasManager)
-//        {
-//
-//            if (managerReference != null)
-//            {
-//                managerID = managerReference.GetInstanceID();
-//            }
-//            else
-//                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-//        }
-//
-//        managerInitialized = false;
-//        hasManager = managerReference != null;
-
         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
-
     }
-
-
     void OnDestroy()
     {
         managerInitialized = false;
@@ -177,29 +152,11 @@ public class PathOSManagerWindow : EditorWindow
     }
     public void OnWindowOpen(PathOSManager reference)
     {
-        // EditorGUI.BeginChangeCheck();
-        //
-        // GrabManagerReference();
-        // managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-        //     as PathOSManager;
-        //
-        //
-        // //Update agent ID if the user has selected a new object reference.
-        // if (EditorGUI.EndChangeCheck())
-        // {
-        //     hasManager = managerReference != null;
-        //     managerInitialized = false;
-        //
-        //     if (hasManager)
-        //     {
-        //         managerID = managerReference.GetInstanceID();
-        //     }
-        // }
-
         managerReference = reference;
 
         if (managerReference == null)
         {
+            EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
             managerInitialized = false;
             return;
         }
@@ -223,29 +180,12 @@ public class PathOSManagerWindow : EditorWindow
 
     public void OnVisualizationOpen(PathOSManager reference)
     {
-
-        // EditorGUI.BeginChangeCheck();
-        //
-        // GrabManagerReference();
-        // managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-        //     as PathOSManager;
-        //
-        //
-        // //Update agent ID if the user has selected a new object reference.
-        // if (EditorGUI.EndChangeCheck())
-        // {
-        //     hasManager = managerReference != null;
-        //
-        //     if (hasManager)
-        //     {
-        //         managerID = managerReference.GetInstanceID();
-        //     }
-        // }
-
         managerReference = reference;
 
         if (managerReference == null)
         {
+            EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
+            managerInitialized = false;
             return;
         }
 
@@ -657,36 +597,11 @@ public class PathOSManagerWindow : EditorWindow
         
         Handles.EndGUI();
     }
-    private void GrabManagerReference()
-    {
-        if (hasManager && null == managerReference)
-            managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-    }
-
     public void OnResourceOpen(PathOSManager managerReference)
     {
-
-        //EditorGUI.BeginChangeCheck();
-        //
-        //GrabManagerReference();
-        //managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-        //    as PathOSManager;
-        //
-        //
-        ////Update agent ID if the user has selected a new object reference.
-        //if (EditorGUI.EndChangeCheck())
-        //{
-        //    hasManager = managerReference != null;
-        //    managerInitialized = false;
-        //
-        //    if (hasManager)
-        //    {
-        //        managerID = managerReference.GetInstanceID();
-        //    }
-        //}
-
         if (managerReference == null)
         {
+            EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
             managerInitialized = false;
             return;
         }

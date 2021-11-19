@@ -56,29 +56,11 @@ public class PathOSAgentWindow : EditorWindow
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
     private bool agentInitialized = false;
-
-   // [SerializeField]
-   // private bool hasAgent;
-   //
-   // [SerializeField]
-   // private int agentID;
     private void OnEnable()
     {
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
-
-        //Re-establish agent reference, if it has been nullified.
-      //  if (hasAgent)
-      //  {
-      //      if (agentReference != null)
-      //          agentID = agentReference.GetInstanceID();
-      //      else
-      //          agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
-      //  }
-      //
-      //  agentInitialized = false;
-      //  hasAgent = agentReference != null;
 
         //Health variables
         enemy_low = Resources.Load<Texture2D>("hazard_enemy_low");
@@ -110,27 +92,9 @@ public class PathOSAgentWindow : EditorWindow
     }
     public void OnWindowOpen(PathOSAgent agentReference)
     {
-        //Not sure if this will work or not
-        //EditorGUI.BeginChangeCheck();
-        //
-        //GrabAgentReference();
-        //agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-        //    as PathOSAgent;
-        //
-        ////Update agent ID if the user has selected a new object reference.
-        //if (EditorGUI.EndChangeCheck())
-        //{
-        //    hasAgent = agentReference != null;
-        //    agentInitialized = false;
-        //
-        //    if (hasAgent)
-        //    {
-        //        agentID = agentReference.GetInstanceID();
-        //    }
-        //}
-
         if (agentReference == null)
         {
+            EditorGUILayout.HelpBox("AGENT REFERENCE REQUIRED", MessageType.Error);
             agentInitialized = false;
             return;
         }
@@ -305,36 +269,18 @@ public class PathOSAgentWindow : EditorWindow
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
     }
-   // private void GrabAgentReference()
-   // {
-   //     if (hasAgent && null == agentReference)
-   //         agentReference = EditorUtility.InstanceIDToObject(agentID) as PathOSAgent;
-   // }
-    public void OnResourceOpen(PathOSAgent agentReference)
+
+    //Todo: get rid of these bools
+    public void OnResourceOpen(PathOSAgent agentReference, bool isReferenceOpen, bool isNavigationOpen)
     {
-        //EditorGUI.BeginChangeCheck();
-        //
-        //GrabAgentReference();
-        //agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-        //    as PathOSAgent;
-        //
-        ////Update agent ID if the user has selected a new object reference.
-        //if (EditorGUI.EndChangeCheck())
-        //{
-        //    hasAgent = agentReference != null;
-        //    agentInitialized = false;
-        //
-        //    if (hasAgent)
-        //    {
-        //        agentID = agentReference.GetInstanceID();
-        //    }
-        //}
-        //
         if (agentReference == null)
         {
+            EditorGUILayout.HelpBox("AGENT REFERENCE REQUIRED", MessageType.Error);
             agentInitialized = false;
             return;
         }
+
+        int offset = GetOffset(isReferenceOpen, isNavigationOpen);
 
         EditorGUILayout.Space();
 
@@ -347,35 +293,34 @@ public class PathOSAgentWindow : EditorWindow
 
         EditorGUIUtility.labelWidth = 200.0f;
 
-        EditorGUILayout.Space(15);
         EditorGUILayout.LabelField("Enemy Damage Values", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
-        DrawUIRow(new Rect(20, 155, 30, 30), enemy_low, "\t Low Enemy Damage", ref agentReference.lowEnemyDamage);
+        DrawUIRow(new Rect(20, 140 + offset, 30, 30), enemy_low, "\t Low Enemy Damage", ref agentReference.lowEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 198, 30, 30), enemy_med, "\t Medium Enemy Damage", ref agentReference.medEnemyDamage);
+        DrawUIRow(new Rect(20, 183 + offset, 30, 30), enemy_med, "\t Medium Enemy Damage", ref agentReference.medEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 240, 30, 30), enemy_high, "\t High Enemy Damage", ref agentReference.highEnemyDamage);
+        DrawUIRow(new Rect(20, 225 + offset, 30, 30), enemy_high, "\t High Enemy Damage", ref agentReference.highEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 280, 30, 30), enemy_boss, "\t Boss Enemy Damage", ref agentReference.bossEnemyDamage);
+        DrawUIRow(new Rect(20, 265 + offset, 30, 30), enemy_boss, "\t Boss Enemy Damage", ref agentReference.bossEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 322, 30, 30), enemy_hazard, "\t Hazard Damage", ref agentReference.hazardDamage);
+        DrawUIRow(new Rect(20, 307 + offset, 30, 30), enemy_hazard, "\t Hazard Damage", ref agentReference.hazardDamage);
 
         EditorGUILayout.Space(15);
         EditorGUILayout.LabelField("Resource Values", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
-        DrawUIRow(new Rect(20, 397, 30, 30), health_low, "\t Low Health Gain", ref agentReference.lowHealthGain);
+        DrawUIRow(new Rect(20, 383 + offset, 30, 30), health_low, "\t Low Health Gain", ref agentReference.lowHealthGain);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 440, 30, 30), health_med, "\t Medium Health Gain", ref agentReference.medHealthGain);
+        DrawUIRow(new Rect(20, 425 + offset, 30, 30), health_med, "\t Medium Health Gain", ref agentReference.medHealthGain);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 482, 30, 30), health_high, "\t High Health Gain", ref agentReference.highHealthGain);
+        DrawUIRow(new Rect(20, 467 + offset, 30, 30), health_high, "\t High Health Gain", ref agentReference.highHealthGain);
 
         serial.ApplyModifiedProperties();
 
@@ -386,6 +331,21 @@ public class PathOSAgentWindow : EditorWindow
         }
     }
 
+    private int GetOffset(bool isReferenceOpen, bool isNavigationOpen)
+    {
+        if (isReferenceOpen && isNavigationOpen)
+        {
+            return 40;
+        }
+        else if ((!isReferenceOpen && isNavigationOpen) || (isReferenceOpen && !isNavigationOpen))
+        {
+            return 0;
+        }
+        else
+        {
+            return -40;
+        }
+    }
     private void DrawUIRow(Rect dimensions, Texture2D icon, string label, ref TimeRange range)
     {
         GUI.DrawTexture(dimensions, icon);

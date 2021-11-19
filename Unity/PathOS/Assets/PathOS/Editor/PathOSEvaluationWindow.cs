@@ -173,10 +173,6 @@ class ExpertEvaluation
         labelStyle.fontSize = 15;
         labelStyle.fontStyle = FontStyle.Italic;
 
-     //   test_icon = Resources.Load<Texture2D>("hazard_enemy_low");
-     //   markupStyle = GUIStyle.none;
-     //   markupStyle.normal.background = test_icon;
-
         EditorGUILayout.BeginVertical("Box");
 
         if (userComments.Count <= 0)
@@ -187,7 +183,6 @@ class ExpertEvaluation
             EditorGUILayout.EndHorizontal();
         }
 
-        //girl what is this
         for (int i = 0; i < userComments.Count; i++)
         {
             EditorGUILayout.Space();
@@ -195,10 +190,6 @@ class ExpertEvaluation
             foldoutStyle.fontStyle = FontStyle.Italic;
 
             EditorGUILayout.BeginHorizontal();
-
-          //  if (GUILayout.Button("", markupStyle, GUILayout.Width(17), GUILayout.Height(15)))
-          //  {
-          //  }
 
             userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + (i+1), foldoutStyle);
             GUILayout.FlexibleSpace();
@@ -722,14 +713,6 @@ public class PathOSEvaluationWindow : EditorWindow
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
     Popup window;
     private const string editorPrefsID = "PathOSEvaluationWindow";
-
-    //[SerializeField]
-    //private bool hasManager;
-    //
-    //[SerializeField]
-    //private int managerID;
-
-    //public static PathOSEvaluationWindow instance;
     public static PathOSEvaluationWindow instance { get; private set; }
 
     private void OnEnable()
@@ -747,20 +730,6 @@ public class PathOSEvaluationWindow : EditorWindow
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
-
-        //Re-establish manager reference, if it has been nullified.
-      //  if (hasManager)
-      //  {
-      //
-      //      if (managerReference != null)
-      //      {
-      //          managerID = managerReference.GetInstanceID();
-      //      }
-      //      else
-      //          managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-      //  }
-      //
-      //  hasManager = managerReference != null;
 
     }
 
@@ -782,25 +751,12 @@ public class PathOSEvaluationWindow : EditorWindow
 
     public void OnWindowOpen(PathOSManager reference)
     {
-        //EditorGUI.BeginChangeCheck();
-        //
-        //GrabManagerReference();
-        //managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-        //    as PathOSManager;
-        //
-        //
-        ////Update agent ID if the user has selected a new object reference.
-        //if (EditorGUI.EndChangeCheck())
-        //{
-        //    hasManager = managerReference != null;
-        //
-        //    if (hasManager)
-        //    {
-        //        managerID = managerReference.GetInstanceID();
-        //    }
-        //}
-
         managerReference = reference;
+
+        if (managerReference == null)
+        {
+            EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED FOR ENTITY TAGGING", MessageType.Error);
+        }
 
         EditorGUILayout.Space(15);
 
@@ -843,7 +799,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
-        if (popupAlreadyOpen) return;
+        if (popupAlreadyOpen || sceneView == null) return;
 
         //Selection update.
         if (EditorWindow.mouseOverWindow != null && EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
@@ -905,12 +861,6 @@ public class PathOSEvaluationWindow : EditorWindow
 
         return EntityType.ET_NONE;
     }
-
-    //private void GrabManagerReference()
-    //{
-    //    if (hasManager && null == managerReference)
-    //        managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
-    //}
 }
 
 //Really messy, rushed implementation. Please clean this up
