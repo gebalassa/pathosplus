@@ -56,6 +56,9 @@ public class PathOSAgentWindow : EditorWindow
     private List<string> profileNames = new List<string>();
     private int profileIndex = 0;
     private bool agentInitialized = false;
+
+    private string lblAgentValues = "Agent Values", lblMemory = "Agent Memory", lblEyes = "Agent Eyes", lblRenderer = "Agent Renderer";
+    private static bool showAgentValues = true, showMemory = true, showEyes = true, showRenderer = true;
     private void OnEnable()
     {
         //Load saved settings.
@@ -99,6 +102,10 @@ public class PathOSAgentWindow : EditorWindow
             return;
         }
 
+
+        foldoutStyle = EditorStyles.foldout;
+        foldoutStyle.fontStyle = FontStyle.Bold;
+
         EditorGUILayout.Space();
 
         //Todo: clean this up!
@@ -119,26 +126,37 @@ public class PathOSAgentWindow : EditorWindow
 
         //// Shows the created Editor beneath CustomEditor
         editor.DrawHeader();
-
         currentTransformEditor.DrawHeader();
+
+        //EditorGUILayout.BeginVertical("Box");
         currentTransformEditor.OnInspectorGUI();
+       // EditorGUILayout.EndVertical();
+
         EditorGUILayout.Space();
-
         currentAgentEditor.DrawHeader();
-        AgentEditorGUI(agentReference);
-        EditorGUILayout.Space(20.0f);
+        EditorGUILayout.BeginVertical("Box");
+        showAgentValues = EditorGUILayout.Foldout(showAgentValues, lblAgentValues, foldoutStyle);
+        if (showAgentValues) AgentEditorGUI(agentReference);
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
-        currentMemoryEditor.DrawHeader();
-        currentMemoryEditor.OnInspectorGUI();
-        EditorGUILayout.Space(20.0f);
+        EditorGUILayout.BeginVertical("Box");
+        showMemory = EditorGUILayout.Foldout(showMemory, lblMemory, foldoutStyle);
+        if (showMemory) currentMemoryEditor.OnInspectorGUI();
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
-        currentEyeEditor.DrawHeader();
-        currentEyeEditor.OnInspectorGUI();
-        EditorGUILayout.Space(20.0f);
+        EditorGUILayout.BeginVertical("Box");
+        showEyes = EditorGUILayout.Foldout(showEyes, lblEyes, foldoutStyle);
+        if (showEyes) currentEyeEditor.OnInspectorGUI();
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
-        currentRendererEditor.DrawHeader();
-        currentRendererEditor.OnInspectorGUI();
-        EditorGUILayout.Space(20.0f);
+        EditorGUILayout.BeginVertical("Box");
+        showRenderer = EditorGUILayout.Foldout(showRenderer, lblRenderer, foldoutStyle);
+        if (showRenderer) currentRendererEditor.OnInspectorGUI();
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
     }
 
     private void InitializeAgent(PathOSAgent agentReference)
@@ -271,7 +289,7 @@ public class PathOSAgentWindow : EditorWindow
     }
 
     //Todo: get rid of these bools
-    public void OnResourceOpen(PathOSAgent agentReference, bool isReferenceOpen, bool isNavigationOpen)
+    public void OnResourceOpen(PathOSAgent agentReference, bool isNavigationOpen)
     {
         if (agentReference == null)
         {
@@ -280,7 +298,7 @@ public class PathOSAgentWindow : EditorWindow
             return;
         }
 
-        int offset = GetOffset(isReferenceOpen, isNavigationOpen);
+        int offset = GetOffset(isNavigationOpen);
 
         EditorGUILayout.Space();
 
@@ -331,19 +349,15 @@ public class PathOSAgentWindow : EditorWindow
         }
     }
 
-    private int GetOffset(bool isReferenceOpen, bool isNavigationOpen)
+    private int GetOffset(bool isNavigationOpen)
     {
-        if (isReferenceOpen && isNavigationOpen)
+        if (isNavigationOpen)
         {
-            return 40;
-        }
-        else if ((!isReferenceOpen && isNavigationOpen) || (isReferenceOpen && !isNavigationOpen))
-        {
-            return 0;
+            return 38;
         }
         else
         {
-            return -40;
+            return -8;
         }
     }
     private void DrawUIRow(Rect dimensions, Texture2D icon, string label, ref TimeRange range)

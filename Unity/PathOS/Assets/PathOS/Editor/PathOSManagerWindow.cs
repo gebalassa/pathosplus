@@ -315,6 +315,7 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 
+        EditorGUILayout.BeginVertical("Box");
         //Level markup panel.
         showMarkup = EditorGUILayout.Foldout( showMarkup, "Level Markup", foldoutStyle);
 
@@ -328,6 +329,8 @@ public class PathOSManagerWindow : EditorWindow
 
 
         }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
         //Stop using the markup tool if escape is pressed.
         if (Event.current.type == EventType.KeyDown
@@ -338,7 +341,7 @@ public class PathOSManagerWindow : EditorWindow
         }
 
 
-
+        EditorGUILayout.BeginVertical("Box");
         showIgnored = EditorGUILayout.Foldout(
             showIgnored, "Ignored Entity List", foldoutStyle);
 
@@ -349,6 +352,11 @@ public class PathOSManagerWindow : EditorWindow
             EditorGUILayout.LabelField(ignoredLabel);
             ignoredListReorderable.DoLayoutList();
         }
+
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
+
+        EditorGUILayout.BeginVertical("Box");
 
         //Entity list.
         showList = EditorGUILayout.Foldout(
@@ -379,7 +387,10 @@ public class PathOSManagerWindow : EditorWindow
                 }
             }
         }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
+        EditorGUILayout.BeginVertical("Box");
         //Heuristic weight matrix.
         showWeights = EditorGUILayout.Foldout(
             showWeights, "Motive Weights", foldoutStyle);
@@ -468,7 +479,8 @@ public class PathOSManagerWindow : EditorWindow
                 }
             }
         }
-
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(3.0f);
 
         serial.ApplyModifiedProperties();
         SceneView.RepaintAll();

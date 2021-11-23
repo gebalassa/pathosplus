@@ -1,14 +1,14 @@
-Priority,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,
-None,,,#5,#6,
-Low,,,,,
-Med,#1 #4,,,,
-High, #2 #7,#3,,,
-
+Priority,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,,
+None,,,#5,,,
+Low,,,,#6,,
+Med,#1 #4,,,,,
+High, #2 #7,#3,,,,
+,,,,,,
 #, Description, Priority, Category, GameObject, Object ID, Entity Type
-1,,MED,NA,Impling (10),19942,LOW ENEMY
-2,,HIGH,NA,Impling (11),19588,LOW ENEMY
-3,,HIGH,NA,Skull Platform,19172,COMPLETION GOAL
-4,,MED,NA,Impling (10),19942,LOW ENEMY
-5,,NA,NA,Tree - Birch (7),-2168,NONE
-6,,NA,NA,Potion - Mana (1),19364,PRESERVATION LOW
-7,Hahahahaha,HIGH,POS,Impling (10),19942,LOW ENEMY
+1,This is an impling,MED,NEG,Impling (10),19942,LOW ENEMY
+2,Test test,HIGH,NEG,Impling (11),19588,LOW ENEMY
+3,This skull platform is good,HIGH,POS,Skull Platform,19172,COMPLETION GOAL
+4,Testing 1  Testing 2,MED,NA,Impling (10),19942,LOW ENEMY
+5,This is a tree,NA,NA,Tree - Birch (7),-2168,NONE
+6,This is good,LOW,POS,Potion - Mana (1),19364,PRESERVATION LOW
+7,Anothr enemy,HIGH,POS,Impling (10),19942,LOW ENEMY

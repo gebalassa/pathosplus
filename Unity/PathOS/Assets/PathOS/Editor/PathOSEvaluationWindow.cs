@@ -388,8 +388,6 @@ class ExpertEvaluation
                 {
                     noneComponents[index] += " #" + (i + 1);
                 }
-
-                Debug.Log(i + " " + index + " " + entityString);
             }    
             else
             {

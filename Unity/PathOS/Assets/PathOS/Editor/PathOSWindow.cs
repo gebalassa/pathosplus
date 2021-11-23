@@ -11,15 +11,17 @@ PathOSWindow.cs
 public class PathOSWindow : EditorWindow
 {
    enum Tabs { 
-        Agent = 0, 
-        Resources = 1, 
-        Batching = 2, 
-        Manager = 3,
-        Visualization = 4,
-        ExpertEvaluation = 5
+        Setup = 0,
+        Agent = 1, 
+        Resources = 2, 
+        Batching = 3,
+        Profiles = 4,
+        Manager = 5,
+        Visualization = 6,
+        ExpertEvaluation = 7
     };
 
-    string[] tabLabels = { "Agent", "Resources", "Batching", "Manager", "Visualization", "Expert Evaluation"};
+    string[] tabLabels = { "SETUP", "Agent", "Resources", "Batching", "Profiles", "Manager", "Visualization", "Expert Evaluation"};
     int tabSelection = 0;
 
     private PathOSProfileWindow profileWindow;
@@ -35,7 +37,7 @@ public class PathOSWindow : EditorWindow
 
     private Vector2 scrollPos = Vector2.zero;
     private bool disableCamera = true;
-    private Color bgColor, btnColor, btnColorLight, btnColorDark, redColor, navigationColor;
+    private Color bgColor, btnColor, btnColorLight, btnColorDark, redColor, greenColor;
 
     private GUIStyle foldoutStyle = GUIStyle.none;
 
@@ -46,9 +48,8 @@ public class PathOSWindow : EditorWindow
     private int screenshotID, managerID, agentID;
 
     //Screenshot display settings
-    private string lblScreenshotFoldout = "Screenshot Options", lblReferenceFoldout = "REFERENCES", lblNavigationFoldout = "NAVIGATION",
-         lblBatchingFoldout = "Batching", lblProfilesFoldout = "Profiles";
-    private static bool screenshotFoldout = false, showReferences = true, showNavigation = true, showBatching = true, showProfiles = true;
+    private string lblScreenshotFoldout = "Screenshot Options", lblReferenceFoldout = "REFERENCES", lblNavigationFoldout = "NAVIGATION";
+    private static bool showReferences = true, showNavigation = true;
 
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
@@ -62,8 +63,8 @@ public class PathOSWindow : EditorWindow
         btnColor = new Color32(200, 203, 224, 255);
         btnColorLight = new Color32(229, 231, 241, 255);
         btnColorDark = new Color32(158, 164, 211, 255);
-        redColor = new Color32(255, 60, 71, 240);
-        navigationColor = new Color32(93, 112, 154, 255);
+        redColor = new Color32(255, 60, 71, 150);
+        greenColor = new Color32(60, 179, 113, 140);
 
         //initializes the different windows
         profileWindow = (PathOSProfileWindow)ScriptableObject.CreateInstance(typeof(PathOSProfileWindow)); //new PathOSProfileWindow();
@@ -121,47 +122,6 @@ public class PathOSWindow : EditorWindow
         EditorGUILayout.Space();
         scrollPos = GUILayout.BeginScrollView(scrollPos, true, true);
 
-        GUI.backgroundColor = redColor;
-
-        EditorGUILayout.BeginVertical("Box");
-        GUI.backgroundColor = bgColor;
-
-        showReferences = EditorGUILayout.Foldout(showReferences, lblReferenceFoldout, foldoutStyle);
-
-        EditorGUI.BeginChangeCheck();
-
-        if (showReferences) { 
-
-            GrabManagerReference();
-            managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
-            as PathOSManager;
-
-            GrabAgentReference();
-            agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-            as PathOSAgent;
-
-        }
-
-        //Update agent ID if the user has selected a new object reference.
-        if (EditorGUI.EndChangeCheck())
-        {
-            hasManager = managerReference != null;
-
-            if (hasManager)
-            {
-                managerID = managerReference.GetInstanceID();
-            }
-
-            hasAgent = agentReference != null;
-
-            if (hasAgent)
-            {
-                agentID = agentReference.GetInstanceID();
-            }
-        }
-
-        EditorGUILayout.EndVertical();
-
         GUI.backgroundColor = btnColorDark;
         EditorGUILayout.BeginVertical("Box");
 
@@ -173,7 +133,7 @@ public class PathOSWindow : EditorWindow
             // The tabs to alternate between specific menus
             GUI.backgroundColor = btnColorDark;
             GUILayout.BeginHorizontal();
-            tabSelection = GUILayout.SelectionGrid(tabSelection, tabLabels, 3);
+            tabSelection = GUILayout.SelectionGrid(tabSelection, tabLabels, 4);
             GUILayout.EndHorizontal();
             GUI.backgroundColor = bgColor;
 
@@ -184,6 +144,9 @@ public class PathOSWindow : EditorWindow
         ///
         switch (tabSelection)
         {
+            case (int)Tabs.Setup:
+                OpenSetup();
+                break;
             case (int)Tabs.Agent:
                 agentWindow.OnWindowOpen(agentReference);
                 break;
@@ -191,22 +154,16 @@ public class PathOSWindow : EditorWindow
                 OnResourcesOpen();
                 break;
             case (int)Tabs.Batching:
-                EditorGUILayout.BeginVertical("Box");
-                showBatching = EditorGUILayout.Foldout(showBatching, lblBatchingFoldout, foldoutStyle);
-                if (showBatching) batchingWindow.OnWindowOpen();
-                EditorGUILayout.EndVertical();
-
-                EditorGUILayout.BeginVertical("Box");
-                showProfiles = EditorGUILayout.Foldout(showProfiles, lblProfilesFoldout, foldoutStyle);
-                if (showProfiles) profileWindow.OnWindowOpen();
-                EditorGUILayout.EndVertical();
+                batchingWindow.OnWindowOpen();
+                break;
+            case (int)Tabs.Profiles:
+                profileWindow.OnWindowOpen();
                 break;
             case (int)Tabs.Manager:
                 managerWindow.OnWindowOpen(managerReference);
                 break;
             case (int)Tabs.Visualization:
                 managerWindow.OnVisualizationOpen(managerReference);
-                UpdateScreenshots();
                 break;
             case (int)Tabs.ExpertEvaluation:
                     evaluationWindow.OnWindowOpen(managerReference);
@@ -219,77 +176,171 @@ public class PathOSWindow : EditorWindow
     {
         //Temporary solution
         batchingWindow.UpdateBatching();
-
     }
-    private void UpdateScreenshots()
-    {
-        screenshotFoldout = EditorGUILayout.Foldout(screenshotFoldout, lblScreenshotFoldout);
-
-        if (screenshotFoldout)
-        {
-            EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
-            EditorGUI.BeginChangeCheck();
-            GrabScreenshotReference();
-            screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
-                as ScreenshotManager;
-
-            //Update agent ID if the user has selected a new object reference.
-            if (EditorGUI.EndChangeCheck())
-            {
-                hasScreenshot = screenshot != null;
-
-                if (hasScreenshot)
-                {
-                    screenshotID = screenshot.GetInstanceID();
-                }
-            }
-
-            //or instantiate the screenshot camera if it does not exist
-            if (screenshot == null)
-            {
-                GUI.backgroundColor = btnColorLight;
-                if (GUILayout.Button("Instantiate Screenshot Camera"))
-                {
-                    proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
-                    Instantiate(proxyScreenshot);
-                    screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
-                }
-                GUI.backgroundColor = bgColor;
-            }
-
-            //only draws the screenshot elements if the variable is not null
-            if (screenshot != null)
-            {
-                screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
-                screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
-                disableCamera = EditorGUILayout.Toggle("Disable During Runtime", disableCamera);
-
-                if (GUILayout.Button("Take Screenshot"))
-                {
-                    screenshot.TakeScreenshot();
-                }
-
-                if (EditorApplication.isPlaying && disableCamera)
-                {
-                    screenshot.gameObject.SetActive(false);
-                }
-                else if (EditorApplication.isPlaying && !disableCamera)
-                {
-                    screenshot.gameObject.SetActive(true);
-                }
-            }
-        }
-    }
-
     private void OnResourcesOpen()
     {
-        agentWindow.OnResourceOpen(agentReference, showReferences, showNavigation);
-
-        EditorGUILayout.Space(20);
-        EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
-        EditorGUILayout.Space(20);
-
         managerWindow.OnResourceOpen(managerReference);
+
+        EditorGUILayout.Space(10);
+        EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
+        EditorGUILayout.Space(10);
+
+        agentWindow.OnResourceOpen(agentReference, showNavigation);
+    }
+
+    private void OpenSetup()
+    {
+
+        EditorGUILayout.BeginVertical("Box");
+
+        EditorGUILayout.LabelField("PathOS+ Agent", EditorStyles.boldLabel);
+        GrabAgentReference();
+
+        EditorGUI.BeginChangeCheck();
+
+        agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
+        as PathOSAgent;
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            hasAgent = agentReference != null;
+
+            if (hasAgent)
+            {
+                agentID = agentReference.GetInstanceID();
+            }
+        }
+
+        if (agentReference == null)
+        {
+            GUI.backgroundColor = redColor;
+            if (GUILayout.Button("Initialize Agent"))
+            {
+            }
+            GUI.backgroundColor = bgColor;
+        }
+        else
+        {
+            GUI.backgroundColor = greenColor;
+            if (GUILayout.Button("Edit Agent"))
+            {
+                tabSelection = (int)Tabs.Agent;
+            }
+            GUI.backgroundColor = bgColor;
+        }
+
+        EditorGUILayout.Space(2);
+
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(5);
+
+
+        //////////////////////////////////////////////////////////////////////////////////////
+
+
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("PathOS+ Manager", EditorStyles.boldLabel);
+        GrabManagerReference();
+
+        EditorGUI.BeginChangeCheck();
+
+        managerReference = EditorGUILayout.ObjectField("Manager Reference: ", managerReference, typeof(PathOSManager), true)
+        as PathOSManager;
+
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            hasManager = managerReference != null;
+
+            if (hasManager)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
+        }
+
+        if (managerReference == null)
+        {
+            GUI.backgroundColor = redColor;
+            if (GUILayout.Button("Initialize Manager"))
+            {
+            }
+            GUI.backgroundColor = bgColor;
+        }
+        else
+        {
+            GUI.backgroundColor = greenColor;
+            if (GUILayout.Button("Edit Manager"))
+            {
+                tabSelection = (int)Tabs.Manager;
+            }
+            GUI.backgroundColor = bgColor;
+        }
+
+        EditorGUILayout.Space(2);
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.Space(5);
+
+        //////////////////////////////////////////////////////////////////////////////////////
+
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("Screenshot Options", EditorStyles.boldLabel);
+         GrabScreenshotReference();
+
+        EditorGUI.BeginChangeCheck();
+
+        screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
+             as ScreenshotManager;
+
+        //Update agent ID if the user has selected a new object reference.
+        if (EditorGUI.EndChangeCheck())
+         {
+             hasScreenshot = screenshot != null;
+
+             if (hasScreenshot)
+             {
+                 screenshotID = screenshot.GetInstanceID();
+             }
+         }
+
+         //or instantiate the screenshot camera if it does not exist
+         if (screenshot == null)
+         {
+            GUI.backgroundColor = redColor;
+            if (GUILayout.Button("Instantiate Screenshot Camera"))
+             {
+                 proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
+                 Instantiate(proxyScreenshot);
+                 screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
+             }
+            GUI.backgroundColor = bgColor;
+        }
+
+        //only draws the screenshot elements if the variable is not null
+        if (screenshot != null)
+         {
+             screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
+             screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
+             disableCamera = EditorGUILayout.Toggle("Disable During Runtime", disableCamera);
+
+            GUI.backgroundColor = greenColor;
+            if (GUILayout.Button("Take Screenshot"))
+            {
+                screenshot.TakeScreenshot();
+            }
+            GUI.backgroundColor = bgColor;
+
+            if (EditorApplication.isPlaying && disableCamera)
+            {
+                screenshot.gameObject.SetActive(false);
+            }
+            else if (EditorApplication.isPlaying && !disableCamera)
+            {
+                screenshot.gameObject.SetActive(true);
+            }
+         }
+
+        EditorGUILayout.Space(2);
+        EditorGUILayout.EndVertical();
 
     }
     private void GrabScreenshotReference()
