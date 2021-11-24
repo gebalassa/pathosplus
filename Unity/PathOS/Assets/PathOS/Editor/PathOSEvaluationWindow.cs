@@ -14,7 +14,7 @@ PathOSEvaluationWindow.cs
 (Atiya Nova) 2021
  */
 
-public enum HeuristicPriority
+public enum Severity
 {
     NONE = 0,
     LOW = 1,
@@ -22,7 +22,7 @@ public enum HeuristicPriority
     HIGH = 3,
 }
 
-public enum HeuristicCategory
+public enum Category
 {
     NONE = 0,
     POS = 1,
@@ -35,8 +35,8 @@ public class UserComment
 {
     public string description;
     public bool categoryFoldout;
-    public HeuristicPriority priority;
-    public HeuristicCategory category;
+    public Severity severity;
+    public Category category;
     public GameObject selection;
     public EntityType entityType;
 
@@ -47,18 +47,18 @@ public class UserComment
     {
         description = "";
         categoryFoldout = false;
-        priority = HeuristicPriority.NONE;
-        category = HeuristicCategory.NONE;
+        severity = Severity.NONE;
+        category = Category.NONE;
         selection = null;
         selectionID = 0;
         entityType = EntityType.ET_NONE;
     }
 
-    public UserComment(string description, bool categoryFoldout, HeuristicPriority priority, HeuristicCategory category, GameObject selection, EntityType entityType)
+    public UserComment(string description, bool categoryFoldout, Severity severity, Category category, GameObject selection, EntityType entityType)
     {
         this.description = description;
         this.categoryFoldout = categoryFoldout;
-        this.priority = priority;
+        this.severity = severity;
         this.category = category;
         this.selection = selection;
         selectionID = selection.GetInstanceID();
@@ -73,13 +73,13 @@ class ExpertEvaluation
     public List<UserComment> userComments = new List<UserComment>();
     private GUIStyle foldoutStyle = GUIStyle.none, buttonStyle = GUIStyle.none, labelStyle = GUIStyle.none;
 
-    private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private readonly string[] severityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
     "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
     private readonly string headerRow = "#";
-    private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
-    private Color[] priorityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
+    private Color[] severityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
+    private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
 
     public void SaveData()
@@ -98,9 +98,9 @@ class ExpertEvaluation
 
             PlayerPrefs.SetString(saveName, userComments[i].description);
 
-            saveName = scene.name + " heuristicsPriorities " + i;
+            saveName = scene.name + " heuristicsSeverities " + i;
 
-            PlayerPrefs.SetInt(saveName, (int)userComments[i].priority);
+            PlayerPrefs.SetInt(saveName, (int)userComments[i].severity);
 
             saveName = scene.name + " heuristicsCategories " + i;
 
@@ -137,14 +137,14 @@ class ExpertEvaluation
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].description = PlayerPrefs.GetString(saveName);
 
-            saveName = scene.name + " heuristicsPriorities " + i;
+            saveName = scene.name + " heuristicsSeverities " + i;
             if (PlayerPrefs.HasKey(saveName))
-                userComments[i].priority = (HeuristicPriority)PlayerPrefs.GetInt(saveName);
+                userComments[i].severity = (Severity)PlayerPrefs.GetInt(saveName);
 
             saveName = scene.name + " heuristicsCategories " + i;
 
             if (PlayerPrefs.HasKey(saveName))
-                userComments[i].category = (HeuristicCategory)PlayerPrefs.GetInt(saveName);
+                userComments[i].category = (Category)PlayerPrefs.GetInt(saveName);
 
             saveName = scene.name + " selectionID " + i;
 
@@ -219,13 +219,13 @@ class ExpertEvaluation
             userComments[i].description = EditorGUILayout.TextArea(userComments[i].description, GUILayout.Width(Screen.width * 0.6f));
 
             GUI.backgroundColor = categoryColors[((int)userComments[i].category)];
-            userComments[i].category = (HeuristicCategory)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
+            userComments[i].category = (Category)EditorGUILayout.Popup((int)userComments[i].category, categoryNames);
 
-            if (userComments[i].category != HeuristicCategory.POS) GUI.backgroundColor = priorityColorsNeg[((int)userComments[i].priority)];
-            else GUI.backgroundColor = priorityColorsPos[((int)userComments[i].priority)];
+            if (userComments[i].category != Category.POS) GUI.backgroundColor = severityColorsNeg[((int)userComments[i].severity)];
+            else GUI.backgroundColor = severityColorsPos[((int)userComments[i].severity)];
 
-            userComments[i].priority = (HeuristicPriority)EditorGUILayout.Popup((int)userComments[i].priority, priorityNames);
-            GUI.backgroundColor = priorityColorsPos[0];
+            userComments[i].severity = (Severity)EditorGUILayout.Popup((int)userComments[i].severity, severityNames);
+            GUI.backgroundColor = severityColorsPos[0];
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space(2);
@@ -322,9 +322,9 @@ class ExpertEvaluation
             string newDescription = lineContents[1].Replace("  ", "\n").Replace("/", ",");
             userComments[inputCounter].description = newDescription;
 
-            userComments[inputCounter].priority = StringToHeuristicPriority(lineContents[2]);
+            userComments[inputCounter].severity = StringToSeverity(lineContents[2]);
 
-            userComments[inputCounter].category = StringToHeuristicCategory(lineContents[3]);
+            userComments[inputCounter].category = StringToCategory(lineContents[3]);
 
             if (lineContents[4] == "No GameObject")
             {
@@ -358,7 +358,7 @@ class ExpertEvaluation
         List<string> medComponents = new List<string>();
         List<string> highComponents = new List<string>();
 
-        headerComponents.Add("Priority,");
+        headerComponents.Add("Severity,");
         noneComponents.Add("None,");
         lowComponents.Add("Low,");
         medComponents.Add("Med,");
@@ -372,15 +372,15 @@ class ExpertEvaluation
             {
                 int index = headerComponents.IndexOf(EntityTypeToString(userComments[i].entityType) + ",");
                 
-                if (userComments[i].priority == HeuristicPriority.LOW)
+                if (userComments[i].severity == Severity.LOW)
                 {
                     lowComponents[index-1] += " #" + (i + 1);
                 }
-                else if (userComments[i].priority == HeuristicPriority.MED)
+                else if (userComments[i].severity == Severity.MED)
                 {
                     medComponents[index-1] += " #" + (i + 1);
                 }
-                else if (userComments[i].priority == HeuristicPriority.HIGH)
+                else if (userComments[i].severity == Severity.HIGH)
                 {
                     highComponents[index-1] += " #" + (i + 1);
                 }
@@ -398,15 +398,15 @@ class ExpertEvaluation
                 highComponents.Add(",");
                 noneComponents.Add(",");
 
-                if (userComments[i].priority == HeuristicPriority.LOW)
+                if (userComments[i].severity == Severity.LOW)
                 {
                     lowComponents[lowComponents.Count-2] += "#" + (i + 1);
                 }
-                else if (userComments[i].priority == HeuristicPriority.MED)
+                else if (userComments[i].severity == Severity.MED)
                 {
                     medComponents[medComponents.Count - 2] += "#" + (i + 1);
                 }
-                else if (userComments[i].priority == HeuristicPriority.HIGH)
+                else if (userComments[i].severity == Severity.HIGH)
                 {
                     highComponents[highComponents.Count - 2] += "#" + (i + 1);
                 }
@@ -439,17 +439,17 @@ class ExpertEvaluation
         writer.WriteLine(high);
         writer.WriteLine("");
 
-        writer.WriteLine("#, Description, Priority, Category, GameObject, Object ID, Entity Type");
-        string description, priority, category, number, gameObjectName, ID, entity;
+        writer.WriteLine("#, Description, Severity, Category, GameObject, Object ID, Entity Type");
+        string description, severity, category, number, gameObjectName, ID, entity;
 
         for (int i = 0; i < userComments.Count; i++)
         {
             number = (i + 1).ToString();
             description = userComments[i].description.Replace("\r", "").Replace("\n", "  ").Replace(",", "/");
 
-            priority = HeuristicPriorityToString(userComments[i].priority);
+            severity = SeverityToString(userComments[i].severity);
 
-            category = HeuristicCategoryToString(userComments[i].category);
+            category = CategoryToString(userComments[i].category);
 
             if (userComments[i].selection != null)
             {
@@ -464,7 +464,7 @@ class ExpertEvaluation
 
             entity = entityNames[EntityToIndex(userComments[i].entityType)];
 
-            writer.WriteLine(number + ',' + description + ',' + priority + ',' + category + ',' + gameObjectName + ',' + ID + ',' + entity);
+            writer.WriteLine(number + ',' + description + ',' + severity + ',' + category + ',' + gameObjectName + ',' + ID + ',' + entity);
         }
 
         writer.Close();
@@ -473,17 +473,17 @@ class ExpertEvaluation
     }
 
 
-    private string HeuristicPriorityToString(HeuristicPriority name)
+    private string SeverityToString(Severity name)
     {
         switch (name)
         {
-            case HeuristicPriority.NONE:
+            case Severity.NONE:
                 return "NA";
-            case HeuristicPriority.LOW:
+            case Severity.LOW:
                 return "LOW";
-            case HeuristicPriority.MED:
+            case Severity.MED:
                 return "MED";
-            case HeuristicPriority.HIGH:
+            case Severity.HIGH:
                 return "HIGH";
             default:
                 return "NA";
@@ -569,48 +569,48 @@ class ExpertEvaluation
         }
     }
 
-    private HeuristicPriority StringToHeuristicPriority(string name)
+    private Severity StringToSeverity(string name)
     {
         switch (name)
         {
             case "NA":
-                return HeuristicPriority.NONE;
+                return Severity.NONE;
             case "LOW":
-                return HeuristicPriority.LOW;
+                return Severity.LOW;
             case "MED":
-                return HeuristicPriority.MED;
+                return Severity.MED;
             case "HIGH":
-                return HeuristicPriority.HIGH;
+                return Severity.HIGH;
             default:
-                return HeuristicPriority.NONE;
+                return Severity.NONE;
         }
     }
-    private string HeuristicCategoryToString(HeuristicCategory name)
+    private string CategoryToString(Category name)
     {
         switch (name)
         {
-            case HeuristicCategory.NONE:
+            case Category.NONE:
                 return "NA";
-            case HeuristicCategory.POS:
+            case Category.POS:
                 return "POS";
-            case HeuristicCategory.NEG:
+            case Category.NEG:
                 return "NEG";
             default:
                 return "NA";
         }
     }
-    private HeuristicCategory StringToHeuristicCategory(string name)
+    private Category StringToCategory(string name)
     {
         switch (name)
         {
             case "NA":
-                return HeuristicCategory.NONE;
+                return Category.NONE;
             case "POS":
-                return HeuristicCategory.POS;
+                return Category.POS;
             case "NEG":
-                return HeuristicCategory.POS;
+                return Category.POS;
             default:
-                return HeuristicCategory.NONE;
+                return Category.NONE;
         }
     }
 
@@ -865,17 +865,17 @@ public class PathOSEvaluationWindow : EditorWindow
 public class Popup : EditorWindow
 {
     private string description = "";
-    HeuristicPriority priority = HeuristicPriority.NONE;
-    HeuristicCategory category = HeuristicCategory.NONE;
+    Severity severity = Severity.NONE;
+    Category category = Category.NONE;
 
-    private readonly string[] priorityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
+    private readonly string[] severityNames = new string[] { "NA", "LOW", "MED", "HIGH" };
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
     private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
     "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
 
 
-    private Color[] priorityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74, 255), new Color32(43, 172, 32, 255) };
-    private Color[] priorityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100, 255), new Color32(248, 114, 126, 255) };
+    private Color[] severityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74, 255), new Color32(43, 172, 32, 255) };
+    private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100, 255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
 
     private GUIStyle labelStyle = GUIStyle.none;
@@ -925,13 +925,13 @@ public class Popup : EditorWindow
         description = EditorGUILayout.TextArea(description, GUILayout.Width(Screen.width * 0.6f));
 
         GUI.backgroundColor = categoryColors[((int)category)];
-        category = (HeuristicCategory)EditorGUILayout.Popup((int)category, categoryNames);
+        category = (Category)EditorGUILayout.Popup((int)category, categoryNames);
 
-        if (category != HeuristicCategory.POS) GUI.backgroundColor = priorityColorsNeg[((int)priority)];
-        else GUI.backgroundColor = priorityColorsPos[((int)priority)];
+        if (category != Category.POS) GUI.backgroundColor = severityColorsNeg[((int)severity)];
+        else GUI.backgroundColor = severityColorsPos[((int)severity)];
         
-        priority = (HeuristicPriority)EditorGUILayout.Popup((int)priority, priorityNames);
-        GUI.backgroundColor = priorityColorsPos[0];
+        severity = (Severity)EditorGUILayout.Popup((int)severity, severityNames);
+        GUI.backgroundColor = severityColorsPos[0];
         EditorGUILayout.EndHorizontal();
 
 
@@ -953,7 +953,7 @@ public class Popup : EditorWindow
         if (GUILayout.Button("Add Comment"))
         {
             //evaluationWindow.AddComment();
-            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, priority, category, selection, entityType));
+            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, severity, category, selection, entityType));
             this.Close();
         }
     }
