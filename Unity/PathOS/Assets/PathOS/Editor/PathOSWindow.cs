@@ -214,8 +214,12 @@ public class PathOSWindow : EditorWindow
         if (agentReference == null)
         {
             GUI.backgroundColor = redColor;
-            if (GUILayout.Button("Initialize Agent"))
+            if (GUILayout.Button("Create Agent"))
             {
+                GameObject proxyAgent;
+                proxyAgent = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Agent.prefab") as GameObject;
+                Instantiate(proxyAgent);
+                agentReference = proxyAgent.GetComponent<PathOSAgent>();
             }
             GUI.backgroundColor = bgColor;
         }
@@ -261,8 +265,12 @@ public class PathOSWindow : EditorWindow
         if (managerReference == null)
         {
             GUI.backgroundColor = redColor;
-            if (GUILayout.Button("Initialize Manager"))
+            if (GUILayout.Button("Create Manager"))
             {
+                GameObject proxyManager;
+                proxyManager = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Manager.prefab") as GameObject;
+                Instantiate(proxyManager);
+                managerReference = proxyManager.GetComponent<PathOSManager>();
             }
             GUI.backgroundColor = bgColor;
         }

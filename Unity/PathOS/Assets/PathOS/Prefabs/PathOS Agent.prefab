@@ -227,9 +227,12 @@ SkinnedMeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 3
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
@@ -1362,6 +1365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ce937a59a90e74fba6431216287456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeScale: 1
   freezeAgent: 0
   experienceScale: 1
   heuristicScales:
@@ -1379,12 +1383,51 @@ MonoBehaviour:
     scale: 1
   - heuristic: 35
     scale: 1
+  modifiableHeuristicScales:
+  - heuristic: 0
+    scale: 0
+  - heuristic: 10
+    scale: 0
+  - heuristic: 15
+    scale: 0
+  - heuristic: 20
+    scale: 0
+  - heuristic: 25
+    scale: 0
+  - heuristic: 30
+    scale: 0
+  - heuristic: 35
+    scale: 0
   visitThreshold: 1
   exploreDegrees: 5
   invisibleExploreDegrees: 30
   lookDegrees: 60
   exploreThreshold: 2
   exploreTargetMargin: 25
+  lowEnemyDamage:
+    min: 10
+    max: 30
+  medEnemyDamage:
+    min: 30
+    max: 50
+  highEnemyDamage:
+    min: 50
+    max: 70
+  bossEnemyDamage:
+    min: 70
+    max: 100
+  hazardDamage:
+    min: 10
+    max: 20
+  lowHealthGain:
+    min: 10
+    max: 30
+  medHealthGain:
+    min: 30
+    max: 60
+  highHealthGain:
+    min: 70
+    max: 100
 --- !u!114 &114482611139781848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1474,7 @@ MonoBehaviour:
   mapScreenSize: 256
   showPlayerView: 1
   viewScreenSize: 256
+  showHealthBar: 1
 --- !u!1 &1218624666145408
 GameObject:
   m_ObjectHideFlags: 0
