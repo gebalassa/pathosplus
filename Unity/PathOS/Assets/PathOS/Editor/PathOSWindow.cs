@@ -112,7 +112,6 @@ public class PathOSWindow : EditorWindow
 
     }
 
-
     //gizmo stuff from here https://stackoverflow.com/questions/37267021/unity-editor-script-visible-hidden-gizmos
     void OnGUI()
     {

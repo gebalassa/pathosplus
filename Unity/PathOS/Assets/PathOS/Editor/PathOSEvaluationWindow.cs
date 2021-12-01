@@ -81,6 +81,7 @@ class ExpertEvaluation
     private Color[] severityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
     private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
+    private Color entityColor = new Color32(60, 145, 255, 120);
 
     public void SaveData()
     {
@@ -198,6 +199,7 @@ class ExpertEvaluation
             {
                 userComments.RemoveAt(i);
                 i--;
+                SaveData();
                 continue;
             }
 
@@ -234,7 +236,10 @@ class ExpertEvaluation
             userComments[i].selection = EditorGUILayout.ObjectField("", userComments[i].selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
                 as GameObject;
 
+
+            if (userComments[i].entityType != EntityType.ET_NONE) GUI.backgroundColor = entityColor;
             userComments[i].entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(userComments[i].entityType), entityNames));
+            GUI.backgroundColor = severityColorsPos[0];
 
             EditorGUILayout.EndHorizontal();
 
@@ -873,10 +878,10 @@ public class Popup : EditorWindow
     private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
     "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
 
-
     private Color[] severityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74, 255), new Color32(43, 172, 32, 255) };
     private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100, 255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
+    private Color entityColor = new Color32(60, 145, 255, 120);
 
     private GUIStyle labelStyle = GUIStyle.none;
     public GameObject selection;
@@ -942,7 +947,9 @@ public class Popup : EditorWindow
             as GameObject;
 
         //entityType = (EntityType)EditorGUILayout.Popup(EntityToIndex(entityType), entityNames);
+        if (entityType != EntityType.ET_NONE) GUI.backgroundColor = entityColor;
         entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(entityType), entityNames));
+        GUI.backgroundColor = severityColorsPos[0];
 
         EditorGUILayout.EndHorizontal();
 
