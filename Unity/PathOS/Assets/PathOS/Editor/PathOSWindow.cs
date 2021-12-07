@@ -133,6 +133,7 @@ public class PathOSWindow : EditorWindow
             GUI.backgroundColor = btnColorDark;
             GUILayout.BeginHorizontal();
             tabSelection = GUILayout.SelectionGrid(tabSelection, tabLabels, 4);
+            evaluationWindow.SetCurrentlyOpen((tabSelection==(int)Tabs.ExpertEvaluation ?  true : false));
             GUILayout.EndHorizontal();
             GUI.backgroundColor = bgColor;
 

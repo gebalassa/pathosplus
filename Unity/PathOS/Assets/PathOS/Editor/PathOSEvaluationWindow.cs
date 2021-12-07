@@ -717,6 +717,7 @@ public class PathOSEvaluationWindow : EditorWindow
     Popup window;
     private const string editorPrefsID = "PathOSEvaluationWindow";
     public static PathOSEvaluationWindow instance { get; private set; }
+    private static bool isCurrentlyOpen = false; //this is so jank, please fix this
 
     private void OnEnable()
     {
@@ -760,6 +761,10 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED FOR ENTITY TAGGING", MessageType.Error);
         }
+        else
+        {
+            EditorGUILayout.HelpBox("Right click objects in the scene to create a comment with its associated game object and entity type (if any)", MessageType.Info);
+        }
 
         EditorGUILayout.Space(15);
 
@@ -802,7 +807,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
-        if (popupAlreadyOpen || sceneView == null) return;
+        if (popupAlreadyOpen || sceneView == null || !isCurrentlyOpen) return;
 
         //Selection update.
         if (EditorWindow.mouseOverWindow != null && EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")
@@ -839,6 +844,10 @@ public class PathOSEvaluationWindow : EditorWindow
     {
         popupAlreadyOpen = false;
     }
+    public void SetCurrentlyOpen(bool temp)
+    {
+        isCurrentlyOpen = temp;
+    }
 
     private void OpenPopup(GameObject selection, EntityType entityType)
     {
@@ -851,7 +860,10 @@ public class PathOSEvaluationWindow : EditorWindow
 
     private EntityType GetMarkup(GameObject selection)
     {
-        if (managerReference == null) return EntityType.ET_NONE;
+        if (managerReference == null)
+        {
+            return EntityType.ET_NONE;
+        }
 
         for (int i = 0; i < managerReference.levelEntities.Count; i++)
         {
