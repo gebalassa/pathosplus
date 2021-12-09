@@ -82,7 +82,7 @@ public class OGVisEditor : Editor
     private static bool loadFoldout = false;
 
     //Colors
-    private Color bgColor, btnColor, btnColorLight, btnColorDark;
+    private Color bgColor, btnColor, btnColorLight;
 
     //Timestamp variables
 
@@ -93,7 +93,6 @@ public class OGVisEditor : Editor
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
         btnColorLight = new Color32(229, 231, 241, 255);
-        btnColorDark = new Color32(136, 143, 191, 255);
 
         //Grab our sharp line texture - this looks nicer on screen than the default.
         polylinetex = Resources.Load("polylinetex") as Texture2D;
@@ -139,7 +138,6 @@ public class OGVisEditor : Editor
         //Make sure our vis representation is up-to-date.
         serial.Update();
 
-        if (!vis.IsDataInitialized()) EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
 
         //Collapsible display options pane.
         loadFoldout = EditorGUILayout.Foldout(loadFoldout, lblLoadFoldout);
@@ -195,6 +193,7 @@ public class OGVisEditor : Editor
         if (!vis.IsDataInitialized())
         {
             serial.ApplyModifiedProperties();
+            EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
             SceneView.RepaintAll();
             return;
         }
@@ -216,13 +215,10 @@ public class OGVisEditor : Editor
             vis.ApplyHeatmapSettings();
         }
 
-        //Collapsible display options pane.
-        visualizationFoldout = EditorGUILayout.Foldout(visualizationFoldout, lblVisualizationFoldout);
-
-        if (visualizationFoldout)
-        {
-            // The tabs to alternate between specific menus
+        // The tabs to alternate between specific menus
+        EditorGUILayout.BeginVertical("Box");
             GUI.backgroundColor = btnColor;
+
             GUILayout.BeginHorizontal();
             tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);
             GUILayout.EndHorizontal();
@@ -303,7 +299,7 @@ public class OGVisEditor : Editor
 
                     EditorGUILayout.LabelField("Interaction Gradient", GUILayout.Width(PathOS.UI.longLabelWidth));
 
-                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.shortLabelWidth));
+                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.mediumLabelWidth));
                     vis.interactionGradient = EditorGUILayout.GradientField(vis.interactionGradient);
                     EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
 
@@ -320,8 +316,8 @@ public class OGVisEditor : Editor
 
                     break;
             }
-
-        }
+            EditorGUILayout.EndVertical();
+        
 
         EditorGUILayout.Space();
 

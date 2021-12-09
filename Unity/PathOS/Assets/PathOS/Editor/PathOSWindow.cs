@@ -21,7 +21,7 @@ public class PathOSWindow : EditorWindow
         ExpertEvaluation = 7
     };
 
-    string[] tabLabels = { "SETUP", "Agent", "Resources", "Batching", "Profiles", "Manager", "Visualization", "Expert Evaluation"};
+    string[] tabLabels = { "SETUP", "Agent", "Resource Values", "Batching", "Profiles", "Manager", "Visualization", "Expert Evaluation"};
     int tabSelection = 0;
 
     private PathOSProfileWindow profileWindow;
@@ -48,8 +48,8 @@ public class PathOSWindow : EditorWindow
     private int screenshotID, managerID, agentID;
 
     //Screenshot display settings
-    private string lblScreenshotFoldout = "Screenshot Options", lblReferenceFoldout = "REFERENCES", lblNavigationFoldout = "NAVIGATION";
-    private static bool showReferences = true, showNavigation = true;
+    private string lblNavigationFoldout = "NAVIGATION";
+    private static bool showNavigation = true;
 
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
@@ -98,7 +98,6 @@ public class PathOSWindow : EditorWindow
 
         hasManager = managerReference != null;
 
-
         //Agent reference
         if (hasAgent)
         {
@@ -115,6 +114,7 @@ public class PathOSWindow : EditorWindow
     //gizmo stuff from here https://stackoverflow.com/questions/37267021/unity-editor-script-visible-hidden-gizmos
     void OnGUI()
     {
+        //Sets style variables
         foldoutStyle = EditorStyles.foldout;
         foldoutStyle.fontStyle = FontStyle.Bold;
 
@@ -124,6 +124,15 @@ public class PathOSWindow : EditorWindow
         GUI.backgroundColor = btnColorDark;
         EditorGUILayout.BeginVertical("Box");
 
+        //Establishes references
+        GrabAgentReference();
+        GrabManagerReference();
+
+        agentWindow.SetAgentReference(agentReference);
+        evaluationWindow.SetManagerReference(managerReference);
+        managerWindow.SetManagerReference(managerReference);
+
+        //Shows tab navigation
         showNavigation = EditorGUILayout.Foldout(showNavigation, lblNavigationFoldout, foldoutStyle);
         GUI.backgroundColor = bgColor;
 
@@ -141,14 +150,14 @@ public class PathOSWindow : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(5);
 
-        ///
+
         switch (tabSelection)
         {
             case (int)Tabs.Setup:
                 OpenSetup();
                 break;
             case (int)Tabs.Agent:
-                agentWindow.OnWindowOpen(agentReference);
+                agentWindow.OnWindowOpen();
                 break;
             case (int)Tabs.Resources:
                 OnResourcesOpen();
@@ -160,13 +169,13 @@ public class PathOSWindow : EditorWindow
                 profileWindow.OnWindowOpen();
                 break;
             case (int)Tabs.Manager:
-                managerWindow.OnWindowOpen(managerReference);
+                managerWindow.OnWindowOpen();
                 break;
             case (int)Tabs.Visualization:
-                managerWindow.OnVisualizationOpen(managerReference);
+                managerWindow.OnVisualizationOpen();
                 break;
             case (int)Tabs.ExpertEvaluation:
-                    evaluationWindow.OnWindowOpen(managerReference);
+                evaluationWindow.OnWindowOpen();
                 break;
         }
         GUILayout.EndScrollView();
@@ -179,22 +188,15 @@ public class PathOSWindow : EditorWindow
     }
     private void OnResourcesOpen()
     {
-        managerWindow.OnResourceOpen(managerReference);
-
-        EditorGUILayout.Space(10);
-        EditorGUILayout.TextArea("", GUI.skin.horizontalSlider);
-        EditorGUILayout.Space(10);
-
-        agentWindow.OnResourceOpen(agentReference, showNavigation);
+        managerWindow.OnResourceOpen();
+        agentWindow.OnResourceOpen(showNavigation);
     }
 
     private void OpenSetup()
     {
-
         EditorGUILayout.BeginVertical("Box");
 
         EditorGUILayout.LabelField("PathOS+ Agent", EditorStyles.boldLabel);
-        GrabAgentReference();
 
         EditorGUI.BeginChangeCheck();
 
@@ -244,7 +246,6 @@ public class PathOSWindow : EditorWindow
 
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("PathOS+ Manager", EditorStyles.boldLabel);
-        GrabManagerReference();
 
         EditorGUI.BeginChangeCheck();
 

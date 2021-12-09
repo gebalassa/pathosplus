@@ -288,10 +288,6 @@ public class PathOSAgent : MonoBehaviour
         }
     }
 
-    //The way this would work is... 
-    // if the health is below a threshold (halfway) it does this:
-    // divide the player's health by 50
-    // lerp between the current caution and the max caution
     public void UpdateWeightsBasedOnHealth()
     {
         string printScales = "";

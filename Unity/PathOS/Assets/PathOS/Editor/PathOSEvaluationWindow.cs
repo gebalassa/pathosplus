@@ -734,7 +734,6 @@ public class PathOSEvaluationWindow : EditorWindow
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
-
     }
 
     private void OnDestroy()
@@ -753,10 +752,8 @@ public class PathOSEvaluationWindow : EditorWindow
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
 
-    public void OnWindowOpen(PathOSManager reference)
+    public void OnWindowOpen()
     {
-        managerReference = reference;
-
         if (managerReference == null)
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED FOR ENTITY TAGGING", MessageType.Error);
@@ -820,7 +817,6 @@ public class PathOSEvaluationWindow : EditorWindow
 
                 if (selection != null)
                 {
-                   // Debug.Log(selection.GetInstanceID());
                     popupAlreadyOpen = true;
                     OpenPopup(selection, GetMarkup(selection));
                 }
@@ -830,6 +826,10 @@ public class PathOSEvaluationWindow : EditorWindow
         {
             selection = null;
         }
+    }
+    public void SetManagerReference(PathOSManager reference)
+    {
+        managerReference = reference;
     }
 
     //Please clean this up

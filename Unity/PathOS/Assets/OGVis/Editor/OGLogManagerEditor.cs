@@ -61,44 +61,43 @@ public class OGLogManagerEditor : Editor
 
         EditorGUILayout.PropertyField(enableLogging);
 
-        if (enableLogging.boolValue)
-        { 
-            EditorGUILayout.LabelField("Log Directory: ", logDirectoryDisplay);
-
-            GUI.backgroundColor = btnColorLight;
-            if (GUILayout.Button("Browse..."))
-            {
-                string defaultDirectory = (manager.LogDirectoryValid()) ?
-                    manager.logDirectory : defaultDialogDirectory;
-
-                string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
-                    defaultDirectory, "");
-
-                if (selectedPath != "")
-                {
-                    manager.logDirectory = selectedPath;
-
-                    EditorUtility.SetDirty(manager);
-                    EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
-                }
-
-                PathOS.UI.TruncateStringHead(manager.logDirectory,
-                    ref logDirectoryDisplay, pathDisplayLength);
-            }
-            GUI.backgroundColor = bgColor;
-
-            if (!manager.LogDirectoryValid())
-            {
-                EditorGUILayout.HelpBox("WARNING: CHOOSE A VALID DIRECTORY OUTSIDE THE ASSETS FOLDER", MessageType.Error);
-            }
-
-            EditorGUILayout.PropertyField(logFilePrefix);
-            EditorGUILayout.PropertyField(sampleRate);
-        }
-        else
+        if (!enableLogging.boolValue)
         {
             EditorGUILayout.HelpBox("WARNING: LOGGING NOT ENABLED", MessageType.Error);
+            return;
         }
+
+        EditorGUILayout.LabelField("Log Directory: ", logDirectoryDisplay);
+
+        GUI.backgroundColor = btnColorLight;
+        if (GUILayout.Button("Browse..."))
+        {
+            string defaultDirectory = (manager.LogDirectoryValid()) ?
+                manager.logDirectory : defaultDialogDirectory;
+
+            string selectedPath = EditorUtility.OpenFolderPanel("Select Folder...",
+                defaultDirectory, "");
+
+            if (selectedPath != "")
+            {
+                manager.logDirectory = selectedPath;
+
+                EditorUtility.SetDirty(manager);
+                EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
+            }
+
+            PathOS.UI.TruncateStringHead(manager.logDirectory,
+                ref logDirectoryDisplay, pathDisplayLength);
+        }
+        GUI.backgroundColor = bgColor;
+
+        if (!manager.LogDirectoryValid())
+        {
+            EditorGUILayout.HelpBox("WARNING: CHOOSE A VALID DIRECTORY OUTSIDE THE ASSETS FOLDER", MessageType.Error);
+        }
+
+        EditorGUILayout.PropertyField(logFilePrefix);
+        EditorGUILayout.PropertyField(sampleRate);
 
         serial.ApplyModifiedProperties();
     }

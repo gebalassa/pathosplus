@@ -163,7 +163,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private int agentsLeft = 0;
 
     //Colors
-    private Color bgColor, btnColor, btnColorLight, btnColorDark;
+    private Color bgColor, btnColor, btnColorLight, bgDark3;
 
     private void OnEnable()
     {
@@ -171,7 +171,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
         btnColorLight = new Color32(229, 231, 241, 255);
-        btnColorDark = new Color32(158, 164, 211, 255);
+        bgDark3 = new Color32(224, 225, 230, 80);
 
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
@@ -288,6 +288,14 @@ public class PathOSAgentBatchingWindow : EditorWindow
     //This used to be private void OnGUI()
     public void OnWindowOpen()
     {
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
+
+        Editor header = Editor.CreateEditor(this);
+        header.DrawHeader();
+
+        GUI.backgroundColor = bgColor;
+
         EditorGUILayout.LabelField("General", headerStyle);
         timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
 
@@ -436,16 +444,6 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 break;
         }
 
-        //Apply new heuristic values to the agent.
-        //(For testing.)
-        /*
-        if(heuristicMode != HeuristicMode.LOAD)
-        {
-            if (GUILayout.Button("Apply to agent"))
-                ApplyHeuristics();
-        }
-        */
-
         GUILayout.Label("Simulation Controls", headerStyle);
 
         GUI.backgroundColor = btnColorLight;
@@ -496,6 +494,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
             cleanupWait = true;
         }
         GUI.backgroundColor = bgColor;
+        EditorGUILayout.EndVertical();
     }
 
     public void UpdateBatching()

@@ -65,6 +65,8 @@ public class PathOSManagerWindow : EditorWindow
 
     private bool managerInitialized = false;
     private string ignoredLabel = "Add the Mesh Renderers of GameObjects you'd like the Level Markup to ignore";
+
+    private Color bgColor, bgDark1, bgDark2, bgDark3;
     private class MarkupToggle
     {
         public static GUIStyle style;
@@ -129,6 +131,11 @@ public class PathOSManagerWindow : EditorWindow
         JsonUtility.FromJsonOverwrite(prefsData, this);
 
         SceneView.onSceneGUIDelegate += this.OnSceneGUI;
+
+        bgColor = GUI.backgroundColor;
+        bgDark1 = new Color32(184, 187, 199, 130);
+        bgDark2 = new Color32(224, 225, 230, 150);
+        bgDark3 = new Color32(224, 225, 230, 80);
     }
     void OnDestroy()
     {
@@ -150,10 +157,8 @@ public class PathOSManagerWindow : EditorWindow
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
 
     }
-    public void OnWindowOpen(PathOSManager reference)
+    public void OnWindowOpen()
     {
-        managerReference = reference;
-
         if (managerReference == null)
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
@@ -163,7 +168,7 @@ public class PathOSManagerWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        if (!managerInitialized) InitializeManager(managerReference);
+        if (!managerInitialized) InitializeManager();
 
         Selection.objects = new Object[] { managerReference.gameObject };
         Editor editor = Editor.CreateEditor(managerReference.gameObject);
@@ -171,17 +176,19 @@ public class PathOSManagerWindow : EditorWindow
         editor.DrawHeader();
         EditorGUILayout.Space();
 
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
         currentManagerEditor = Editor.CreateEditor(managerReference);
         EditorGUIUtility.labelWidth = 150.0f;
         currentManagerEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         ManagerEditorGUI();
+        EditorGUILayout.EndVertical();
         EditorGUILayout.Space();
     }
 
-    public void OnVisualizationOpen(PathOSManager reference)
+    public void OnVisualizationOpen()
     {
-        managerReference = reference;
-
         if (managerReference == null)
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
@@ -191,7 +198,7 @@ public class PathOSManagerWindow : EditorWindow
 
         EditorGUILayout.Space();
 
-        if (!managerInitialized) InitializeManager(managerReference);
+        if (!managerInitialized) InitializeManager();
 
         //What does this do
         Selection.objects = new Object[] { managerReference.gameObject };
@@ -205,18 +212,26 @@ public class PathOSManagerWindow : EditorWindow
 
         // Shows the created Editor beneath CustomEditor
         EditorGUIUtility.labelWidth = 150.0f;
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
         currentLogEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         currentLogEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(5);
+        EditorGUILayout.EndVertical();
+
+        EditorGUIUtility.labelWidth = 200.0f;
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
         currentVisEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         currentVisEditor.OnInspectorGUI();
-        EditorGUILayout.Space();
+        EditorGUILayout.Space(5);
+        EditorGUILayout.EndVertical();
     }
 
-    private void InitializeManager(PathOSManager reference)
+    private void InitializeManager()
     {
-        managerReference = reference;
-
         serial = new SerializedObject(managerReference);
 
         //Grab properties.
@@ -315,9 +330,10 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.PropertyField(endOnCompletionGoal, completionLabel);
         EditorGUILayout.PropertyField(showLevelMarkup);
 
+        GUI.backgroundColor = bgDark1;
         EditorGUILayout.BeginVertical("Box");
-        //Level markup panel.
         showMarkup = EditorGUILayout.Foldout( showMarkup, "Level Markup", foldoutStyle);
+        GUI.backgroundColor = bgColor;
 
         if (showMarkup)
         {
@@ -341,11 +357,10 @@ public class PathOSManagerWindow : EditorWindow
         }
 
 
+        GUI.backgroundColor = bgDark2;
         EditorGUILayout.BeginVertical("Box");
-        showIgnored = EditorGUILayout.Foldout(
-            showIgnored, "Ignored Entity List", foldoutStyle);
-
-
+        showIgnored = EditorGUILayout.Foldout( showIgnored, "Ignored Entity List", foldoutStyle);
+        GUI.backgroundColor = bgColor;
 
         if (showIgnored)
         {
@@ -356,19 +371,16 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(3.0f);
 
+
+        GUI.backgroundColor = bgDark1;
         EditorGUILayout.BeginVertical("Box");
-
-        //Entity list.
-        showList = EditorGUILayout.Foldout(
-            showList, "Level Entity List", foldoutStyle);
-
+        showList = EditorGUILayout.Foldout(showList, "Level Entity List", foldoutStyle);
+        GUI.backgroundColor = bgColor;
 
         EditorGUI.BeginChangeCheck();
 
-
         if (showList)
             entityListReorderable.DoLayoutList();
-
 
         if (EditorGUI.EndChangeCheck())
             warnedEntityNull = false;
@@ -390,10 +402,10 @@ public class PathOSManagerWindow : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(3.0f);
 
+        GUI.backgroundColor = bgDark2;
         EditorGUILayout.BeginVertical("Box");
-        //Heuristic weight matrix.
-        showWeights = EditorGUILayout.Foldout(
-            showWeights, "Motive Weights", foldoutStyle);
+        showWeights = EditorGUILayout.Foldout(showWeights, "Motive Weights", foldoutStyle);
+        GUI.backgroundColor = bgColor;
 
         //Heuristic weight matrix.
         if (showWeights)
@@ -609,24 +621,39 @@ public class PathOSManagerWindow : EditorWindow
         
         Handles.EndGUI();
     }
-    public void OnResourceOpen(PathOSManager managerReference)
+
+    public void SetManagerReference(PathOSManager reference)
+    {
+        managerReference = reference;
+    }
+    public void OnResourceOpen()
     {
         if (managerReference == null)
         {
+            EditorGUILayout.BeginVertical("Box");
+            EditorGUILayout.Space(0.5f);
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED", MessageType.Error);
             managerInitialized = false;
+            EditorGUILayout.Space(0.5f);
+            EditorGUILayout.EndVertical();
+
             return;
         }
 
-        EditorGUILayout.Space();
+        EditorGUILayout.BeginVertical("Box");
 
-        if (!managerInitialized) InitializeManager(managerReference);
+        EditorGUILayout.Space(10);
+
+        if (!managerInitialized) InitializeManager();
 
         Selection.objects = new Object[] { managerReference.gameObject };
 
         serial.Update();
         EditorGUILayout.PropertyField(endSimulationOnDeath, deathLabel);
         serial.ApplyModifiedProperties();
+
+        EditorGUILayout.Space(10);
+        EditorGUILayout.EndVertical();
     }
 
 }

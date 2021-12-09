@@ -21,24 +21,14 @@ public class PathOSProfileWindow : EditorWindow
 
     private int profileIndex = 0;
     private AgentProfile curProfile = new AgentProfile();
-    private Color bgColor, btnColor, btnColorLight, btnColorDark;
 
-    // [MenuItem("Window/PathOS Profiles")]
-    // public static void ShowWindow()
-    // {
-    //     EditorWindow window = EditorWindow.GetWindow(typeof(PathOSProfileWindow), true,
-    //         "PathOS Agent Profiles");
-    //
-    //     window.minSize = new Vector2(420.0f, 345.0f);
-    // }
-
+    private Color bgColor, btnColorLight, bgDark3;
     private void OnEnable()
     {
         //Background color
         bgColor = GUI.backgroundColor;
-        btnColor = new Color32(200, 203, 224, 255);
         btnColorLight = new Color32(229, 231, 241, 255);
-        btnColorDark = new Color32(158, 164, 211, 255);
+        bgDark3 = new Color32(224, 225, 230, 80);
 
         profiles = new List<AgentProfile>();
         ReadPrefsData();
@@ -157,6 +147,14 @@ public class PathOSProfileWindow : EditorWindow
 
     public void OnWindowOpen()
     {
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
+
+        Editor header = Editor.CreateEditor(this);
+        header.DrawHeader();
+
+        GUI.backgroundColor = bgColor;
+
         GUI.backgroundColor = btnColorLight;
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Import Profiles..."))
@@ -245,7 +243,6 @@ public class PathOSProfileWindow : EditorWindow
             }
             GUI.backgroundColor = bgColor;
         }
-
-
+        EditorGUILayout.EndVertical();
     }
 }

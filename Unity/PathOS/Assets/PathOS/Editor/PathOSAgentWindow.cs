@@ -18,7 +18,7 @@ public class PathOSAgentWindow : EditorWindow
 
     //Component variables
     [SerializeField]
-    //private PathOSAgent agentReference;
+    private PathOSAgent agentReference;
     private PathOSAgentMemory memoryReference;
     private PathOSAgentEyes eyeReference;
     private PathOSAgentRenderer rendererReference;
@@ -59,6 +59,9 @@ public class PathOSAgentWindow : EditorWindow
 
     private string lblAgentValues = "Agent Values", lblMemory = "Agent Memory", lblEyes = "Agent Eyes", lblRenderer = "Agent Renderer";
     private static bool showAgentValues = true, showMemory = true, showEyes = true, showRenderer = true;
+
+    private Color bgColor, bgDark1, bgDark2, bgDark3;
+
     private void OnEnable()
     {
         //Load saved settings.
@@ -74,6 +77,11 @@ public class PathOSAgentWindow : EditorWindow
         health_low = Resources.Load<Texture2D>("resource_preservation_low");
         health_med = Resources.Load<Texture2D>("resource_preservation_med");
         health_high = Resources.Load<Texture2D>("resource_preservation_high");
+
+        bgColor = GUI.backgroundColor;
+        bgDark1 = new Color32(184, 187, 199, 100);
+        bgDark2 = new Color32(224, 225, 230, 120);
+        bgDark3 = new Color32(224, 225, 230, 80);
     }
 
     private void OnDestroy()
@@ -93,7 +101,7 @@ public class PathOSAgentWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
     }
-    public void OnWindowOpen(PathOSAgent agentReference)
+    public void OnWindowOpen()
     {
         if (agentReference == null)
         {
@@ -113,7 +121,7 @@ public class PathOSAgentWindow : EditorWindow
         eyeReference = agentReference.GetComponent<PathOSAgentEyes>();
         rendererReference = agentReference.GetComponent<PathOSAgentRenderer>();
 
-        if (!agentInitialized) InitializeAgent(agentReference);
+        if (!agentInitialized) InitializeAgent();
 
         Selection.objects = new Object[] { agentReference.gameObject };
 
@@ -126,40 +134,55 @@ public class PathOSAgentWindow : EditorWindow
 
         //// Shows the created Editor beneath CustomEditor
         editor.DrawHeader();
-        currentTransformEditor.DrawHeader();
 
-        //EditorGUILayout.BeginVertical("Box");
+        GUI.backgroundColor = bgDark3;
+        EditorGUILayout.BeginVertical("Box");
+        currentTransformEditor.DrawHeader();
         currentTransformEditor.OnInspectorGUI();
-       // EditorGUILayout.EndVertical();
+        EditorGUILayout.EndVertical();
+        GUI.backgroundColor = bgColor;
 
         EditorGUILayout.Space();
-        currentAgentEditor.DrawHeader();
+
+        GUI.backgroundColor = bgDark1;
         EditorGUILayout.BeginVertical("Box");
+        currentAgentEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         showAgentValues = EditorGUILayout.Foldout(showAgentValues, lblAgentValues, foldoutStyle);
-        if (showAgentValues) AgentEditorGUI(agentReference);
+        if (showAgentValues) AgentEditorGUI();
         EditorGUILayout.EndVertical();
+
         EditorGUILayout.Space(3.0f);
 
+        GUI.backgroundColor = bgDark2;
         EditorGUILayout.BeginVertical("Box");
+        currentMemoryEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         showMemory = EditorGUILayout.Foldout(showMemory, lblMemory, foldoutStyle);
         if (showMemory) currentMemoryEditor.OnInspectorGUI();
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(3.0f);
 
+        GUI.backgroundColor = bgDark1;
         EditorGUILayout.BeginVertical("Box");
+        currentEyeEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         showEyes = EditorGUILayout.Foldout(showEyes, lblEyes, foldoutStyle);
         if (showEyes) currentEyeEditor.OnInspectorGUI();
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(3.0f);
 
+        GUI.backgroundColor = bgDark2;
         EditorGUILayout.BeginVertical("Box");
+        currentRendererEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         showRenderer = EditorGUILayout.Foldout(showRenderer, lblRenderer, foldoutStyle);
         if (showRenderer) currentRendererEditor.OnInspectorGUI();
         EditorGUILayout.EndVertical();
         EditorGUILayout.Space(3.0f);
     }
 
-    private void InitializeAgent(PathOSAgent agentReference)
+    private void InitializeAgent()
     {
         serial = new SerializedObject(agentReference);
         experienceScale = serial.FindProperty("experienceScale");
@@ -190,7 +213,7 @@ public class PathOSAgentWindow : EditorWindow
         agentInitialized = true;
     }
 
-    private void AgentEditorGUI(PathOSAgent agentReference)
+    private void AgentEditorGUI()
     {
         serial.Update();
 
@@ -289,21 +312,25 @@ public class PathOSAgentWindow : EditorWindow
     }
 
     //Todo: get rid of these bools
-    public void OnResourceOpen(PathOSAgent agentReference, bool isNavigationOpen)
+    public void OnResourceOpen(bool isNavigationOpen)
     {
         if (agentReference == null)
         {
+            EditorGUILayout.BeginVertical("Box");
             EditorGUILayout.HelpBox("AGENT REFERENCE REQUIRED", MessageType.Error);
             agentInitialized = false;
+            EditorGUILayout.EndVertical();
             return;
         }
 
         int offset = GetOffset(isNavigationOpen);
 
+        EditorGUILayout.BeginVertical("Box");
+
         EditorGUILayout.Space();
 
         //Doing the initialization
-        if (!agentInitialized) InitializeAgent(agentReference);
+        if (!agentInitialized) InitializeAgent();
 
         Selection.objects = new Object[] { agentReference.gameObject };
 
@@ -347,8 +374,17 @@ public class PathOSAgentWindow : EditorWindow
             EditorUtility.SetDirty(agentReference);
             EditorSceneManager.MarkSceneDirty(SceneManager.GetActiveScene());
         }
+
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.EndVertical();
     }
 
+
+    public void SetAgentReference(PathOSAgent reference)
+    {
+        agentReference = reference;
+    }
     private int GetOffset(bool isNavigationOpen)
     {
         if (isNavigationOpen)
@@ -357,7 +393,7 @@ public class PathOSAgentWindow : EditorWindow
         }
         else
         {
-            return -8;
+            return -6;
         }
     }
     private void DrawUIRow(Rect dimensions, Texture2D icon, string label, ref TimeRange range)
