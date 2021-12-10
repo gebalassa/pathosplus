@@ -754,6 +754,8 @@ public class PathOSEvaluationWindow : EditorWindow
 
     public void OnWindowOpen()
     {
+        EditorGUILayout.BeginVertical("Box");
+
         if (managerReference == null)
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED FOR ENTITY TAGGING", MessageType.Error);
@@ -800,6 +802,8 @@ public class PathOSEvaluationWindow : EditorWindow
         GUI.backgroundColor = bgColor;
         GUILayout.EndHorizontal();
         comments.DrawComments();
+
+        EditorGUILayout.EndVertical();
     }
 
     void OnSceneGUI(SceneView sceneView)

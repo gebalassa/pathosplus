@@ -37,7 +37,7 @@ public class PathOSWindow : EditorWindow
 
     private Vector2 scrollPos = Vector2.zero;
     private bool disableCamera = true;
-    private Color bgColor, btnColor, btnColorLight, btnColorDark, redColor, greenColor;
+    private Color bgColor, btnColorDark, redColor, greenColor;
 
     private GUIStyle foldoutStyle = GUIStyle.none;
 
@@ -60,8 +60,6 @@ public class PathOSWindow : EditorWindow
     {
         //Background color
         bgColor = GUI.backgroundColor;
-        btnColor = new Color32(200, 203, 224, 255);
-        btnColorLight = new Color32(229, 231, 241, 255);
         btnColorDark = new Color32(158, 164, 211, 255);
         redColor = new Color32(255, 60, 71, 150);
         greenColor = new Color32(60, 179, 113, 140);

@@ -64,6 +64,7 @@ public class OGLogManagerEditor : Editor
         if (!enableLogging.boolValue)
         {
             EditorGUILayout.HelpBox("WARNING: LOGGING NOT ENABLED", MessageType.Error);
+            serial.ApplyModifiedProperties();
             return;
         }
 

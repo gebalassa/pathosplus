@@ -82,7 +82,7 @@ public class OGVisEditor : Editor
     private static bool loadFoldout = false;
 
     //Colors
-    private Color bgColor, btnColor, btnColorLight;
+    private Color bgColor, btnColor, btnColorLight, btnColorDark, bgDark1, bgDark2, bgDark3;
 
     //Timestamp variables
 
@@ -91,8 +91,12 @@ public class OGVisEditor : Editor
     {
         //Background color
         bgColor = GUI.backgroundColor;
-        btnColor = new Color32(200, 203, 224, 255);
-        btnColorLight = new Color32(229, 231, 241, 255);
+        btnColor = new Color32(200, 203, 224, 180);
+        btnColorLight = new Color32(229, 231, 241, 180);
+        btnColorDark = new Color32(158, 164, 211, 180);
+        bgDark1 = new Color32(184, 187, 199, 100);
+        bgDark2 = new Color32(224, 225, 230, 120);
+        bgDark3 = new Color32(224, 225, 230, 80);
 
         //Grab our sharp line texture - this looks nicer on screen than the default.
         polylinetex = Resources.Load("polylinetex") as Texture2D;
@@ -138,9 +142,13 @@ public class OGVisEditor : Editor
         //Make sure our vis representation is up-to-date.
         serial.Update();
 
+        GUI.backgroundColor = bgDark1;
+        EditorGUILayout.BeginVertical("Box");
 
         //Collapsible display options pane.
         loadFoldout = EditorGUILayout.Foldout(loadFoldout, lblLoadFoldout);
+
+        GUI.backgroundColor = bgColor;
 
         if (loadFoldout)
         {   
@@ -195,13 +203,20 @@ public class OGVisEditor : Editor
             serial.ApplyModifiedProperties();
             EditorGUILayout.HelpBox("WARNING: NO FILES LOADED", MessageType.Error);
             SceneView.RepaintAll();
+            EditorGUILayout.EndVertical();
             return;
         }
 
-        EditorGUILayout.LabelField("Time Scrubbing", EditorStyles.boldLabel);
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space(5);
+
+        GUI.backgroundColor = btnColor;
+        EditorGUILayout.BeginVertical("Box");
+        GUI.backgroundColor = bgColor;
+        //  EditorGUILayout.LabelField("Time Range", EditorStyles.boldLabel);
 
         EditorGUI.BeginChangeCheck();
-
         PathOS.EditorUI.FullMinMaxSlider("Time Range",
             ref vis.displayTimeRange.min,
             ref vis.displayTimeRange.max,
@@ -215,233 +230,239 @@ public class OGVisEditor : Editor
             vis.ApplyHeatmapSettings();
         }
 
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.Space(5);
+
         // The tabs to alternate between specific menus
+
+        GUI.backgroundColor = btnColorDark;
         EditorGUILayout.BeginVertical("Box");
-            GUI.backgroundColor = btnColor;
+        GUI.backgroundColor = bgColor;
 
-            GUILayout.BeginHorizontal();
-            tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);
-            GUILayout.EndHorizontal();
-            GUI.backgroundColor = bgColor;
+        EditorGUILayout.LabelField("Visualization Settings", EditorStyles.boldLabel);
 
-            //Switches between the tabs (temp solution, todo: clean this up when you get the time)
-            switch (tabSelection)
-            {
-                case 0:
+        GUILayout.BeginHorizontal();
+        tabSelection = GUILayout.Toolbar(tabSelection, tabLabels);
+        GUILayout.EndHorizontal();
+        GUI.backgroundColor = bgColor;
 
-                    EditorGUI.BeginChangeCheck();
-                    vis.showHeatmap = EditorGUILayout.Toggle("Show Heatmap", vis.showHeatmap);
-
-                    if (EditorGUI.EndChangeCheck())
-                        vis.UpdateHeatmapVisibility();
-
-                    if (!vis.showHeatmap) break;
-
-                    EditorGUI.BeginChangeCheck();
-                    EditorGUILayout.BeginHorizontal();
-
-                    EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
-
-                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-                    vis.heatmapGradient = EditorGUILayout.GradientField(vis.heatmapGradient);
-                    EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-
-                    EditorGUILayout.EndHorizontal();
-
-                    EditorGUILayout.PropertyField(propHeatmapAlpha);
-                    EditorGUILayout.PropertyField(propHeatmapTileSize);
-                    EditorGUILayout.PropertyField(propHeatmapAggregate, toggleAggregateLabel);
-                    EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
-
-                    if (EditorGUI.EndChangeCheck())
-                    {
-                        vis.ApplyHeatmapSettings();
-                    }
-
-                    break;
-                case 1:
-
-                    //Global path display settings.
-                    EditorGUILayout.PropertyField(propShowIndividual);
-
-                    if (!vis.showIndividualPaths) break;
-
-                    EditorGUILayout.PropertyField(propShowArrows);
-
-                    EditorGUILayout.PropertyField(propShowIndividualInteractions,
-                        individualInteractionsLabel);
-
-                    if (vis.pLogs.Count > 0)
-                        GUILayout.Label("Agent Colors:");
-
-                    //Filter options.
-                    //Enable/disable players, set path colour by player ID.
-                    foreach (PlayerLog pLog in vis.pLogs)
-                    {
-                        GUILayout.BeginHorizontal();
-
-                        EditorGUILayout.LabelField(pLog.playerID);
-                        pLog.pathColor = EditorGUILayout.ColorField(pLog.pathColor);
-
-                        GUILayout.EndHorizontal();
-                    }
-                    break;
-
-                case 2:
-
-                    EditorGUILayout.PropertyField(propShowEntities);
-
-                    if (!vis.showEntities) break;
-
-                    showLabels = EditorGUILayout.Toggle("Display Interaction Labels", showLabels);
-
-                    EditorGUILayout.BeginHorizontal();
-
-                    EditorGUILayout.LabelField("Interaction Gradient", GUILayout.Width(PathOS.UI.longLabelWidth));
-
-                    EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-                    vis.interactionGradient = EditorGUILayout.GradientField(vis.interactionGradient);
-                    EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
-
-                    EditorGUILayout.EndHorizontal();
-
-                    EditorGUI.BeginChangeCheck();
-                    EditorGUILayout.PropertyField(propEntityAggregate, toggleAggregateLabel);
-                    EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
-
-                    if (EditorGUI.EndChangeCheck())
-                    {
-                        vis.ReclusterEvents();
-                    }
-
-                    break;
-            }
-            EditorGUILayout.EndVertical();
-        
-
-        EditorGUILayout.Space();
-
-
-        //Collapsible display options pane.
-        filterFoldout = EditorGUILayout.Foldout(filterFoldout, lblFilterFoldout);
-
-        if (filterFoldout)
+        //Switches between the tabs (temp solution, todo: clean this up when you get the time)
+        switch (tabSelection)
         {
-            EditorGUI.BeginChangeCheck();
-            EditorGUILayout.PropertyField(propDisplayHeight);
+            case 0:
 
-            if (EditorGUI.EndChangeCheck())
-            {
-                vis.ApplyDisplayHeight();
-                vis.ReclusterEvents();
-            }
+                EditorGUI.BeginChangeCheck();
+                vis.showHeatmap = EditorGUILayout.Toggle("Show Heatmap", vis.showHeatmap);
 
-            bool refreshFilter = false;
-            bool oldFilter = false;
+                if (EditorGUI.EndChangeCheck())
+                    vis.UpdateHeatmapVisibility();
 
-            expansionToggleStyle = EditorStyles.miniButton;
-            expansionToggleStyle.fixedHeight = 16.0f;
-            expansionToggleStyle.fixedWidth = 32.0f;
+                if (!vis.showHeatmap) break;
 
-            if (vis.pLogs.Count > 0)
-                GUILayout.Label("Filter Data by Player ID:");
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.BeginHorizontal();
 
+                EditorGUILayout.LabelField("Heatmap Colours", GUILayout.Width(PathOS.UI.longLabelWidth));
 
-            //Filter options.
-            //Enable/disable players.
-            foreach (PlayerLog pLog in vis.pLogs)
-            {
-                GUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.mediumLabelWidth));
+                vis.heatmapGradient = EditorGUILayout.GradientField(vis.heatmapGradient);
+                EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
 
-                pLog.pathColor = EditorGUILayout.ColorField(noContent,
-                    pLog.pathColor, false, false, false, GUILayout.Width(16.0f));
+                EditorGUILayout.EndHorizontal();
 
-                oldFilter = pLog.visInclude;
-                pLog.visInclude = GUILayout.Toggle(pLog.visInclude, "", GUILayout.Width(16.0f));
-                pLog.playerID = EditorGUILayout.TextField(pLog.playerID);
+                EditorGUILayout.PropertyField(propHeatmapAlpha);
+                EditorGUILayout.PropertyField(propHeatmapTileSize);
+                EditorGUILayout.PropertyField(propHeatmapAggregate, toggleAggregateLabel);
+                EditorGUILayout.PropertyField(propHeatmapTimeSlice, toggleTimeSliceLabel);
 
-                if (oldFilter != pLog.visInclude)
-                    refreshFilter = true;
-
-                pLog.showDetail = GUILayout.Toggle(pLog.showDetail, expansionLabel, expansionToggleStyle);
-
-                GUILayout.EndHorizontal();
-
-                if (pLog.showDetail)
+                if (EditorGUI.EndChangeCheck())
                 {
-                    agentReference = EditorGUILayout.ObjectField("Agent to update: ",
-                        agentReference, typeof(PathOSAgent), true) as PathOSAgent;
-
-                    if (GUILayout.Button("Copy motives to agent")
-                        && agentReference != null)
-                    {
-                        Undo.RecordObject(agentReference, "Copy motives to agent");
-
-                        agentReference.experienceScale = pLog.experience;
-
-                        foreach (PathOS.HeuristicScale scale in agentReference.heuristicScales)
-                        {
-                            if (pLog.heuristics.ContainsKey(scale.heuristic))
-                                scale.scale = pLog.heuristics[scale.heuristic];
-                        }
-                    }
-
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField("Experience:", GUILayout.Width(84.0f));
-                    EditorGUILayout.LabelField(pLog.experience.ToString());
-                    EditorGUILayout.EndHorizontal();
-
-                    foreach (KeyValuePair<PathOS.Heuristic, float> stat in pLog.heuristics)
-                    {
-                        EditorGUILayout.BeginHorizontal();
-                        EditorGUILayout.LabelField(PathOS.UI.heuristicLabels[stat.Key] + ":",
-                            GUILayout.Width(84.0f));
-                        EditorGUILayout.LabelField(stat.Value.ToString());
-                        EditorGUILayout.EndHorizontal();
-                    }
-
+                    vis.ApplyHeatmapSettings();
                 }
-            }
 
-            GUI.backgroundColor = btnColorLight;
-            GUILayout.BeginHorizontal();
-            //Shortcut to enable all PIDs in the vis.
-            if (GUILayout.Button("Select All"))
-            {
+                break;
+            case 1:
+
+                //Global path display settings.
+                EditorGUILayout.PropertyField(propShowIndividual);
+
+                if (!vis.showIndividualPaths) break;
+
+                EditorGUILayout.PropertyField(propShowArrows);
+
+                EditorGUILayout.PropertyField(propShowIndividualInteractions,
+                    individualInteractionsLabel);
+
+                if (vis.pLogs.Count > 0)
+                    GUILayout.Label("Agent Colors:");
+
+                //Filter options.
+                //Enable/disable players, set path colour by player ID.
                 foreach (PlayerLog pLog in vis.pLogs)
                 {
-                    pLog.visInclude = true;
+                    GUILayout.BeginHorizontal();
+
+                    EditorGUILayout.LabelField(pLog.playerID);
+                    pLog.pathColor = EditorGUILayout.ColorField(pLog.pathColor);
+
+                    GUILayout.EndHorizontal();
                 }
+                break;
 
-                refreshFilter = true;
-            }
+            case 2:
 
-            //Shortcut to exclude all PIDs from the vis.
-            if (GUILayout.Button("Select None"))
-            {
-                foreach (PlayerLog pLog in vis.pLogs)
+                EditorGUILayout.PropertyField(propShowEntities);
+
+                if (!vis.showEntities) break;
+
+                showLabels = EditorGUILayout.Toggle("Display Interaction Labels", showLabels);
+
+                EditorGUILayout.BeginHorizontal();
+
+                EditorGUILayout.LabelField("Interaction Gradient", GUILayout.Width(PathOS.UI.longLabelWidth));
+
+                EditorGUILayout.LabelField("Low", GUILayout.Width(PathOS.UI.mediumLabelWidth));
+                vis.interactionGradient = EditorGUILayout.GradientField(vis.interactionGradient);
+                EditorGUILayout.LabelField("High", GUILayout.Width(PathOS.UI.mediumLabelWidth));
+
+                EditorGUILayout.EndHorizontal();
+
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(propEntityAggregate, toggleAggregateLabel);
+                EditorGUILayout.PropertyField(propEntityTimeSlice, toggleTimeSliceLabel);
+
+                if (EditorGUI.EndChangeCheck())
                 {
-                    pLog.visInclude = false;
-                }
-
-                refreshFilter = true;
-            }
-
-            GUILayout.EndHorizontal();
-            GUI.backgroundColor = bgColor;
-
-            //If we've detected a change that requires re-aggregation, do so.
-            if (refreshFilter)
-            {
-                if (vis.interactionAggregateActiveOnly)
                     vis.ReclusterEvents();
+                }
 
-                if (vis.heatmapAggregateActiveOnly)
-                    vis.UpdateHeatmap();
-            }
+                break;
+        }
+         EditorGUILayout.EndVertical();
 
+
+        EditorGUILayout.Space(5);
+
+        GUI.backgroundColor = btnColor;
+        EditorGUILayout.BeginVertical("Box");
+        GUI.backgroundColor = bgColor;
+
+        EditorGUILayout.LabelField("Filtering Settings", EditorStyles.boldLabel);
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(propDisplayHeight);
+
+        if (EditorGUI.EndChangeCheck())
+        {
+            vis.ApplyDisplayHeight();
+            vis.ReclusterEvents();
         }
 
+        bool refreshFilter = false;
+        bool oldFilter = false;
+
+        expansionToggleStyle = EditorStyles.miniButton;
+        expansionToggleStyle.fixedHeight = 16.0f;
+        expansionToggleStyle.fixedWidth = 32.0f;
+
+        if (vis.pLogs.Count > 0)
+            GUILayout.Label("Filter Data by Player ID:");
+
+
+        //Filter options.
+        //Enable/disable players.
+        foreach (PlayerLog pLog in vis.pLogs)
+        {
+            GUILayout.BeginHorizontal();
+
+            pLog.pathColor = EditorGUILayout.ColorField(noContent,
+                pLog.pathColor, false, false, false, GUILayout.Width(16.0f));
+
+            oldFilter = pLog.visInclude;
+            pLog.visInclude = GUILayout.Toggle(pLog.visInclude, "", GUILayout.Width(16.0f));
+            pLog.playerID = EditorGUILayout.TextField(pLog.playerID);
+
+            if (oldFilter != pLog.visInclude)
+                refreshFilter = true;
+
+            pLog.showDetail = GUILayout.Toggle(pLog.showDetail, expansionLabel, expansionToggleStyle);
+
+            GUILayout.EndHorizontal();
+
+            if (pLog.showDetail)
+            {
+                agentReference = EditorGUILayout.ObjectField("Agent to update: ",
+                    agentReference, typeof(PathOSAgent), true) as PathOSAgent;
+
+                if (GUILayout.Button("Copy motives to agent")
+                    && agentReference != null)
+                {
+                    Undo.RecordObject(agentReference, "Copy motives to agent");
+
+                    agentReference.experienceScale = pLog.experience;
+
+                    foreach (PathOS.HeuristicScale scale in agentReference.heuristicScales)
+                    {
+                        if (pLog.heuristics.ContainsKey(scale.heuristic))
+                            scale.scale = pLog.heuristics[scale.heuristic];
+                    }
+                }
+
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.LabelField("Experience:", GUILayout.Width(84.0f));
+                EditorGUILayout.LabelField(pLog.experience.ToString());
+                EditorGUILayout.EndHorizontal();
+
+                foreach (KeyValuePair<PathOS.Heuristic, float> stat in pLog.heuristics)
+                {
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(PathOS.UI.heuristicLabels[stat.Key] + ":",
+                        GUILayout.Width(84.0f));
+                    EditorGUILayout.LabelField(stat.Value.ToString());
+                    EditorGUILayout.EndHorizontal();
+                }
+
+            }
+        }
+
+        GUI.backgroundColor = btnColorLight;
+        GUILayout.BeginHorizontal();
+        //Shortcut to enable all PIDs in the vis.
+        if (GUILayout.Button("Select All"))
+        {
+            foreach (PlayerLog pLog in vis.pLogs)
+            {
+                pLog.visInclude = true;
+            }
+
+            refreshFilter = true;
+        }
+
+        //Shortcut to exclude all PIDs from the vis.
+        if (GUILayout.Button("Select None"))
+        {
+            foreach (PlayerLog pLog in vis.pLogs)
+            {
+                pLog.visInclude = false;
+            }
+
+            refreshFilter = true;
+        }
+
+        GUILayout.EndHorizontal();
+        GUI.backgroundColor = bgColor;
+
+        //If we've detected a change that requires re-aggregation, do so.
+        if (refreshFilter)
+        {
+            if (vis.interactionAggregateActiveOnly)
+                vis.ReclusterEvents();
+
+            if (vis.heatmapAggregateActiveOnly)
+                vis.UpdateHeatmap();
+        }
+
+        EditorGUILayout.EndVertical();
 
         serial.ApplyModifiedProperties();
         SceneView.RepaintAll();
