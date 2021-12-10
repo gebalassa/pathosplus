@@ -290,10 +290,9 @@ public class PathOSAgent : MonoBehaviour
 
     public void UpdateWeightsBasedOnHealth()
     {
-        string printScales = "";
         float newCaution = 0;
 
-        if (true)//(health <= 50.0f)
+        if (health <= 50.0f)
         { 
             //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
             for (int i = 0; i < modifiableHeuristicScales.Count; i++)
@@ -304,8 +303,7 @@ public class PathOSAgent : MonoBehaviour
                     newCaution = Mathf.Lerp(modifiableHeuristicScales[i].scale, 1.0f, h);
                     if (newCaution > 1.0f) newCaution = 1.0f;
                     modifiableHeuristicScales[i].scale = newCaution;
-                    printScales = modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
-                }
+               }
             }
         }
         else
@@ -316,8 +314,7 @@ public class PathOSAgent : MonoBehaviour
                 if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
                 {
                     modifiableHeuristicScales[i].scale = heuristicScaleLookup[Heuristic.CAUTION];
-                    printScales = modifiableHeuristicScales[i].heuristic + " " + modifiableHeuristicScales[i].scale + "\n";
-                }
+               }
             }
         }
     }
