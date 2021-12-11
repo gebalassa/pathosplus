@@ -129,6 +129,7 @@ public class PathOSWindow : EditorWindow
         agentWindow.SetAgentReference(agentReference);
         evaluationWindow.SetManagerReference(managerReference);
         managerWindow.SetManagerReference(managerReference);
+        evaluationWindow.SetScreenshotReference(screenshot);
 
         //Shows tab navigation
         showNavigation = EditorGUILayout.Foldout(showNavigation, lblNavigationFoldout, foldoutStyle);
@@ -241,7 +242,6 @@ public class PathOSWindow : EditorWindow
 
         //////////////////////////////////////////////////////////////////////////////////////
 
-
         EditorGUILayout.BeginVertical("Box");
         EditorGUILayout.LabelField("PathOS+ Manager", EditorStyles.boldLabel);
 
@@ -332,7 +332,7 @@ public class PathOSWindow : EditorWindow
             GUI.backgroundColor = greenColor;
             if (GUILayout.Button("Take Screenshot"))
             {
-                screenshot.TakeScreenshot();
+                screenshot.TakeScreenshotGeneral();
             }
             GUI.backgroundColor = bgColor;
 

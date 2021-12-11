@@ -82,7 +82,7 @@ class ExpertEvaluation
     private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
     private Color entityColor = new Color32(60, 145, 255, 120);
-
+    
     public void SaveData()
     {
         string saveName;
@@ -710,6 +710,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private Color bgColor, btnColor;
     private PathOSManager managerReference;
     ExpertEvaluation comments = new ExpertEvaluation();
+    private ScreenshotManager screenshot;
     private GUIStyle headerStyle = new GUIStyle();
     private GameObject selection = null;
     static bool popupAlreadyOpen = false;
@@ -765,6 +766,11 @@ public class PathOSEvaluationWindow : EditorWindow
             EditorGUILayout.HelpBox("Right click objects in the scene to create a comment with its associated game object and entity type (if any)", MessageType.Info);
         }
 
+        if (screenshot == null)
+        {
+            EditorGUILayout.HelpBox("SCREENSHOT REFERENCE REQUIRED FOR EXPORTING MAP SCREENSHOTS", MessageType.Error);
+        }
+
         EditorGUILayout.Space(15);
 
         GUILayout.BeginHorizontal();
@@ -791,11 +797,12 @@ public class PathOSEvaluationWindow : EditorWindow
 
         if (GUILayout.Button(export))
         {
-            string exportPath = EditorUtility.OpenFilePanel("Export Evaluation", "ASSETS\\EvaluationFiles", "csv");
+            string exportPath = EditorUtility.OpenFilePanel("Export Evaluation", "Assets\\EvaluationFiles", "csv");
 
             if (exportPath.Length != 0)
             {
                 comments.ExportHeuristics(exportPath);
+                if (screenshot != null) screenshot.TakeScreenshotEvaluation(Path.GetDirectoryName(exportPath) + Path.DirectorySeparatorChar, Path.GetFileName(exportPath));
             }
         }
 
@@ -834,6 +841,11 @@ public class PathOSEvaluationWindow : EditorWindow
     public void SetManagerReference(PathOSManager reference)
     {
         managerReference = reference;
+    }
+
+    public void SetScreenshotReference(ScreenshotManager reference)
+    {
+        screenshot = reference;
     }
 
     //Please clean this up

@@ -116,6 +116,7 @@ public class PathOSAgent : MonoBehaviour
         highEnemyDamage = new TimeRange(50,70), bossEnemyDamage = new TimeRange(70,100),
         hazardDamage = new TimeRange(10,20), lowHealthGain = new TimeRange(10, 30),
         medHealthGain = new TimeRange(30, 60), highHealthGain = new TimeRange(70,100);
+    private int cautionIndex, aggressionIndex, adrenalineIndex; 
 
     private void Awake()
     { 
@@ -146,6 +147,23 @@ public class PathOSAgent : MonoBehaviour
         {
             modifiableHeuristicScales.Add(curScale);
             heuristicScaleLookup.Add(curScale.heuristic, curScale.scale);
+        }
+
+        //TODO: Clean this up...
+        for (int i = 0; i < modifiableHeuristicScales.Count; i++)
+        {
+            if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
+            {
+                cautionIndex = i;
+            }
+            else if (modifiableHeuristicScales[i].heuristic == Heuristic.AGGRESSION)
+            {
+                aggressionIndex = i;
+            }
+            else if (modifiableHeuristicScales[i].heuristic == Heuristic.ADRENALINE)
+            {
+                adrenalineIndex = i;
+            }
         }
 
         foreach(HeuristicWeightSet curSet in manager.heuristicWeights)
@@ -290,32 +308,31 @@ public class PathOSAgent : MonoBehaviour
 
     public void UpdateWeightsBasedOnHealth()
     {
-        float newCaution = 0;
-
         if (health <= 50.0f)
-        { 
-            //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
-            for (int i = 0; i < modifiableHeuristicScales.Count; i++)
-            {
-                if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
-                {
-                    float h = 1.0f - (health / 50.0f);
-                    newCaution = Mathf.Lerp(modifiableHeuristicScales[i].scale, 1.0f, h);
-                    if (newCaution > 1.0f) newCaution = 1.0f;
-                    modifiableHeuristicScales[i].scale = newCaution;
-               }
-            }
+        {
+            //Variables for calculations
+            float newCaution = 0, newAggression = 0, newAdrenaline = 0;
+            float h = 1.0f - (health / 50.0f);
+
+            //Updates the caution
+            newCaution = Mathf.Lerp(modifiableHeuristicScales[cautionIndex].scale, 1.0f, h);
+            if (newCaution > 1.0f) newCaution = 1.0f;
+            modifiableHeuristicScales[cautionIndex].scale = newCaution;
+
+            //Updates aggression/adrenaline
+            newAggression = 0.5f;
+            modifiableHeuristicScales[aggressionIndex].scale = newAggression;
+
+            newAdrenaline = 0.5f;
+            modifiableHeuristicScales[adrenalineIndex].scale = newAdrenaline;
+
+            Debug.Log("ratata" + newCaution);
         }
         else
         {
-            //Need to make it so this changes based on how much health the agent has, instead of being a single increase every time
-            for (int i = 0; i < modifiableHeuristicScales.Count; i++)
-            {
-                if (modifiableHeuristicScales[i].heuristic == Heuristic.CAUTION)
-                {
-                    modifiableHeuristicScales[i].scale = heuristicScaleLookup[Heuristic.CAUTION];
-               }
-            }
+            modifiableHeuristicScales[cautionIndex].scale = heuristicScaleLookup[Heuristic.CAUTION];
+            modifiableHeuristicScales[aggressionIndex].scale = heuristicScaleLookup[Heuristic.AGGRESSION];
+            modifiableHeuristicScales[adrenalineIndex].scale = heuristicScaleLookup[Heuristic.ADRENALINE];
         }
     }
 

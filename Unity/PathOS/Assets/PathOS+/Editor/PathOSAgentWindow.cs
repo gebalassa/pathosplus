@@ -138,9 +138,9 @@ public class PathOSAgentWindow : EditorWindow
         GUI.backgroundColor = bgDark3;
         EditorGUILayout.BeginVertical("Box");
         currentTransformEditor.DrawHeader();
+        GUI.backgroundColor = bgColor;
         currentTransformEditor.OnInspectorGUI();
         EditorGUILayout.EndVertical();
-        GUI.backgroundColor = bgColor;
 
         EditorGUILayout.Space();
 

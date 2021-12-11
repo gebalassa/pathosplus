@@ -21,7 +21,61 @@ public class ScreenshotManager : MonoBehaviour
     private Camera camera;
     private RenderTexture rendTex, currRendTex;
     private Texture2D screenshot;
-    public void TakeScreenshot()
+
+    public void TakeScreenshotEvaluation(string evalFolder, string screenshotName)
+    {
+        if (camera == null)
+        {
+            camera = GetComponent<Camera>();
+        }
+
+        //Sets the file name and path
+       // folder = GetSafePath(folder.Trim('/'));
+       // prefix = GetSafeFilename(prefix);
+        directory = evalFolder + slash;
+        filename = screenshotName.Replace(".csv", "") + pngStr;
+        path = directory + filename;
+
+        //Creates and renders the texture
+        rendTex = new RenderTexture(width, height, 0, RenderTextureFormat.ARGB32);
+        camera.targetTexture = rendTex;
+        camera.Render();
+
+        //Saves current render texture to override
+        currRendTex = RenderTexture.active;
+        RenderTexture.active = camera.targetTexture;
+
+        //Creates new texture to add render texture to 
+        screenshot = new Texture2D(width, height, TextureFormat.ARGB32, false);
+        screenshot.ReadPixels(new Rect(0, 0, width, height), 0, 0, false);
+
+        //Convert pngs to srgb 
+        if (QualitySettings.activeColorSpace == ColorSpace.Linear)
+        {
+            Color[] pixels = screenshot.GetPixels();
+
+            for (int p = 0; p < pixels.Length; p++)
+            {
+                pixels[p] = pixels[p].gamma;
+            }
+
+            screenshot.SetPixels(pixels);
+        }
+
+        //Apply screenshot texture changes and save it
+        screenshot.Apply(false);
+        Directory.CreateDirectory(directory);
+        byte[] png = screenshot.EncodeToPNG();
+        File.WriteAllBytes(path, png);
+
+        //Ref removal for garbage collection
+        camera.targetTexture = null;
+
+        //Replace original texture
+        RenderTexture.active = currRendTex;
+    }
+
+    public void TakeScreenshotGeneral()
     {
         if (camera == null)
         {
