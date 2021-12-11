@@ -77,12 +77,29 @@ class ExpertEvaluation
     private readonly string[] entityNames = new string[] { "NONE", "OPTIONAL GOAL", "MANDATORY GOAL", "COMPLETION GOAL", "ACHIEVEMENT", "PRESERVATION LOW",
     "PRESERVATION MED", "PRESERVATION HIGH", "LOW ENEMY", "MED ENEMY", "HIGH ENEMY", "BOSS", "ENVIRONMENT HAZARD", "POI", "NPC POI"};
     private readonly string[] categoryNames = new string[] { "NA", "POS", "NEG" };
-    private readonly string headerRow = "#";
     private Color[] severityColorsPos = new Color[] { Color.white, new Color32(175, 239, 169, 255), new Color32(86, 222, 74,255), new Color32(43, 172, 32,255) };
     private Color[] severityColorsNeg = new Color[] { Color.white, new Color32(232, 201, 100, 255), new Color32(232, 142, 100,255), new Color32(248, 114, 126, 255) };
     private Color[] categoryColors = new Color[] { Color.white, Color.green, new Color32(248, 114, 126, 255) };
     private Color entityColor = new Color32(60, 145, 255, 120);
-    
+
+    private Texture2D undefined, optional, mandatory, final, collectible, enemy_hazard, poi, npc, enemy_low, enemy_med, enemy_high, enemy_boss, health_low, health_med, health_high;
+
+    public void LoadIcons()
+    {
+        undefined = Resources.Load<Texture2D>("entity_null");
+        optional = Resources.Load<Texture2D>("goal_optional");
+        mandatory = Resources.Load<Texture2D>("goal_mandatory");
+        final = Resources.Load<Texture2D>("goal_completion");
+        collectible = Resources.Load<Texture2D>("resource_achievement");
+        enemy_low = Resources.Load<Texture2D>("hazard_enemy_low");
+        enemy_med = Resources.Load<Texture2D>("hazard_enemy_medium");
+        enemy_high = Resources.Load<Texture2D>("hazard_enemy_high");
+        enemy_boss = Resources.Load<Texture2D>("hazard_enemy_boss");
+        enemy_hazard = Resources.Load<Texture2D>("hazard_environment");
+        health_low = Resources.Load<Texture2D>("resource_preservation_low");
+        health_med = Resources.Load<Texture2D>("resource_preservation_med");
+        health_high = Resources.Load<Texture2D>("resource_preservation_high");
+    }
     public void SaveData()
     {
         string saveName;
@@ -171,8 +188,8 @@ class ExpertEvaluation
         buttonStyle = new GUIStyle(GUI.skin.button);
         buttonStyle.fontSize = 15;
 
+        labelStyle.fontStyle = FontStyle.Italic;        
         labelStyle.fontSize = 15;
-        labelStyle.fontStyle = FontStyle.Italic;
 
         EditorGUILayout.BeginVertical("Box");
 
@@ -191,6 +208,8 @@ class ExpertEvaluation
             foldoutStyle.fontStyle = FontStyle.Italic;
 
             EditorGUILayout.BeginHorizontal();
+
+            GUILayout.Label(GetIcon(userComments[i].entityType), GUILayout.Width(17), GUILayout.Height(17));
 
             userComments[i].categoryFoldout = EditorGUILayout.Foldout(userComments[i].categoryFoldout, "Comment #" + (i+1), foldoutStyle);
             GUILayout.FlexibleSpace();
@@ -225,7 +244,6 @@ class ExpertEvaluation
 
             if (userComments[i].category != Category.POS) GUI.backgroundColor = severityColorsNeg[((int)userComments[i].severity)];
             else GUI.backgroundColor = severityColorsPos[((int)userComments[i].severity)];
-
             userComments[i].severity = (Severity)EditorGUILayout.Popup((int)userComments[i].severity, severityNames);
             GUI.backgroundColor = severityColorsPos[0];
 
@@ -703,6 +721,42 @@ class ExpertEvaluation
                 return EntityType.ET_NONE;
         }
     }
+    private Texture2D GetIcon(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.ET_GOAL_OPTIONAL:
+                return optional;
+            case EntityType.ET_GOAL_MANDATORY:
+                return mandatory;
+            case EntityType.ET_GOAL_COMPLETION:
+                return final;
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return collectible;
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return health_low;
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return health_med;
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return health_high;
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return enemy_low;
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return enemy_med;
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return enemy_high;
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return enemy_boss;
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return enemy_hazard;
+            case EntityType.ET_POI:
+                return poi;
+            case EntityType.ET_POI_NPC:
+                return npc;
+            default:
+                return undefined; 
+        }
+    }
 }
 
 public class PathOSEvaluationWindow : EditorWindow
@@ -726,6 +780,7 @@ public class PathOSEvaluationWindow : EditorWindow
         instance = this;
 
         //Background color
+        comments.LoadIcons();
         comments.LoadData();
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
@@ -766,11 +821,6 @@ public class PathOSEvaluationWindow : EditorWindow
             EditorGUILayout.HelpBox("Right click objects in the scene to create a comment with its associated game object and entity type (if any)", MessageType.Info);
         }
 
-        if (screenshot == null)
-        {
-            EditorGUILayout.HelpBox("SCREENSHOT REFERENCE REQUIRED FOR EXPORTING MAP SCREENSHOTS", MessageType.Error);
-        }
-
         EditorGUILayout.Space(15);
 
         GUILayout.BeginHorizontal();
@@ -809,6 +859,25 @@ public class PathOSEvaluationWindow : EditorWindow
         GUI.backgroundColor = bgColor;
         GUILayout.EndHorizontal();
         comments.DrawComments();
+
+        EditorGUILayout.EndVertical();
+
+        EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.LabelField("Map View", headerStyle);
+        EditorGUILayout.Space(15);
+
+        if (screenshot == null)
+        {
+            EditorGUILayout.HelpBox("SCREENSHOT REFERENCE REQUIRED FOR EXPORTING MAP SCREENSHOTS", MessageType.Error);
+            EditorGUILayout.EndVertical();
+            return;
+        }
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        GUILayout.Label(screenshot.GetScreenshot(), GUILayout.Width(Screen.width*0.8f), GUILayout.Height(Screen.width*0.4f));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.EndVertical();
     }

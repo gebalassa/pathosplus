@@ -312,7 +312,7 @@ public class PathOSAgentWindow : EditorWindow
     }
 
     //Todo: get rid of these bools
-    public void OnResourceOpen(bool isNavigationOpen)
+    public void OnResourceOpen()
     {
         if (agentReference == null)
         {
@@ -322,8 +322,6 @@ public class PathOSAgentWindow : EditorWindow
             EditorGUILayout.EndVertical();
             return;
         }
-
-        int offset = GetOffset(isNavigationOpen);
 
         EditorGUILayout.BeginVertical("Box");
 
@@ -336,36 +334,36 @@ public class PathOSAgentWindow : EditorWindow
 
         serial.Update();
 
-        EditorGUIUtility.labelWidth = 200.0f;
+        EditorGUIUtility.labelWidth = 150.0f;
 
         EditorGUILayout.LabelField("Enemy Damage Values", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
-        DrawUIRow(new Rect(20, 140 + offset, 30, 30), enemy_low, "\t Low Enemy Damage", ref agentReference.lowEnemyDamage);
+        DrawUIRow(enemy_low, 30, 25, "Low Enemy Damage", ref agentReference.lowEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 183 + offset, 30, 30), enemy_med, "\t Medium Enemy Damage", ref agentReference.medEnemyDamage);
+        DrawUIRow(enemy_med, 30, 25, "Medium Enemy Damage", ref agentReference.medEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 225 + offset, 30, 30), enemy_high, "\t High Enemy Damage", ref agentReference.highEnemyDamage);
+        DrawUIRow(enemy_high, 30, 25, "High Enemy Damage", ref agentReference.highEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 265 + offset, 30, 30), enemy_boss, "\t Boss Enemy Damage", ref agentReference.bossEnemyDamage);
+        DrawUIRow(enemy_boss, 30, 25, "Boss Enemy Damage", ref agentReference.bossEnemyDamage);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 307 + offset, 30, 30), enemy_hazard, "\t Hazard Damage", ref agentReference.hazardDamage);
+        DrawUIRow(enemy_hazard, 30, 25, "Hazard Damage", ref agentReference.hazardDamage);
 
         EditorGUILayout.Space(15);
         EditorGUILayout.LabelField("Resource Values", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);
 
-        DrawUIRow(new Rect(20, 383 + offset, 30, 30), health_low, "\t Low Health Gain", ref agentReference.lowHealthGain);
+        DrawUIRow(health_low, 30, 25, "Low Health Gain", ref agentReference.lowHealthGain);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 425 + offset, 30, 30), health_med, "\t Medium Health Gain", ref agentReference.medHealthGain);
+        DrawUIRow(health_med, 30, 25, "Medium Health Gain", ref agentReference.medHealthGain);
 
         EditorGUILayout.Space(20);
-        DrawUIRow(new Rect(20, 467 + offset, 30, 30), health_high, "\t High Health Gain", ref agentReference.highHealthGain);
+        DrawUIRow(health_high, 30, 25, "High Health Gain", ref agentReference.highHealthGain);
 
         serial.ApplyModifiedProperties();
 
@@ -379,30 +377,19 @@ public class PathOSAgentWindow : EditorWindow
 
         EditorGUILayout.EndVertical();
     }
-
-
-    public void SetAgentReference(PathOSAgent reference)
+    private void DrawUIRow(Texture2D icon, float width, float height, string label, ref TimeRange range)
     {
-        agentReference = reference;
-    }
-    private int GetOffset(bool isNavigationOpen)
-    {
-        if (isNavigationOpen)
-        {
-            return 38;
-        }
-        else
-        {
-            return -6;
-        }
-    }
-    private void DrawUIRow(Rect dimensions, Texture2D icon, string label, ref TimeRange range)
-    {
-        GUI.DrawTexture(dimensions, icon);
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Label(icon, GUILayout.Width(width), GUILayout.Height(height));
         PathOS.EditorUI.FullMinMaxSlider(label,
                ref range.min,
                ref range.max,
                0.0f,
                100.0f);
+        EditorGUILayout.EndHorizontal();
+    }
+    public void SetAgentReference(PathOSAgent reference)
+    {
+        agentReference = reference;
     }
 }

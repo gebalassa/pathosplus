@@ -31,10 +31,6 @@ public class OGVisEditor : Editor
 
     private SerializedProperty propLogDirectory;
 
-    //Filter/display management.
-    private static bool filterFoldout = false;
-    private string lblFilterFoldout = "Filtering/Display Options";
-
     private SerializedProperty propDisplayHeight;
 
     private GUIStyle expansionToggleStyle;
@@ -72,8 +68,6 @@ public class OGVisEditor : Editor
     private SerializedProperty propEntityTimeSlice;
 
     //Interaction display settings.
-    private static bool visualizationFoldout = false;
-    private string lblVisualizationFoldout = "Visualization Options";
     private static int tabSelection = 0;
     string[] tabLabels = { "Heatmaps", "Individual Paths", "Entity Interactions" };
 

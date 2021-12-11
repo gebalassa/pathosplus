@@ -188,7 +188,7 @@ public class PathOSWindow : EditorWindow
     private void OnResourcesOpen()
     {
         managerWindow.OnResourceOpen();
-        agentWindow.OnResourceOpen(showNavigation);
+        agentWindow.OnResourceOpen();
     }
 
     private void OpenSetup()
