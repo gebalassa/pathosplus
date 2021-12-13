@@ -778,8 +778,9 @@ public class PathOSEvaluationWindow : EditorWindow
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
     private const string editorPrefsID = "PathOSEvaluationWindow";
     private static bool isCurrentlyOpen = false; //this is so jank, please fix this
+    private static bool reloadData = false;
 
-    public static PathOSEvaluationWindow instance { get; private set; }
+    public static PathOSEvaluationWindow instance;
 
     private void OnEnable()
     {
@@ -817,6 +818,14 @@ public class PathOSEvaluationWindow : EditorWindow
 
     public void OnWindowOpen()
     {
+        Repaint();
+
+        if (reloadData)
+        {
+            comments.LoadData();
+            reloadData = false;
+        }
+
         EditorGUILayout.BeginVertical("Box");
 
         if (managerReference == null)
@@ -928,7 +937,7 @@ public class PathOSEvaluationWindow : EditorWindow
     public void AddComment(UserComment comment)
     {
         popupAlreadyOpen = false;
-
+        reloadData = true;
         comments.AddNewComment(comment);
     }
 
@@ -1060,7 +1069,7 @@ public class Popup : EditorWindow
 
         EditorGUILayout.EndVertical();
 
-        if (GUILayout.Button("Add Comment"))
+       if (GUILayout.Button("Add Comment"))
         {
             PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, severity, category, selection, entityType));
             this.Close();
