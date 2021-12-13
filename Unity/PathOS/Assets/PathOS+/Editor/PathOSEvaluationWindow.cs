@@ -765,6 +765,7 @@ class ExpertEvaluation
     }
 }
 
+[ExecuteInEditMode]
 public class PathOSEvaluationWindow : EditorWindow
 {
     private Color bgColor, btnColor;
@@ -801,7 +802,6 @@ public class PathOSEvaluationWindow : EditorWindow
     private void OnDestroy()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
-        instance = null;
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -810,7 +810,6 @@ public class PathOSEvaluationWindow : EditorWindow
     private void OnDisable()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
-        instance = null;
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
