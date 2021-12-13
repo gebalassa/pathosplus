@@ -780,6 +780,12 @@ public class PathOSEvaluationWindow : EditorWindow
     private static bool isCurrentlyOpen = false; //this is so jank, please fix this
     private static bool reloadData = false;
 
+    [SerializeField]
+    private bool hasManager;
+
+    [SerializeField]
+    private int managerID;
+
     public static PathOSEvaluationWindow instance;
 
     private void OnEnable()
@@ -798,6 +804,20 @@ public class PathOSEvaluationWindow : EditorWindow
         //Load saved settings.
         string prefsData = EditorPrefs.GetString(editorPrefsID, JsonUtility.ToJson(this, false));
         JsonUtility.FromJsonOverwrite(prefsData, this);
+
+        //Saving manager reference
+        if (hasManager)
+        {
+
+            if (managerReference != null)
+            {
+                managerID = managerReference.GetInstanceID();
+            }
+            else
+                managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
+        }
+
+        hasManager = managerReference != null;
     }
 
     private void OnDestroy()
@@ -900,6 +920,8 @@ public class PathOSEvaluationWindow : EditorWindow
 
     void OnSceneGUI(SceneView sceneView)
     {
+        GrabManagerReference();
+
         if (popupAlreadyOpen || sceneView == null || !isCurrentlyOpen) return;
 
         //Selection update.
@@ -923,6 +945,7 @@ public class PathOSEvaluationWindow : EditorWindow
             selection = null;
         }
     }
+
     public void SetManagerReference(PathOSManager reference)
     {
         managerReference = reference;
@@ -976,6 +999,12 @@ public class PathOSEvaluationWindow : EditorWindow
         }
 
         return EntityType.ET_NONE;
+    }
+
+    private void GrabManagerReference()
+    {
+        if (hasManager && null == managerReference)
+            managerReference = EditorUtility.InstanceIDToObject(managerID) as PathOSManager;
     }
 }
 
