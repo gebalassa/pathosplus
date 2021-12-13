@@ -66,6 +66,231 @@ public class UserComment
     }
 }
 
+
+public class EvaluationHelperFunctions : MonoBehaviour
+{
+    public static EntityType IndexToEntity(int index)
+    {
+
+        switch (index)
+        {
+            case 0:
+                return EntityType.ET_NONE;
+            case 1:
+                return EntityType.ET_GOAL_OPTIONAL;
+            case 2:
+                return EntityType.ET_GOAL_MANDATORY;
+            case 3:
+                return EntityType.ET_GOAL_COMPLETION;
+            case 4:
+                return EntityType.ET_RESOURCE_ACHIEVEMENT;
+            case 5:
+                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
+            case 6:
+                return EntityType.ET_RESOURCE_PRESERVATION_MED;
+            case 7:
+                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
+            case 8:
+                return EntityType.ET_HAZARD_ENEMY_LOW;
+            case 9:
+                return EntityType.ET_HAZARD_ENEMY_MED;
+            case 10:
+                return EntityType.ET_HAZARD_ENEMY_HIGH;
+            case 11:
+                return EntityType.ET_HAZARD_ENEMY_BOSS;
+            case 12:
+                return EntityType.ET_HAZARD_ENVIRONMENT;
+            case 13:
+                return EntityType.ET_POI;
+            case 14:
+                return EntityType.ET_POI_NPC;
+            default:
+                return EntityType.ET_NONE;
+        }
+    }
+    public static int EntityToIndex(EntityType type)
+    {
+        switch (type)
+        {
+            case EntityType.ET_NONE:
+                return 0;
+            case EntityType.ET_GOAL_OPTIONAL:
+                return 1;
+            case EntityType.ET_GOAL_MANDATORY:
+                return 2;
+            case EntityType.ET_GOAL_COMPLETION:
+                return 3;
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return 4;
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return 5;
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return 6;
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return 7;
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return 8;
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return 9;
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return 10;
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return 11;
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return 12;
+            case EntityType.ET_POI:
+                return 13;
+            case EntityType.ET_POI_NPC:
+                return 14;
+            default:
+                return 0;
+        }
+    }
+
+
+
+    public static string SeverityToString(Severity name)
+    {
+        switch (name)
+        {
+            case Severity.NONE:
+                return "NA";
+            case Severity.LOW:
+                return "LOW";
+            case Severity.MED:
+                return "MED";
+            case Severity.HIGH:
+                return "HIGH";
+            default:
+                return "NA";
+        }
+    }
+
+    public static EntityType StringToEntityType(string name)
+    {
+        switch (name)
+        {
+            case "NONE":
+                return EntityType.ET_NONE;
+            case "OPTIONAL GOAL":
+                return EntityType.ET_GOAL_OPTIONAL;
+            case "MANDATORY GOAL":
+                return EntityType.ET_GOAL_MANDATORY;
+            case "COMPLETION GOAL":
+                return EntityType.ET_GOAL_COMPLETION;
+            case "ACHIEVEMENT":
+                return EntityType.ET_RESOURCE_ACHIEVEMENT;
+            case "PRESERVATION LOW":
+                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
+            case "PRESERVATION MED":
+                return EntityType.ET_RESOURCE_PRESERVATION_MED;
+            case "PRESERVATION HIGH":
+                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
+            case "LOW ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_LOW;
+            case "MED ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_MED;
+            case "HIGH ENEMY":
+                return EntityType.ET_HAZARD_ENEMY_HIGH;
+            case "BOSS":
+                return EntityType.ET_HAZARD_ENEMY_BOSS;
+            case "ENVIRONMENT HAZARD":
+                return EntityType.ET_HAZARD_ENVIRONMENT;
+            case "POI":
+                return EntityType.ET_POI;
+            case "NPC POI":
+                return EntityType.ET_POI_NPC;
+            default:
+                return EntityType.ET_NONE;
+        }
+    }
+
+
+    public static String EntityTypeToString(EntityType name)
+    {
+        switch (name)
+        {
+            case EntityType.ET_NONE:
+                return "NONE";
+            case EntityType.ET_GOAL_OPTIONAL:
+                return "OPTIONAL GOAL";
+            case EntityType.ET_GOAL_MANDATORY:
+                return "MANDATORY GOAL";
+            case EntityType.ET_GOAL_COMPLETION:
+                return "COMPLETION GOAL";
+            case EntityType.ET_RESOURCE_ACHIEVEMENT:
+                return "ACHIEVEMENT";
+            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
+                return "PRESERVATION LOW";
+            case EntityType.ET_RESOURCE_PRESERVATION_MED:
+                return "PRESERVATION MED";
+            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
+                return "PRESERVATION HIGH";
+            case EntityType.ET_HAZARD_ENEMY_LOW:
+                return "LOW ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_MED:
+                return "MED ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_HIGH:
+                return "HIGH ENEMY";
+            case EntityType.ET_HAZARD_ENEMY_BOSS:
+                return "BOSS";
+            case EntityType.ET_HAZARD_ENVIRONMENT:
+                return "ENVIRONMENT HAZARD";
+            case EntityType.ET_POI:
+                return "POI";
+            case EntityType.ET_POI_NPC:
+                return "NPC POI";
+            default:
+                return "NONE";
+        }
+    }
+
+    public static Severity StringToSeverity(string name)
+    {
+        switch (name)
+        {
+            case "NA":
+                return Severity.NONE;
+            case "LOW":
+                return Severity.LOW;
+            case "MED":
+                return Severity.MED;
+            case "HIGH":
+                return Severity.HIGH;
+            default:
+                return Severity.NONE;
+        }
+    }
+    public static string CategoryToString(Category name)
+    {
+        switch (name)
+        {
+            case Category.NONE:
+                return "NA";
+            case Category.POS:
+                return "POS";
+            case Category.NEG:
+                return "NEG";
+            default:
+                return "NA";
+        }
+    }
+    public static Category StringToCategory(string name)
+    {
+        switch (name)
+        {
+            case "NA":
+                return Category.NONE;
+            case "POS":
+                return Category.POS;
+            case "NEG":
+                return Category.POS;
+            default:
+                return Category.NONE;
+        }
+    }
+}
+
 [Serializable]
 class ExpertEvaluation 
 { 
@@ -256,7 +481,7 @@ class ExpertEvaluation
 
 
             if (userComments[i].entityType != EntityType.ET_NONE) GUI.backgroundColor = entityColor;
-            userComments[i].entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(userComments[i].entityType), entityNames));
+            userComments[i].entityType = EvaluationHelperFunctions.IndexToEntity(EditorGUILayout.Popup(EvaluationHelperFunctions.EntityToIndex(userComments[i].entityType), entityNames));
             GUI.backgroundColor = severityColorsPos[0];
 
             EditorGUILayout.EndHorizontal();
@@ -345,9 +570,9 @@ class ExpertEvaluation
             string newDescription = lineContents[1].Replace("  ", "\n").Replace("/", ",");
             userComments[inputCounter].description = newDescription;
 
-            userComments[inputCounter].severity = StringToSeverity(lineContents[2]);
+            userComments[inputCounter].severity = EvaluationHelperFunctions.StringToSeverity(lineContents[2]);
 
-            userComments[inputCounter].category = StringToCategory(lineContents[3]);
+            userComments[inputCounter].category = EvaluationHelperFunctions.StringToCategory(lineContents[3]);
 
             if (lineContents[4] == "No GameObject")
             {
@@ -360,7 +585,7 @@ class ExpertEvaluation
                 userComments[inputCounter].selection = EditorUtility.InstanceIDToObject(userComments[inputCounter].selectionID) as GameObject; 
             }
 
-            userComments[inputCounter].entityType = StringToEntityType(lineContents[6]);
+            userComments[inputCounter].entityType = EvaluationHelperFunctions.StringToEntityType(lineContents[6]);
 
             inputCounter++;
         }
@@ -389,11 +614,11 @@ class ExpertEvaluation
 
         for (int i = 0; i < userComments.Count; i++)
         {
-            string entityString = EntityTypeToString(userComments[i].entityType) + ",";
+            string entityString = EvaluationHelperFunctions.EntityTypeToString(userComments[i].entityType) + ",";
 
             if (headerComponents.Contains(entityString))
             {
-                int index = headerComponents.IndexOf(EntityTypeToString(userComments[i].entityType) + ",");
+                int index = headerComponents.IndexOf(EvaluationHelperFunctions.EntityTypeToString(userComments[i].entityType) + ",");
                 
                 if (userComments[i].severity == Severity.LOW)
                 {
@@ -470,9 +695,9 @@ class ExpertEvaluation
             number = (i + 1).ToString();
             description = userComments[i].description.Replace("\r", "").Replace("\n", "  ").Replace(",", "/");
 
-            severity = SeverityToString(userComments[i].severity);
+            severity = EvaluationHelperFunctions.SeverityToString(userComments[i].severity);
 
-            category = CategoryToString(userComments[i].category);
+            category = EvaluationHelperFunctions.CategoryToString(userComments[i].category);
 
             if (userComments[i].selection != null)
             {
@@ -485,7 +710,7 @@ class ExpertEvaluation
                 ID = "NA";
             }
 
-            entity = entityNames[EntityToIndex(userComments[i].entityType)];
+            entity = entityNames[EvaluationHelperFunctions.EntityToIndex(userComments[i].entityType)];
 
             writer.WriteLine(number + ',' + description + ',' + severity + ',' + category + ',' + gameObjectName + ',' + ID + ',' + entity);
         }
@@ -496,231 +721,12 @@ class ExpertEvaluation
     }
 
 
-    private string SeverityToString(Severity name)
-    {
-        switch (name)
-        {
-            case Severity.NONE:
-                return "NA";
-            case Severity.LOW:
-                return "LOW";
-            case Severity.MED:
-                return "MED";
-            case Severity.HIGH:
-                return "HIGH";
-            default:
-                return "NA";
-        }
-    }
-
-    private EntityType StringToEntityType(string name)
-    {
-        switch (name)
-        {
-            case "NONE":
-                return EntityType.ET_NONE;
-            case "OPTIONAL GOAL":
-                return EntityType.ET_GOAL_OPTIONAL;
-            case "MANDATORY GOAL":
-                return EntityType.ET_GOAL_MANDATORY;
-            case "COMPLETION GOAL":
-                return EntityType.ET_GOAL_COMPLETION;
-            case "ACHIEVEMENT":
-                return EntityType.ET_RESOURCE_ACHIEVEMENT;
-            case "PRESERVATION LOW":
-                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
-            case "PRESERVATION MED":
-                return EntityType.ET_RESOURCE_PRESERVATION_MED;
-            case "PRESERVATION HIGH":
-                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
-            case "LOW ENEMY":
-                return EntityType.ET_HAZARD_ENEMY_LOW;
-            case "MED ENEMY":
-                return EntityType.ET_HAZARD_ENEMY_MED;
-            case "HIGH ENEMY":
-                return EntityType.ET_HAZARD_ENEMY_HIGH;
-            case "BOSS":
-                return EntityType.ET_HAZARD_ENEMY_BOSS;
-            case "ENVIRONMENT HAZARD":
-                return EntityType.ET_HAZARD_ENVIRONMENT;
-            case "POI":
-                return EntityType.ET_POI;
-            case "NPC POI":
-                return EntityType.ET_POI_NPC;
-            default:
-                return EntityType.ET_NONE;
-        }
-    }
-
-
-    private String EntityTypeToString(EntityType name)
-    {
-        switch (name)
-        {
-            case EntityType.ET_NONE:
-                return "NONE";
-            case EntityType.ET_GOAL_OPTIONAL:
-                return "OPTIONAL GOAL";
-            case EntityType.ET_GOAL_MANDATORY:
-                return "MANDATORY GOAL";
-            case EntityType.ET_GOAL_COMPLETION:
-                return "COMPLETION GOAL";
-            case EntityType.ET_RESOURCE_ACHIEVEMENT:
-                return "ACHIEVEMENT";
-            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
-                return "PRESERVATION LOW";
-            case EntityType.ET_RESOURCE_PRESERVATION_MED:
-                return "PRESERVATION MED";
-            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
-                return "PRESERVATION HIGH";
-            case EntityType.ET_HAZARD_ENEMY_LOW:
-                return "LOW ENEMY";
-            case EntityType.ET_HAZARD_ENEMY_MED:
-                return "MED ENEMY";
-            case EntityType.ET_HAZARD_ENEMY_HIGH:
-                return "HIGH ENEMY";
-            case EntityType.ET_HAZARD_ENEMY_BOSS:
-                return "BOSS";
-            case EntityType.ET_HAZARD_ENVIRONMENT:
-                return "ENVIRONMENT HAZARD";
-            case EntityType.ET_POI:
-                return "POI";
-            case EntityType.ET_POI_NPC:
-                return "NPC POI";
-            default:
-                return "NONE";
-        }
-    }
-
-    private Severity StringToSeverity(string name)
-    {
-        switch (name)
-        {
-            case "NA":
-                return Severity.NONE;
-            case "LOW":
-                return Severity.LOW;
-            case "MED":
-                return Severity.MED;
-            case "HIGH":
-                return Severity.HIGH;
-            default:
-                return Severity.NONE;
-        }
-    }
-    private string CategoryToString(Category name)
-    {
-        switch (name)
-        {
-            case Category.NONE:
-                return "NA";
-            case Category.POS:
-                return "POS";
-            case Category.NEG:
-                return "NEG";
-            default:
-                return "NA";
-        }
-    }
-    private Category StringToCategory(string name)
-    {
-        switch (name)
-        {
-            case "NA":
-                return Category.NONE;
-            case "POS":
-                return Category.POS;
-            case "NEG":
-                return Category.POS;
-            default:
-                return Category.NONE;
-        }
-    }
-
     public void AddNewComment(UserComment comment)
     {
         userComments.Add(comment);
         SaveData();
     }
 
-    private int EntityToIndex(EntityType type)
-    {
-        switch (type)
-        {
-            case EntityType.ET_NONE:
-                return 0;
-            case EntityType.ET_GOAL_OPTIONAL:
-                return 1;
-            case EntityType.ET_GOAL_MANDATORY:
-                return 2;
-            case EntityType.ET_GOAL_COMPLETION:
-                return 3;
-            case EntityType.ET_RESOURCE_ACHIEVEMENT:
-                return 4;
-            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
-                return 5;
-            case EntityType.ET_RESOURCE_PRESERVATION_MED:
-                return 6;
-            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
-                return 7;
-            case EntityType.ET_HAZARD_ENEMY_LOW:
-                return 8;
-            case EntityType.ET_HAZARD_ENEMY_MED:
-                return 9;
-            case EntityType.ET_HAZARD_ENEMY_HIGH:
-                return 10;
-            case EntityType.ET_HAZARD_ENEMY_BOSS:
-                return 11;
-            case EntityType.ET_HAZARD_ENVIRONMENT:
-                return 12;
-            case EntityType.ET_POI:
-                return 13;
-            case EntityType.ET_POI_NPC:
-                return 14;
-            default:
-                return 0;
-        }
-    }
-
-    private EntityType IndexToEntity(int index)
-    {
-
-        switch (index)
-        {
-            case 0:
-                return EntityType.ET_NONE;
-            case 1:
-                return EntityType.ET_GOAL_OPTIONAL;
-            case 2:
-                return EntityType.ET_GOAL_MANDATORY;
-            case 3:
-                return EntityType.ET_GOAL_COMPLETION;
-            case 4:
-                return EntityType.ET_RESOURCE_ACHIEVEMENT;
-            case 5:
-                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
-            case 6:
-                return EntityType.ET_RESOURCE_PRESERVATION_MED;
-            case 7:
-                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
-            case 8:
-                return EntityType.ET_HAZARD_ENEMY_LOW;
-            case 9:
-                return EntityType.ET_HAZARD_ENEMY_MED;
-            case 10:
-                return EntityType.ET_HAZARD_ENEMY_HIGH;
-            case 11:
-                return EntityType.ET_HAZARD_ENEMY_BOSS;
-            case 12:
-                return EntityType.ET_HAZARD_ENVIRONMENT;
-            case 13:
-                return EntityType.ET_POI;
-            case 14:
-                return EntityType.ET_POI_NPC;
-            default:
-                return EntityType.ET_NONE;
-        }
-    }
     private Texture2D GetIcon(EntityType type)
     {
         switch (type)
@@ -769,10 +775,10 @@ public class PathOSEvaluationWindow : EditorWindow
     private GameObject selection = null;
     static bool popupAlreadyOpen = false;
     private string expertEvaluation = "Expert Evaluation", deleteAll = "DELETE ALL", import = "IMPORT", export = "EXPORT";
-    Popup window;
     private const string editorPrefsID = "PathOSEvaluationWindow";
-    public static PathOSEvaluationWindow instance { get; private set; }
     private static bool isCurrentlyOpen = false; //this is so jank, please fix this
+
+    public static PathOSEvaluationWindow instance { get; private set; }
 
     private void OnEnable()
     {
@@ -795,6 +801,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private void OnDestroy()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+        instance = null;
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -803,6 +810,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private void OnDisable()
     {
         SceneView.onSceneGUIDelegate -= this.OnSceneGUI;
+        instance = null;
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
@@ -936,7 +944,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     private void OpenPopup(GameObject selection, EntityType entityType)
     {
-        window = new Popup();//ScriptableObject.CreateInstance<CommentPopup>();
+        Popup window = ScriptableObject.CreateInstance<Popup>(); 
         window.selection = selection;
         window.entityType = entityType;
         window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);
@@ -1021,7 +1029,6 @@ public class Popup : EditorWindow
 
         EditorGUILayout.Space(5);
 
-
         EditorGUILayout.BeginHorizontal();
         EditorStyles.label.wordWrap = true;
         description = EditorGUILayout.TextArea(description, GUILayout.Width(Screen.width * 0.6f));
@@ -1045,7 +1052,7 @@ public class Popup : EditorWindow
 
         //entityType = (EntityType)EditorGUILayout.Popup(EntityToIndex(entityType), entityNames);
         if (entityType != EntityType.ET_NONE) GUI.backgroundColor = entityColor;
-        entityType = IndexToEntity(EditorGUILayout.Popup(EntityToIndex(entityType), entityNames));
+        entityType = EvaluationHelperFunctions.IndexToEntity(EditorGUILayout.Popup(EvaluationHelperFunctions.EntityToIndex(entityType), entityNames));
         GUI.backgroundColor = severityColorsPos[0];
 
         EditorGUILayout.EndHorizontal();
@@ -1056,88 +1063,8 @@ public class Popup : EditorWindow
 
         if (GUILayout.Button("Add Comment"))
         {
-            //evaluationWindow.AddComment();
             PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, severity, category, selection, entityType));
             this.Close();
-        }
-    }
-
-    private int EntityToIndex(EntityType type)
-    {
-        switch (type)
-        {
-            case EntityType.ET_NONE:
-                return 0;
-            case EntityType.ET_GOAL_OPTIONAL:
-                return 1;
-            case EntityType.ET_GOAL_MANDATORY:
-                return 2;
-            case EntityType.ET_GOAL_COMPLETION:
-                return 3;
-            case EntityType.ET_RESOURCE_ACHIEVEMENT:
-                return 4;
-            case EntityType.ET_RESOURCE_PRESERVATION_LOW:
-                return 5;
-            case EntityType.ET_RESOURCE_PRESERVATION_MED:
-                return 6;
-            case EntityType.ET_RESOURCE_PRESERVATION_HIGH:
-                return 7;
-            case EntityType.ET_HAZARD_ENEMY_LOW:
-                return 8;
-            case EntityType.ET_HAZARD_ENEMY_MED:
-                return 9;
-            case EntityType.ET_HAZARD_ENEMY_HIGH:
-                return 10;
-            case EntityType.ET_HAZARD_ENEMY_BOSS:
-                return 11;
-            case EntityType.ET_HAZARD_ENVIRONMENT:
-                return 12;
-            case EntityType.ET_POI:
-                return 13;
-            case EntityType.ET_POI_NPC:
-                return 14;
-            default:
-                return 0;
-        }
-    }
-
-    private EntityType IndexToEntity(int index)
-    {
-
-        switch (index)
-        {
-            case 0:
-                return EntityType.ET_NONE;
-            case 1:
-                return EntityType.ET_GOAL_OPTIONAL;
-            case 2:
-                return EntityType.ET_GOAL_MANDATORY;
-            case 3:
-                return EntityType.ET_GOAL_COMPLETION;
-            case 4:
-                return EntityType.ET_RESOURCE_ACHIEVEMENT;
-            case 5:
-                return EntityType.ET_RESOURCE_PRESERVATION_LOW;
-            case 6:
-                return EntityType.ET_RESOURCE_PRESERVATION_MED;
-            case 7:
-                return EntityType.ET_RESOURCE_PRESERVATION_HIGH;
-            case 8:
-                return EntityType.ET_HAZARD_ENEMY_LOW;
-            case 9:
-                return EntityType.ET_HAZARD_ENEMY_MED;
-            case 10:
-                return EntityType.ET_HAZARD_ENEMY_HIGH;
-            case 11:
-                return EntityType.ET_HAZARD_ENEMY_BOSS;
-            case 12:
-                return EntityType.ET_HAZARD_ENVIRONMENT;
-            case 13:
-                return EntityType.ET_POI;
-            case 14:
-                return EntityType.ET_POI_NPC;
-            default:
-                return EntityType.ET_NONE;
         }
     }
 }

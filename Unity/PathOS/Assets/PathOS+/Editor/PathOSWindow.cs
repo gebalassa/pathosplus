@@ -56,6 +56,7 @@ public class PathOSWindow : EditorWindow
     {
         EditorWindow.GetWindow(typeof(PathOSWindow), false, "PathOS+");
     }
+
     private void OnEnable()
     {
         //Background color
@@ -125,6 +126,7 @@ public class PathOSWindow : EditorWindow
         //Establishes references
         GrabAgentReference();
         GrabManagerReference();
+        GrabScreenshotReference();
 
         agentWindow.SetAgentReference(agentReference);
         evaluationWindow.SetManagerReference(managerReference);
@@ -141,7 +143,8 @@ public class PathOSWindow : EditorWindow
             GUI.backgroundColor = btnColorDark;
             GUILayout.BeginHorizontal();
             tabSelection = GUILayout.SelectionGrid(tabSelection, tabLabels, 4);
-            evaluationWindow.SetCurrentlyOpen((tabSelection==(int)Tabs.ExpertEvaluation ?  true : false));
+            //PathOSEvaluationWindow.instance.SetCurrentlyOpen((tabSelection == (int)Tabs.ExpertEvaluation ? true : false));
+             evaluationWindow.SetCurrentlyOpen((tabSelection==(int)Tabs.ExpertEvaluation ?  true : false));
             GUILayout.EndHorizontal();
             GUI.backgroundColor = bgColor;
 
@@ -174,6 +177,7 @@ public class PathOSWindow : EditorWindow
                 managerWindow.OnVisualizationOpen();
                 break;
             case (int)Tabs.ExpertEvaluation:
+                //PathOSEvaluationWindow.instance.OnWindowOpen();
                 evaluationWindow.OnWindowOpen();
                 break;
         }
