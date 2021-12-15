@@ -334,7 +334,7 @@ public class PathOSAgentWindow : EditorWindow
 
         serial.Update();
 
-        EditorGUIUtility.labelWidth = 150.0f;
+        //EditorGUIUtility.labelWidth = 150.0f;
 
         EditorGUILayout.LabelField("Enemy Damage Values", EditorStyles.boldLabel);
         EditorGUILayout.Space(15);

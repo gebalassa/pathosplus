@@ -30,8 +30,6 @@ namespace PathOS
                 GUILayout.Width(PathOS.UI.shortFloatfieldWidth)),
                 absMin, absMax);
 
-
-
             EditorGUILayout.EndHorizontal();
         }
     }

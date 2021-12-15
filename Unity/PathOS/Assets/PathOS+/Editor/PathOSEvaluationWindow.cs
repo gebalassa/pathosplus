@@ -324,6 +324,9 @@ class ExpertEvaluation
         health_low = Resources.Load<Texture2D>("resource_preservation_low");
         health_med = Resources.Load<Texture2D>("resource_preservation_med");
         health_high = Resources.Load<Texture2D>("resource_preservation_high");
+        poi = Resources.Load<Texture2D>("poi_environment");
+        npc = Resources.Load<Texture2D>("poi_npc");
+
     }
     public void SaveData()
     {
@@ -634,7 +637,7 @@ class ExpertEvaluation
                 }
                 else
                 {
-                    noneComponents[index] += " #" + (i + 1);
+                    noneComponents[index-1] += " #" + (i + 1);
                 }
             }    
             else
@@ -979,7 +982,7 @@ public class PathOSEvaluationWindow : EditorWindow
         window.selection = selection;
         window.entityType = entityType;
         window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);
-        window.ShowUtility();
+        window.ShowPopup();
     }
 
     private EntityType GetMarkup(GameObject selection)
