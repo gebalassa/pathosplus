@@ -782,6 +782,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private const string editorPrefsID = "PathOSEvaluationWindow";
     private static bool isCurrentlyOpen = false; //this is so jank, please fix this
     private static bool reloadData = false;
+    private static string sceneName;
 
     [SerializeField]
     private bool hasManager;
@@ -795,6 +796,9 @@ public class PathOSEvaluationWindow : EditorWindow
     {
         //Sets instance
         instance = this;
+
+        //Set the scene name
+        sceneName = SceneManager.GetActiveScene().name;
 
         //Background color
         comments.LoadIcons();
@@ -821,6 +825,7 @@ public class PathOSEvaluationWindow : EditorWindow
         }
 
         hasManager = managerReference != null;
+
     }
 
     private void OnDestroy()
@@ -829,6 +834,9 @@ public class PathOSEvaluationWindow : EditorWindow
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
+
+
+        comments.LoadData();
     }
 
     private void OnDisable()
@@ -837,12 +845,21 @@ public class PathOSEvaluationWindow : EditorWindow
 
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
+
+
+        comments.LoadData();
     }
 
     public void OnWindowOpen()
     {
-        Repaint();
+        //Reloading data based on scene we're in
+        if (sceneName != SceneManager.GetActiveScene().name)
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+            reloadData = true;
+        }
 
+        //In case the scene has changed, or a popup was added
         if (reloadData)
         {
             comments.LoadData();
