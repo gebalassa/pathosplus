@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 /*
 PathOSWindow.cs 
@@ -31,7 +32,7 @@ public class PathOSWindow : EditorWindow
     private static PathOSManagerWindow managerWindow;
 
     private GameObject proxyScreenshot;
-    private ScreenshotManager screenshot;
+    private ScreenshotManager screenshotReference;
     private PathOSManager managerReference;
     private PathOSAgent agentReference;
 
@@ -51,6 +52,9 @@ public class PathOSWindow : EditorWindow
     private string lblNavigationFoldout = "NAVIGATION";
     private static bool showNavigation = true;
 
+    private string editorPrefsID, sceneName;
+
+
     [MenuItem("Window/PathOS+")]
     public static void ShowWindow()
     {
@@ -59,6 +63,9 @@ public class PathOSWindow : EditorWindow
 
     private void OnEnable()
     {
+        //Set the scene name
+        sceneName = SceneManager.GetActiveScene().name;
+
         //Background color
         bgColor = GUI.backgroundColor;
         btnColorDark = new Color32(158, 164, 211, 255);
@@ -75,18 +82,17 @@ public class PathOSWindow : EditorWindow
         //Re-establish references, if they have been nullified.
         if (hasScreenshot)
         {
-            if (screenshot != null)
-                screenshotID = screenshot.GetInstanceID();
+            if (screenshotReference != null)
+                screenshotID = screenshotReference.GetInstanceID();
             else
-                screenshot = EditorUtility.InstanceIDToObject(screenshotID) as ScreenshotManager;
+                screenshotReference = EditorUtility.InstanceIDToObject(screenshotID) as ScreenshotManager;
         }
 
-        hasScreenshot = screenshot != null;
+        hasScreenshot = screenshotReference != null;
 
         //manager reference
         if (hasManager)
         {
-
             if (managerReference != null)
             {
                 managerID = managerReference.GetInstanceID();
@@ -107,8 +113,9 @@ public class PathOSWindow : EditorWindow
         }
 
         hasAgent = agentReference != null;
-
     }
+
+
 
     //gizmo stuff from here https://stackoverflow.com/questions/37267021/unity-editor-script-visible-hidden-gizmos
     void OnGUI()
@@ -131,7 +138,7 @@ public class PathOSWindow : EditorWindow
         agentWindow.SetAgentReference(agentReference);
         evaluationWindow.SetManagerReference(managerReference);
         managerWindow.SetManagerReference(managerReference);
-        evaluationWindow.SetScreenshotReference(screenshot);
+        evaluationWindow.SetScreenshotReference(screenshotReference);
 
         //Shows tab navigation
         showNavigation = EditorGUILayout.Foldout(showNavigation, lblNavigationFoldout, foldoutStyle);
@@ -222,7 +229,7 @@ public class PathOSWindow : EditorWindow
             if (GUILayout.Button("Create Agent"))
             {
                 GameObject proxyAgent;
-                proxyAgent = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Agent.prefab") as GameObject;
+                proxyAgent = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS+/Prefabs/PathOS Agent.prefab") as GameObject;
                 Instantiate(proxyAgent);
                 agentReference = proxyAgent.GetComponent<PathOSAgent>();
             }
@@ -271,7 +278,7 @@ public class PathOSWindow : EditorWindow
             if (GUILayout.Button("Create Manager"))
             {
                 GameObject proxyManager;
-                proxyManager = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/PathOS Manager.prefab") as GameObject;
+                proxyManager = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS+/Prefabs/PathOS Manager.prefab") as GameObject;
                 Instantiate(proxyManager);
                 managerReference = proxyManager.GetComponent<PathOSManager>();
             }
@@ -299,54 +306,54 @@ public class PathOSWindow : EditorWindow
 
         EditorGUI.BeginChangeCheck();
 
-        screenshot = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshot, typeof(ScreenshotManager), true)
+        screenshotReference = EditorGUILayout.ObjectField("Screenshot Reference: ", screenshotReference, typeof(ScreenshotManager), true)
              as ScreenshotManager;
 
         //Update agent ID if the user has selected a new object reference.
         if (EditorGUI.EndChangeCheck())
          {
-             hasScreenshot = screenshot != null;
+             hasScreenshot = screenshotReference != null;
 
              if (hasScreenshot)
              {
-                 screenshotID = screenshot.GetInstanceID();
+                 screenshotID = screenshotReference.GetInstanceID();
              }
          }
 
          //or instantiate the screenshot camera if it does not exist
-         if (screenshot == null)
+         if (screenshotReference == null)
          {
             GUI.backgroundColor = redColor;
             if (GUILayout.Button("Instantiate Screenshot Camera"))
              {
-                 proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS/Prefabs/ScreenshotCamera.prefab") as GameObject;
+                 proxyScreenshot = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/PathOS+/Prefabs/ScreenshotCamera.prefab") as GameObject;
                  Instantiate(proxyScreenshot);
-                 screenshot = proxyScreenshot.GetComponent<ScreenshotManager>();
+                 screenshotReference = proxyScreenshot.GetComponent<ScreenshotManager>();
              }
             GUI.backgroundColor = bgColor;
         }
 
         //only draws the screenshot elements if the variable is not null
-        if (screenshot != null)
+        if (screenshotReference != null)
          {
-             screenshot.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshot.GetFolderName()));
-             screenshot.SetFilename(EditorGUILayout.TextField("Filename: ", screenshot.GetFilename()));
+             screenshotReference.SetFolderName(EditorGUILayout.TextField("Folder Name: ", screenshotReference.GetFolderName()));
+             screenshotReference.SetFilename(EditorGUILayout.TextField("Filename: ", screenshotReference.GetFilename()));
              disableCamera = EditorGUILayout.Toggle("Disable During Runtime", disableCamera);
 
             GUI.backgroundColor = greenColor;
             if (GUILayout.Button("Take Screenshot"))
             {
-                screenshot.TakeScreenshotGeneral();
+                screenshotReference.TakeScreenshotGeneral();
             }
             GUI.backgroundColor = bgColor;
 
             if (EditorApplication.isPlaying && disableCamera)
             {
-                screenshot.gameObject.SetActive(false);
+                screenshotReference.gameObject.SetActive(false);
             }
             else if (EditorApplication.isPlaying && !disableCamera)
             {
-                screenshot.gameObject.SetActive(true);
+                screenshotReference.gameObject.SetActive(true);
             }
          }
 
@@ -354,10 +361,11 @@ public class PathOSWindow : EditorWindow
         EditorGUILayout.EndVertical();
 
     }
+
     private void GrabScreenshotReference()
     {
-        if (hasScreenshot && null == screenshot)
-            screenshot = EditorUtility.InstanceIDToObject(screenshotID) as ScreenshotManager;
+        if (hasScreenshot && null == screenshotReference)
+            screenshotReference = EditorUtility.InstanceIDToObject(screenshotID) as ScreenshotManager;
     }
     private void GrabManagerReference()
     {

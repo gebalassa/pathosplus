@@ -5,9 +5,7 @@ using UnityEditor;
 using System;
 using System.IO;
 using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
 using PathOS;
-using Malee.Editor;
 
 /*
 PathOSEvaluationWindow.cs 
@@ -815,7 +813,6 @@ public class PathOSEvaluationWindow : EditorWindow
         //Saving manager reference
         if (hasManager)
         {
-
             if (managerReference != null)
             {
                 managerID = managerReference.GetInstanceID();
