@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.1/release' branch; Version is '2021.1.0f1 (61a549675243) revision 6399305'; Using compiler version '192528614'; Build Type 'Release'
-OS: 'Windows 10 Pro; OS build 19042.1348; Version 2009; 64bit' Language: 'en' Physical Memory: 16233 MB
+OS: 'Windows 10 Pro; OS build 19042.1415; Version 2009; 64bit' Language: 'en' Physical Memory: 16233 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
  COMMAND LINE ARGUMENTS:
@@ -15,11 +15,11 @@ C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57421
+49945
 Successfully changed project path to: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 63.52 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 54.91 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.0f1 (61a549675243)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,216 +35,1809 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56012
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56820
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.004433 seconds.
+Registered in 0.281686 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 59.35 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 47.00 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.615 seconds
+- Completed reload, in  4.036 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004310 seconds.
+Registered in 0.251099 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.70 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.55 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.212 seconds
+- Completed reload, in  2.730 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 0.67 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.54 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1833 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 84.3 MB.
-System memory in use after: 84.3 MB.
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
 
-Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2277.
-Total: 7.539100 ms (FindLiveObjects: 0.225800 ms CreateObjectMapping: 0.186200 ms MarkObjects: 7.027700 ms  DeleteObjects: 0.098000 ms)
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2279.
+Total: 5.313200 ms (FindLiveObjects: 0.138500 ms CreateObjectMapping: 0.058500 ms MarkObjects: 5.031900 ms  DeleteObjects: 0.083400 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
-  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f907f9fc2525e1562cff68964212850') in 0.264200 seconds 
+  path: Assets/Laterns and candles/Prefabs/CarvedPost2.prefab
+  artifactKey: Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/CarvedPost2.prefab using Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94528b9cab5afbf508dd919503d9e80a') in 0.132506 seconds 
 ========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 11.47 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 35 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 53.5 MB.
-System memory in use after: 53.6 MB.
-
-Unloading 35 unused Assets to reduce memory usage. Loaded Objects now: 2285.
-Total: 6.320300 ms (FindLiveObjects: 0.227800 ms CreateObjectMapping: 0.073300 ms MarkObjects: 5.999600 ms  DeleteObjects: 0.018300 ms)
-
+Received Import Request.
+  Time since last request: 0.000176 seconds.
+  path: Assets/Laterns and candles/Prefabs/ceiling chain.prefab
+  artifactKey: Guid(24b4d8ad04155c244b2b776c5532e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/ceiling chain.prefab using Guid(24b4d8ad04155c244b2b776c5532e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ba9adec4a70b82b501f9206a3452b9a') in 0.032819 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000185 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern3.prefab
+  artifactKey: Guid(d17bd81f00e4eb843a71e73358112786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern3.prefab using Guid(d17bd81f00e4eb843a71e73358112786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2222499fd8ce71a1ddbf6e8aa8d56d9f') in 0.016477 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Laterns and candles/Prefabs/CarvedPost2_double.prefab
+  artifactKey: Guid(cd6ef13c75034bc4d820dfaf562e4a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/CarvedPost2_double.prefab using Guid(cd6ef13c75034bc4d820dfaf562e4a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94b8c9ff51154354243ab59f729b1642') in 0.260534 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000276 seconds.
+  path: Assets/Laterns and candles
+  artifactKey: Guid(167ce655fa6305e41bb0c69539ee4565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles using Guid(167ce655fa6305e41bb0c69539ee4565) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6e7f0c7c93b1739e27ea81a739041dbf') in 0.005868 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000295 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern5.prefab
+  artifactKey: Guid(5cc22dee4f3a39f48bbb851c41003c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern5.prefab using Guid(5cc22dee4f3a39f48bbb851c41003c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc90c2d73d6982789bfd22b7d2993208') in 0.023957 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Laterns and candles/Prefabs/LampPost_double.prefab
+  artifactKey: Guid(6d2bb9154d502fd46a5faf6e3b55f9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/LampPost_double.prefab using Guid(6d2bb9154d502fd46a5faf6e3b55f9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe8f6ac92f53df8eb1083a463e55dd85') in 0.025078 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000272 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern4.prefab
+  artifactKey: Guid(263b26f2316871f46a4bda232a61ec44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern4.prefab using Guid(263b26f2316871f46a4bda232a61ec44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e58ca4dd23fa9a7138f7921d3b43bef4') in 0.018147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern2.prefab
+  artifactKey: Guid(68f8cf3372c588f4a94bf2c9bd255d3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern2.prefab using Guid(68f8cf3372c588f4a94bf2c9bd255d3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30a88409d1410973b7e366e9c79c20a8') in 0.015623 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000577 seconds.
+  path: Assets/Laterns and candles/Prefabs
+  artifactKey: Guid(733f39f22c8fb0d42ae34470a89f6bf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs using Guid(733f39f22c8fb0d42ae34470a89f6bf3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a644283c8eb7a66d88df0556b490be53') in 0.005975 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000372 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern1.prefab
+  artifactKey: Guid(56c82061e6c4de742a208837848be55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern1.prefab using Guid(56c82061e6c4de742a208837848be55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2dea4da2cd3c1cc896c98b175f9bca1f') in 0.021143 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 27.736366 seconds.
+  path: Assets/Laterns and candles/Prefabs/CarvedPost2.prefab
+  artifactKey: Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/CarvedPost2.prefab using Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee1e095aed5b8fe83dd807d0b4b474c3') in 0.028021 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 36.747215 seconds.
+  path: Assets/Laterns and candles/Prefabs/CarvedPost2_double.prefab
+  artifactKey: Guid(cd6ef13c75034bc4d820dfaf562e4a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/CarvedPost2_double.prefab using Guid(cd6ef13c75034bc4d820dfaf562e4a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bc8359e2d600fa6e9c380b7ac5a768ab') in 0.026730 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 16.398362 seconds.
+  path: Assets/Laterns and candles/Prefabs/ceiling chain.prefab
+  artifactKey: Guid(24b4d8ad04155c244b2b776c5532e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/ceiling chain.prefab using Guid(24b4d8ad04155c244b2b776c5532e76f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffbb58f8c5fdbdc67a4c576b9a57d1cc') in 0.020920 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 28.268705 seconds.
+  path: Assets/Laterns and candles/Prefabs/LampPost_double.prefab
+  artifactKey: Guid(6d2bb9154d502fd46a5faf6e3b55f9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/LampPost_double.prefab using Guid(6d2bb9154d502fd46a5faf6e3b55f9f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8497d2cd257b082a23ce427fdd4b163a') in 0.025610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 21.940731 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern1.prefab
+  artifactKey: Guid(56c82061e6c4de742a208837848be55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern1.prefab using Guid(56c82061e6c4de742a208837848be55a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a597eb556c44d37f3383075e279a6eac') in 0.031617 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 28.617101 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern2.prefab
+  artifactKey: Guid(68f8cf3372c588f4a94bf2c9bd255d3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern2.prefab using Guid(68f8cf3372c588f4a94bf2c9bd255d3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dfa6f870aef2f86476585a319d93a2bc') in 0.018757 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.645821 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern3.prefab
+  artifactKey: Guid(d17bd81f00e4eb843a71e73358112786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern3.prefab using Guid(d17bd81f00e4eb843a71e73358112786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc6e9183ca35f024c2e1eabb19454cee') in 0.015535 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.842783 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern4.prefab
+  artifactKey: Guid(263b26f2316871f46a4bda232a61ec44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern4.prefab using Guid(263b26f2316871f46a4bda232a61ec44) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed3801203f7ce8a825d75ff775236fbb') in 0.019188 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 8.534042 seconds.
+  path: Assets/Laterns and candles/Prefabs/Latern5.prefab
+  artifactKey: Guid(5cc22dee4f3a39f48bbb851c41003c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/Latern5.prefab using Guid(5cc22dee4f3a39f48bbb851c41003c8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e32f5944678a9754f1fcaf285c57272') in 0.034829 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.891188 seconds.
+  path: Assets/Laterns and candles/Prefabs/CarvedPost2.prefab
+  artifactKey: Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Laterns and candles/Prefabs/CarvedPost2.prefab using Guid(94f10da449387134eb5a2276906ccdfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28c2372bc00625602bb4f2c557b50af5') in 0.030761 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 591.628822 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended
+  artifactKey: Guid(cdf3d1146619668449198626f33a4bb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended using Guid(cdf3d1146619668449198626f33a4bb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0ebdda3a662e816594899aa7410d5351') in 0.007112 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.922530 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs
+  artifactKey: Guid(2dcb8d72d2d50bf4897662c7aa8cfa01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs using Guid(2dcb8d72d2d50bf4897662c7aa8cfa01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '650f239ffc789427b0212724cd7d774f') in 0.002353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.063662 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - FirTree A.prefab
+  artifactKey: Guid(6b444276162548b4e9107350b71e775a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - FirTree A.prefab using Guid(6b444276162548b4e9107350b71e775a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca8e51563566a01138263643d578e933') in 0.027539 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Grass A.prefab
+  artifactKey: Guid(9b6eba5dea9e77a4abd8f45df1ffffb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Grass A.prefab using Guid(9b6eba5dea9e77a4abd8f45df1ffffb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ca7286e92423ccc628995cfa1ae1dc4') in 0.021190 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000301 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - FirTree B.prefab
+  artifactKey: Guid(d2cd02263a1e8084abf81f1324b929be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - FirTree B.prefab using Guid(d2cd02263a1e8084abf81f1324b929be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0da3f59c35874ec70488f55fdb6176f') in 0.029610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000349 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Rock A.prefab
+  artifactKey: Guid(39de80c7e7a1a2942820576875608e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Rock A.prefab using Guid(39de80c7e7a1a2942820576875608e5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eaade90ca59f85af3a17760736b4165d') in 0.030579 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000312 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Rock B.prefab
+  artifactKey: Guid(b0622c7c0ff092b46a37f31c718c5eba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Rock B.prefab using Guid(b0622c7c0ff092b46a37f31c718c5eba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0acef8783e5d200804a1468412c8cbed') in 0.017652 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Grass B.prefab
+  artifactKey: Guid(c23a5db78ca1a5b4f921e0109f33128c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Prefabs/LowPoly - Grass B.prefab using Guid(c23a5db78ca1a5b4f921e0109f33128c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c740018b8e490a40f1c6bd32fae1511') in 0.023791 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.172694 seconds.
+  path: Assets/Imported Assets/amusedART (Mushroom)/Mushroom_Monster/Animations
+  artifactKey: Guid(c0e51e2b67b59cd408dd1c19afda88ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/amusedART (Mushroom)/Mushroom_Monster/Animations using Guid(c0e51e2b67b59cd408dd1c19afda88ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '003d4125b7dd8216456dd67eb67256ba') in 0.007298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.111937 seconds.
+  path: Assets/Imported Assets/Dreamdev Studios (Campfire)
+  artifactKey: Guid(dbe56cc3ea3950c4cb266ca4a5945e4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Dreamdev Studios (Campfire) using Guid(dbe56cc3ea3950c4cb266ca4a5945e4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38ccb85447e7d0827a625b9cf5fe5fda') in 0.007158 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.845964 seconds.
+  path: Assets/Imported Assets/Dreamdev Studios (Campfire)/Model
+  artifactKey: Guid(11ce05d8e055dde4a802d8989ca37f8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Dreamdev Studios (Campfire)/Model using Guid(11ce05d8e055dde4a802d8989ca37f8b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92f927be5b63b8402f7a6a4b30b567d9') in 0.006407 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.694748 seconds.
+  path: Assets/Imported Assets/Dreamdev Studios (Campfire)/Script
+  artifactKey: Guid(8a92ad01d06a0b349965fa47b3398cbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Dreamdev Studios (Campfire)/Script using Guid(8a92ad01d06a0b349965fa47b3398cbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b2179067f2a7e7e4bd73d1908dacc2b') in 0.007286 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.958816 seconds.
+  path: Assets/Imported Assets/Polydactyl (Toon Cat)
+  artifactKey: Guid(83832e619f0b30840bdf45e18940fc30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Polydactyl (Toon Cat) using Guid(83832e619f0b30840bdf45e18940fc30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d58b066ef65765cbfeb42a9fae07966') in 0.007392 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.380853 seconds.
+  path: Assets/Imported Assets/Polydactyl (Toon Cat)/Model
+  artifactKey: Guid(5990b1890387947428020419635b1a58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Polydactyl (Toon Cat)/Model using Guid(5990b1890387947428020419635b1a58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d94b1acc5da57e77a563defb4d9dd65') in 0.002440 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.060017 seconds.
+  path: Assets/Imported Assets/Polydactyl (Toon Cat)/Model/Cat Lite.fbx
+  artifactKey: Guid(756b0c574f380324a85262e736c0418b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Polydactyl (Toon Cat)/Model/Cat Lite.fbx using Guid(756b0c574f380324a85262e736c0418b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4de76a8e013ac8fbeb1fc5a786ea7647') in 0.062784 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 29.698750 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)
+  artifactKey: Guid(fe85675b46120ee43a0ff85cb8243956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment) using Guid(fe85675b46120ee43a0ff85cb8243956) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebcd510715dc8748573318a99e0bca6c') in 0.007436 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.257206 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/Prefabs
+  artifactKey: Guid(0dc6268c13712ab439ede78390bed311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/Prefabs using Guid(0dc6268c13712ab439ede78390bed311) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '17e0679ee645694807323e3f5fb961c0') in 0.002667 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.367158 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX
+  artifactKey: Guid(330d22fb8481f194e995606c993f12c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX using Guid(330d22fb8481f194e995606c993f12c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2bf8b2e7fccf60dbb79a947e5fb24dc') in 0.006239 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038977 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Bush_1.fbx
+  artifactKey: Guid(1938cd5cf7941f548b756cdb94a425fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Bush_1.fbx using Guid(1938cd5cf7941f548b756cdb94a425fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa960166505653741cf6071e3d88eebd') in 0.034306 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000302 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_1.fbx
+  artifactKey: Guid(7d626b52dc7a9c24e95f55619a456158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_1.fbx using Guid(7d626b52dc7a9c24e95f55619a456158) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5fdc8c91319e17d3cce6a8586a2fa1a5') in 0.030552 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000627 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Grass_1.fbx
+  artifactKey: Guid(34dfeb3f659c70946a7698f1846d752b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Grass_1.fbx using Guid(34dfeb3f659c70946a7698f1846d752b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d691a6b3f1fa5b1182b09248536790e') in 0.029765 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000234 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Plant_4.fbx
+  artifactKey: Guid(283c2a73be2ff274abe5a6c1e1ee3a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Plant_4.fbx using Guid(283c2a73be2ff274abe5a6c1e1ee3a48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46a57976db1e0dd87f9aba2a2bae27ff') in 0.022162 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Log_1.fbx
+  artifactKey: Guid(f12a3ed37c1553f46a2806744d6b056e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Log_1.fbx using Guid(f12a3ed37c1553f46a2806744d6b056e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6d3290fba23dab6e7b1cc8f2c3a05335') in 0.028698 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_3.fbx
+  artifactKey: Guid(492031f9cbc117d419c5271ccc50b76a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_3.fbx using Guid(492031f9cbc117d419c5271ccc50b76a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74342774769a44da2cbec4a89e1adefb') in 0.030595 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Plant_3.fbx
+  artifactKey: Guid(90805fe502fa4b94e9cfc4e1c6d566bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Plant_3.fbx using Guid(90805fe502fa4b94e9cfc4e1c6d566bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a4164605882d2affbe1563d43b225fd') in 0.026874 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Log_3.fbx
+  artifactKey: Guid(afd0b1f883c32e241806a5fdf70cb47a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Log_3.fbx using Guid(afd0b1f883c32e241806a5fdf70cb47a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '364e9762360ce93ddfa15847263dd564') in 0.019724 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000322 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Plant_1.fbx
+  artifactKey: Guid(3739d3cd85494bb4c887d0401497fe57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Plant_1.fbx using Guid(3739d3cd85494bb4c887d0401497fe57) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d5d24406f68a99e2c57f10c51c3f9e3') in 0.028764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Log_2.fbx
+  artifactKey: Guid(a834527aa1ce23a40857bdc293825f3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Log_2.fbx using Guid(a834527aa1ce23a40857bdc293825f3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a07103a20ffe1f0ee5fe65ece05ecbbc') in 0.027020 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000283 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Plant_5.fbx
+  artifactKey: Guid(c9ce8f855ca8c98449df4090174b5cd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Plant_5.fbx using Guid(c9ce8f855ca8c98449df4090174b5cd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3c91b019e45a2f712a2b34de2c1eeee') in 0.029056 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000335 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Plant_2.fbx
+  artifactKey: Guid(c83f502368bab8140af79867b14e99c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Plant_2.fbx using Guid(c83f502368bab8140af79867b14e99c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67e1b7d46e0464c3b2141fb6c66bbfe5') in 0.028609 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Bush_2.fbx
+  artifactKey: Guid(87ad1332cfca6934ea307ce26bfc9dec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Bush_2.fbx using Guid(87ad1332cfca6934ea307ce26bfc9dec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c69c5cbbca6287e79010040c9b7cfec9') in 0.021549 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000297 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Environment_1.fbx
+  artifactKey: Guid(a9a560b7bc05a6a46978b53fe4b40f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Environment_1.fbx using Guid(a9a560b7bc05a6a46978b53fe4b40f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'add41fd4a3e281bd9bcc6ebd8284459d') in 0.027276 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000443 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_2.fbx
+  artifactKey: Guid(bf8d317df722d644f99e8ff3926c99d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Mounting_2.fbx using Guid(bf8d317df722d644f99e8ff3926c99d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a21a9d6d01569e74d4aa205b9e718304') in 0.026864 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Grass_2.fbx
+  artifactKey: Guid(a0873148ac8296f43bcd8ca9f39271e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Grass_2.fbx using Guid(a0873148ac8296f43bcd8ca9f39271e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f65717e8af94269709a561d0434eddc') in 0.026075 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000268 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Bush_3.fbx
+  artifactKey: Guid(1e7949aa66587e540b15b43c6b92a25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Bush_3.fbx using Guid(1e7949aa66587e540b15b43c6b92a25d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68613250d9c4dee1b1b71d084c870371') in 0.019353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.087093 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials
+  artifactKey: Guid(02a1450e9512eb84ab6bb0a113eed258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials using Guid(02a1450e9512eb84ab6bb0a113eed258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43c73616b1b6675b9a101ab18d32db93') in 0.008202 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.094746 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.2.mat
+  artifactKey: Guid(f7c2deb7be33c61418c105b4da4da2d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.2.mat using Guid(f7c2deb7be33c61418c105b4da4da2d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a049b56c774c7cbf3ce683fe8ad966c6') in 0.032446 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000285 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.3.mat
+  artifactKey: Guid(1b487e4aa512c6c46b231d5aacdceae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.3.mat using Guid(1b487e4aa512c6c46b231d5aacdceae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87fc6fed3cab8e39402e8d5894c55fdd') in 0.017849 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.1.mat
+  artifactKey: Guid(05c3b35dce48bfb44a9ce93ae526df18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.1.mat using Guid(05c3b35dce48bfb44a9ce93ae526df18) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6470d919f02c3248b52554b41bb70d71') in 0.012967 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000329 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.4.mat
+  artifactKey: Guid(779672b87a6027e4fb52bd5c47f2c110) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.4.mat using Guid(779672b87a6027e4fb52bd5c47f2c110) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43824872861bfd7bdbfa21f55e967a85') in 0.017584 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000304 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.6.mat
+  artifactKey: Guid(c47a8046d422cf44ab127456e4917876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.6.mat using Guid(c47a8046d422cf44ab127456e4917876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd69a8c76230fdcedf1cc578e35c96fbf') in 0.015253 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000290 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.12.mat
+  artifactKey: Guid(546fdfe5df99cb34bb14981f56cfca29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.12.mat using Guid(546fdfe5df99cb34bb14981f56cfca29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1df1ddff27208422076af0136af5801') in 0.017685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.5.mat
+  artifactKey: Guid(35efd64ed4769b8459707c2739efe32a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.5.mat using Guid(35efd64ed4769b8459707c2739efe32a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e4e766839f8571955dab469ab8e0d922') in 0.011986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000335 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.7.mat
+  artifactKey: Guid(4fe563c5f58ef3f428825ed56c445b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.7.mat using Guid(4fe563c5f58ef3f428825ed56c445b80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e350a1cea94e511c06acf7268904827') in 0.013171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000701 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.6.mat
+  artifactKey: Guid(487de112f12801e47ab0f2a09cce7854) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.6.mat using Guid(487de112f12801e47ab0f2a09cce7854) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22e76b1b7bf4f456e2abd5b08b0bd940') in 0.016903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000258 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.10.mat
+  artifactKey: Guid(aa67d82998ecf8841a3adf9bfa27b1c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.10.mat using Guid(aa67d82998ecf8841a3adf9bfa27b1c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09cf0fe3f9c75d1a4a29967e3fb31741') in 0.021892 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000644 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.9.mat
+  artifactKey: Guid(50f27939f1ba130428274fee828f4aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.9.mat using Guid(50f27939f1ba130428274fee828f4aa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9586db1bf3c99f36667368d66972e93') in 0.016375 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000576 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.4.mat
+  artifactKey: Guid(55ac68c33cb2d144a9976df607b5e754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.4.mat using Guid(55ac68c33cb2d144a9976df607b5e754) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '146fb07c11e7e57a47f3758b0d39d750') in 0.016703 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000288 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.2.mat
+  artifactKey: Guid(e2f44d83259a3c14abd33197677dbc91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.2.mat using Guid(e2f44d83259a3c14abd33197677dbc91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bcc16d195c2ba01d174cfdee5bc8fbb0') in 0.018797 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000343 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.1.mat
+  artifactKey: Guid(fb5ddc125e5f05b42a1269e0a08850eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Gray.1.mat using Guid(fb5ddc125e5f05b42a1269e0a08850eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2ff7cd0762aa6a8f84598f99f0e71a4') in 0.018268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Purple.1.mat
+  artifactKey: Guid(f9e8a256b2e009743bcefbdabbb05382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Purple.1.mat using Guid(f9e8a256b2e009743bcefbdabbb05382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab0286a0b0272514a03cde72bac2ebd3') in 0.013823 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.11.mat
+  artifactKey: Guid(83993d560011d9f439deb8c980381c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.11.mat using Guid(83993d560011d9f439deb8c980381c74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afc02b5f54bcd4433e75e21878cc3f94') in 0.017334 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Purple.2.mat
+  artifactKey: Guid(e773be4e8e6c49f41bb67bfe941451c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Purple.2.mat using Guid(e773be4e8e6c49f41bb67bfe941451c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2946dcd7961cd78b4c60b33ff73f2e34') in 0.012142 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000292 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.3.mat
+  artifactKey: Guid(0933253977cd0454b989b8bc25bbdc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.3.mat using Guid(0933253977cd0454b989b8bc25bbdc83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2a8b7a5718c2779cb7c9cde7b03a511d') in 0.014206 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000522 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.1.mat
+  artifactKey: Guid(31bf94a71a52adb4f84ef40356426dbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.1.mat using Guid(31bf94a71a52adb4f84ef40356426dbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06088fbfe3e1e11934b6436fc54455a5') in 0.027880 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000353 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.3.mat
+  artifactKey: Guid(2852b271d0d088643a66c25efe4b5aa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.3.mat using Guid(2852b271d0d088643a66c25efe4b5aa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd7b0c9d77980127201f2f2b31a0ae3d') in 0.023756 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.3.mat
+  artifactKey: Guid(62c01cd363116e4418505d6d72764b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.3.mat using Guid(62c01cd363116e4418505d6d72764b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1290ab7943bdc81dc1669c22b759277b') in 0.019410 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.2.mat
+  artifactKey: Guid(88faa5a91a671444399e4dd91c9dc1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.2.mat using Guid(88faa5a91a671444399e4dd91c9dc1da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4260c132b970b6d91dfcf34bfb63623') in 0.018496 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.4.mat
+  artifactKey: Guid(431d3f3310498c2488a88bac6acf6f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.4.mat using Guid(431d3f3310498c2488a88bac6acf6f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea585be97e64644fb79b980c2865cf5e') in 0.013041 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000516 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Pink.1.mat
+  artifactKey: Guid(4de868b1c656aa948a9734db55fa6df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Pink.1.mat using Guid(4de868b1c656aa948a9734db55fa6df7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59cfd9c4aa5f867b201ed64791cf5b0a') in 0.017646 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.1.mat
+  artifactKey: Guid(a13e4ebaa5a967d44b6836ec8e9e2f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Yellow.1.mat using Guid(a13e4ebaa5a967d44b6836ec8e9e2f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23d4bda3537edddd3f6b2551c2dbf14d') in 0.017555 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000235 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.2.mat
+  artifactKey: Guid(a57c77f070e349e428256669c403a9c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Orange.2.mat using Guid(a57c77f070e349e428256669c403a9c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1a7cd1d0489a6039237cc0656e3a200') in 0.021807 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000226 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.10.mat
+  artifactKey: Guid(8117e74ca190335479975c5dd8a73f62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.10.mat using Guid(8117e74ca190335479975c5dd8a73f62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccb8fd57f69c6dd8325715573fc1e427') in 0.018964 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.3.mat
+  artifactKey: Guid(94f42fcaf1b6c224c99738b35fda2bcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.3.mat using Guid(94f42fcaf1b6c224c99738b35fda2bcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd621ea46895e5caaf0d49bae0acfeb56') in 0.014856 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000227 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.15.mat
+  artifactKey: Guid(27eb693623b74ae409ad01480c04d7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.15.mat using Guid(27eb693623b74ae409ad01480c04d7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14d4e771bc56ef6e7890f231babb2327') in 0.012940 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000171 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.8.mat
+  artifactKey: Guid(7a0a96a93ebc4d94a9f9d22e70389f9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.8.mat using Guid(7a0a96a93ebc4d94a9f9d22e70389f9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25eeb42a06f9fa15c5880bdb2aeb158a') in 0.019298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000489 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.8.mat
+  artifactKey: Guid(fc45bd3e9d781c6469cb7e33fd1c8bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.8.mat using Guid(fc45bd3e9d781c6469cb7e33fd1c8bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd47852019f2c546fd3e9c360a29958e7') in 0.022159 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.14.mat
+  artifactKey: Guid(7e5b0a9678b8426468b771b1050eeae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.14.mat using Guid(7e5b0a9678b8426468b771b1050eeae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba6486fc0dba36bf4094353b4a9de07c') in 0.016090 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000406 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.4.mat
+  artifactKey: Guid(ca030f1a8877487408d9e0ba65b2ec80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.4.mat using Guid(ca030f1a8877487408d9e0ba65b2ec80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d1a6cf194a7a4137579cf3c2abac7e9') in 0.014488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.2.mat
+  artifactKey: Guid(59ef7dc611ee0474092dff5c29ab828f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.2.mat using Guid(59ef7dc611ee0474092dff5c29ab828f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a383eace9b1f71ca01ac9611bf0ee0d2') in 0.021477 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000455 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.5.mat
+  artifactKey: Guid(123ed9969563dc5468cd867af56caab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.5.mat using Guid(123ed9969563dc5468cd867af56caab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d2ebb66e6a3ad82c599f31d044e917e') in 0.012593 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000339 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.11.mat
+  artifactKey: Guid(9bceac9e437c11447a0839f938aaa270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.11.mat using Guid(9bceac9e437c11447a0839f938aaa270) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfc50d41e5b7967b4593eb440924d4ac') in 0.020322 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.13.mat
+  artifactKey: Guid(824d3adafd1c2d64b8c82f09ed60bfe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.13.mat using Guid(824d3adafd1c2d64b8c82f09ed60bfe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '80409d7ec5d51c8d82a7d2fd6828eb3c') in 0.012037 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.9.mat
+  artifactKey: Guid(94387ac3fe852d549966d245def277be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Brown.9.mat using Guid(94387ac3fe852d549966d245def277be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a320843145a485f45e8e63c4545329e') in 0.012480 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000314 seconds.
+  path: Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.7.mat
+  artifactKey: Guid(0f7806b54edf71c4796d1c67899856bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Korveen (Environment)/FBX/Materials/Green.7.mat using Guid(0f7806b54edf71c4796d1c67899856bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fe295bbf94deb52e40671c2b9c95e44') in 0.015142 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 43.268655 seconds.
+  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
+  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72e0291fa13a6de83e80af39a04e7ade') in 0.006048 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 412.752951 seconds.
+  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
+  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '770c0134d31b06c11c20b0d18b5007d3') in 0.003196 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.266330 seconds.
+  path: Assets/User Study Project 2021/Scenario 1/Scenario1.unity
+  artifactKey: Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 1/Scenario1.unity using Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86cd48366d1188849719e3998f1be5d5') in 0.006231 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 59.021839 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit
+  artifactKey: Guid(f4c061e39359b58419a12aad71860f6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit using Guid(f4c061e39359b58419a12aad71860f6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bae5e5f7eb5fbd46b71c8eec5117d95c') in 0.007764 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.169189 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs
+  artifactKey: Guid(dd0dd33c1d675974ea869e6df39c7b8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs using Guid(dd0dd33c1d675974ea869e6df39c7b8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd31f8c19f6caf0fed2d43f579044137') in 0.002228 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.610493 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings
+  artifactKey: Guid(ec84401db3ba6ab40b5d0bb64c48f4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings using Guid(ec84401db3ba6ab40b5d0bb64c48f4d3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1f0b8b57f852f694bd3f7bac521ab383') in 0.005986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.057730 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '034384fd15642fabacc0e03bf2179e09') in 0.196600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000341 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownWatch.prefab
+  artifactKey: Guid(f387e3becdf054b2ab9a72636f5d2b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownWatch.prefab using Guid(f387e3becdf054b2ab9a72636f5d2b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ef0c2785bdaed2fb370dc7d0d5b4389') in 0.091296 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000448 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab
+  artifactKey: Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab using Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d9201e6b77934b88f725305037a6b7d') in 0.071439 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse.prefab
+  artifactKey: Guid(ce3389b0593dc49688b6aa301539aeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse.prefab using Guid(ce3389b0593dc49688b6aa301539aeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7bb80ea3b6b1a08bd6ba66f22a795338') in 0.059432 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000337 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab
+  artifactKey: Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab using Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec4424e980addc023c10247870c01b09') in 0.074218 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000333 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Stable.prefab
+  artifactKey: Guid(83c0cacc7e324f540a41ee4583a6410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Stable.prefab using Guid(83c0cacc7e324f540a41ee4583a6410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53490e5599bb26130233b2ec8d9651aa') in 0.071660 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000332 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse2.prefab
+  artifactKey: Guid(b9a4c14baf1ee274fbfb4811993cf821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse2.prefab using Guid(b9a4c14baf1ee274fbfb4811993cf821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c8acef13646a1a7437c91b9e7d62a29') in 0.050479 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Large House.prefab
+  artifactKey: Guid(78a30b6e7fd674d4786d56a3bb7a40f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Large House.prefab using Guid(78a30b6e7fd674d4786d56a3bb7a40f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '493bf0b5ec39a237baa5686d27505d32') in 0.070682 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownCenter.prefab
+  artifactKey: Guid(ca91fd4250ef288468959a403930c79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownCenter.prefab using Guid(ca91fd4250ef288468959a403930c79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '503a23ed89ee0a9f2f77bb2d79ae6ab3') in 0.076278 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab
+  artifactKey: Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab using Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07c370a27078d0277aa7ef972e4c6cce') in 0.083644 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.441823 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials
+  artifactKey: Guid(0e3f93e261a0c954e84ed9c0be406f8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials using Guid(0e3f93e261a0c954e84ed9c0be406f8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e863f90eb5c5fd7e1f3bdd403b8f74ac') in 0.008164 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.444683 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings
+  artifactKey: Guid(585dd48669a927047a3d72c7088c3333) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings using Guid(585dd48669a927047a3d72c7088c3333) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16456eee512f8920e9c7742d3745c5ae') in 0.002793 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.050867 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 2.mat
+  artifactKey: Guid(c57ef200be3554b9c8eeb94f4eea46b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 2.mat using Guid(c57ef200be3554b9c8eeb94f4eea46b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '038e3aa29ec86a8b70a814f870e4a0c0') in 0.021488 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood4.mat
+  artifactKey: Guid(1f695face456f4c219ec978f8b081960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood4.mat using Guid(1f695face456f4c219ec978f8b081960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e993ebd7d00eb368059665b5ecead16') in 0.016346 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000329 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 3.mat
+  artifactKey: Guid(a0a18578c373d4f04803ce58058ec07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 3.mat using Guid(a0a18578c373d4f04803ce58058ec07c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d6377e7eaa41b21fa6fd89a260d5564') in 0.024654 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000312 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick.mat
+  artifactKey: Guid(72d32c9a86ab041cd85a023483e3528c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick.mat using Guid(72d32c9a86ab041cd85a023483e3528c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b93c73aaadd03f50c6f8a4d01dc3fe5d') in 0.015037 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz.mat
+  artifactKey: Guid(a14a366f4fc3b4b04abf7e98edd0ef06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz.mat using Guid(a14a366f4fc3b4b04abf7e98edd0ef06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d466b77356b9fc712e69391c34a01ca') in 0.020010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood5.mat
+  artifactKey: Guid(d9d14419e547c40cc94c07a0331e4b95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood5.mat using Guid(d9d14419e547c40cc94c07a0331e4b95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd9c9cbe6e0756710e7e1f5bf9d2e3f62') in 0.018006 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMore 1.mat
+  artifactKey: Guid(c65473971efd7a04f834c48506914cac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMore 1.mat using Guid(c65473971efd7a04f834c48506914cac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa18e50748f7e337f58fd65729045a0b') in 0.017983 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000297 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor.mat
+  artifactKey: Guid(bfa80c45019e14cf8832d1f6ef741af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor.mat using Guid(bfa80c45019e14cf8832d1f6ef741af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f0b1c187bd946c5ebc12ab20831c121') in 0.016881 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall.mat
+  artifactKey: Guid(e2aeab29427a441f3825926fb77c7338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall.mat using Guid(e2aeab29427a441f3825926fb77c7338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18d418b5383c426fb925565473ee0b7a') in 0.020494 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofLess.mat
+  artifactKey: Guid(f70e139b96b314467b8cb9bb904d974f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofLess.mat using Guid(f70e139b96b314467b8cb9bb904d974f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eb7421af363d088d6e3d48bbdec7a9c') in 0.017529 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000317 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood1.mat
+  artifactKey: Guid(799374aade0c04df68e7bf496de77bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood1.mat using Guid(799374aade0c04df68e7bf496de77bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb1f37ee328734b2988aae680270214b') in 0.019082 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000288 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof2.mat
+  artifactKey: Guid(997807d201e25410e9ae65d2e1da28b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof2.mat using Guid(997807d201e25410e9ae65d2e1da28b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9705973a2394c5a7aa614925cb21495a') in 0.014938 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000414 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood2.mat
+  artifactKey: Guid(fd25320f1cc7f483893944e86038ce48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood2.mat using Guid(fd25320f1cc7f483893944e86038ce48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3da39ce2add4a17f8382c02b73ba99de') in 0.018130 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1.mat
+  artifactKey: Guid(00fc0bfa318ef4feaa1df85ede3a0280) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1.mat using Guid(00fc0bfa318ef4feaa1df85ede3a0280) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6bfe576b204105f4dc737c94b915acf') in 0.017351 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMore.mat
+  artifactKey: Guid(ba3f646648aee4e8a9c331e2f8810aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMore.mat using Guid(ba3f646648aee4e8a9c331e2f8810aa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f17b16589d24647143da667332c345c9') in 0.017805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall 1.mat
+  artifactKey: Guid(356f9580967c544b593a4aff6b22d80d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall 1.mat using Guid(356f9580967c544b593a4aff6b22d80d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a043715be2797883735231a6fe10dc67') in 0.015191 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000384 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Metal1.mat
+  artifactKey: Guid(434ac6c8043ef4b459729a7aca5cd97d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Metal1.mat using Guid(434ac6c8043ef4b459729a7aca5cd97d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '694932a373bc79d0a6d65cb2fe205d97') in 0.017330 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000317 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick7.mat
+  artifactKey: Guid(64d5a5c08f91f42f287e9357cf5942b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick7.mat using Guid(64d5a5c08f91f42f287e9357cf5942b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c8ca3c5ad3719880fbd1b95d8bebf944') in 0.020558 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000303 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Windows.mat
+  artifactKey: Guid(106f1cf90fe22439582a5531faf4d8b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Windows.mat using Guid(106f1cf90fe22439582a5531faf4d8b6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ea26425b1fe27234eba4b6a4459b2e1') in 0.011244 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000582 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood7.mat
+  artifactKey: Guid(3c70a1a34f1184d6cbea93eb31b8d8c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood7.mat using Guid(3c70a1a34f1184d6cbea93eb31b8d8c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7066d82a2893c4f930f94c49a363170b') in 0.021780 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000301 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood6.mat
+  artifactKey: Guid(928d0e588ce304021be7cd0a774a0f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood6.mat using Guid(928d0e588ce304021be7cd0a774a0f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e75aa31074c87896d33586ef541d667c') in 0.017066 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000331 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/LoamWalls 3.mat
+  artifactKey: Guid(3a712aef546c2469ead809db44db2a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/LoamWalls 3.mat using Guid(3a712aef546c2469ead809db44db2a5b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9523fb71099c0df935a65c30d3bd3674') in 0.015944 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000219 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMorethanMore.mat
+  artifactKey: Guid(f23c528d84115594f95b838f9b3e5f4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMorethanMore.mat using Guid(f23c528d84115594f95b838f9b3e5f4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b14bcf5f0625927222688303b6833604') in 0.021828 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Minus.mat
+  artifactKey: Guid(2ca2a7e9737f106419c53d5ddc05a744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Minus.mat using Guid(2ca2a7e9737f106419c53d5ddc05a744) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3f6937c6f13a9efce7d047addd6c4cf') in 0.020609 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000298 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood8.mat
+  artifactKey: Guid(1f4bc67a36af8bd46b985f0e9d057eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood8.mat using Guid(1f4bc67a36af8bd46b985f0e9d057eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92446c567dca3c017938b6a6e56c3f0b') in 0.016353 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000209 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 2.mat
+  artifactKey: Guid(2289b068306ddda43a27408f825e099e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 2.mat using Guid(2289b068306ddda43a27408f825e099e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e1eef49ef403d600a3b2f3a08aae637') in 0.017704 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000313 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 1.mat
+  artifactKey: Guid(7f8d1c22a90a3414e8050d2eedb3ca3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 1.mat using Guid(7f8d1c22a90a3414e8050d2eedb3ca3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5de9dc433414a33b3bd0fba424bf29d') in 0.016600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000299 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMaxLess.mat
+  artifactKey: Guid(452e4d8cfc4394b02af836ee2757dcee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/RoofMaxLess.mat using Guid(452e4d8cfc4394b02af836ee2757dcee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1944d2ae317434e6d17e0ad94f01d468') in 0.016064 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000602 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Less 1.mat
+  artifactKey: Guid(6b340e728ad0e4327b305c81630bf6eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Less 1.mat using Guid(6b340e728ad0e4327b305c81630bf6eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf28d507cba45c5a74d097889a75541b') in 0.021164 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000427 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz 1.mat
+  artifactKey: Guid(9646d8723fcc241a1959a8ddb1e4ebfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz 1.mat using Guid(9646d8723fcc241a1959a8ddb1e4ebfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e53f306805441bbf154e1beec9497489') in 0.018053 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000428 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Ground.mat
+  artifactKey: Guid(6affeb99a84a646c8a67b2d7ea78d69d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Ground.mat using Guid(6affeb99a84a646c8a67b2d7ea78d69d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c81d506cc62d1ece186ffc7e5661e62') in 0.015634 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000456 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/LoamWalls 1.mat
+  artifactKey: Guid(ca03df09c93a64e0eb5a8356c04866dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/LoamWalls 1.mat using Guid(ca03df09c93a64e0eb5a8356c04866dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e65b49acc2b5ed4ecabce0db39bcfdf') in 0.020509 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood9.mat
+  artifactKey: Guid(81fe4647eade2244ea5a986f41f66ca4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood9.mat using Guid(81fe4647eade2244ea5a986f41f66ca4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76cf0a09b79a749e3842a9df78cb0fd3') in 0.020265 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000200 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof3.mat
+  artifactKey: Guid(d6b022fddae6c469f9990f5d68d3f88c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof3.mat using Guid(d6b022fddae6c469f9990f5d68d3f88c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7781ef81ea41e540e676bd8319c5a035') in 0.018625 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000299 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood3.mat
+  artifactKey: Guid(19c538bf92dba4515bcb53f6cdbd8382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood3.mat using Guid(19c538bf92dba4515bcb53f6cdbd8382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9137e5050e670e03873e03cb88a9319') in 0.016560 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000212 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Metal2.mat
+  artifactKey: Guid(a6e7b22a72b4249188722c358219f357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Metal2.mat using Guid(a6e7b22a72b4249188722c358219f357) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '794b170d80e17f2a49be93854d571090') in 0.018992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Less.mat
+  artifactKey: Guid(bb87ee37db6434e8a8218cf495366f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof1Less.mat using Guid(bb87ee37db6434e8a8218cf495366f2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a64fd96bd0c68fbcecf83b09cb165e11') in 0.022333 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000348 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 4.mat
+  artifactKey: Guid(5e5f0af25a0c349c6ad16bdb43f3bbfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Brick 4.mat using Guid(5e5f0af25a0c349c6ad16bdb43f3bbfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '439d4d11065c8c11369d76f5a3dd1afb') in 0.017500 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof4.mat
+  artifactKey: Guid(d6c01ff67a91e3249b69c122acd9b435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Roof4.mat using Guid(d6c01ff67a91e3249b69c122acd9b435) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '562b3b09ce767b51155e78409b66ef60') in 0.018254 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 224.859208 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood1.mat
+  artifactKey: Guid(799374aade0c04df68e7bf496de77bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood1.mat using Guid(799374aade0c04df68e7bf496de77bde) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b3e97f5f3ac29ff2947d73e6fb334ee') in 0.017503 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000350 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood4.mat
+  artifactKey: Guid(1f695face456f4c219ec978f8b081960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood4.mat using Guid(1f695face456f4c219ec978f8b081960) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9be594a755ed2f923171b1ee0e5bda82') in 0.016050 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000400 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz.mat
+  artifactKey: Guid(a14a366f4fc3b4b04abf7e98edd0ef06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz.mat using Guid(a14a366f4fc3b4b04abf7e98edd0ef06) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5093189003b57019ae760600bcf932c7') in 0.018349 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood5.mat
+  artifactKey: Guid(d9d14419e547c40cc94c07a0331e4b95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood5.mat using Guid(d9d14419e547c40cc94c07a0331e4b95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf83ca1b51769db344cb1f57f682d6e7') in 0.016313 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000354 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor.mat
+  artifactKey: Guid(bfa80c45019e14cf8832d1f6ef741af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor.mat using Guid(bfa80c45019e14cf8832d1f6ef741af4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f27640f9558f219ed09c59b95253ebe3') in 0.019918 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000355 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall.mat
+  artifactKey: Guid(e2aeab29427a441f3825926fb77c7338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall.mat using Guid(e2aeab29427a441f3825926fb77c7338) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a8eedb67de3ac00b6319b27ef1e2d45') in 0.018400 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000257 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood2.mat
+  artifactKey: Guid(fd25320f1cc7f483893944e86038ce48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood2.mat using Guid(fd25320f1cc7f483893944e86038ce48) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a49bad250f380e326c9715d9024024a') in 0.016214 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall 1.mat
+  artifactKey: Guid(356f9580967c544b593a4aff6b22d80d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWall 1.mat using Guid(356f9580967c544b593a4aff6b22d80d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb2b0db0982c5218a552e6f4090936a9') in 0.014655 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood7.mat
+  artifactKey: Guid(3c70a1a34f1184d6cbea93eb31b8d8c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood7.mat using Guid(3c70a1a34f1184d6cbea93eb31b8d8c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7db041e65c563928cdabd439ad29892') in 0.016902 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000193 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood6.mat
+  artifactKey: Guid(928d0e588ce304021be7cd0a774a0f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood6.mat using Guid(928d0e588ce304021be7cd0a774a0f89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60ee63b49ec479b23fa8983f8560255c') in 0.017670 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000393 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood8.mat
+  artifactKey: Guid(1f4bc67a36af8bd46b985f0e9d057eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood8.mat using Guid(1f4bc67a36af8bd46b985f0e9d057eee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c2f9b17689fc2e3f7cec68cfdbc8e83') in 0.017298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000253 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 2.mat
+  artifactKey: Guid(2289b068306ddda43a27408f825e099e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 2.mat using Guid(2289b068306ddda43a27408f825e099e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fd8f54746ec578d6f4bd1a0f10414a6') in 0.018858 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 1.mat
+  artifactKey: Guid(7f8d1c22a90a3414e8050d2eedb3ca3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodFloor 1.mat using Guid(7f8d1c22a90a3414e8050d2eedb3ca3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a93d06bdf30aba3ad163ddfe8ef3bf3a') in 0.015716 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000364 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz 1.mat
+  artifactKey: Guid(9646d8723fcc241a1959a8ddb1e4ebfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/WoodWallHoriz 1.mat using Guid(9646d8723fcc241a1959a8ddb1e4ebfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93e929f3bf24c33565120d68a58b1ba3') in 0.017541 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000525 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood9.mat
+  artifactKey: Guid(81fe4647eade2244ea5a986f41f66ca4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood9.mat using Guid(81fe4647eade2244ea5a986f41f66ca4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3b09cdb256ad0f478b3db823ba2bc66') in 0.016352 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000542 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood3.mat
+  artifactKey: Guid(19c538bf92dba4515bcb53f6cdbd8382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Materials/Buildings/Wood3.mat using Guid(19c538bf92dba4515bcb53f6cdbd8382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c9dcc61f127182e9c8d6fa5f6249af1') in 0.014926 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 301.193123 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs
+  artifactKey: Guid(dbd527d0c13221e43a92b6f26e216e14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs using Guid(dbd527d0c13221e43a92b6f26e216e14) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8e8d7698f34644d7e723220a77c4b2c') in 0.007619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.038616 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/AngleSupport.prefab
+  artifactKey: Guid(b3172b35e42a24ba0ab48fe233924fcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/AngleSupport.prefab using Guid(b3172b35e42a24ba0ab48fe233924fcb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba7bfdd449f9a4b17f3da364cd5968d4') in 0.015900 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000276 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfInteriorStaircase.prefab
+  artifactKey: Guid(ffe114f9384f54044a8d787a2a73f984) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfInteriorStaircase.prefab using Guid(ffe114f9384f54044a8d787a2a73f984) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c23ce057061ea6762dae7ce232a8d6e7') in 0.021249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000374 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CornerFoundation.prefab
+  artifactKey: Guid(1ce567a3410644f89aa10f389cc6ca40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CornerFoundation.prefab using Guid(1ce567a3410644f89aa10f389cc6ca40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba680f2cdefddbcd93b95f5053e1e249') in 0.027311 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniDoubleAngle.prefab
+  artifactKey: Guid(0930abfa070924bd5a22789cf24fe676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniDoubleAngle.prefab using Guid(0930abfa070924bd5a22789cf24fe676) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61fd7396a5eec853d70d20ad9f0aefeb') in 0.020001 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleWindow.prefab
+  artifactKey: Guid(2ad5875b0507544a4a27c5264e0e6f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleWindow.prefab using Guid(2ad5875b0507544a4a27c5264e0e6f43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac0753475da6e69ef7d315c0689fbb2a') in 0.031045 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FenceSection.prefab
+  artifactKey: Guid(d1804bcacbf4f66469b392294941df0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FenceSection.prefab using Guid(d1804bcacbf4f66469b392294941df0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57013e2361bbc8c141664c1986d3dd2b') in 0.015796 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000305 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationLength.prefab
+  artifactKey: Guid(254c34302757f4d36b0bc89bfe66c05e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationLength.prefab using Guid(254c34302757f4d36b0bc89bfe66c05e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a75e7f6bbfe10f9a243b050dff63c01') in 0.026558 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000214 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CurvedTabRoof.prefab
+  artifactKey: Guid(b8902b7b440b145ee929fc8d591c497c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CurvedTabRoof.prefab using Guid(b8902b7b440b145ee929fc8d591c497c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e44bdfd3cf17727214ce33dc0aaaec98') in 0.021244 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniBlank.prefab
+  artifactKey: Guid(b7c759a5db63a43eba1ef1b93b10b2f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniBlank.prefab using Guid(b7c759a5db63a43eba1ef1b93b10b2f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e28ba15e6981627b39eb459db1dbb615') in 0.022308 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000322 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleWindow.prefab
+  artifactKey: Guid(549a85e6028ff4380a9840c1343c7ea0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleWindow.prefab using Guid(549a85e6028ff4380a9840c1343c7ea0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '135313749ebe782fca4039196c659ac8') in 0.024524 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000228 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FullWoodenWal.prefab
+  artifactKey: Guid(5db04c5298fea4de6983bba34416f5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FullWoodenWal.prefab using Guid(5db04c5298fea4de6983bba34416f5a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d8a9ac0886ecb036ea35d70f6dbd0b1') in 0.021884 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000319 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleXRoof.prefab
+  artifactKey: Guid(6a3043e0c00024eeca8b18fe16735232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleXRoof.prefab using Guid(6a3043e0c00024eeca8b18fe16735232) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97053cd5b07608eee263b2b93e2170c4') in 0.026564 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000208 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchDoor.prefab
+  artifactKey: Guid(d29465b54ebab4fcfb9961607f1a7a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchDoor.prefab using Guid(d29465b54ebab4fcfb9961607f1a7a15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '516cbcfaf391c22c4a31ee6f71c7fd15') in 0.017878 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000263 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationStairs.prefab
+  artifactKey: Guid(5ea7e1143a97447cea30c0d619993895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationStairs.prefab using Guid(5ea7e1143a97447cea30c0d619993895) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba9b299050b3549c460c7cb989db6863') in 0.027486 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000344 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/InteriorStaircase.prefab
+  artifactKey: Guid(0bd2c5f3ec79f433d92e1dfc4cd7b38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/InteriorStaircase.prefab using Guid(0bd2c5f3ec79f433d92e1dfc4cd7b38a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04dc91dfdda739da76bac970443d3962') in 0.021414 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleRoof.prefab
+  artifactKey: Guid(df54917cf37e54ed58759e91b5db7ab0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleRoof.prefab using Guid(df54917cf37e54ed58759e91b5db7ab0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '32f3c56ef249b74650fbf8ca604cd36d') in 0.022763 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniLongAngle.prefab
+  artifactKey: Guid(d996b66f52c304654b53f1d83e94c14d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniLongAngle.prefab using Guid(d996b66f52c304654b53f1d83e94c14d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ddc33f41413374e5f9462b7edbd90c4') in 0.020019 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleSmallAngle.prefab
+  artifactKey: Guid(13e5fe6fb763d45f19bab3d711f3670b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleSmallAngle.prefab using Guid(13e5fe6fb763d45f19bab3d711f3670b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc28bbc6b81075ca69434f3dcb0beb0c') in 0.019709 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000237 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleCurvedRoof.prefab
+  artifactKey: Guid(8abec462424104037946910e461aa67f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleCurvedRoof.prefab using Guid(8abec462424104037946910e461aa67f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6840ea9ecd9dc6d76d738c0246e7644d') in 0.026729 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleX.prefab
+  artifactKey: Guid(cbe9b0d879bc8411a83a9dc706e5afa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/MiniSingleX.prefab using Guid(cbe9b0d879bc8411a83a9dc706e5afa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '848b134f355e3882334ac384b8706f39') in 0.020259 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000255 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Board2.prefab
+  artifactKey: Guid(0d82a6c22a77d4a68a39ae50b24d3299) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Board2.prefab using Guid(0d82a6c22a77d4a68a39ae50b24d3299) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa0c1afabde8f931532c3dd494f91933') in 0.019082 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000220 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Board.prefab
+  artifactKey: Guid(2670841aaa1f24568af5b3660bb17292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Board.prefab using Guid(2670841aaa1f24568af5b3660bb17292) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a7bfb42d9bab7f5bb1850e319c68c17') in 0.018775 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000372 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FullConcreteWall.prefab
+  artifactKey: Guid(83347cc27b2e34b069a0d0856cb1af5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FullConcreteWall.prefab using Guid(83347cc27b2e34b069a0d0856cb1af5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ae23be081084a144da121ca3ff6f120') in 0.019427 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CurvedSupport.prefab
+  artifactKey: Guid(874787727513d4ad3ba2842e4b4daf01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CurvedSupport.prefab using Guid(874787727513d4ad3ba2842e4b4daf01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d297dac6aba7bc980d763fec534e479') in 0.016719 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleWall.prefab
+  artifactKey: Guid(31314f916b7b54f57853a04a63787ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleWall.prefab using Guid(31314f916b7b54f57853a04a63787ec6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3f166f319a8de1c6cd7d70ca3a2114f') in 0.023969 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000409 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Floor.prefab
+  artifactKey: Guid(220758e90da3a405ea6b74ba9143551c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Floor.prefab using Guid(220758e90da3a405ea6b74ba9143551c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5472cf0cc15e9d2237388ea42cead5b') in 0.014445 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000166 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/PlankLargeRoof.prefab
+  artifactKey: Guid(f1311ca3e8ff24abd9d2747bc6004880) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/PlankLargeRoof.prefab using Guid(f1311ca3e8ff24abd9d2747bc6004880) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9cb27b04867f3162578129cf3ecc2d9a') in 0.026147 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000333 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationShort.prefab
+  artifactKey: Guid(23d109d12ca3b40ba94dff690003fa56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/FoundationShort.prefab using Guid(23d109d12ca3b40ba94dff690003fa56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87da329bb6afe1f1d06c419896deb49d') in 0.022994 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/PyramidRoof.prefab
+  artifactKey: Guid(3f11e4904d772456d89f4f2c1a8acb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/PyramidRoof.prefab using Guid(3f11e4904d772456d89f4f2c1a8acb34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '651560175f59ceee2fb9a48d19172e81') in 0.039817 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000452 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchDoorway.prefab
+  artifactKey: Guid(3520556736aa84d90b60416cdb52e61e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchDoorway.prefab using Guid(3520556736aa84d90b60416cdb52e61e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed39bde80df753028621807041073659') in 0.024098 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleCorner.prefab
+  artifactKey: Guid(90f46c6ecc8d149dd802130b00867e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleCorner.prefab using Guid(90f46c6ecc8d149dd802130b00867e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb5fb716776b0e018df0ce488cb08b35') in 0.022137 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfTeeWall.prefab
+  artifactKey: Guid(ffd0cbe95a7114c25b8adf92d44e5786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfTeeWall.prefab using Guid(ffd0cbe95a7114c25b8adf92d44e5786) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a1a1dec3ca8bcb574eb837331568018') in 0.026421 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000384 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleDoorway.prefab
+  artifactKey: Guid(8f9e983bdddc44630882d2164980d32a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleAngleDoorway.prefab using Guid(8f9e983bdddc44630882d2164980d32a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf9650b678f757633dc125500ec08f6e') in 0.024807 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000302 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Planks.prefab
+  artifactKey: Guid(821da77f428f54a31b2da5284ad82559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/Planks.prefab using Guid(821da77f428f54a31b2da5284ad82559) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21c4bd29d45bf23c70ef45455336a754') in 0.017973 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000282 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CenterWindowRoof.prefab
+  artifactKey: Guid(3bc93abdf3b1d4fccad1c0685576ddbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/CenterWindowRoof.prefab using Guid(3bc93abdf3b1d4fccad1c0685576ddbb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa7cfd5136ad8c3b3b720050794ddad5') in 0.029528 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000232 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleArchedWindow 1.prefab
+  artifactKey: Guid(e554e9e97a4c9468fa4e87c6a516acbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/DoubleArchedWindow 1.prefab using Guid(e554e9e97a4c9468fa4e87c6a516acbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd53a274cbcb31e20c7094bc5439f8b8') in 0.026971 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000308 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfWoodenWal.prefab
+  artifactKey: Guid(97d6398ebd0494139907789fd44661e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfWoodenWal.prefab using Guid(97d6398ebd0494139907789fd44661e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de4085524dbad1f83012f3765a844d4b') in 0.021922 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000320 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchFiller.prefab
+  artifactKey: Guid(aff70828aea3d49f1b03eb97b08eda45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ArchFiller.prefab using Guid(aff70828aea3d49f1b03eb97b08eda45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a363c4abe809e6121ce22cd1151f65e') in 0.020531 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000310 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/BayRoof.prefab
+  artifactKey: Guid(e5e5bd8621fad45a7aa5ae1ccd3c9092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/BayRoof.prefab using Guid(e5e5bd8621fad45a7aa5ae1ccd3c9092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a75eec85cf84561d1e3b79822b89598') in 0.022238 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000347 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ConcreteStep.prefab
+  artifactKey: Guid(a1c98984911794cbcafcbd783d12518b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ConcreteStep.prefab using Guid(a1c98984911794cbcafcbd783d12518b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a02c2703adc7504013262aecbaa5d4a') in 0.016575 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000293 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfConcreteWall.prefab
+  artifactKey: Guid(09b926767a1c342acab2a941dc3d3e31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HalfConcreteWall.prefab using Guid(09b926767a1c342acab2a941dc3d3e31) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97d3724d49fafe6fed5584ec8588178f') in 0.020626 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000295 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HexRoofPointed.prefab
+  artifactKey: Guid(54ee23818a3614d09818e03016f3c9e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HexRoofPointed.prefab using Guid(54ee23818a3614d09818e03016f3c9e1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de0e7c0cd473721b11418ee22ad63bcd') in 0.029590 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000577 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/OcScaffold.prefab
+  artifactKey: Guid(69e4a5a38370b7748aa28cb1ce928aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/OcScaffold.prefab using Guid(69e4a5a38370b7748aa28cb1ce928aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '350ee44a1bb788b9397c53584461ebb7') in 0.020892 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000265 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HexFloor.prefab
+  artifactKey: Guid(422355b43663b470b9030a9b4460c5c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/HexFloor.prefab using Guid(422355b43663b470b9030a9b4460c5c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09c4c9da92bec02e036156ca659bd5a9') in 0.018166 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/RoofTriangle.prefab
+  artifactKey: Guid(56310a361ffea4be99644b42109b828e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/RoofTriangle.prefab using Guid(56310a361ffea4be99644b42109b828e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c3e3b79f5c50b262d7bff94e7a4a00cf') in 0.021992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.272506 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ShopKeepWindow.prefab
+  artifactKey: Guid(a2ddc867b7cd7447582201a5e7f9c9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/ShopKeepWindow.prefab using Guid(a2ddc867b7cd7447582201a5e7f9c9fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60efd690894e82c0bc1dad436d008a27') in 0.014911 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000343 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/WindowGable.prefab
+  artifactKey: Guid(ec236c405a4034ef2bc00e63637c9769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/WindowGable.prefab using Guid(ec236c405a4034ef2bc00e63637c9769) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3f5c2085356a7a5ce6e3dcfcb97dfc91') in 0.022567 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleWindowDoubleX.prefab
+  artifactKey: Guid(a28d1058105304da88ff85e03ad4a608) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleWindowDoubleX.prefab using Guid(a28d1058105304da88ff85e03ad4a608) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '883f0efa930d78a6d33c7baa9350fbea') in 0.021046 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000425 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleWindow.prefab
+  artifactKey: Guid(7adfec47cc20f44f7814250acf95b5db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleWindow.prefab using Guid(7adfec47cc20f44f7814250acf95b5db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b101a03bf3abb8821629bb6355fe6779') in 0.025356 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000311 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SquareRailling.prefab
+  artifactKey: Guid(dc0ece3becf744cb18aea5a3bf1c258b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SquareRailling.prefab using Guid(dc0ece3becf744cb18aea5a3bf1c258b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36ed68cde5086b9df26ccd0aa053b892') in 0.016434 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000296 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/wallcorner1.prefab
+  artifactKey: Guid(3d54e01068fe54bd583c0880fab00b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/wallcorner1.prefab using Guid(3d54e01068fe54bd583c0880fab00b6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f6fc3861673baf7cb2df62ea6b7e1ef') in 0.018111 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000343 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SquareDoor.prefab
+  artifactKey: Guid(d92ae718e0e5c44328f5e6948f08d460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SquareDoor.prefab using Guid(d92ae718e0e5c44328f5e6948f08d460) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd70c7fcacd352dec6e5e090a6f5ecce') in 0.025101 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000277 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleArchedWindow.prefab
+  artifactKey: Guid(1f70c0849a3ef4935bc5353a4a497abf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/SingleArchedWindow.prefab using Guid(1f70c0849a3ef4935bc5353a4a497abf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '425807caf923b582566a0167ad1312bd') in 0.024432 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/StoneArchway.prefab
+  artifactKey: Guid(4df8cb259d7cc4a7d9f861026a72c52e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/BuildingPartsPrefabs/StoneArchway.prefab using Guid(4df8cb259d7cc4a7d9f861026a72c52e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '293e7fc3d60a8ec6d207e7fc821373bc') in 0.016490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 78.649973 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9281411d5890a422541ec68fd3d1d764') in 0.091010 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 157.483404 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Large House.prefab
+  artifactKey: Guid(78a30b6e7fd674d4786d56a3bb7a40f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Large House.prefab using Guid(78a30b6e7fd674d4786d56a3bb7a40f4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '54e2ab5f552c7a4793d99302701588e1') in 0.068128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 84.863201 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab
+  artifactKey: Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab using Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b448e27825bc80118482c0f152a50448') in 0.074813 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 49.418210 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab
+  artifactKey: Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab using Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36c41cb02310361d522412f398234513') in 0.088049 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 23.566424 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab
+  artifactKey: Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab using Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '020925fecfd19aca739e306de69f8130') in 0.085281 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 46.302839 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab
+  artifactKey: Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab using Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '602a75bf72953b92e102bf64916e014c') in 0.076357 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 141.039685 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab
+  artifactKey: Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab using Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bf0cf541971665b492f3e90240a6888') in 0.078619 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 95.695952 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab
+  artifactKey: Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab using Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f4cb3f8310a855a7d881d5eec6bcc140') in 0.079785 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 48.098386 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '25a2e1b8f56d3a31009cea2497c54978') in 0.090995 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.582461 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '059b27b8f4758325787c32756f6cd20a') in 0.081507 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 99.727750 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65cf916774d54bfc5bb474cb38ff1fad') in 0.077193 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 110.479113 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab
+  artifactKey: Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab using Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d22a574ac8b74b2486b5f04ac02236f') in 0.075352 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 125.022352 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab
+  artifactKey: Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/LargeManor.prefab using Guid(65881209be6ec43cca09a04ca753b1a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94a0886f4088ca606a277c5102943d05') in 0.075621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 38.103072 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab
+  artifactKey: Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Manor.prefab using Guid(918e22e74eb5e40b098021609afa7fca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffdea91466391a1c182fe1faec60d5e8') in 0.081044 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 95.667666 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse.prefab
+  artifactKey: Guid(ce3389b0593dc49688b6aa301539aeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse.prefab using Guid(ce3389b0593dc49688b6aa301539aeb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '468703695798804585790cd523bfff67') in 0.071241 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 39.950829 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse2.prefab
+  artifactKey: Guid(b9a4c14baf1ee274fbfb4811993cf821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/SmallHouse2.prefab using Guid(b9a4c14baf1ee274fbfb4811993cf821) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0c5239625371eb7c7326af8f5cf7c08') in 0.058737 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 46.221291 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Stable.prefab
+  artifactKey: Guid(83c0cacc7e324f540a41ee4583a6410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/Stable.prefab using Guid(83c0cacc7e324f540a41ee4583a6410a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc431bc0b334e4d7b6294c6c9bf43686') in 0.087905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 60.363644 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownCenter.prefab
+  artifactKey: Guid(ca91fd4250ef288468959a403930c79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownCenter.prefab using Guid(ca91fd4250ef288468959a403930c79b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43cba414d77e566177e569c737166d88') in 0.078903 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 111.840970 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownWatch.prefab
+  artifactKey: Guid(f387e3becdf054b2ab9a72636f5d2b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/TownWatch.prefab using Guid(f387e3becdf054b2ab9a72636f5d2b77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '037b9e8632e7dabd6ac10e878e15823f') in 0.086038 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.007302 seconds.
+Registered in 0.004344 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.77 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.419 seconds
+- Completed reload, in  0.901 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 1.37 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 88.9 MB.
-System memory in use after: 89.0 MB.
+System memory in use before: 107.9 MB.
+System memory in use after: 108.0 MB.
 
-Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2288.
-Total: 11.199500 ms (FindLiveObjects: 0.322800 ms CreateObjectMapping: 0.092000 ms MarkObjects: 10.748200 ms  DeleteObjects: 0.034500 ms)
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2328.
+Total: 4.993400 ms (FindLiveObjects: 0.159400 ms CreateObjectMapping: 0.072600 ms MarkObjects: 4.739400 ms  DeleteObjects: 0.020900 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004315 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.918 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 107.9 MB.
+System memory in use after: 108.0 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2331.
+Total: 5.711100 ms (FindLiveObjects: 0.147500 ms CreateObjectMapping: 0.065200 ms MarkObjects: 5.478700 ms  DeleteObjects: 0.019000 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004199 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.960 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 107.9 MB.
+System memory in use after: 108.1 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2334.
+Total: 5.389600 ms (FindLiveObjects: 0.232500 ms CreateObjectMapping: 0.064000 ms MarkObjects: 5.073000 ms  DeleteObjects: 0.018800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003819 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.830 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.1 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2337.
+Total: 5.953500 ms (FindLiveObjects: 0.153400 ms CreateObjectMapping: 0.068700 ms MarkObjects: 5.711400 ms  DeleteObjects: 0.018600 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1026.403581 seconds.
-  path: Assets/Imported Assets
-  artifactKey: Guid(8613ce0a7892e95468a555b7993de882) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets using Guid(8613ce0a7892e95468a555b7993de882) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd422f5f32dcf0271dd45bb722079c78') in 0.014251 seconds 
+  Time since last request: 4517.792366 seconds.
+  path: Assets/Imported Assets/3d_model/Spider.controller
+  artifactKey: Guid(d97a569894778944d87f5f78b7d5c514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/3d_model/Spider.controller using Guid(d97a569894778944d87f5f78b7d5c514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9d52f102804469c87c4cd8e555f81a05') in 0.015380 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 9.114022 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)
-  artifactKey: Guid(401522986488512489109430b6d67205) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom) using Guid(401522986488512489109430b6d67205) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f2982275abafac5ee7100a16d2307e15') in 0.010191 seconds 
+  Time since last request: 103.407496 seconds.
+  path: Assets/Imported Assets/Toon_RTS/unded_Demo/model/Skeleton.controller
+  artifactKey: Guid(546836c8d4b58434797026785f27df83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Toon_RTS/unded_Demo/model/Skeleton.controller using Guid(546836c8d4b58434797026785f27df83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7a1d37b17aa4e6397e7202c897300c14') in 0.016796 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004344 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.848 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.1 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2340.
+Total: 4.928200 ms (FindLiveObjects: 0.155700 ms CreateObjectMapping: 0.064400 ms MarkObjects: 4.690600 ms  DeleteObjects: 0.016700 ms)
+
 ========================================================================
 Received Import Request.
-  Time since last request: 0.920357 seconds.
-  path: Assets/Imported Assets/Vladimir Trofimov (Mushroom House)
-  artifactKey: Guid(477c0c02a68f40248b2990b178a0ea1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Vladimir Trofimov (Mushroom House) using Guid(477c0c02a68f40248b2990b178a0ea1f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c16842f0db905ef6785f74bccf30f3b') in 0.010402 seconds 
+  Time since last request: 30.660970 seconds.
+  path: Assets/Imported Assets/3d_model/Spider.controller
+  artifactKey: Guid(d97a569894778944d87f5f78b7d5c514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/3d_model/Spider.controller using Guid(d97a569894778944d87f5f78b7d5c514) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68da4c601529367de3cc1bf2e323c3e5') in 0.019712 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.453321 seconds.
-  path: Assets/Imported Assets/Vertex Cat (Farm Animals)
-  artifactKey: Guid(38b8ebe5d5153804783c717755d52aa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Vertex Cat (Farm Animals) using Guid(38b8ebe5d5153804783c717755d52aa3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '055d0ae16e495e8469b688be65b5b255') in 0.010936 seconds 
+  Time since last request: 30.021233 seconds.
+  path: Assets/Imported Assets/3d_model/spider.FBX
+  artifactKey: Guid(7a538f29bad700d47a681a6568b943b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/3d_model/spider.FBX using Guid(7a538f29bad700d47a681a6568b943b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1ff07b2cab54827f835527ee33f875a') in 0.094493 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004288 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.89 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.907 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.78 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.1 MB.
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2344.
+Total: 5.044600 ms (FindLiveObjects: 0.161100 ms CreateObjectMapping: 0.064600 ms MarkObjects: 4.791200 ms  DeleteObjects: 0.026700 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.005096 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.831 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2347.
+Total: 6.237200 ms (FindLiveObjects: 0.176900 ms CreateObjectMapping: 0.088600 ms MarkObjects: 5.946900 ms  DeleteObjects: 0.023500 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.007003 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.94 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.897 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2350.
+Total: 6.077000 ms (FindLiveObjects: 0.216700 ms CreateObjectMapping: 0.103800 ms MarkObjects: 5.714400 ms  DeleteObjects: 0.041100 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008160 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.98 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.963 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.0 MB.
+System memory in use after: 108.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2353.
+Total: 7.232200 ms (FindLiveObjects: 0.339900 ms CreateObjectMapping: 0.115800 ms MarkObjects: 6.736700 ms  DeleteObjects: 0.021300 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004488 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.894 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.1 MB.
+System memory in use after: 108.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2356.
+Total: 5.654800 ms (FindLiveObjects: 0.141900 ms CreateObjectMapping: 0.056700 ms MarkObjects: 5.435800 ms  DeleteObjects: 0.019600 ms)
+
 ========================================================================
 Received Import Request.
-  Time since last request: 0.290857 seconds.
-  path: Assets/Imported Assets/Supercyan (Characters)
-  artifactKey: Guid(b61fd40874673724eae7b222fd3e9fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Supercyan (Characters) using Guid(b61fd40874673724eae7b222fd3e9fb9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f37f561b3cdc1c62224c9779b87ec48') in 0.009588 seconds 
+  Time since last request: 921.073144 seconds.
+  path: Assets/Imported Assets/Hviluvator (Tomb)
+  artifactKey: Guid(cff6742a97655bc4f9a81f9d12faf183) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Hviluvator (Tomb) using Guid(cff6742a97655bc4f9a81f9d12faf183) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07799e425b93eb09c3ae0222c7c3013c') in 0.007535 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.404807 seconds.
-  path: Assets/Imported Assets/Small Red Dragon
-  artifactKey: Guid(74bc8452d26089a45bda1f387782ea2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Small Red Dragon using Guid(74bc8452d26089a45bda1f387782ea2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9c72a73cfe93d06246765608051e64e') in 0.008231 seconds 
+  Time since last request: 4.823846 seconds.
+  path: Assets/Imported Assets/Hut
+  artifactKey: Guid(bceb2e1ff6721c3438691b638fefd346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Hut using Guid(bceb2e1ff6721c3438691b638fefd346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c346936a82aa66a00ff1a0705fe85007') in 0.006534 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.356369 seconds.
-  path: Assets/Imported Assets/Kunniki (House)
-  artifactKey: Guid(8230d4d9e67c4eb42b921d23dd432810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Kunniki (House) using Guid(8230d4d9e67c4eb42b921d23dd432810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '84a84b773f47c9328f0cdbbca67c8b25') in 0.008688 seconds 
+  Time since last request: 4.407948 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/FBXModels
+  artifactKey: Guid(8458d16d83fca254da15586ac460cd76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/FBXModels using Guid(8458d16d83fca254da15586ac460cd76) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9fb74b4ad0923749e5a287c25ad8eeec') in 0.006309 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.409391 seconds.
-  path: Assets/Imported Assets/Layer Lab (Impling)
-  artifactKey: Guid(bd23dafe70c85b8469f3ff18c5807471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Layer Lab (Impling) using Guid(bd23dafe70c85b8469f3ff18c5807471) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cee4aedd32d90d71d44032133e6d4cc1') in 0.007708 seconds 
+  Time since last request: 36.772454 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab
+  artifactKey: Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/AltarHouse.prefab using Guid(39bc57db09dc74671ba4ae3782dc3e70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '277138035d2ed0a9a90af7ef3c482530') in 0.145219 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004313 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.934 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.1 MB.
+System memory in use after: 108.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2360.
+Total: 5.426600 ms (FindLiveObjects: 0.149800 ms CreateObjectMapping: 0.061100 ms MarkObjects: 5.194700 ms  DeleteObjects: 0.020100 ms)
+
 ========================================================================
 Received Import Request.
-  Time since last request: 0.319784 seconds.
-  path: Assets/Imported Assets/Low Poly Desert Pack
-  artifactKey: Guid(f2d1992998b612b46a6090280e9feb82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Low Poly Desert Pack using Guid(f2d1992998b612b46a6090280e9feb82) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbd71709840da082af3f1aa59b3ea623') in 0.007874 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.282162 seconds.
-  path: Assets/Imported Assets/Lowlypoly (Fantasy Treasure)
-  artifactKey: Guid(d0b17e5d971a03341b8df428a544cbeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Lowlypoly (Fantasy Treasure) using Guid(d0b17e5d971a03341b8df428a544cbeb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ad11bddfbed2fef8d2bc6ba21672872') in 0.008208 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.317063 seconds.
-  path: Assets/Imported Assets/m31_teleporter_FX
-  artifactKey: Guid(c68b93f26c4dedc409ad8b84e1c6b429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/m31_teleporter_FX using Guid(c68b93f26c4dedc409ad8b84e1c6b429) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eb2a56ef1ea26cd10df2bc902b481d7') in 0.009302 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.319986 seconds.
-  path: Assets/Imported Assets/MedievalCastlePackLite
-  artifactKey: Guid(aa7c853f23a63674fba1c3141849f0d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MedievalCastlePackLite using Guid(aa7c853f23a63674fba1c3141849f0d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5369afa90e27e428cbaed2b4c0ce1fb') in 0.009910 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.617662 seconds.
-  path: Assets/Imported Assets/m31_teleporter_FX/04_FX_prefab
-  artifactKey: Guid(ff776801b097666458b1589e8d94484e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/m31_teleporter_FX/04_FX_prefab using Guid(ff776801b097666458b1589e8d94484e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a87bd92e60b0f7ea0071fcf46411a98') in 0.007780 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.216440 seconds.
-  path: Assets/Imported Assets/m31_teleporter_FX/04_FX_prefab/teleporter.prefab
-  artifactKey: Guid(856ddc11c4d1bd54885aa67f69f72cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/m31_teleporter_FX/04_FX_prefab/teleporter.prefab using Guid(856ddc11c4d1bd54885aa67f69f72cdf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '297e4fd5915494a8817420fef090791c') in 0.029157 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 69.564541 seconds.
-  path: Assets/Imported Assets/m31_teleporter_FX/02_FX_material/FxM_sharpline_blue.mat
-  artifactKey: Guid(7123884b5d1b390448667d9c0b6f2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/m31_teleporter_FX/02_FX_material/FxM_sharpline_blue.mat using Guid(7123884b5d1b390448667d9c0b6f2f75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'deb343001080cfdbc74c31393da052ba') in 0.079758 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 33.069514 seconds.
-  path: Assets/Imported Assets/m31_teleporter_FX/03_FX_object/FxObject_cylinder_short.FBX
-  artifactKey: Guid(a646e6dc7d252544ca5c5429cb47d3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/m31_teleporter_FX/03_FX_object/FxObject_cylinder_short.FBX using Guid(a646e6dc7d252544ca5c5429cb47d3c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c28c1c3a45bbe2566282fd0908c4cac7') in 0.066471 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 141.664221 seconds.
-  path: Assets/User Study Project 2021
-  artifactKey: Guid(8614f7bf0f24c5f4a909064bc3f66794) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021 using Guid(8614f7bf0f24c5f4a909064bc3f66794) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3abd41e8176dd034fc246ca37505ea7c') in 0.009619 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.757100 seconds.
-  path: Assets/PathOS+
-  artifactKey: Guid(89a2e2497ce6d2241808188dbfbd48bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PathOS+ using Guid(89a2e2497ce6d2241808188dbfbd48bc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c772f25dc88dbb03f893d9c609b5cfb') in 0.010221 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.972407 seconds.
-  path: Assets/Internal Demo/Scenes/LevelDemo.unity
-  artifactKey: Guid(4b5120f137309ec4390dd693fb9f9386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Internal Demo/Scenes/LevelDemo.unity using Guid(4b5120f137309ec4390dd693fb9f9386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aad916e511e2f9e71d54cf34327927f5') in 0.009830 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 10.119196 seconds.
-  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
-  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd8bd0e399dcac18280fd03be5c77ae64') in 0.010082 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 57.615818 seconds.
-  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
-  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6fb6690bf7eba8f0446328860ac2eecd') in 0.003525 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.733544 seconds.
-  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
-  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3beb4c040d6eb24961c295a970978865') in 0.009608 seconds 
+  Time since last request: 75.953693 seconds.
+  path: Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab
+  artifactKey: Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Medieval Structure Kit/Prefabs/Buildings/ShopDuplex.prefab using Guid(beb85566a7ec24c43b265d27f8e5b1b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea9ce7ac0e2c6deaada43f1efd36e88a') in 0.115862 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
