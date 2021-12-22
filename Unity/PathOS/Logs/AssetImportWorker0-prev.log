@@ -15,11 +15,11 @@ C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-58972
+53956
 Successfully changed project path to: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 59.98 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 57.49 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.0f1 (61a549675243)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,151 +35,62 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56852
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56044
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.003148 seconds.
+Registered in 0.003195 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 55.60 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 50.82 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.430 seconds
+- Completed reload, in  1.388 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004816 seconds.
+Registered in 0.004209 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.974 seconds
+- Completed reload, in  0.916 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
-Refreshing native plugins compatible for Editor in 0.68 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1833 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 85.8 MB.
-System memory in use after: 85.9 MB.
+System memory in use before: 85.9 MB.
+System memory in use after: 86.0 MB.
 
 Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2284.
-Total: 5.658800 ms (FindLiveObjects: 0.139800 ms CreateObjectMapping: 0.062800 ms MarkObjects: 5.354200 ms  DeleteObjects: 0.101100 ms)
+Total: 5.740800 ms (FindLiveObjects: 0.200700 ms CreateObjectMapping: 0.138400 ms MarkObjects: 5.297300 ms  DeleteObjects: 0.103600 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Imported Assets/MSFMC_RadarDish
-  artifactKey: Guid(ee1d8acb4cda2f4488b344effaf870e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish using Guid(ee1d8acb4cda2f4488b344effaf870e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa7a320c0f95ba38955bd2041911ff32') in 0.009541 seconds 
+  path: Assets/User Study Project 2021/Scenario 1/Scenario1.unity
+  artifactKey: Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 1/Scenario1.unity using Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7fc81f0d54e1d0921bfd8fe74739d5c') in 0.015447 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 5.786365 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models
-  artifactKey: Guid(6d14ea64c6f9fff46bf009c043b17efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models using Guid(6d14ea64c6f9fff46bf009c043b17efd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6bcde7c8173aa2a9ac5963ddd07d78fb') in 0.009029 seconds 
+  Time since last request: 100.597906 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
+  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '122f35894a2ac775ff2fdf3ab8b89268') in 0.008663 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.418071 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/Prefabs
-  artifactKey: Guid(4d3455176aa76fe49b6c05d655b56310) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/Prefabs using Guid(4d3455176aa76fe49b6c05d655b56310) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8c0c011f3436258dde86d3729f3a61d') in 0.005457 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.044648 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/Prefabs/MSFMC_RadarDish.prefab
-  artifactKey: Guid(eeade5eac92f39e439a9bf65b8f4007c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/Prefabs/MSFMC_RadarDish.prefab using Guid(eeade5eac92f39e439a9bf65b8f4007c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '250d814efa047645d8a1b506211ed92e') in 0.212735 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 34.714486 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/msfmc_RadarDish.FBX
-  artifactKey: Guid(f48aae87c7088c74cb5cd9f72c243996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/msfmc_RadarDish.FBX using Guid(f48aae87c7088c74cb5cd9f72c243996) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ccf2bfd172e02be3c127f823f13c7ab') in 0.094133 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.581007 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials
-  artifactKey: Guid(711b9a932117f614e9cac7b24de9ea54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials using Guid(711b9a932117f614e9cac7b24de9ea54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd205e2cdc352fab7177edb559db054c') in 0.003617 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.045553 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01.mat
-  artifactKey: Guid(a232e04fd0603294f9006ad263f856e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01.mat using Guid(a232e04fd0603294f9006ad263f856e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e66708474e469a0dbe459f4032a5b09') in 0.037365 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000319 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Metalic.png
-  artifactKey: Guid(2a3b49cca44dbba48b6ab8712d2dab7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Metalic.png using Guid(2a3b49cca44dbba48b6ab8712d2dab7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c6b436ba82b59aa7bc59ad88479d7dc') in 0.028356 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000249 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Emissive.png
-  artifactKey: Guid(fa8c09ec94c725c40905b9fbf74f0ec5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Emissive.png using Guid(fa8c09ec94c725c40905b9fbf74f0ec5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c9e13ae5f23f724a83c22b2a9c60b22') in 0.019588 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000338 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01.psd
-  artifactKey: Guid(148bbc3dee0ffcf4b87fcd18df73986a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01.psd using Guid(148bbc3dee0ffcf4b87fcd18df73986a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35892f2a0222831f1f17db0e865e88c2') in 0.034521 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000241 seconds.
-  path: Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Normal.png
-  artifactKey: Guid(4dea364ddc85d724c8d23c0261d70138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MSFMC_RadarDish/3D Models/Materials/radarDish_Texture01_Normal.png using Guid(4dea364ddc85d724c8d23c0261d70138) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6abceecffc5cea83e7de8792afaa1e61') in 0.026702 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 68.153339 seconds.
-  path: Assets/Imported Assets/Bridge_Pack
-  artifactKey: Guid(40352272088446442bafd076ebe23125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Bridge_Pack using Guid(40352272088446442bafd076ebe23125) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0ded46e3223a97dd9e15bb17d7975b1') in 0.007985 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 52.997151 seconds.
-  path: Assets/Imported Assets/Bridge_Pack/Prefabs/Lateral 1.prefab
-  artifactKey: Guid(50f4f392a2d4afa44b3ec19e79dbed70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Bridge_Pack/Prefabs/Lateral 1.prefab using Guid(50f4f392a2d4afa44b3ec19e79dbed70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b232311aaee260d2166f3eb8babcee00') in 0.019746 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.798060 seconds.
-  path: Assets/Imported Assets/Bridge_Pack/Prefabs/Lateral 1.prefab
-  artifactKey: Guid(50f4f392a2d4afa44b3ec19e79dbed70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Bridge_Pack/Prefabs/Lateral 1.prefab using Guid(50f4f392a2d4afa44b3ec19e79dbed70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3ed0534e03ce4ba11e00f86b205835bb') in 0.020535 seconds 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.005918 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for LinuxStandalone target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.969 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.98 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1826 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 95.4 MB.
-System memory in use after: 95.5 MB.
-
-Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2394.
-Total: 10.385000 ms (FindLiveObjects: 0.919700 ms CreateObjectMapping: 0.235800 ms MarkObjects: 9.193600 ms  DeleteObjects: 0.034100 ms)
-
+  Time since last request: 811.535524 seconds.
+  path: Assets/User Study Project 2021/Scenario 1/Scenario1.unity
+  artifactKey: Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 1/Scenario1.unity using Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c39016b6705166e84023c09db19963fb') in 0.004689 seconds 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
