@@ -22633,6 +22633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
+      propertyPath: showLevelMarkup
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
+        type: 3}
       propertyPath: endOnCompletionGoal
       value: 0
       objectReference: {fileID: 0}
@@ -22724,17 +22729,17 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[1].name
-      value: Impling (3)
+      value: Cat (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[2].name
-      value: Impling
+      value: Impling (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[3].name
-      value: Cat (1)
+      value: Impling
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -23010,17 +23015,17 @@ PrefabInstance:
         type: 3}
       propertyPath: levelEntities.Array.data[1].objectRef
       value: 
-      objectReference: {fileID: 1149678849}
+      objectReference: {fileID: 776138089}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[2].objectRef
       value: 
-      objectReference: {fileID: 1713890325}
+      objectReference: {fileID: 1149678849}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[3].objectRef
       value: 
-      objectReference: {fileID: 776138089}
+      objectReference: {fileID: 1713890325}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[4].objectRef
@@ -23109,7 +23114,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[1].entityType
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -23219,7 +23224,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: levelEntities.Array.data[3].entityType
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620061, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
@@ -25170,8 +25175,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114232718271966738, guid: 607318e5beb058643a9226e07f881723,
         type: 3}
+      propertyPath: mapScreenSize
+      value: 241
+      objectReference: {fileID: 0}
+    - target: {fileID: 114232718271966738, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
       propertyPath: showHealthBar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114232718271966738, guid: 607318e5beb058643a9226e07f881723,
+        type: 3}
+      propertyPath: viewScreenSize
+      value: 262
       objectReference: {fileID: 0}
     - target: {fileID: 114482611139781848, guid: 607318e5beb058643a9226e07f881723,
         type: 3}

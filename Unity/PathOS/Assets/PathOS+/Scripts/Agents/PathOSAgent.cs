@@ -325,8 +325,6 @@ public class PathOSAgent : MonoBehaviour
 
             newAdrenaline = 0.5f;
             modifiableHeuristicScales[adrenalineIndex].scale = newAdrenaline;
-
-            Debug.Log("ratata" + newCaution);
         }
         else
         {
