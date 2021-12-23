@@ -15,11 +15,11 @@ C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53722
+50183
 Successfully changed project path to: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 58.01 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 58.57 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.1.0f1 (61a549675243)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,34 +35,34 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56268
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.003167 seconds.
+Registered in 0.003164 seconds.
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 50.87 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 51.36 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.327 seconds
+- Completed reload, in  1.397 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004266 seconds.
+Registered in 0.004164 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for LinuxStandalone target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.911 seconds
+- Completed reload, in  0.918 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -70,213 +70,301 @@ Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 second
 Refreshing native plugins compatible for Editor in 0.56 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1833 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 85.9 MB.
+System memory in use before: 86.0 MB.
 System memory in use after: 86.0 MB.
 
 Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2284.
-Total: 5.525400 ms (FindLiveObjects: 0.179800 ms CreateObjectMapping: 0.086200 ms MarkObjects: 5.157200 ms  DeleteObjects: 0.101400 ms)
+Total: 5.461500 ms (FindLiveObjects: 0.156400 ms CreateObjectMapping: 0.076100 ms MarkObjects: 5.114700 ms  DeleteObjects: 0.113300 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Imported Assets/MedievalCastlePackLite/TsunoaGames/MedievalCastlePack/Walls
-  artifactKey: Guid(cc7aa09b6ab334a4c9a6442257eff5c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/MedievalCastlePackLite/TsunoaGames/MedievalCastlePack/Walls using Guid(cc7aa09b6ab334a4c9a6442257eff5c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dcdb228d2b8687079f48311a9a148471') in 0.007053 seconds 
+  path: Assets/Internal Demo/Scenes/LevelDemo.unity
+  artifactKey: Guid(4b5120f137309ec4390dd693fb9f9386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal Demo/Scenes/LevelDemo.unity using Guid(4b5120f137309ec4390dd693fb9f9386) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd7c58554a05fb89058187768dcb03f7') in 0.015389 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 48.306287 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door
-  artifactKey: Guid(fb0316b378768f54eb6b924efe504d75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door using Guid(fb0316b378768f54eb6b924efe504d75) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '091d13c5160195575c77f52011519d38') in 0.009461 seconds 
+  Time since last request: 106.468600 seconds.
+  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
+  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82b903ed5ff9c256dc65e9c030de5bee') in 0.008556 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.073759 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door/Door14.prefab
-  artifactKey: Guid(a76d6dc72bc81434e93a247dcc2fe116) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door/Door14.prefab using Guid(a76d6dc72bc81434e93a247dcc2fe116) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9aa01e45a6b522f9a151dce38c16e123') in 0.119399 seconds 
+  Time since last request: 51.452631 seconds.
+  path: Assets/Imported Assets/Treasure chest closed
+  artifactKey: Guid(f4114a54919e8cd4d8c1d11ca0d00354) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Treasure chest closed using Guid(f4114a54919e8cd4d8c1d11ca0d00354) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa4eced85adcd148b9eca7ac42e34682') in 0.008953 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000329 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door/Door16_d02.prefab
-  artifactKey: Guid(c94c647d1bcd15f4497307fc7cef4ae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Door/Door16_d02.prefab using Guid(c94c647d1bcd15f4497307fc7cef4ae4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b786eb92e5f788eaee8646c2e3788c7') in 0.023369 seconds 
+  Time since last request: 0.037031 seconds.
+  path: Assets/Imported Assets/Treasure chest closed/treasure_chest_closed.prefab
+  artifactKey: Guid(5dcae5adf53292945adef517afe8041e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Treasure chest closed/treasure_chest_closed.prefab using Guid(5dcae5adf53292945adef517afe8041e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5916deba4e0be9a5c947f6231a8de2a') in 0.098101 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 63.915755 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_a.prefab
-  artifactKey: Guid(a9d75ae70f113fe4daa46ba82c5bbe47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_a.prefab using Guid(a9d75ae70f113fe4daa46ba82c5bbe47) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bbd43b4ad6db574eba9beebdae602002') in 0.192039 seconds 
+  Time since last request: 0.903308 seconds.
+  path: Assets/Imported Assets/Treasure chest closed/Materials and textures
+  artifactKey: Guid(984aaeb6a790cce43928b2121853082e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Treasure chest closed/Materials and textures using Guid(984aaeb6a790cce43928b2121853082e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28bf349da139f64fc2eead4f3b0b793e') in 0.008832 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.559886 seconds.
+  path: Assets/Imported Assets/Treasure chest closed/FBX
+  artifactKey: Guid(0b8ed19fb31e906459ba9899bb366482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Treasure chest closed/FBX using Guid(0b8ed19fb31e906459ba9899bb366482) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '18049b68f971d5d6d36aa7257421422e') in 0.007434 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.040429 seconds.
+  path: Assets/Imported Assets/Treasure chest closed/FBX/treasure_chest_closed.FBX
+  artifactKey: Guid(6eef872720cdc8049aa971a249922bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Treasure chest closed/FBX/treasure_chest_closed.FBX using Guid(6eef872720cdc8049aa971a249922bcc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1d74c672391a8f8eb07b2f182f16cea') in 0.061449 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1869.479215 seconds.
+  path: Assets/Gizmos/brain.png
+  artifactKey: Guid(30a7dfa6cfb65ce40a8398d054b67f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/brain.png using Guid(30a7dfa6cfb65ce40a8398d054b67f49) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67fc99979fbf788047af49ba20609737') in 0.052823 seconds 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000318 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_b.prefab
-  artifactKey: Guid(9c899610785b0c344a60a99f81a7b599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_b.prefab using Guid(9c899610785b0c344a60a99f81a7b599) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2792ac600f0dca9bf531454b6584ae0') in 0.043028 seconds 
+  path: Assets/Gizmos/hazard_environment.png
+  artifactKey: Guid(25dc71ddc6d909a40bd6e21cb5a6f297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/hazard_environment.png using Guid(25dc71ddc6d909a40bd6e21cb5a6f297) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f950be85661f6ab4ef6582d88e516c6') in 0.030354 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_c.prefab
-  artifactKey: Guid(8c6bba77413370b469adb3b6233d098e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_c.prefab using Guid(8c6bba77413370b469adb3b6233d098e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fe29d58b6944960e1b018fd0bdad07e') in 0.024408 seconds 
+  Time since last request: 0.000386 seconds.
+  path: Assets/Gizmos/hazard_enemy_low.png
+  artifactKey: Guid(709948560c56fbb49b4cabc98bd95646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/hazard_enemy_low.png using Guid(709948560c56fbb49b4cabc98bd95646) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '452673bac058e43a9c8174d04f7c522d') in 0.024593 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000637 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_d.prefab
-  artifactKey: Guid(28b228c79a309474b9c2034310e32a42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination/BuildingAT07_d.prefab using Guid(28b228c79a309474b9c2034310e32a42) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56870ffd6d242268a2dbd38143248c25') in 0.025243 seconds 
+  Time since last request: 0.000404 seconds.
+  path: Assets/Gizmos/resource_achievement.png
+  artifactKey: Guid(a39642beb8cf9b149beefcd06c73c161) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/resource_achievement.png using Guid(a39642beb8cf9b149beefcd06c73c161) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d65d9706e79e51a01070046b9ffa4c4') in 0.029912 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 8.619731 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Building01/Building01.prefab
-  artifactKey: Guid(9033a4a0d292c4645a4c6e941da7664a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Building01/Building01.prefab using Guid(9033a4a0d292c4645a4c6e941da7664a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '491d04d7dfd82678bdf3ab5b1428b0f2') in 0.016442 seconds 
+  Time since last request: 0.000361 seconds.
+  path: Assets/Gizmos/eyecon.png
+  artifactKey: Guid(cc97256feea8747499af671fcfa34f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/eyecon.png using Guid(cc97256feea8747499af671fcfa34f97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb43d386182fcf2d85b02508ffeb9766') in 0.028023 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000312 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Building01/Building01_d02.prefab
-  artifactKey: Guid(8841453141b7e0e41aeefed8999e05fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Main Structures/Building01/Building01_d02.prefab using Guid(8841453141b7e0e41aeefed8999e05fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33ef258d27bbed08c1ea5143d8faf8a7') in 0.013536 seconds 
+  Time since last request: 0.000359 seconds.
+  path: Assets/Gizmos/unreachable.png
+  artifactKey: Guid(8e411f0a1fb86ad49b030c554afd6428) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/unreachable.png using Guid(8e411f0a1fb86ad49b030c554afd6428) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa28ddf582a13416662001b2d61774a2') in 0.035925 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.351281 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01.mat
-  artifactKey: Guid(2248972af89825947b59ce02e824b172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01.mat using Guid(2248972af89825947b59ce02e824b172) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '22362de4857139cf1a20020f326481f8') in 0.029722 seconds 
+  Time since last request: 0.000570 seconds.
+  path: Assets/Gizmos/visited.png
+  artifactKey: Guid(810ea2e51d38c494ea2838cc3a5c24ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/visited.png using Guid(810ea2e51d38c494ea2838cc3a5c24ed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd609e451a1e90d097f395400ff657bd1') in 0.025788 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000291 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower01.mat
-  artifactKey: Guid(df775f9cbfa37294682dd3f6e1be264b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower01.mat using Guid(df775f9cbfa37294682dd3f6e1be264b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aaf707afcba3d42df66c06ffd5ba5120') in 0.012222 seconds 
+  Time since last request: 0.000469 seconds.
+  path: Assets/Gizmos/hazard_enemy_medium.png
+  artifactKey: Guid(0804411c4ddd1534496b5fc164934d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/hazard_enemy_medium.png using Guid(0804411c4ddd1534496b5fc164934d27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4ed7949b9f7de065f4c772a19145148') in 0.022246 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000348 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Tree.mat
-  artifactKey: Guid(7465249f62d12bd40aede3053db48d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Tree.mat using Guid(7465249f62d12bd40aede3053db48d88) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de2ee492bc0203082b075f2ddc0ceb4b') in 0.016516 seconds 
+  Time since last request: 0.000456 seconds.
+  path: Assets/Gizmos/hazard_enemy_high.png
+  artifactKey: Guid(034500791a17da94fa3b2db65c95fb84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/hazard_enemy_high.png using Guid(034500791a17da94fa3b2db65c95fb84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '50c339ace32b4ce6e0b3c5ef5c629028') in 0.024046 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000353 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower03.mat
-  artifactKey: Guid(d3930a9ce264110479ca76df7bb4dd95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower03.mat using Guid(d3930a9ce264110479ca76df7bb4dd95) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57b239a6fc04ee1d0b8fcc4fbd5bb86d') in 0.014082 seconds 
+  Time since last request: 0.000346 seconds.
+  path: Assets/Gizmos/resource_preservation_high.png
+  artifactKey: Guid(0d866139ae217354ba6631c7529184f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/resource_preservation_high.png using Guid(0d866139ae217354ba6631c7529184f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0408a483c344d0f858b0c2ff7fc6b99') in 0.026938 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000305 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower07.mat
-  artifactKey: Guid(028bd54f96227d14ea2d9672bbf25067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower07.mat using Guid(028bd54f96227d14ea2d9672bbf25067) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40a1832f24014eba9318b916c8fa34b5') in 0.012849 seconds 
+  Time since last request: 0.000422 seconds.
+  path: Assets/Gizmos/poi_environment.png
+  artifactKey: Guid(d4a164436be0101469f43681eae61204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/poi_environment.png using Guid(d4a164436be0101469f43681eae61204) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '870b5456db8ed8424a692aef92c497a7') in 0.027558 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000500 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower02.mat
-  artifactKey: Guid(c7671d512cd8bef47a45371a0272c604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/Flower02.mat using Guid(c7671d512cd8bef47a45371a0272c604) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6a9287255b15ac7deee49b49c185f2d8') in 0.013055 seconds 
+  Time since last request: 0.000471 seconds.
+  path: Assets/Gizmos/goal_optional.png
+  artifactKey: Guid(3494c31646a9405488f202562fa352c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/goal_optional.png using Guid(3494c31646a9405488f202562fa352c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '133f76c8de781be4d44ac1661cbc011e') in 0.025179 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000325 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK02.mat
-  artifactKey: Guid(5a6070f734103f2418182466ef8be3fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK02.mat using Guid(5a6070f734103f2418182466ef8be3fe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c942a1337bee80c621b6eccd5830d907') in 0.016480 seconds 
+  Time since last request: 0.000544 seconds.
+  path: Assets/Gizmos/goal_mandatory.png
+  artifactKey: Guid(5ae34997435fa0b4f9fa69ee2a44170a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/goal_mandatory.png using Guid(5ae34997435fa0b4f9fa69ee2a44170a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81beb826410709fcd1d0e388545a082a') in 0.023881 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 97.032103 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01 - Copy.mat
-  artifactKey: Guid(c89b5f5ffd68068449d9c05bafa9296d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01 - Copy.mat using Guid(c89b5f5ffd68068449d9c05bafa9296d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0fa21e689f1e075f708b64a9f4343177') in 0.021067 seconds 
+  Time since last request: 0.000436 seconds.
+  path: Assets/Gizmos/hazard_enemy_boss.png
+  artifactKey: Guid(40929cb8501002641932d9a616a507c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/hazard_enemy_boss.png using Guid(40929cb8501002641932d9a616a507c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '298c40f9ddfa6e4060b2360729de1538') in 0.025109 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000449 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK02 - Copy.mat
-  artifactKey: Guid(2bca5e340dbecae4bab4c623578208d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK02 - Copy.mat using Guid(2bca5e340dbecae4bab4c623578208d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd78c3b8d93c550ea7f1d328ce74a3a9') in 0.012200 seconds 
+  Time since last request: 0.000463 seconds.
+  path: Assets/Gizmos/resource_preservation_med.png
+  artifactKey: Guid(2f8ac120788dee6418ef6d9bdf97ddc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/resource_preservation_med.png using Guid(2f8ac120788dee6418ef6d9bdf97ddc3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '416c98f302a1e0ebdc50fb5347cf5a2d') in 0.021379 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 47.298205 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01 - Copy.mat
-  artifactKey: Guid(c89b5f5ffd68068449d9c05bafa9296d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Materials/FK01 - Copy.mat using Guid(c89b5f5ffd68068449d9c05bafa9296d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30b4128fc93db8ccf581bcb014e1651d') in 0.012964 seconds 
+  Time since last request: 0.000300 seconds.
+  path: Assets/Gizmos/entity_null.png
+  artifactKey: Guid(d84fcc5ef1011a443b0eb414e0e516eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/entity_null.png using Guid(d84fcc5ef1011a443b0eb414e0e516eb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a581dede7391ece5953844a49e6c0609') in 0.025497 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 34.882118 seconds.
-  path: Assets/User Study Project 2021/Scenario 1/Scenario1.unity
-  artifactKey: Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021/Scenario 1/Scenario1.unity using Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '755cfa44e4c7029b4c7c3cbd15b16585') in 0.008315 seconds 
+  Time since last request: 0.000382 seconds.
+  path: Assets/Gizmos/goal_completion.png
+  artifactKey: Guid(bd4d8e8062c37e74caa2645207660324) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/goal_completion.png using Guid(bd4d8e8062c37e74caa2645207660324) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e31ac7731083504d4230cc2e26480d3b') in 0.026540 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 19.863115 seconds.
-  path: Assets/User Study Project 2021/Scenario 2/Scenario2.unity
-  artifactKey: Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/User Study Project 2021/Scenario 2/Scenario2.unity using Guid(6f4421c2a72b4da40b96e00be04f2f15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c867fe3fab351fbbf56fafd66dcb4d29') in 0.007554 seconds 
+  Time since last request: 0.000566 seconds.
+  path: Assets/Gizmos/poi_npc.png
+  artifactKey: Guid(72fb2a3d4038636478d913e142f4bebb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/poi_npc.png using Guid(72fb2a3d4038636478d913e142f4bebb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '96b3e6d1711db615e1800ef067933ee3') in 0.025274 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 1799.564499 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Vegetation/Flowerpot/Flowerpot01_d07.prefab
-  artifactKey: Guid(3ded3765d3df53e43a67aa508bd74f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Vegetation/Flowerpot/Flowerpot01_d07.prefab using Guid(3ded3765d3df53e43a67aa508bd74f2c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f9060c4553129e54b47f5c7a7b2b904') in 0.024583 seconds 
+  Time since last request: 0.000427 seconds.
+  path: Assets/Gizmos/target.png
+  artifactKey: Guid(363db2b515d434048878357880428af1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/target.png using Guid(363db2b515d434048878357880428af1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2602102af26b4baf2222eccdbfabe123') in 0.037709 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000272 seconds.
-  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Vegetation/Flowerpot/Flowerpot03_g06.prefab
-  artifactKey: Guid(df278cf9f3a973b4783ea065e9e25020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Vegetation/Flowerpot/Flowerpot03_g06.prefab using Guid(df278cf9f3a973b4783ea065e9e25020) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33d1df44aa573b95e2b4314d9c55f4c3') in 0.015748 seconds 
+  Time since last request: 0.000239 seconds.
+  path: Assets/Gizmos/resource_preservation_low.png
+  artifactKey: Guid(f445b1a15c67a0445ae0ec41eec167db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Gizmos/resource_preservation_low.png using Guid(f445b1a15c67a0445ae0ec41eec167db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ff8388bd8691af0ec3db2010996257d') in 0.020581 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 17.635602 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv01.prefab
-  artifactKey: Guid(cc0fd657b60ef8c499b057056b948f16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv01.prefab using Guid(cc0fd657b60ef8c499b057056b948f16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b55a2d92fcc06905e6f84b6fe67334e2') in 0.098381 seconds 
+  Time since last request: 51.034909 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Props
+  artifactKey: Guid(7ba12dd1ad298d84bbbd3df00cd38918) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Props using Guid(7ba12dd1ad298d84bbbd3df00cd38918) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd11bbcbc3cb33610ce8974ffa5f5f400') in 0.007513 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000254 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv10.prefab
-  artifactKey: Guid(a1b4f5aeb08a9ba409b89043963cc60b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv10.prefab using Guid(a1b4f5aeb08a9ba409b89043963cc60b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93b37ba7732520c4529bf7675075a581') in 0.038026 seconds 
+  Time since last request: 1.852233 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Props/Goods
+  artifactKey: Guid(8ab6b524ef4192544b50ff4e12d8c777) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Props/Goods using Guid(8ab6b524ef4192544b50ff4e12d8c777) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98eda0bbd5f33f27d59230b172c4d72a') in 0.007788 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000289 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv07.prefab
-  artifactKey: Guid(18b2841f7a99a5f42be7e5d161545f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv07.prefab using Guid(18b2841f7a99a5f42be7e5d161545f23) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9e19ccc02bcf93a1a58d8bcb20e968a') in 0.033599 seconds 
+  Time since last request: 2.457134 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures
+  artifactKey: Guid(1a04342a12923a442b35c08cef801893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures using Guid(1a04342a12923a442b35c08cef801893) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28a60798f3ae0c79b491e3ae51cc8683') in 0.006875 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000284 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv08.prefab
-  artifactKey: Guid(36503447f5372ab4495dd42ec08684df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv08.prefab using Guid(36503447f5372ab4495dd42ec08684df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9847cbe74dbb269b871af5e47002f5dc') in 0.043742 seconds 
+  Time since last request: 0.052655 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/FK01_D.png
+  artifactKey: Guid(e18e612a55ef9cc479cd1d416b58206c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/FK01_D.png using Guid(e18e612a55ef9cc479cd1d416b58206c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a8816aea5ecc3d1c95b7484ff6bed974') in 0.012489 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000276 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv06.prefab
-  artifactKey: Guid(6045f6974b7e51f49981f0307cfc82bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv06.prefab using Guid(6045f6974b7e51f49981f0307cfc82bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fdf93d965cc481dc90fcd5282c179443') in 0.028304 seconds 
+  Time since last request: 0.000308 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower03_D.tga
+  artifactKey: Guid(780cfacbbc965224a85281b889f25a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower03_D.tga using Guid(780cfacbbc965224a85281b889f25a46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcbc879f8cbdb798df0872bca12e21b5') in 0.018739 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000392 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv02.prefab
-  artifactKey: Guid(1435c36dca02dc841a30bfac19f79aa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv02.prefab using Guid(1435c36dca02dc841a30bfac19f79aa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02a3ae27198ae2141786c42df57b23a7') in 0.031040 seconds 
+  Time since last request: 0.000440 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain04_D.tga
+  artifactKey: Guid(f8f4c748a3bd61d4a860b2046960d9c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain04_D.tga using Guid(f8f4c748a3bd61d4a860b2046960d9c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7094fdb185f742c0e984ea81dcc9f64d') in 0.027313 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000316 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv09.prefab
-  artifactKey: Guid(124fb29879dc61540b6b3c173eeafe39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv09.prefab using Guid(124fb29879dc61540b6b3c173eeafe39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b88ef74b2bb78a7ca8a9a73aa82749b') in 0.031669 seconds 
+  Time since last request: 0.000329 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower02_D.tga
+  artifactKey: Guid(2e83b5ce90677064c9a676b81920ed91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower02_D.tga using Guid(2e83b5ce90677064c9a676b81920ed91) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28dc977109ff446fa3d91216745e8692') in 0.014797 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000209 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv05.prefab
-  artifactKey: Guid(092df013ff76bd7428d419529e5e81cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv05.prefab using Guid(092df013ff76bd7428d419529e5e81cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f9a4d11cfdd6ce4b976d2a16eb32579') in 0.027718 seconds 
+  Time since last request: 0.000369 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Tree_D.png
+  artifactKey: Guid(c663b8208c5ce7a4588775d66e206867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Tree_D.png using Guid(c663b8208c5ce7a4588775d66e206867) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '394b2cfb7c104e7b1f04aafdc6478cbb') in 0.023156 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000505 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv04.prefab
-  artifactKey: Guid(83c0a85ae9c29184883b2866a6224b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv04.prefab using Guid(83c0a85ae9c29184883b2866a6224b0d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43b8d9deb6b9cf267343ee074bb16cb5') in 0.029257 seconds 
+  Time since last request: 0.000313 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/FK02_D.png
+  artifactKey: Guid(f803ce812bae0d14c9c77fc12bae06a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/FK02_D.png using Guid(f803ce812bae0d14c9c77fc12bae06a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '104546846ae45d8b4143dd779ab47856') in 0.031734 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv03.prefab
-  artifactKey: Guid(df80741be051bc54c85258e839162dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imported Assets/SineVFX (Crystals)/TranslucentCrystals/Prefabs/Gamma/Crystalsv03.prefab using Guid(df80741be051bc54c85258e839162dd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f5fb7cb6ecdd06da70f1c09f393563ed') in 0.030732 seconds 
+  Time since last request: 0.000356 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain01_D.tga
+  artifactKey: Guid(d4398d92045a77c4a9f0fdf39d6f211c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain01_D.tga using Guid(d4398d92045a77c4a9f0fdf39d6f211c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10f5b1094a891d4509099b2ae7be09b1') in 0.018538 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000318 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower01_D.tga
+  artifactKey: Guid(65d39a7431955674db295b073ec3a253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower01_D.tga using Guid(65d39a7431955674db295b073ec3a253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02b235fce830e8aed61c0677cb5cb618') in 0.014450 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000459 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain07_D.tga
+  artifactKey: Guid(167779c20878bdc43a7399996a940344) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Terrain07_D.tga using Guid(167779c20878bdc43a7399996a940344) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c994a2eadffb33d3b206edbe6383971') in 0.018380 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower07_D.tga
+  artifactKey: Guid(b2fa947398ecf8a48b806c2ad33b764b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Textures/Flower07_D.tga using Guid(b2fa947398ecf8a48b806c2ad33b764b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31be3cddf2792de21f17c4ccf0d5c2b4') in 0.015459 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.662924 seconds.
+  path: Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination
+  artifactKey: Guid(c21d9ba0b706f7d4fadde52bea3861f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Xiaolian Hua Studio (Fantasy Kingdom)/Prefabs/Building Combination using Guid(c21d9ba0b706f7d4fadde52bea3861f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16286e2271d01137b7dc5e826e976568') in 0.007575 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006339 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.71 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.463 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.65 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1852 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 110.0 MB.
+System memory in use after: 110.1 MB.
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2751.
+Total: 5.749300 ms (FindLiveObjects: 0.181700 ms CreateObjectMapping: 0.066200 ms MarkObjects: 5.473500 ms  DeleteObjects: 0.026800 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003831 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.85 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.961 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.63 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1822 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 108.9 MB.
+System memory in use after: 109.0 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2754.
+Total: 5.604400 ms (FindLiveObjects: 0.278100 ms CreateObjectMapping: 0.073700 ms MarkObjects: 5.193500 ms  DeleteObjects: 0.058400 ms)
+
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file
