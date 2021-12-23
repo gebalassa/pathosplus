@@ -9,6 +9,7 @@ using PathOS;
 PathOSAgentBatchingWindow.cs 
 PathOSAgentBatchingWindow (c) Nine Penguins (Samantha Stahlke) 2019 (Atiya Nova) 2020
 */
+[System.Serializable]
 public class PathOSAgentBatchingWindow : EditorWindow
 {
     //Used to identify preferences string by Unity.
@@ -155,11 +156,15 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private int loadAgentIndex = 0;
 
     /* Simulation Controls */
+    [SerializeField]
     private bool simulationActive = false;
+
     private bool triggerFrame = false;
     private bool cleanupWait = false;
     private bool cleanupFrame = false;
     private bool wasPlaying = false;
+
+    [SerializeField]
     private int agentsLeft = 0;
 
     //Colors
@@ -328,8 +333,6 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 EditorGUILayout.LabelField("Error! You must select a Unity prefab" +
                     " with the PathOSAgent component.", errorStyle);
             }
-
-
         }
         else
         {
@@ -513,6 +516,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 EditorApplication.isPlaying = true;
                 Time.timeScale = timeScale;
                 triggerFrame = false;
+
             }
             else if (!EditorApplication.isPlaying)
             {
@@ -520,7 +524,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 //or it was ended prematurely (i.e., the user pressed stop from the 
                 //editor).
                 if (agentsLeft == 0 || (wasPlaying 
-                    && !EditorPrefs.GetBool(
+                   && !EditorPrefs.GetBool(
                         PathOSManager.simulationEndedEditorPrefsID)))
                 {
                     agentsLeft = 0;
@@ -546,7 +550,7 @@ public class PathOSAgentBatchingWindow : EditorWindow
                         agentsLeft -= instantiatedAgents.Count;
                     }
                     else
-                    {
+                    { 
                         ApplyHeuristics();
                         --agentsLeft;
                     }
