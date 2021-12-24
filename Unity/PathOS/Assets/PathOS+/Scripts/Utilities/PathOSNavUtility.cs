@@ -207,8 +207,6 @@ public class PathOSNavUtility
             autoBounds.min.z = RoundExtrema(autoBounds.min.z, true);
             autoBounds.max.z = RoundExtrema(autoBounds.max.z, false);
 
-            Debug.Log(autoBounds.min.x + " " + autoBounds.max.x + " and z: " + autoBounds.min.z + " " + autoBounds.max.z);
-
             autoBounds.RecomputeCentreAndSize();
             SetBounds(autoBounds);
         }

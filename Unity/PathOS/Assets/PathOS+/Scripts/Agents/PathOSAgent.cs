@@ -261,6 +261,12 @@ public class PathOSAgent : MonoBehaviour
         return navAgent.transform.position;
     }
 
+    public void RecalibratePath()
+    {
+        navAgent.ResetPath(); 
+        ResetDestinationSelf();
+        //ComputeNewDestination();
+    }
     private void UpdateLookTime()
     {
         lookTime = baseLookTime;

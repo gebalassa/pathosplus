@@ -60,7 +60,7 @@ public class PathOSAgentWindow : EditorWindow
     private string lblAgentValues = "Agent Values", lblMemory = "Agent Memory", lblEyes = "Agent Eyes", lblRenderer = "Agent Renderer";
     private static bool showAgentValues = true, showMemory = true, showEyes = true, showRenderer = true;
 
-    private Color bgColor, bgDark1, bgDark2, bgDark3;
+    private Color bgColor, bgDark1, bgDark2, bgDark3, redColor;
 
     private void OnEnable()
     {
@@ -82,6 +82,7 @@ public class PathOSAgentWindow : EditorWindow
         bgDark1 = new Color32(184, 187, 199, 100);
         bgDark2 = new Color32(224, 225, 230, 120);
         bgDark3 = new Color32(224, 225, 230, 80);
+        redColor = new Color32(255, 60, 71, 150);
     }
 
     private void OnDestroy()
@@ -110,6 +111,22 @@ public class PathOSAgentWindow : EditorWindow
             return;
         }
 
+        //Bug fixes
+        if (EditorApplication.isPlaying)
+        {
+            GUI.backgroundColor = redColor;
+            if (GUILayout.Button("Recalibrate Agent Path"))
+            {
+                agentReference.RecalibratePath();
+            }
+
+            if (GUILayout.Button("Reset Game Camera"))
+            {
+
+            }
+
+            GUI.backgroundColor = bgColor;
+        }
 
         foldoutStyle = EditorStyles.foldout;
         foldoutStyle.fontStyle = FontStyle.Bold;
