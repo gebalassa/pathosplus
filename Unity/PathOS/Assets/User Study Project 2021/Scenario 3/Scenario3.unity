@@ -4435,7 +4435,7 @@ PrefabInstance:
     - target: {fileID: 4802606248819095170, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}
       propertyPath: m_TagString
-      value: MainCamera
+      value: PathOSCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4802606248819095171, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}

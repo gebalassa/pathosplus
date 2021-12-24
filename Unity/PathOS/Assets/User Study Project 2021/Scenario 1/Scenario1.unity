@@ -616,7 +616,7 @@ Transform:
   - {fileID: 854402364}
   - {fileID: 969289098}
   m_Father: {fileID: 538469957}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &64982515
 PrefabInstance:
@@ -8243,9 +8243,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2096752308}
+  - {fileID: 48237432}
   - {fileID: 2020413931}
   - {fileID: 1848855186}
-  - {fileID: 48237432}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21189,7 +21189,7 @@ PrefabInstance:
     - target: {fileID: 4802606248819095170, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}
       propertyPath: m_TagString
-      value: MainCamera
+      value: PathOSCamera
       objectReference: {fileID: 0}
     - target: {fileID: 4802606248819095171, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}

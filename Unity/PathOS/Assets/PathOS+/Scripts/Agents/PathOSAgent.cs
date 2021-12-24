@@ -267,6 +267,13 @@ public class PathOSAgent : MonoBehaviour
         ResetDestinationSelf();
         //ComputeNewDestination();
     }
+
+    public void ResetCamera()
+    {
+        GameObject cameraObject = GameObject.FindWithTag("PathOSCamera");
+        if (cameraObject != null) cameraObject.transform.position = new Vector3(transform.position.x, 15.0f, transform.position.z);
+    }
+
     private void UpdateLookTime()
     {
         lookTime = baseLookTime;

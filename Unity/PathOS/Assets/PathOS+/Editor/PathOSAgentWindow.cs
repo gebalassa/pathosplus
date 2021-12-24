@@ -122,7 +122,7 @@ public class PathOSAgentWindow : EditorWindow
 
             if (GUILayout.Button("Reset Game Camera"))
             {
-
+                agentReference.ResetCamera();
             }
 
             GUI.backgroundColor = bgColor;
