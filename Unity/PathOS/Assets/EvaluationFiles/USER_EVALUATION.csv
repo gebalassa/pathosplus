@@ -1,16 +1,7 @@
-Severity,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,
-None, #2 #4 #7,#3,,,
-Low,#1 #8,,,,
-Med,,,#5 #9,,
-High,,,,#6,
+Severity,
+None,
+Low,
+Med,
+High,
 
 #, Description, Severity, Category, GameObject, Object ID, Entity Type
-1,This is an impling ,LOW,POS,No GameObject,NA,LOW ENEMY
-2,Test test,NA,POS,No GameObject,NA,LOW ENEMY
-3,This skull platform is good,NA,POS,No GameObject,NA,COMPLETION GOAL
-4,Testing 1  Testing 2,NA,NA,No GameObject,NA,LOW ENEMY
-5,This is a tree,MED,NA,Tree - Birch (7),-2168,NONE
-6,This is good,HIGH,POS,No GameObject,NA,PRESERVATION LOW
-7,Anothr enemy,NA,POS,No GameObject,NA,LOW ENEMY
-8,gioyhsafujioekplw,LOW,POS,No GameObject,NA,LOW ENEMY
-9,level is too long,MED,NEG,No GameObject,NA,NONE
