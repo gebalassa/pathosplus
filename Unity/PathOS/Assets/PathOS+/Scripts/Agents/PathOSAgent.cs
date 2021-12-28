@@ -321,32 +321,32 @@ public class PathOSAgent : MonoBehaviour
 
     public void UpdateWeightsBasedOnHealth()
     {
-        if (health <= 50.0f)
-        {
+        //if (health <= 50.0f)
+        //{
             //Variables for calculations
             float newCaution = 0, newAggression = 0, newAdrenaline = 0;
-            float h = 1.0f - (health / 50.0f);
+            float h = 1.0f - (health / 100.0f);
 
             //Updates the caution
-            newCaution = Mathf.Lerp(modifiableHeuristicScales[cautionIndex].scale, 1.0f, h);
+            newCaution = Mathf.Lerp(heuristicScaleLookup[Heuristic.CAUTION], 1.0f, h);
             if (newCaution > 1.0f) newCaution = 1.0f;
             modifiableHeuristicScales[cautionIndex].scale = newCaution;
 
             //Updates aggression/adrenaline
-            newAggression = Mathf.Lerp(0.0f, modifiableHeuristicScales[aggressionIndex].scale, h);
+            newAggression = Mathf.Lerp(heuristicScaleLookup[Heuristic.AGGRESSION], 0.0f, h);
             if (newAggression <= 0) newAggression = 0.0f;
             modifiableHeuristicScales[aggressionIndex].scale = newAggression;
 
-            newAdrenaline = Mathf.Lerp(0.0f, modifiableHeuristicScales[adrenalineIndex].scale, h);
+            newAdrenaline = Mathf.Lerp(heuristicScaleLookup[Heuristic.ADRENALINE], 0.0f, h);
             if (newAdrenaline <= 0) newAdrenaline = 0.0f;
             modifiableHeuristicScales[adrenalineIndex].scale = newAdrenaline;
-        }
-        else
-        {
-            modifiableHeuristicScales[cautionIndex].scale = heuristicScaleLookup[Heuristic.CAUTION];
-            modifiableHeuristicScales[aggressionIndex].scale = heuristicScaleLookup[Heuristic.AGGRESSION];
-            modifiableHeuristicScales[adrenalineIndex].scale = heuristicScaleLookup[Heuristic.ADRENALINE];
-        }
+        //}
+        //else
+        //{
+        //    modifiableHeuristicScales[cautionIndex].scale = heuristicScaleLookup[Heuristic.CAUTION];
+        //    modifiableHeuristicScales[aggressionIndex].scale = heuristicScaleLookup[Heuristic.AGGRESSION];
+        //    modifiableHeuristicScales[adrenalineIndex].scale = heuristicScaleLookup[Heuristic.ADRENALINE];
+        //}
     }
 
     //Update the agent's target position.
@@ -1054,6 +1054,12 @@ public class PathOSAgent : MonoBehaviour
         lookingAround = false;
         navAgent.updateRotation = true;
         navAgent.isStopped = false;
+    }
+
+    //todo: clean this up
+    public void TakeHazardDamage()
+    {
+        health -= GetEnemyDamage(hazardDamage.min, hazardDamage.max);
     }
 
     //Computes the player health when interacting with enemies or resources
