@@ -4,6 +4,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using PathOS;
+using UnityEngine.SceneManagement;
 
 /*
 PathOSAgentBatchingWindow.cs 
@@ -39,11 +40,11 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
     /* For Simulataneous Simulation */
     [SerializeField]
-    private bool simultaneousProperty = false;
-    private bool simultaneous = false;
+    private bool simultaneousProperty = true;
+    private bool simultaneous = true;
 
     [SerializeField]
-    private Vector3 startLocation;
+    private static Vector3 startLocation;
 
     [SerializeField]
     private string loadPrefabFile = "--";
@@ -168,10 +169,13 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private int agentsLeft = 0;
 
     //Colors
-    private Color bgColor, btnColor, btnColorLight, bgDark3;
-
+    private Color bgColor, btnColor, btnColorLight, bgDark3; 
+    private static string sceneName;
+           
     private void OnEnable()
     {
+        sceneName = SceneManager.GetActiveScene().name;
+
         //Background color
         bgColor = GUI.backgroundColor;
         btnColor = new Color32(200, 203, 224, 255);
@@ -194,6 +198,15 @@ public class PathOSAgentBatchingWindow : EditorWindow
         }
 
         hasAgent = agentReference != null;
+
+        //loading in the data
+        Scene scene = SceneManager.GetActiveScene();
+        float x = PlayerPrefs.GetFloat(scene.name + " x");
+        float y = PlayerPrefs.GetFloat(scene.name + " y");
+        float z = PlayerPrefs.GetFloat(scene.name + " z");
+        startLocation = new Vector3(x, y, z);
+
+        loadPrefabFile = PlayerPrefs.GetString(scene.name + " prefabFileName");
 
         //Build the heuristic lookups.
         foreach (PathOS.Heuristic heuristic in 
@@ -266,9 +279,17 @@ public class PathOSAgentBatchingWindow : EditorWindow
     {
         //Save settings to the editor.
         string prefsData = JsonUtility.ToJson(this, false);
-        EditorPrefs.SetString(editorPrefsID, prefsData);     
+        EditorPrefs.SetString(editorPrefsID, prefsData);
+
+        //Saving inspector data 
+        Scene scene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetFloat(scene.name + " x", startLocation.x);
+        PlayerPrefs.SetFloat(scene.name + " y", startLocation.y);
+        PlayerPrefs.SetFloat(scene.name + " z", startLocation.z);
+
+        PlayerPrefs.SetString(scene.name + " prefabFileName", loadPrefabFile);
     }
-    
+
     private void OnDestroy()
     {
         //Reset the timescale.
@@ -288,11 +309,34 @@ public class PathOSAgentBatchingWindow : EditorWindow
         //Save settings to the editor.
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
+
+        //Saving inspector data 
+        Scene scene = SceneManager.GetActiveScene();
+        PlayerPrefs.SetFloat(scene.name + " x", startLocation.x);
+        PlayerPrefs.SetFloat(scene.name + " y", startLocation.y);
+        PlayerPrefs.SetFloat(scene.name + " z", startLocation.z);
+
+        PlayerPrefs.SetString(scene.name + " prefabFileName", loadPrefabFile);
     }
 
     //This used to be private void OnGUI()
     public void OnWindowOpen()
     {
+        //Reloading data based on scene we're in
+        if (sceneName != SceneManager.GetActiveScene().name)
+        {
+            sceneName = SceneManager.GetActiveScene().name;
+
+            Scene scene = SceneManager.GetActiveScene();
+            float x = PlayerPrefs.GetFloat(scene.name + " x");
+            float y = PlayerPrefs.GetFloat(scene.name + " y");
+            float z = PlayerPrefs.GetFloat(scene.name + " z");
+            startLocation = new Vector3(x, y, z);
+
+            loadPrefabFile = PlayerPrefs.GetString(scene.name + " prefabFileName");
+        }
+
+
         GUI.backgroundColor = bgDark3;
         EditorGUILayout.BeginVertical("Box");
 
@@ -306,23 +350,29 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
         numAgents = EditorGUILayout.IntField("Number of agents: ", numAgents);
 
-        simultaneousProperty = EditorGUILayout.Toggle(
-            "Simulate Simultaneously", simultaneousProperty);
+        //        simultaneousProperty = EditorGUILayout.Toggle(
+        //            "Simulate Simultaneously", simultaneousProperty);
 
         //If simultaneous simulation is selected, draw the prefab selection utility.
-        if(simultaneousProperty)
-        {
-            startLocation = EditorGUILayout.Vector3Field("Starting location: ", startLocation);
+        //        if(simultaneousProperty)
+        //        {
+
+        EditorGUILayout.Space(5);
+
+        GUI.backgroundColor = btnColor;
+        EditorGUILayout.BeginVertical("Box");
+
+        GUI.backgroundColor = bgColor;
+
+        startLocation = EditorGUILayout.Vector3Field("Starting location: ", startLocation);
 
             EditorGUILayout.LabelField("Prefab to use: ", shortPrefabFile);
             GUI.backgroundColor = btnColorLight;
             if (GUILayout.Button("Select Prefab..."))
             {
-                loadPrefabFile = EditorUtility.OpenFilePanel("Select Prefab...",
-                    Application.dataPath, "prefab");
+                loadPrefabFile = EditorUtility.OpenFilePanel("Select Prefab...", Application.dataPath, "prefab");
 
-                PathOS.UI.TruncateStringHead(loadPrefabFile, 
-                    ref shortPrefabFile, pathDisplayLength);
+                PathOS.UI.TruncateStringHead(loadPrefabFile, ref shortPrefabFile, pathDisplayLength);
 
                 CheckPrefabFile();
             }
@@ -333,31 +383,35 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 EditorGUILayout.LabelField("Error! You must select a Unity prefab" +
                     " with the PathOSAgent component.", errorStyle);
             }
-        }
-        else
-        {
-            EditorGUI.BeginChangeCheck();
 
-            GrabAgentReference();
-            agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
-                as PathOSAgent;
+        EditorGUILayout.EndVertical();
 
-            //Update agent ID if the user has selected a new object reference.
-            if (EditorGUI.EndChangeCheck())
-            {
-                hasAgent = agentReference != null;
+        EditorGUILayout.Space(5);
 
-                if (hasAgent)
-                    agentID = agentReference.GetInstanceID();
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            EditorGUI.BeginChangeCheck();
+        //
+        //            GrabAgentReference();
+        //            agentReference = EditorGUILayout.ObjectField("Agent Reference: ", agentReference, typeof(PathOSAgent), true)
+        //                as PathOSAgent;
+        //
+        //            //Update agent ID if the user has selected a new object reference.
+        //            if (EditorGUI.EndChangeCheck())
+        //            {
+        //                hasAgent = agentReference != null;
+        //
+        //                if (hasAgent)
+        //                    agentID = agentReference.GetInstanceID();
+        //            }
+        //        }
 
 
         EditorGUILayout.LabelField("Agent Motives", headerStyle);
 
         GUI.backgroundColor = btnColorLight;
-        heuristicMode = (HeuristicMode)GUILayout.SelectionGrid(
-            (int)heuristicMode, heuristicModeLabels, heuristicModeLabels.Length);
+        heuristicMode = (HeuristicMode)GUILayout.SelectionGrid((int)heuristicMode, heuristicModeLabels, heuristicModeLabels.Length);
         GUI.backgroundColor = bgColor;
 
         //Motive configration panel.
@@ -463,7 +517,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 }
                 else
                 {
-                    simultaneous = simultaneousProperty;
+                    simultaneous = true;
+                    //simultaneous = simultaneousProperty;
                     simulationActive = true;
                     agentsLeft = numAgents;
                     loadAgentIndex = 0;
@@ -476,11 +531,11 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
                     //If simultaneous simulation is enabled, set any existing agents
                     //to disabled during the batched run.
-                    if (simultaneous)
-                    {
+                    //if (simultaneous)
+                    //{
                         FindSceneAgents();
                         SetSceneAgentsActive(false);
-                    }
+                    //}
                 }
             }
             else
@@ -533,8 +588,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
                 }
                 else
                 {
-                    if (simultaneous)
-                    {
+                   // if (simultaneous)
+                   // {
                         if (agentsLeft > instantiatedAgents.Count)
                         {
                             InstantiateAgents(Mathf.Min(
@@ -548,12 +603,12 @@ public class PathOSAgentBatchingWindow : EditorWindow
 
                         ApplyHeuristicsInstantiated();
                         agentsLeft -= instantiatedAgents.Count;
-                    }
-                    else
-                    { 
-                        ApplyHeuristics();
-                        --agentsLeft;
-                    }
+                  //  }
+                  //  else
+                  //  { 
+                  //      ApplyHeuristics();
+                  //      --agentsLeft;
+                  //  }
 
                     //We need to wait one frame to ensure Unity
                     //saves the changes to agent heuristic values
@@ -576,11 +631,11 @@ public class PathOSAgentBatchingWindow : EditorWindow
             cleanupWait = false;
             triggerFrame = false;
 
-            if (simultaneous)
-            {
+         //   if (simultaneous)
+         //   {
                 SetSceneAgentsActive(true);
                 DeleteInstantiatedAgents(instantiatedAgents.Count);
-            }
+         //   }
 
             PlayerPrefs.SetInt(OGLogManager.overrideFlagId, 0);
         }
