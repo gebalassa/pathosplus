@@ -535,6 +535,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
                     //{
                         FindSceneAgents();
                         SetSceneAgentsActive(false);
+                    //Todo: this is just me trying something out, delete later
+                    // Debug.Log("Delete time " + instantiatedAgents.Count);
                     //}
                 }
             }
