@@ -781,6 +781,7 @@ public class PathOSEvaluationWindow : EditorWindow
     private static bool isCurrentlyOpen = false; //this is so jank, please fix this
     private static bool reloadData = false;
     private static string sceneName;
+    private Color themeColor = Color.black;
 
     [SerializeField]
     private bool hasManager;
@@ -823,6 +824,14 @@ public class PathOSEvaluationWindow : EditorWindow
 
         hasManager = managerReference != null;
 
+        if (PlayerPrefs.GetInt("IsThemeBlack") != 1)
+        {
+            themeColor = Color.white;
+        }
+        else
+        {
+            themeColor = Color.black;
+        }
     }
 
     private void OnDestroy()
@@ -832,6 +841,7 @@ public class PathOSEvaluationWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
 
+        PlayerPrefs.SetInt("IsThemeBlack", (themeColor == Color.black ? 1 : 0));
 
         comments.LoadData();
     }
@@ -843,6 +853,7 @@ public class PathOSEvaluationWindow : EditorWindow
         string prefsData = JsonUtility.ToJson(this, false);
         EditorPrefs.SetString(editorPrefsID, prefsData);
 
+        PlayerPrefs.SetInt("IsThemeBlack", (themeColor == Color.black ? 1 : 0));
 
         comments.LoadData();
     }
@@ -865,6 +876,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
         EditorGUILayout.BeginVertical("Box");
 
+        GUILayout.BeginHorizontal();
         if (managerReference == null)
         {
             EditorGUILayout.HelpBox("MANAGER REFERENCE REQUIRED FOR ENTITY TAGGING", MessageType.Error);
@@ -874,13 +886,29 @@ public class PathOSEvaluationWindow : EditorWindow
             EditorGUILayout.HelpBox("Right click objects in the scene to create a comment with its associated game object and entity type (if any)", MessageType.Info);
         }
 
+        GUILayout.BeginVertical();
+        GUI.backgroundColor = btnColor;
+        if (GUILayout.Button("Light Mode"))
+        {
+            themeColor = Color.white;
+        }
+        if (GUILayout.Button("Dark Mode"))
+        {
+            themeColor = Color.black;
+        }
+        GUI.backgroundColor = bgColor;
+        GUILayout.EndVertical();
+        GUILayout.EndHorizontal();
+
+
         EditorGUILayout.Space(15);
 
         GUILayout.BeginHorizontal();
 
         GUI.backgroundColor = btnColor;
         headerStyle.fontSize = 20;
-
+        headerStyle.normal.textColor = themeColor;
+        
         EditorGUILayout.LabelField(expertEvaluation, headerStyle);
 
         if (GUILayout.Button(deleteAll))
@@ -939,7 +967,7 @@ public class PathOSEvaluationWindow : EditorWindow
     {
         GrabManagerReference();
 
-        if (popupAlreadyOpen || sceneView == null || !isCurrentlyOpen) return;
+        if (popupAlreadyOpen || sceneView == null || !isCurrentlyOpen || EditorApplication.isPlaying) return;
 
         //Selection update.
         if (EditorWindow.mouseOverWindow != null && EditorWindow.mouseOverWindow.ToString() == " (UnityEditor.SceneView)")

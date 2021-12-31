@@ -169,7 +169,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
     private int agentsLeft = 0;
 
     //Colors
-    private Color bgColor, btnColor, btnColorLight, bgDark3; 
+    private Color bgColor, btnColor, btnColorLight, bgDark3;
+    private Color themeColor = Color.black;
     private static string sceneName;
            
     private void OnEnable()
@@ -268,11 +269,21 @@ public class PathOSAgentBatchingWindow : EditorWindow
         errorStyle.normal.textColor = Color.red;
 
         headerStyle.fontStyle = FontStyle.Bold;
+        headerStyle.normal.textColor = themeColor;
 
         CheckPrefabFile();
         CheckHeuristicsFile();
 
         Repaint();
+
+        if (PlayerPrefs.GetInt("IsThemeBlack") != 1)
+        {
+            themeColor = Color.white;
+        }
+        else
+        {
+            themeColor = Color.black;
+        }
     }
 
     private void OnDisable()
@@ -288,6 +299,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
         PlayerPrefs.SetFloat(scene.name + " z", startLocation.z);
 
         PlayerPrefs.SetString(scene.name + " prefabFileName", loadPrefabFile);
+
+        PlayerPrefs.SetInt("IsThemeBlack", (themeColor == Color.black ? 1 : 0));
     }
 
     private void OnDestroy()
@@ -317,6 +330,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
         PlayerPrefs.SetFloat(scene.name + " z", startLocation.z);
 
         PlayerPrefs.SetString(scene.name + " prefabFileName", loadPrefabFile);
+
+        PlayerPrefs.SetInt("IsThemeBlack", (themeColor == Color.black ? 1 : 0));
     }
 
     //This used to be private void OnGUI()
@@ -341,9 +356,25 @@ public class PathOSAgentBatchingWindow : EditorWindow
         EditorGUILayout.BeginVertical("Box");
 
         Editor header = Editor.CreateEditor(this);
+
+        EditorGUILayout.BeginHorizontal();
+        
         header.DrawHeader();
+        EditorGUILayout.BeginVertical();
+        if (GUILayout.Button("Light Mode"))
+        {
+            themeColor = Color.white;
+        }
+        if (GUILayout.Button("Dark Mode"))
+        {
+            themeColor = Color.black;
+        }
+        EditorGUILayout.EndVertical();
+        EditorGUILayout.EndHorizontal();
 
         GUI.backgroundColor = bgColor;
+
+        headerStyle.normal.textColor = themeColor;
 
         EditorGUILayout.LabelField("General", headerStyle);
         timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
