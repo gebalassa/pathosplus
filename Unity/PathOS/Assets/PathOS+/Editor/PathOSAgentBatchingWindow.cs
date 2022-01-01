@@ -356,10 +356,22 @@ public class PathOSAgentBatchingWindow : EditorWindow
         EditorGUILayout.BeginVertical("Box");
 
         Editor header = Editor.CreateEditor(this);
-
-        EditorGUILayout.BeginHorizontal();
         
         header.DrawHeader();
+       
+        GUI.backgroundColor = bgColor;
+
+        headerStyle.normal.textColor = themeColor;
+
+        EditorGUILayout.LabelField("General", headerStyle);
+        EditorGUILayout.BeginHorizontal();
+
+        EditorGUILayout.BeginVertical();
+        timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
+
+        numAgents = EditorGUILayout.IntField("Number of agents: ", numAgents);
+        EditorGUILayout.EndVertical();
+
         EditorGUILayout.BeginVertical();
         if (GUILayout.Button("Light Mode"))
         {
@@ -370,16 +382,8 @@ public class PathOSAgentBatchingWindow : EditorWindow
             themeColor = Color.black;
         }
         EditorGUILayout.EndVertical();
+
         EditorGUILayout.EndHorizontal();
-
-        GUI.backgroundColor = bgColor;
-
-        headerStyle.normal.textColor = themeColor;
-
-        EditorGUILayout.LabelField("General", headerStyle);
-        timeScale = EditorGUILayout.Slider("Timescale: ", timeScale, 1.0f, 8.0f);
-
-        numAgents = EditorGUILayout.IntField("Number of agents: ", numAgents);
 
         //        simultaneousProperty = EditorGUILayout.Toggle(
         //            "Simulate Simultaneously", simultaneousProperty);
