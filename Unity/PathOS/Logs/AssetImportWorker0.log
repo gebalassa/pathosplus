@@ -1,0 +1,374 @@
+Using pre-set license
+Built from '2021.1/release' branch; Version is '2021.1.0f1 (61a549675243) revision 6399305'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 10 Pro; OS build 19042.1415; Version 2009; 64bit' Language: 'en' Physical Memory: 16233 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+ COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity Editors\2021.1.0f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+51111
+Successfully changed project path to: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 60.28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.1.0f1 (61a549675243)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Unity/PathOS/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 2070 (ID=0x1f10)
+    Vendor:   NVIDIA
+    VRAM:     8031 MB
+    Driver:   30.0.14.9676
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56384
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity Editors/2021.1.0f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0.003017 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 49.68 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.306 seconds
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004259 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.58 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.906 seconds
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.57 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1841 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 86.6 MB.
+System memory in use after: 86.7 MB.
+
+Unloading 46 unused Assets to reduce memory usage. Loaded Objects now: 2294.
+Total: 5.639300 ms (FindLiveObjects: 0.138400 ms CreateObjectMapping: 0.059600 ms MarkObjects: 5.317400 ms  DeleteObjects: 0.122800 ms)
+
+========================================================================
+Received Import Request.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
+  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '6413aa7aa22a4b4ba0f012af17f26e61') in 0.049543 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/PathOS+/Editor/PathOSAgentBatchingWindow.cs
+  artifactKey: Guid(cc5ffff63dff57a4c8167f0bb1008a47) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/PathOS+/Editor/PathOSAgentBatchingWindow.cs using Guid(cc5ffff63dff57a4c8167f0bb1008a47) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '116b880ac6c3f98ea37526dcc5ff5f39') in 0.031766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000307 seconds.
+  path: Assets/User Study Project 2021/Scenario 1/Scenario1.unity
+  artifactKey: Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 1/Scenario1.unity using Guid(b471ee118f1ab6b46affdee9e146ae8f) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '8913c9e15a91e2246ff4389deeea376c') in 0.010989 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Internal Demo/Scenes/LevelDemo.unity
+  artifactKey: Guid(4b5120f137309ec4390dd693fb9f9386) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Internal Demo/Scenes/LevelDemo.unity using Guid(4b5120f137309ec4390dd693fb9f9386) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '6494aaecebb7808fc4d5fb24029e4d8c') in 0.009137 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/EvaluationFiles/Scenario1/Scenario1_Evaluation.csv
+  artifactKey: Guid(1f9aa6606f85c6a4fa7616b748dce8c7) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/EvaluationFiles/Scenario1/Scenario1_Evaluation.csv using Guid(1f9aa6606f85c6a4fa7616b748dce8c7) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'f3d351ba98da468fb35f490dcbb7da1d') in 0.013378 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000233 seconds.
+  path: Assets/Internal Demo/Scenes/LevelDemo/NavMesh.asset
+  artifactKey: Guid(551015e439a84d34ab24b4184513dd16) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Internal Demo/Scenes/LevelDemo/NavMesh.asset using Guid(551015e439a84d34ab24b4184513dd16) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '95386f18e83ee8f4789bbfb63ad85f67') in 0.011630 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000273 seconds.
+  path: Assets/Internal Demo/Scenes/LevelTemplate/ReflectionProbe-0.exr
+  artifactKey: Guid(0448acd3319416b40b093936cb90657c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal Demo/Scenes/LevelTemplate/ReflectionProbe-0.exr using Guid(0448acd3319416b40b093936cb90657c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a3036f1ed7bb2217d24e4cc07935ad1') in 0.095171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000184 seconds.
+  path: Assets/PathOS+/Editor/PathOSEvaluationWindow.cs
+  artifactKey: Guid(1afb7347405d8ef46af329fc5b65f069) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/PathOS+/Editor/PathOSEvaluationWindow.cs using Guid(1afb7347405d8ef46af329fc5b65f069) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '7335df1c71e961cd30e55f393b87e64e') in 0.008531 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000246 seconds.
+  path: Assets/Internal Demo/Scenes/LevelDemo/NavMesh.asset
+  artifactKey: Guid(551015e439a84d34ab24b4184513dd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Internal Demo/Scenes/LevelDemo/NavMesh.asset using Guid(551015e439a84d34ab24b4184513dd16) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '336de9e4bbaaafc5c70dfd366a75b4ae') in 0.006616 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 176.039090 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47ce10b425bd8e0c9cbf8efba3d3aa70') in 0.094870 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.348192 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '698d899648e9f172a662a6d53ada89cf') in 0.011819 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.958756 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset
+  artifactKey: Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset using Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '6e73a1d24f17f1b41c4c79a98b855a14') in 0.007623 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 241.261381 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
+  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '4bf4c51575bf165b7a7bf961663c9873') in 0.006838 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 31.852261 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56728082c23d97f53acd2f530bc37af6') in 0.086612 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.358761 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'a9435705db9648a4f5df9c6a2cb247d5') in 0.008556 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 30.494291 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '877b25d0dcdc27a9adcf2f00519d53a8') in 0.086249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.359771 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'b50fd34d80bd5df56101ff1c7709bec5') in 0.006929 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 17.326581 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d6997ad1ba4007e52a4a4ffc68ab580') in 0.084362 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.361974 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'a9ca5a0f100c38ad01bab89048b1d6f9') in 0.007268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.246355 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset
+  artifactKey: Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset using Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'd46fc471a2acee3d639e7b19568f3ddd') in 0.010915 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 87.148284 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
+  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '95ab6691c1cdf667dd29ae8efb2f8bf1') in 0.007484 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 305.129233 seconds.
+  path: Assets/EvaluationFiles/Scenario1/Scenario1_Evaluation.png
+  artifactKey: Guid(d4040baf2d7e59344a2474553df3b13a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/EvaluationFiles/Scenario1/Scenario1_Evaluation.png using Guid(d4040baf2d7e59344a2474553df3b13a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce124019895f9378e4870d014df2ee21') in 0.026171 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.490294 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Fence A.FBX
+  artifactKey: Guid(719d923d0fff4604dad00bd968b563b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Fence A.FBX using Guid(719d923d0fff4604dad00bd968b563b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5977a83507752ca8f75c2a1d1aa1ab71') in 0.060053 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000271 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Grass A.FBX
+  artifactKey: Guid(8af3079b5c79b6b4c825cc71e71ef97d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Grass A.FBX using Guid(8af3079b5c79b6b4c825cc71e71ef97d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3be78b6be4c62e680755c372cbd666a') in 0.015036 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - FirTree B.FBX
+  artifactKey: Guid(769d335a9d1fc3948bfb71adea34202c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - FirTree B.FBX using Guid(769d335a9d1fc3948bfb71adea34202c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb38116f7a6f6628cf1b6a394458c061') in 0.016509 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Fence B.FBX
+  artifactKey: Guid(6c41d268699e27248a4354335b2a76ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - Fence B.FBX using Guid(6c41d268699e27248a4354335b2a76ee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d668603de22790a6bfe5f3a96d2c2c4') in 0.014621 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000310 seconds.
+  path: Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - FirTree A.FBX
+  artifactKey: Guid(7f9b57a02a16e55429c68854f45a8801) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Boxophobic (Skybox)/Skybox Cubemap Extended/Meshes/LowPoly - FirTree A.FBX using Guid(7f9b57a02a16e55429c68854f45a8801) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd320ea87e642b0de56123064b6f1e82a') in 0.014823 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004178 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.59 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.902 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1832 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 93.8 MB.
+System memory in use after: 93.9 MB.
+
+Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2365.
+Total: 6.732600 ms (FindLiveObjects: 0.338400 ms CreateObjectMapping: 0.108900 ms MarkObjects: 6.246300 ms  DeleteObjects: 0.037900 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 94.343102 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '343ca592da6e83799e6b2a2b01fe77b5') in 0.046327 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000254 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc7848ccce146c467db0af22117191e4') in 0.114992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.044359 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset
+  artifactKey: Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset using Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'e30dcd97bdf00c00ff4248e1df1cfad9') in 0.009586 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 53.750864 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93250ad40295cc6bcd4693dd977daab5') in 0.068094 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.380455 seconds.
+  path: Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab
+  artifactKey: Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/Imported Assets/Free LowPoly SciFi Pack/Prefabs/Rooms/Level Structure.prefab using Guid(5d7b2034710a4954d92cb4a2bc5515ef) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '0c4648ac9afb9211f1d25dc529f04f10') in 0.007797 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1.731599 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset
+  artifactKey: Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3/NavMesh.asset using Guid(ba600f4ebb3d28b4bad81aca7d03ad8e) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: '676d4ab3fb2de4d24a44206dbd2fc8d7') in 0.007530 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004190 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.69 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.841 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.64 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1830 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 94.1 MB.
+System memory in use after: 94.2 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2369.
+Total: 4.735300 ms (FindLiveObjects: 0.162100 ms CreateObjectMapping: 0.060300 ms MarkObjects: 4.493600 ms  DeleteObjects: 0.018200 ms)
+
+========================================================================
+Received Import Request.
+  Time since last request: 22.390869 seconds.
+  path: Assets/User Study Project 2021/Scenario 3/Scenario3.unity
+  artifactKey: Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)
+Start importing Assets/User Study Project 2021/Scenario 3/Scenario3.unity using Guid(dee5716144c517b4eb63b67959eb04fb) Importer(2089858483,934ff659095e30574adcf32a4c2f97b5)  -> (artifact id: 'db151e4c9295d3270c99fee773403f25') in 0.043121 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004737 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.62 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.869 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 1.18 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1830 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 94.2 MB.
+System memory in use after: 94.3 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2372.
+Total: 5.796800 ms (FindLiveObjects: 0.172600 ms CreateObjectMapping: 0.129800 ms MarkObjects: 5.461400 ms  DeleteObjects: 0.031600 ms)
+
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004116 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 0.61 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.868 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.60 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1830 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 94.2 MB.
+System memory in use after: 94.3 MB.
+
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2375.
+Total: 5.168100 ms (FindLiveObjects: 0.132300 ms CreateObjectMapping: 0.054300 ms MarkObjects: 4.965400 ms  DeleteObjects: 0.015400 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

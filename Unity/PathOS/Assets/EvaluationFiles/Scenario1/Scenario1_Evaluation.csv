@@ -1,16 +1,10 @@
-Severity,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,
-None,, #2#3 #4 #7,,,
-Low,#1 #8,,,,
-Med,,,#5 #9,,
-High,,,,#6,
+Severity,NONE,HIGH ENEMY,MANDATORY GOAL,
+None,,,,
+Low,#1,#2,,
+Med,,,,
+High,,,#3,
 
 #, Description, Severity, Category, GameObject, Object ID, Entity Type
-1,This is an impling,LOW,NEG,No GameObject,NA,LOW ENEMY
-2,Test test,NA,NEG,No GameObject,NA,LOW ENEMY
-3,This skull platform is good,NA,POS,No GameObject,NA,COMPLETION GOAL
-4,Testing 1  Testing 2,NA,NA,No GameObject,NA,LOW ENEMY
-5,This is a tree,MED,NA,Tree - Birch (7),-2168,NONE
-6,This is good,HIGH,POS,No GameObject,NA,PRESERVATION LOW
-7,Anothr enemy,NA,POS,No GameObject,NA,LOW ENEMY
-8,gioyhsafujioekplw,LOW,NEG,No GameObject,NA,LOW ENEMY
-9,fhu9iatwjfsdfewbr,MED,NEG,No GameObject,NA,NONE
+1,This is a comment.,LOW,NEG,No GameObject,NA,NONE
+2,This is an imp. The comment has the entity type and gameobject because I right clicked in the scene.,LOW,NEG,No GameObject,NA,HIGH ENEMY
+3,This is another comment/ representative of my evaluations.,HIGH,POS,No GameObject,NA,MANDATORY GOAL
