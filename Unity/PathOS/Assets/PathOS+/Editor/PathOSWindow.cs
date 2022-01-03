@@ -115,7 +115,25 @@ public class PathOSWindow : EditorWindow
         hasAgent = agentReference != null;
     }
 
+    private void OnDestroy()
+    {
+        if (profileWindow) DestroyImmediate(profileWindow);
+        if (batchingWindow) DestroyImmediate(batchingWindow);
+        if (agentWindow) DestroyImmediate(agentWindow);
+        if (managerWindow) DestroyImmediate(managerWindow);
+        if (evaluationWindow) DestroyImmediate(evaluationWindow);
 
+    }
+
+    private void OnDisable()
+    {
+
+        if (profileWindow) DestroyImmediate(profileWindow);
+        if (batchingWindow) DestroyImmediate(batchingWindow);
+        if (agentWindow) DestroyImmediate(agentWindow);
+        if (managerWindow) DestroyImmediate(managerWindow);
+        if (evaluationWindow) DestroyImmediate(evaluationWindow);
+    }
 
     //gizmo stuff from here https://stackoverflow.com/questions/37267021/unity-editor-script-visible-hidden-gizmos
     void OnGUI()
