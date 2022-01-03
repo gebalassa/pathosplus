@@ -1,10 +1,8 @@
-Severity,NONE,HIGH ENEMY,MANDATORY GOAL,
-None,,,,
-Low,#1,#2,,
-Med,,,,
-High,,,#3,
+Severity,NONE,
+None,#1,
+Low,,
+Med,,
+High,,
 
 #, Description, Severity, Category, GameObject, Object ID, Entity Type
-1,This is a comment.,LOW,NEG,No GameObject,NA,NONE
-2,This is an imp. The comment has the entity type and gameobject because I right clicked in the scene.,LOW,NEG,No GameObject,NA,HIGH ENEMY
-3,This is another comment/ representative of my evaluations.,HIGH,POS,No GameObject,NA,MANDATORY GOAL
+1,This is Robot Kyle (11),NA,NA,Robot Kyle (11),47258,NONE

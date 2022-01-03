@@ -32,6 +32,7 @@ public enum Category
 public class UserComment
 {
     public string description;
+    public string selectionName;
     public bool categoryFoldout;
     public Severity severity;
     public Category category;
@@ -48,17 +49,19 @@ public class UserComment
         severity = Severity.NONE;
         category = Category.NONE;
         selection = null;
+        selectionName = "";
         selectionID = 0;
         entityType = EntityType.ET_NONE;
     }
 
-    public UserComment(string description, bool categoryFoldout, Severity severity, Category category, GameObject selection, EntityType entityType)
+    public UserComment(string description, bool categoryFoldout, Severity severity, Category category, GameObject selection, string selectionName, EntityType entityType)
     {
         this.description = description;
         this.categoryFoldout = categoryFoldout;
         this.severity = severity;
         this.category = category;
         this.selection = selection;
+        this.selectionName = selectionName;
         selectionID = selection.GetInstanceID();
         this.entityType = entityType;
     }
@@ -342,6 +345,10 @@ class ExpertEvaluation
 
             PlayerPrefs.SetString(saveName, userComments[i].description);
 
+            saveName = scene.name + " selectionName " + i;
+
+            PlayerPrefs.SetString(saveName, userComments[i].selectionName);
+
             saveName = scene.name + " heuristicsSeverities " + i;
 
             PlayerPrefs.SetInt(saveName, (int)userComments[i].severity);
@@ -381,6 +388,13 @@ class ExpertEvaluation
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].description = PlayerPrefs.GetString(saveName);
 
+
+            saveName = scene.name + " selectionName " + i;
+            if (PlayerPrefs.HasKey(saveName))
+                userComments[i].selectionName = PlayerPrefs.GetString(saveName);
+
+            if (userComments[i].selectionName != "") userComments[i].selection = GameObject.Find(userComments[i].selectionName);
+
             saveName = scene.name + " heuristicsSeverities " + i;
             if (PlayerPrefs.HasKey(saveName))
                 userComments[i].severity = (Severity)PlayerPrefs.GetInt(saveName);
@@ -394,8 +408,8 @@ class ExpertEvaluation
 
             userComments[i].selectionID = PlayerPrefs.GetInt(saveName);
 
-            if (userComments[i].selectionID != 0)
-                userComments[i].selection = EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
+            //if (userComments[i].selectionID != 0)
+              //  userComments[i].selection = //EditorUtility.InstanceIDToObject(userComments[i].selectionID) as GameObject;
 
             saveName = scene.name + " entityType " + i;
 
@@ -480,6 +494,7 @@ class ExpertEvaluation
             userComments[i].selection = EditorGUILayout.ObjectField("", userComments[i].selection, typeof(GameObject), true, GUILayout.Width(Screen.width * 0.6f))
                 as GameObject;
 
+            if (userComments[i].selection == null) userComments[i].selectionName = "";
 
             if (userComments[i].entityType != EntityType.ET_NONE) GUI.backgroundColor = entityColor;
             userComments[i].entityType = EvaluationHelperFunctions.IndexToEntity(EditorGUILayout.Popup(EvaluationHelperFunctions.EntityToIndex(userComments[i].entityType), entityNames));
@@ -578,12 +593,14 @@ class ExpertEvaluation
             if (lineContents[4] == "No GameObject")
             {
                 userComments[inputCounter].selection = null;
+                userComments[inputCounter].selectionName = "";
                 userComments[inputCounter].selectionID = 0;
             }
             else
             {
                 userComments[inputCounter].selectionID = int.Parse(lineContents[5]);
-                userComments[inputCounter].selection = EditorUtility.InstanceIDToObject(userComments[inputCounter].selectionID) as GameObject; 
+                userComments[inputCounter].selection = GameObject.Find(lineContents[4]); //EditorUtility.InstanceIDToObject(userComments[inputCounter].selectionID) as GameObject; 
+                userComments[inputCounter].selectionName = userComments[inputCounter].selection.name;
             }
 
             userComments[inputCounter].entityType = EvaluationHelperFunctions.StringToEntityType(lineContents[6]);
@@ -1145,7 +1162,7 @@ public class Popup : EditorWindow
 
        if (GUILayout.Button("Add Comment"))
         {
-            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, severity, category, selection, entityType));
+            PathOSEvaluationWindow.instance.AddComment(new UserComment(description, false, severity, category, selection, selection.name, entityType));
             this.Close();
         }
     }
