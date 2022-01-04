@@ -22,7 +22,7 @@ public class ScreenshotManager : MonoBehaviour
     private RenderTexture rendTex, currRendTex;
     private Texture2D screenshot;
 
-    public Texture2D GetScreenshot()
+    public Texture2D GetNewScreenshot()
     {
         if (camera == null)
         {
@@ -64,6 +64,11 @@ public class ScreenshotManager : MonoBehaviour
         //Replace original texture
         RenderTexture.active = currRendTex;
 
+        return screenshot;
+    }
+
+    public Texture2D GetScreenshot()
+    {
         return screenshot;
     }
     public void TakeScreenshotEvaluation(string evalFolder, string screenshotName)

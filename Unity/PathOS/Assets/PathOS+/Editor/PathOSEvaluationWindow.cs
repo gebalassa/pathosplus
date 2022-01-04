@@ -28,7 +28,6 @@ public enum Category
 }
 
 //When you finally get time, please clean this up
-[Serializable]
 public class UserComment
 {
     public string description;
@@ -292,7 +291,6 @@ public class EvaluationHelperFunctions : MonoBehaviour
     }
 }
 
-[Serializable]
 class ExpertEvaluation 
 { 
     //TODO: Spread things out in here to clean it up
@@ -969,7 +967,16 @@ public class PathOSEvaluationWindow : EditorWindow
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginVertical("Box");
+        EditorGUILayout.BeginHorizontal();
         EditorGUILayout.LabelField("Map View", headerStyle);
+        GUILayout.FlexibleSpace();
+        GUI.backgroundColor = btnColor;
+        if (screenshot != null && GUILayout.Button("REFRESH"))
+        {
+            screenshot.GetNewScreenshot();
+        }
+        GUI.backgroundColor = bgColor;
+        EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space(15);
 
         if (screenshot == null)

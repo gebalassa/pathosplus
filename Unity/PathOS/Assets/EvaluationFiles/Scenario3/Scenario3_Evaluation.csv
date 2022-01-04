@@ -1,15 +1,8 @@
-Severity,LOW ENEMY,COMPLETION GOAL,NONE,PRESERVATION LOW,,
-None,, #2#3 #4 #7 #8,,,,
-Low,#1,,,,,
-Med,,,#5,,,
-High,,,,#6,,
-,,,,,,
+Severity,NONE,
+None,#1,
+Low,,
+Med,,
+High,,
+
 #, Description, Severity, Category, GameObject, Object ID, Entity Type
-1,This is an impling,LOW,NEG,Impling (10),19942,LOW ENEMY
-2,Test test,NA,NEG,Impling (11),19588,LOW ENEMY
-3,This skull platform is good,NA,POS,Skull Platform,19172,COMPLETION GOAL
-4,Testing 1  Testing 2,NA,NA,Impling (10),19942,LOW ENEMY
-5,This is a tree,MED,NA,Tree - Birch (7),-2168,NONE
-6,This is good,HIGH,POS,Potion - Mana (1),19364,PRESERVATION LOW
-7,Anothr enemy,NA,POS,Impling (10),19942,LOW ENEMY
-8,gioyhsafujioekplw,NA,NEG,Impling (11),19588,LOW ENEMY
+1,This is an example of a comment,NA,NA,No GameObject,NA,NONE
