@@ -472,20 +472,22 @@ public class OGVisEditor : Editor
 
 
         //Draw individual player paths.
-        if (vis.showIndividualPaths)
-        {
+        
             foreach (PlayerLog pLog in vis.pLogs)
             {
                 if (pLog.visInclude)
                 {
                     if (pLog.pathPoints.Count > 0)
                     {
+
+                    if (vis.showIndividualPaths)
+                    {
                         //Draw path trace.
                         Vector3[] points = pLog.pathPoints.GetRange(
                             pLog.displayStartIndex,
                             pLog.displayEndIndex - pLog.displayStartIndex + 1)
                             .ToArray();
-                        
+
                         //Draw arrows at set intervals
                         Handles.color = pLog.pathColor;
 
@@ -525,7 +527,7 @@ public class OGVisEditor : Editor
                         SceneView.RepaintAll();
 
                         Handles.DrawAAPolyLine(polylinetex, OGLogVisualizer.PATH_WIDTH, points);
-
+                    }
 
                         //Individual interactions are only shown if aggregate interactions
                         //are hidden (to prevent overlap).
@@ -554,7 +556,7 @@ public class OGVisEditor : Editor
                 //Draw aggregate entity interactions.
                 DrawAggregateEntityInteractions();
             }
-        }
+        
     }
 
     private void DrawAggregateEntityInteractions()
