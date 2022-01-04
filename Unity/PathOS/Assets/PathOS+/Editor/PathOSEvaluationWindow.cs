@@ -364,6 +364,11 @@ class ExpertEvaluation
             saveName = scene.name + " entityType " + i;
 
             PlayerPrefs.SetInt(saveName, (int)userComments[i].entityType);
+
+            saveName = scene.name + " categoryFoldout " + i;
+
+            PlayerPrefs.SetInt(saveName, userComments[i].categoryFoldout ? 1 : 0);
+
         }
     }
 
@@ -414,6 +419,9 @@ class ExpertEvaluation
             saveName = scene.name + " entityType " + i;
 
             userComments[i].entityType = (EntityType)PlayerPrefs.GetInt(saveName);
+
+            saveName = scene.name + " categoryFoldout " + i;
+            userComments[i].categoryFoldout = PlayerPrefs.GetInt(saveName) == 1 ? true : false;
         }
 
     }
