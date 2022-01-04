@@ -44,6 +44,7 @@ public class PathOSAgentInspector : Editor
 
     private void OnEnable()
     {
+        //target = GameObject.FindWithTag("PathOSAgent");
         agent = (PathOSAgent)target;
         serial = new SerializedObject(agent);
 

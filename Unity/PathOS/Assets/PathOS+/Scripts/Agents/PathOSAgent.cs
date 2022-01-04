@@ -340,12 +340,12 @@ public class PathOSAgent : MonoBehaviour
             if (newCaution > 1.0f) newCaution = 1.0f;
             modifiableHeuristicScales[cautionIndex].scale = newCaution;
 
-            //Updates aggression/adrenaline
-            newAggression = Mathf.Lerp(heuristicScaleLookup[Heuristic.AGGRESSION], 0.0f, h);
+            //Cuts aggression/adrenaline by half
+            newAggression = Mathf.Lerp(heuristicScaleLookup[Heuristic.AGGRESSION], (heuristicScaleLookup[Heuristic.AGGRESSION]*0.25f), h);
             if (newAggression <= 0) newAggression = 0.0f;
             modifiableHeuristicScales[aggressionIndex].scale = newAggression;
 
-            newAdrenaline = Mathf.Lerp(heuristicScaleLookup[Heuristic.ADRENALINE], 0.0f, h);
+            newAdrenaline = Mathf.Lerp(heuristicScaleLookup[Heuristic.ADRENALINE], (heuristicScaleLookup[Heuristic.ADRENALINE]*0.25f), h);
             if (newAdrenaline <= 0) newAdrenaline = 0.0f;
             modifiableHeuristicScales[adrenalineIndex].scale = newAdrenaline;
         //}

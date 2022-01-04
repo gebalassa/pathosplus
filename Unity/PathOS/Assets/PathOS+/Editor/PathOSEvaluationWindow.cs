@@ -1045,7 +1045,7 @@ public class PathOSEvaluationWindow : EditorWindow
 
     private void OpenPopup(GameObject selection, EntityType entityType)
     {
-        Popup window = ScriptableObject.CreateInstance<Popup>(); 
+        Popup window = new Popup();
         window.selection = selection;
         window.entityType = entityType;
         window.position = new Rect(Event.current.mousePosition.x, Event.current.mousePosition.y, 400, 150);

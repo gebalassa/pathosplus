@@ -73,11 +73,17 @@ public class PathOSWindow : EditorWindow
         greenColor = new Color32(60, 179, 113, 140);
 
         //initializes the different windows
-        profileWindow = (PathOSProfileWindow)ScriptableObject.CreateInstance(typeof(PathOSProfileWindow)); //new PathOSProfileWindow();
+        //profileWindow = new PathOSProfileWindow();
+        //batchingWindow = new PathOSAgentBatchingWindow();
+        //agentWindow = new PathOSAgentWindow();
+        //managerWindow = new PathOSManagerWindow();
+        //evaluationWindow = new PathOSEvaluationWindow();
+
+        profileWindow = (PathOSProfileWindow)ScriptableObject.CreateInstance(typeof(PathOSProfileWindow)); 
         batchingWindow = (PathOSAgentBatchingWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentBatchingWindow));
-        agentWindow = (PathOSAgentWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentWindow)); //new PathOSAgentWindow();
-        managerWindow = (PathOSManagerWindow)ScriptableObject.CreateInstance(typeof(PathOSManagerWindow)); //new PathOSManagerWindow();
-        evaluationWindow = (PathOSEvaluationWindow)ScriptableObject.CreateInstance(typeof(PathOSEvaluationWindow)); //new PathOSEvaluationWindow();
+        agentWindow = (PathOSAgentWindow)ScriptableObject.CreateInstance(typeof(PathOSAgentWindow)); 
+        managerWindow = (PathOSManagerWindow)ScriptableObject.CreateInstance(typeof(PathOSManagerWindow)); 
+        evaluationWindow = (PathOSEvaluationWindow)ScriptableObject.CreateInstance(typeof(PathOSEvaluationWindow)); 
 
         //Re-establish references, if they have been nullified.
         if (hasScreenshot)
