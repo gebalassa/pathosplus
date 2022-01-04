@@ -120,6 +120,11 @@ public class PathOSAgentWindow : EditorWindow
                 agentReference.RecalibratePath();
             }
 
+            if (GUILayout.Button("Toggle Whether Game Camera Follows Agent"))
+            {
+                agentReference.ToggleCameraFollow();
+            }
+
             if (GUILayout.Button("Reset Game Camera"))
             {
                 agentReference.ResetCamera();

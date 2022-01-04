@@ -116,8 +116,10 @@ public class PathOSAgent : MonoBehaviour
         highEnemyDamage = new TimeRange(50,70), bossEnemyDamage = new TimeRange(70,100),
         hazardDamage = new TimeRange(10,20), lowHealthGain = new TimeRange(10, 30),
         medHealthGain = new TimeRange(30, 60), highHealthGain = new TimeRange(70,100);
-    private int cautionIndex, aggressionIndex, adrenalineIndex; 
+    private int cautionIndex, aggressionIndex, adrenalineIndex;
 
+    private GameObject cameraObject;
+    private static bool cameraFollow = false;
     private void Awake()
     { 
         eyes = GetComponent<PathOSAgentEyes>();
@@ -125,6 +127,8 @@ public class PathOSAgent : MonoBehaviour
 
         navAgent = GetComponent<NavMeshAgent>();
         completed = false;
+
+        cameraObject = GameObject.FindWithTag("PathOSCamera");
 
         currentDest = new TargetDest();
         currentDest.pos = GetPosition();
@@ -270,8 +274,12 @@ public class PathOSAgent : MonoBehaviour
 
     public void ResetCamera()
     {
-        GameObject cameraObject = GameObject.FindWithTag("PathOSCamera");
         if (cameraObject != null) cameraObject.transform.position = new Vector3(transform.position.x, 15.0f, transform.position.z);
+    }
+
+    public void ToggleCameraFollow()
+    {
+        cameraFollow = !cameraFollow;
     }
 
     private void UpdateLookTime()
@@ -920,6 +928,12 @@ public class PathOSAgent : MonoBehaviour
         {
             completed = true;
             gameObject.SetActive(false);
+        }
+
+        //Camera follow update
+        if (cameraFollow)
+        {
+            if (cameraObject != null) cameraObject.transform.position = new Vector3(transform.position.x, 15.0f, transform.position.z);
         }
     }
     private void RouteDestination()

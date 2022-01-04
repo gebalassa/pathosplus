@@ -122,12 +122,10 @@ public class PathOSWindow : EditorWindow
         if (agentWindow) DestroyImmediate(agentWindow);
         if (managerWindow) DestroyImmediate(managerWindow);
         if (evaluationWindow) DestroyImmediate(evaluationWindow);
-
     }
 
     private void OnDisable()
     {
-
         if (profileWindow) DestroyImmediate(profileWindow);
         if (batchingWindow) DestroyImmediate(batchingWindow);
         if (agentWindow) DestroyImmediate(agentWindow);
