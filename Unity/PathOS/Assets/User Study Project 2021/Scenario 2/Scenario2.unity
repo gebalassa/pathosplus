@@ -24270,7 +24270,7 @@ PrefabInstance:
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
       propertyPath: logDirectory
-      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Test Logs
+      value: C:/Users/atiya/Desktop/PathOSPlus/pathosplus/Logs/Scenario 2
       objectReference: {fileID: 0}
     - target: {fileID: 5005646905853620062, guid: 31f1861d4df0ac1488cf45674399f745,
         type: 3}
