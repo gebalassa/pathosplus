@@ -1,8 +1,7 @@
-Severity,NONE,
-None,#1,
-Low,,
-Med,,
-High,,
+Severity,
+None,
+Low,
+Med,
+High,
 
 #, Description, Severity, Category, GameObject, Object ID, Entity Type
-1,This is an example of a comment,NA,NA,No GameObject,NA,NONE
