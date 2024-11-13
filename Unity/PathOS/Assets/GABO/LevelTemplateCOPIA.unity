@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 4097ae3836e8c0f40b5e508516ec37a9, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f488a3717751d004695979682363c5b2, type: 2}
 --- !u!1001 &10469024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7047,7 +7047,7 @@ PrefabInstance:
     - target: {fileID: 2324578270369447875, guid: 981438442b5b9354c8a5cd31e3257eed,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7066,6 +7066,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PathOS Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 4802606248819095170, guid: 7fc2dc49844862141b01cdd554ae2476,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4802606248819095171, guid: 7fc2dc49844862141b01cdd554ae2476,
         type: 3}
